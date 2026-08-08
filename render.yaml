@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: ghl-automation-portfolio
+    runtime: static
+    branch: main
+    buildCommand: echo "Static portfolio - no build step"
+    staticPublishPath: .
+    autoDeployTrigger: commit
+
