@@ -601,6 +601,25 @@
       tab.setAttribute("aria-selected", String(selected));
       tab.tabIndex = selected ? 0 : -1;
     });
+    const revealActiveTab = () => {
+      const selectedTab = document.querySelector(".primary-tab.is-active");
+      const primaryNav = selectedTab?.closest(".primary-nav");
+      if (!selectedTab || !primaryNav || primaryNav.scrollWidth <= primaryNav.clientWidth) return;
+      const tabRect = selectedTab.getBoundingClientRect();
+      const navRect = primaryNav.getBoundingClientRect();
+      const currentLeft = tabRect.left - navRect.left;
+      const edgePadding = 10;
+      let targetLeft = primaryNav.scrollLeft;
+      if (currentLeft < edgePadding) targetLeft += currentLeft - edgePadding;
+      if (currentLeft + tabRect.width > primaryNav.clientWidth - edgePadding) {
+        targetLeft += currentLeft + tabRect.width - (primaryNav.clientWidth - edgePadding);
+      }
+      const maxScroll = primaryNav.scrollWidth - primaryNav.clientWidth;
+      primaryNav.scrollTo({ left: Math.min(maxScroll, Math.max(0, targetLeft)), behavior: reduceMotion() ? "auto" : "smooth" });
+    };
+    revealActiveTab();
+    window.requestAnimationFrame(revealActiveTab);
+    document.fonts?.ready.then(revealActiveTab);
   }
 
   function refreshIcons() {
@@ -1091,6 +1110,7 @@
         ? '<span>Open full case study</span><i data-lucide="arrow-up-right" aria-hidden="true"></i>'
         : '<span>Next</span><i data-lucide="arrow-right" aria-hidden="true"></i>';
       next.setAttribute("aria-label", isLast ? "Open the full case study" : "Next presentation slide");
+      next.setAttribute("title", isLast ? "Open the full case study" : "Next presentation slide");
     }
     document.querySelectorAll("[data-presentation-chapter]").forEach((button) => {
       const selected = Number(button.dataset.presentationChapter) === chapterIndex;
