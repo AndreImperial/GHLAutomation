@@ -28,7 +28,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=dark-redesign-1" />
+    <link rel="stylesheet" href="styles.css?v=dark-redesign-2" />
   </head>
   <body>
     <a class="skip-link" href="#case-study">Skip to case study</a>
@@ -51,7 +51,58 @@
       <a class="header-contact" href="mailto:imperial.andrejoseece@gmail.com" aria-label="Email Andre about this case study">
         <span>Contact</span><i data-lucide="arrow-up-right" aria-hidden="true"></i>
       </a>
+      <button id="presentation-open" class="header-present" type="button" data-presentation-open aria-label="Start the guided presentation">
+        <i data-lucide="presentation" aria-hidden="true"></i><span>Present</span>
+      </button>
     </header>
+
+    <section id="presentation-mode" class="presentation-mode" role="dialog" aria-modal="true" aria-labelledby="presentation-dialog-title" aria-describedby="presentation-dialog-description" hidden>
+      <div class="presentation-topbar">
+        <div class="presentation-brand"><span class="brand-sigil" aria-hidden="true">BD</span><span><strong id="presentation-dialog-title">Bloom Dental Studio</strong><small>Guided case study presentation</small></span></div>
+        <div class="presentation-progress-copy"><span id="presentation-step">01</span><span aria-hidden="true">/</span><span id="presentation-total">07</span></div>
+        <button id="presentation-close" class="presentation-close" type="button" data-presentation-close><i data-lucide="x" aria-hidden="true"></i><span>Exit presentation</span></button>
+      </div>
+      <p id="presentation-dialog-description" class="sr-only">A seven-slide guided walkthrough of the Bloom Dental Studio workshop simulation, from business problem to launch boundary.</p>
+      <div class="presentation-progress" role="progressbar" aria-label="Presentation progress" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1"><span id="presentation-progress-fill"></span></div>
+      <div id="presentation-stage" class="presentation-stage" tabindex="-1">
+        <article id="presentation-slide-1" class="presentation-slide is-active" data-presentation-slide="0" aria-labelledby="presentation-title" aria-describedby="presentation-description">
+          <div class="presentation-copy"><span class="presentation-label">01 / THE CASE</span><h1 id="presentation-title">Bloom Dental Studio <em>Consultation System</em></h1><p id="presentation-description">A simulated start-to-finish funnel built to turn dental interest into a booked consultation, visible follow-up, and measurable next steps.</p><div class="presentation-proof-line"><span>10 phases</span><span>6 workflows</span><span>8 deliverables</span></div></div>
+          <div class="presentation-visual presentation-visual-signal" aria-label="A signal path connecting capture, booking, follow-up, and measurement"><div class="present-visual-head"><span>THE STORY IN ONE LINE</span><strong>Interest &gt; action &gt; insight</strong></div><div class="present-route"><span>CAPTURE</span><i data-lucide="arrow-right" aria-hidden="true"></i><span>BOOK</span><i data-lucide="arrow-right" aria-hidden="true"></i><span>FOLLOW UP</span><i data-lucide="arrow-right" aria-hidden="true"></i><span>MEASURE</span></div><div class="present-signal" aria-hidden="true"></div></div>
+          <div class="presentation-message"><span>OPENING MESSAGE</span><p>This is the project: a campaign blueprint translated into a teachable GHL system.</p></div>
+        </article>
+        <article id="presentation-slide-2" class="presentation-slide" data-presentation-slide="1" aria-labelledby="presentation-problem-title" hidden>
+          <div class="presentation-copy"><span class="presentation-label">02 / THE PROBLEM</span><h2 id="presentation-problem-title">The clinic had interest, but the handoff leaked.</h2><p>People were dropping between “I am interested” and “I have a consultation booked.” The workshop started by making that gap specific.</p></div>
+          <div class="presentation-visual presentation-visual-problem"><div class="presentation-baseline"><span>DISCOVERY BASELINE / FICTIONAL TRAINING INPUT</span><strong>20 leads / month</strong><small>Only 30% booked a consultation.</small></div><div class="presentation-leak"><span>70%</span><strong>drop before booking</strong><i data-lucide="arrow-down-right" aria-hidden="true"></i></div><div class="presentation-baseline"><span>SHOW-UP FRICTION</span><strong>35% no-show</strong><small>Reminder and confirmation logic were not yet connected.</small></div></div>
+          <div class="presentation-message"><span>WHAT THIS PROVES</span><p>Strategy came before software. The build was designed around a business bottleneck, not a list of random GHL objects.</p></div>
+        </article>
+        <article id="presentation-slide-3" class="presentation-slide" data-presentation-slide="2" aria-labelledby="presentation-journey-title" hidden>
+          <div class="presentation-copy"><span class="presentation-label">03 / THE JOURNEY</span><h2 id="presentation-journey-title">One customer path connects the whole system.</h2><p>The viewer can follow one person from first interest to a future KPI review without needing a GHL background.</p></div>
+          <div class="presentation-visual presentation-visual-journey"><div class="presentation-journey-grid"><span>Meta ad</span><span>Landing page</span><span>Inquiry form</span><span>Calendar</span><span>Pipeline</span><span>Reminders</span><span>Consultation</span><span>Whitening</span><span>Recall</span><span>KPI review</span></div><div class="presentation-journey-line" aria-hidden="true"></div></div>
+          <div class="presentation-message"><span>PLAIN ENGLISH</span><p>Each handoff answers one question: what should happen next, what must the system remember, and how will we know it happened?</p></div>
+        </article>
+        <article id="presentation-slide-4" class="presentation-slide" data-presentation-slide="3" aria-labelledby="presentation-build-title" hidden>
+          <div class="presentation-copy"><span class="presentation-label">04 / THE BUILD</span><h2 id="presentation-build-title">Ten phases gave the project an order.</h2><p>The work moves from discovery and strategy into content, GHL configuration, automation, measurement, and simulation QA.</p></div>
+          <div class="presentation-visual presentation-visual-phases"><div class="presentation-phase-grid"><span>01 Discovery</span><span>02 Campaign strategy</span><span>03 Funnel blueprint</span><span>04 Conversion content</span><span>05 GHL data model</span><span>06 Lead capture</span><span>07 Booking</span><span>08 Automation</span><span>09 Measurement</span><span>10 Simulation QA</span></div><div class="presentation-phase-marker" aria-hidden="true">10 / 10</div></div>
+          <div class="presentation-message"><span>TEACHING STRUCTURE</span><p>Every phase explains its input, decision, actions, GHL location, output, business purpose, and completion status.</p></div>
+        </article>
+        <article id="presentation-slide-5" class="presentation-slide" data-presentation-slide="4" aria-labelledby="presentation-automation-title" hidden>
+          <div class="presentation-copy"><span class="presentation-label">05 / THE AUTOMATION</span><h2 id="presentation-automation-title">Six smaller workflows make the journey testable.</h2><p>Each automation owns one behavior, with its own trigger, wait, message, stage change, branch, and exit.</p></div>
+          <div class="presentation-visual presentation-visual-workflows"><div class="presentation-workflow-list"><span><b>01</b>New Lead to Booking</span><span><b>02</b>Consultation Booking</span><span><b>03</b>No-Show Recovery</span><span><b>04</b>Post-Consultation Whitening</span><span><b>05</b>Whitening Payment Update</span><span><b>06</b>Six-Month Cleaning Recall</span></div><div class="presentation-workflow-end"><i data-lucide="check" aria-hidden="true"></i> Clear stop conditions</div></div>
+          <div class="presentation-message"><span>DESIGN DECISION</span><p>Modular workflows are easier to explain, troubleshoot, and improve than one giant sequence that hides its branches.</p></div>
+        </article>
+        <article id="presentation-slide-6" class="presentation-slide" data-presentation-slide="5" aria-labelledby="presentation-measurement-title" hidden>
+          <div class="presentation-copy"><span class="presentation-label">06 / THE MEASUREMENT</span><h2 id="presentation-measurement-title">Targets become useful only when they are measurable.</h2><p>The dashboard plan connects funnel events to decisions. It does not present simulated goals as achieved results.</p></div>
+          <div class="presentation-visual presentation-visual-targets"><div><span>PROJECTED GOAL</span><strong>60</strong><small>bookings in 60 days</small></div><div><span>PROJECTED GUARDRAIL</span><strong>&lt;15%</strong><small>no-show rate</small></div><div><span>PROJECTED VALUE PATH</span><strong>40%</strong><small>whitening attach rate</small></div><div class="presentation-kpi-link"><i data-lucide="arrow-right" aria-hidden="true"></i><span>Events &gt; KPI tree &gt; weekly review</span></div></div>
+          <div class="presentation-message"><span>TRUTH BOUNDARY</span><p>These are projected campaign goals from the simulation. Real performance starts only after live traffic, sender setup, compliance review, and data collection.</p></div>
+        </article>
+        <article id="presentation-slide-7" class="presentation-slide" data-presentation-slide="6" aria-labelledby="presentation-finish-title" hidden>
+          <div class="presentation-copy"><span class="presentation-label">07 / THE HANDOFF</span><h2 id="presentation-finish-title">The simulation is complete. Launch still has gates.</h2><p>That is the honest finish: the thinking and build are documented, while production dependencies remain visible for the next stage.</p></div>
+          <div class="presentation-visual presentation-visual-finish"><div class="finish-score"><strong>10 / 10</strong><span>workshop simulation complete</span></div><ul><li>Production sender domain</li><li>Live ad and UTM tracking</li><li>SMS and healthcare compliance review</li><li>Real-data pilot and KPI baseline</li></ul></div>
+          <div class="presentation-message"><span>FINAL MESSAGE</span><p>Now open the full site when someone asks, “How exactly did you build it?”</p></div>
+        </article>
+      </div>
+      <div class="presentation-controls"><button id="presentation-prev" class="presentation-nav presentation-nav-secondary" type="button" data-presentation-prev disabled><i data-lucide="arrow-left" aria-hidden="true"></i><span>Previous</span></button><div class="presentation-dots" role="tablist" aria-label="Presentation slides"><button type="button" role="tab" aria-selected="true" aria-label="Go to presentation slide 1" data-presentation-dot="0"></button><button type="button" role="tab" aria-selected="false" aria-label="Go to presentation slide 2" data-presentation-dot="1"></button><button type="button" role="tab" aria-selected="false" aria-label="Go to presentation slide 3" data-presentation-dot="2"></button><button type="button" role="tab" aria-selected="false" aria-label="Go to presentation slide 4" data-presentation-dot="3"></button><button type="button" role="tab" aria-selected="false" aria-label="Go to presentation slide 5" data-presentation-dot="4"></button><button type="button" role="tab" aria-selected="false" aria-label="Go to presentation slide 6" data-presentation-dot="5"></button><button type="button" role="tab" aria-selected="false" aria-label="Go to presentation slide 7" data-presentation-dot="6"></button></div><button id="presentation-next" class="presentation-nav presentation-nav-primary" type="button" data-presentation-next><span>Next</span><i data-lucide="arrow-right" aria-hidden="true"></i></button></div>
+    </section>
 
     <header class="site-header" aria-label="Legacy portfolio header" hidden>
       <a class="brand" href="#case-study" aria-label="Bloom Dental case study home">
@@ -80,8 +131,8 @@
             <h1 id="page-title">Bloom Dental Studio <em>Consultation System</em></h1>
             <p class="hero-lede">A start-to-finish funnel, GHL automation, and measurement blueprint for a simulated BGC dental campaign.</p>
             <div class="hero-actions" aria-label="Start the case study">
-              <a class="button button-coral" href="#system" data-view-link="system">Start with the system map <i data-lucide="arrow-right" aria-hidden="true"></i></a>
-              <a class="button button-quiet" href="#build" data-view-link="build">See the ten phases</a>
+              <a class="button button-coral" href="#present/1" data-presentation-open>Run the 90-second presentation <i data-lucide="presentation" aria-hidden="true"></i></a>
+              <a class="button button-quiet" href="#system" data-view-link="system">Explore the system map</a>
             </div>
             <p class="hero-boundary">Projected targets are planning goals, not live results.</p>
           </div>
@@ -2417,7 +2468,7 @@
     <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-    <script src="script.js?v=dark-redesign-1" defer></script>
+    <script src="script.js?v=dark-redesign-2" defer></script>
   </body>
 </html>
 

@@ -86,19 +86,36 @@
   let explanationMode = "plain";
   let systemTrigger = null;
   let revealObserver = null;
+  let presentationIndex = 0;
+  let presentationReturnHash = "#tour";
+  let presentationPreviousFocus = null;
 
   const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function getHashState() {
     const raw = window.location.hash.replace(/^#/, "");
     const parts = raw.split("/");
+    if (parts[0] === "present") {
+      const requested = Number.parseInt(parts[1] || "1", 10);
+      const slide = Number.isFinite(requested) ? Math.max(1, Math.min(7, requested)) : 1;
+      return { view: "tour", documentId: null, presentation: true, presentationIndex: slide - 1 };
+    }
     const view = aliases[parts[0]] || "tour";
     const documentId = parts[1] || null;
-    return { view, documentId };
+    return { view, documentId, presentation: false, presentationIndex: 0 };
   }
 
   function writeHash(view, documentId, replace) {
     const next = documentId ? `#${view}/${documentId}` : `#${view}`;
+    if (replace) {
+      window.history.replaceState(null, "", next);
+    } else if (window.location.hash !== next) {
+      window.history.pushState(null, "", next);
+    }
+  }
+
+  function writePresentationHash(index, replace) {
+    const next = `#present/${index + 1}`;
     if (replace) {
       window.history.replaceState(null, "", next);
     } else if (window.location.hash !== next) {
@@ -282,6 +299,165 @@
     if (options.focus) document.getElementById(`view-${nextView}`)?.focus({ preventScroll: true });
   }
 
+  function updatePresentation(index, options = {}) {
+    const slides = Array.from(document.querySelectorAll("[data-presentation-slide]"));
+    if (!slides.length) return;
+    presentationIndex = Math.max(0, Math.min(slides.length - 1, index));
+
+    slides.forEach((slide, slideIndex) => {
+      const selected = slideIndex === presentationIndex;
+      slide.hidden = !selected;
+      slide.classList.toggle("is-active", selected);
+      slide.setAttribute("aria-hidden", String(!selected));
+    });
+
+    const step = document.getElementById("presentation-step");
+    const total = document.getElementById("presentation-total");
+    const progress = document.querySelector(".presentation-progress");
+    const progressFill = document.getElementById("presentation-progress-fill");
+    const previous = document.getElementById("presentation-prev");
+    const next = document.getElementById("presentation-next");
+    if (step) step.textContent = String(presentationIndex + 1).padStart(2, "0");
+    if (total) total.textContent = String(slides.length).padStart(2, "0");
+    if (progress) progress.setAttribute("aria-valuenow", String(presentationIndex + 1));
+    if (progressFill) progressFill.style.transform = `scaleX(${(presentationIndex + 1) / slides.length})`;
+    if (previous) previous.disabled = presentationIndex === 0;
+    if (next) {
+      const isLast = presentationIndex === slides.length - 1;
+      next.innerHTML = isLast
+        ? '<span>Open full case study</span><i data-lucide="arrow-up-right" aria-hidden="true"></i>'
+        : '<span>Next</span><i data-lucide="arrow-right" aria-hidden="true"></i>';
+      next.setAttribute("aria-label", isLast ? "Open the full case study" : "Next presentation slide");
+    }
+    document.querySelectorAll("[data-presentation-dot]").forEach((dot) => {
+      const selected = Number(dot.dataset.presentationDot) === presentationIndex;
+      dot.setAttribute("aria-selected", String(selected));
+      dot.setAttribute("aria-controls", `presentation-slide-${Number(dot.dataset.presentationDot) + 1}`);
+      dot.tabIndex = selected ? 0 : -1;
+    });
+    refreshIcons();
+
+    if (options.updateUrl !== false) writePresentationHash(presentationIndex, options.replace === true);
+    if (options.focus) document.getElementById("presentation-stage")?.focus({ preventScroll: true });
+  }
+
+  function openPresentation(index = 0, options = {}) {
+    const overlay = document.getElementById("presentation-mode");
+    const header = document.querySelector(".redesign-header");
+    const main = document.getElementById("case-study");
+    if (!overlay) return;
+
+    const alreadyOpen = document.body.classList.contains("is-presentation-open");
+    if (!alreadyOpen) {
+      presentationPreviousFocus = document.activeElement;
+      if (!window.location.hash.startsWith("#present")) presentationReturnHash = window.location.hash || "#tour";
+      overlay.hidden = false;
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.classList.add("is-presentation-open");
+      if (header) {
+        header.setAttribute("aria-hidden", "true");
+        header.inert = true;
+      }
+      if (main) main.inert = true;
+    }
+
+    updatePresentation(index, { updateUrl: options.updateUrl !== false, replace: options.replace === true });
+    if (options.focus !== false && !alreadyOpen) document.getElementById("presentation-close")?.focus();
+  }
+
+  function closePresentation(options = {}) {
+    const overlay = document.getElementById("presentation-mode");
+    const header = document.querySelector(".redesign-header");
+    const main = document.getElementById("case-study");
+    if (!overlay || !document.body.classList.contains("is-presentation-open")) return;
+
+    overlay.hidden = true;
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-presentation-open");
+    if (header) {
+      header.inert = false;
+      header.removeAttribute("aria-hidden");
+    }
+    if (main) main.inert = false;
+
+    const returnHash = options.returnHash || presentationReturnHash || "#tour";
+    if (options.updateUrl !== false && window.location.hash !== returnHash) window.history.replaceState(null, "", returnHash);
+    const state = getHashState();
+    if (state.documentId) activeDocument = state.documentId;
+    setView(state.view, { updateUrl: false, scroll: options.scroll !== false });
+    if (options.restoreFocus !== false) presentationPreviousFocus?.focus?.({ preventScroll: true });
+    presentationPreviousFocus = null;
+  }
+
+  function syncUrlState() {
+    const state = getHashState();
+    if (state.presentation) {
+      if (document.body.classList.contains("is-presentation-open")) {
+        updatePresentation(state.presentationIndex, { updateUrl: false });
+      } else {
+        openPresentation(state.presentationIndex, { updateUrl: false });
+      }
+      return;
+    }
+    if (document.body.classList.contains("is-presentation-open")) {
+      closePresentation({ updateUrl: false, returnHash: window.location.hash || "#tour" });
+      return;
+    }
+    if (state.documentId) activeDocument = state.documentId;
+    setView(state.view, { updateUrl: false });
+  }
+
+  function initPresentation() {
+    document.querySelectorAll("[data-presentation-open]").forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        openPresentation(0);
+      });
+    });
+    document.querySelector("[data-presentation-close]")?.addEventListener("click", () => closePresentation());
+    document.querySelector("[data-presentation-prev]")?.addEventListener("click", () => updatePresentation(presentationIndex - 1));
+    document.querySelector("[data-presentation-next]")?.addEventListener("click", () => {
+      const last = document.querySelectorAll("[data-presentation-slide]").length - 1;
+      if (presentationIndex >= last) {
+        closePresentation({ returnHash: "#system" });
+      } else {
+        updatePresentation(presentationIndex + 1);
+      }
+    });
+    document.querySelectorAll("[data-presentation-dot]").forEach((dot) => {
+      dot.addEventListener("click", () => updatePresentation(Number(dot.dataset.presentationDot)));
+      dot.addEventListener("keydown", (event) => {
+        if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+        const dots = Array.from(document.querySelectorAll("[data-presentation-dot]"));
+        const current = Number(dot.dataset.presentationDot);
+        let next = current;
+        if (event.key === "ArrowRight") next = (current + 1) % dots.length;
+        if (event.key === "ArrowLeft") next = (current - 1 + dots.length) % dots.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = dots.length - 1;
+        event.preventDefault();
+        event.stopPropagation();
+        dots[next].focus();
+        updatePresentation(next);
+      });
+    });
+    document.addEventListener("keydown", (event) => {
+      if (!document.body.classList.contains("is-presentation-open")) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closePresentation();
+      }
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        event.preventDefault();
+        updatePresentation(presentationIndex + 1);
+      }
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        event.preventDefault();
+        updatePresentation(presentationIndex - 1);
+      }
+    });
+  }
+
   function initNavigation() {
     const tabs = Array.from(document.querySelectorAll(".primary-tab"));
     tabs.forEach((tab, index) => {
@@ -328,16 +504,8 @@
       });
     });
 
-    window.addEventListener("hashchange", () => {
-      const state = getHashState();
-      if (state.documentId) activeDocument = state.documentId;
-      setView(state.view, { updateUrl: false });
-    });
-    window.addEventListener("popstate", () => {
-      const state = getHashState();
-      if (state.documentId) activeDocument = state.documentId;
-      setView(state.view, { updateUrl: false });
-    });
+    window.addEventListener("hashchange", syncUrlState);
+    window.addEventListener("popstate", syncUrlState);
   }
 
   function disableSignalForReducedMotion() {
@@ -348,11 +516,16 @@
   function start() {
     moveDeliverables();
     initJourney();
+    initPresentation();
     initNavigation();
     disableSignalForReducedMotion();
     const state = getHashState();
-    if (state.documentId) activeDocument = state.documentId;
-    setView(state.view, { replace: true, scroll: state.view !== "tour" });
+    if (state.presentation) {
+      openPresentation(state.presentationIndex, { updateUrl: false, focus: false });
+    } else {
+      if (state.documentId) activeDocument = state.documentId;
+      setView(state.view, { replace: true, scroll: state.view !== "tour" });
+    }
     refreshIcons();
     window.setTimeout(refreshIcons, 80);
   }
