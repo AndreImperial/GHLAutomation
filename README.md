@@ -22,12 +22,12 @@ The site has no build step and no runtime dependency install. Render serves the 
 
 ## Experience Map
 
-- `#present/1`: self-contained 18-section, approximately 30-minute presentation covering the problem, journey, GHL model, ten phases, deliverables, workflows, measurement, QA, and launch boundary. Use the arrow keys to move, `Escape` to exit, or the final handoff button to open the full System view.
-- `#tour`: 90-second plain-English explanation and GHL decoder.
+- `#tour`: approximately 90 seconds covering the problem, proposed path, Andre's contribution, and simulation boundary.
+- `#present/1`: self-contained 18-slide presentation grouped into Context, Journey, Build, Automation, and Measurement. Use the five chapter markers or outline to navigate, toggle presenter notes when speaking, use the arrow keys to move, and press `Escape` to exit.
 - `#system`: customer path, Plain English/GHL Detail switch, reconstructed six-workflow node lab, and decision log.
 - `#build`: ten completed phases, each with input, decision, actions, GHL location, output, purpose, and status.
 - `#deliverables`: eight full workshop documents presented as native website content.
-- `#measurement`: projected goals, event model, KPI tree, dashboard plan, formulas, review cadence, and diagnostic playbook.
+- `#measurement`: projected goals, measurement windows, event model, KPI tree, dashboard plan, formulas, and interactive KPI Diagnostic Lab.
 
 Legacy hashes continue to work: `#beginner-path`, `#implementation`, `#board`, `#process`, `#documents`, and `#results` map to the nearest new view.
 
@@ -37,17 +37,19 @@ Legacy hashes continue to work: `#beginner-path`, `#implementation`, `#board`, `
 - Update the `<title>`, description, canonical URL, and social preview URLs in `index.html` when the site moves.
 - Replace copy directly in the native HTML. The deliverables are intentionally hardcoded into the site; no Markdown or document images are loaded.
 - Replace `assets/og-bloom-dental.png` with another 1200x630 publication-safe image if the visual identity changes.
+- Keep runtime libraries pinned in `assets/vendor` and fonts in `assets/fonts`; see `THIRD_PARTY_NOTICES.md` before upgrading them.
 - Keep `60 bookings in 60 days`, `<15% no-show rate`, and `40% whitening attach rate` labeled as projected goals until verified campaign data exists.
 - Add real proof only after it is publication-safe. The current release intentionally contains no GHL screenshots, personal account information, fake testimonials, or achieved campaign results.
 
 ## Structure
 
-- `index.html`: five-view shell, guided presentation layer, and all hardcoded workshop deliverables.
+- `index.html`: five-view shell, contribution story, guided presentation layer, and all hardcoded workshop deliverables.
 - `styles.css`: dark graphite-green token system, responsive layouts, focus states, and reduced-motion rules.
-- `script.js`: ARIA tab navigation, presentation controls, hashes and history, legacy aliases, journey explanations, interactive workflow node maps, deliverable switching, and GSAP fallback behavior.
+- `script.js`: ARIA tab navigation, chaptered presentation and notes, hashes and history, legacy aliases, journey explanations, workflow maps, KPI diagnostics, deliverable switching, and GSAP fallback behavior.
+- `DESIGN.md`: canonical visual, interaction, content, and release rules.
+- `THIRD_PARTY_NOTICES.md`: versions, licenses, and sources for self-hosted browser assets.
 - `assets/favicon.svg`: publication-safe favicon.
 - `assets/og-bloom-dental.png`: 1200x630 social preview.
-- `design-system/bloom-dental-case-study/MASTER.md`: final dark interaction and visual rules.
 - `PRODUCT.md`: product context used to keep the redesign aligned to the simulation and its audiences.
 - `render.yaml`: Render static-site configuration.
 

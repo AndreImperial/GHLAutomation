@@ -18,6 +18,65 @@
     results: "measurement"
   };
 
+  const presentationChapters = [
+    { name: "Context", start: 0, end: 3 },
+    { name: "Journey", start: 4, end: 7 },
+    { name: "Build", start: 8, end: 11 },
+    { name: "Automation", start: 12, end: 14 },
+    { name: "Measurement", start: 15, end: 17 }
+  ];
+
+  const kpiDiagnostics = {
+    arrival: {
+      label: "ARRIVAL RATE",
+      name: "Are ad clicks becoming page views?",
+      formula: "landing_page_view / ad_click",
+      signal: "Clicks are recorded, but fewer sessions reach a usable landing page.",
+      evidence: "Compare Meta clicks with funnel page views by UTM campaign and device.",
+      test: "Validate link routing and mobile load behavior before changing the offer."
+    },
+    capture: {
+      label: "LANDING CONVERSION",
+      name: "Are page views becoming identifiable leads?",
+      formula: "form_submit / landing_page_view",
+      signal: "Visitors reach the page but do not complete the inquiry form.",
+      evidence: "Inspect funnel views, form submissions, field completion, and mobile abandonment.",
+      test: "Clarify the consultation promise or remove one nonessential form field."
+    },
+    booking: {
+      label: "LEAD-TO-BOOKING RATE",
+      name: "Are submitted inquiries choosing a time?",
+      formula: "booking_created / form_submit",
+      signal: "The form succeeds, but the calendar handoff loses momentum.",
+      evidence: "Compare form contacts with appointments and New Lead opportunities after 24 hours.",
+      test: "Test a clearer confirmation step and booking invitation before changing acquisition."
+    },
+    attendance: {
+      label: "NO-SHOW RATE",
+      name: "Are mature bookings becoming completed consultations?",
+      formula: "no_show / mature_booking",
+      signal: "Scheduled appointments reach their date but are marked no-show.",
+      evidence: "Review appointment outcomes, reminder delivery, consent, timing, and reschedule use.",
+      test: "Change one reminder timing or clarity variable for the next mature appointment cohort."
+    },
+    value: {
+      label: "WHITENING ATTACH RATE",
+      name: "Are completed consultations creating a relevant next step?",
+      formula: "whitening_booked / show_completed",
+      signal: "Consultations complete, but appropriate whitening interest rarely becomes a booking.",
+      evidence: "Inspect completed appointments, whitening-interest values, follow-up delivery, and stage moves.",
+      test: "Improve fit and price clarity in the post-consultation handoff without increasing pressure."
+    },
+    retention: {
+      label: "RECALL BOOKING RATE",
+      name: "Are eligible six-month contacts scheduling future care?",
+      formula: "recall_booked / contact_due",
+      signal: "Contacts reach the recall date but do not create a future-care appointment.",
+      evidence: "Check recall-due tags, cohort eligibility, message delivery, opt-outs, and appointment creation.",
+      test: "Test one recall message or scheduling path within the eligible cohort only."
+    }
+  };
+
   const nodeDetails = {
     ad: {
       title: "Interest begins with a focused offer.",
@@ -80,6 +139,282 @@
       technical: "Reporting > Dashboard widgets / KPI event model"
     }
   };
+
+  const presentationNotes = [
+    {
+      title: "Set the contract for the presentation",
+      paragraphs: [
+        "I begin by setting a clear contract with the audience. Bloom Dental Studio is a fictional workshop scenario, and this is a completed simulation rather than a live client performance report. The purpose of the case study is to show the quality of the reasoning, the completeness of the operating model, and the way I would prepare a campaign for controlled launch.",
+        "The project starts with a business problem and follows it all the way through customer experience, GoHighLevel configuration, automation, measurement, and quality assurance. That end-to-end chain is the main portfolio evidence. The interface you are seeing is also part of the work: it translates a technical build into something a hiring manager, analyst, or non-marketing reviewer can understand without needing access to the original GHL account."
+      ],
+      bullets: [
+        "Ten phases describe how the system was made from discovery through simulation QA.",
+        "Six reconstructed workflows expose the automation logic one node at a time.",
+        "Eight complete deliverables preserve the actual workshop content inside the website.",
+        "Every numeric campaign target remains labeled as projected until real traffic exists."
+      ],
+      transition: "With that boundary established, the next slide explains the business value of the system in one view."
+    },
+    {
+      title: "Explain the project as an operating model",
+      paragraphs: [
+        "The executive summary is simple: interest is valuable only when the handoffs after the click are dependable. A person may like an ad but still be uncertain about treatment, pricing, or what happens during a consultation. If the page, form, calendar, and follow-up are disconnected, that uncertainty becomes invisible drop-off.",
+        "I treated the project as one operating model instead of separate marketing assets. The front end explains the offer and captures useful context. The middle creates a contact, appointment, and opportunity stage. The back end sends the appropriate message, stops when the person acts, and records enough evidence to diagnose the funnel later. Measurement is therefore designed into the journey rather than added after launch."
+      ],
+      bullets: [
+        "The business problem is lost movement between interest and booked care.",
+        "The system response is a connected form, calendar, pipeline, and workflow model.",
+        "The analytics response is an event trail that reveals the first meaningful drop.",
+        "The operating principle is one customer state, one responsible next action, and one observable signal."
+      ],
+      transition: "To understand why those choices matter, I will go back to the discovery information that shaped the brief."
+    },
+    {
+      title: "Turn discovery inputs into a precise problem",
+      paragraphs: [
+        "The workshop discovery transcript described a BGC dental studio serving busy professionals who care about appearance but do not want a high-pressure treatment conversation. The training baseline suggested around twenty leads per month, only thirty percent reaching a consultation booking, and a thirty-five percent no-show pattern. Those figures are scenario inputs, not verified clinic performance.",
+        "Instead of immediately building pages or workflows, I translated the conversation into a bottleneck: the clinic needed a clearer and more reliable handoff from initial interest to a completed consultation. This matters because an automation can efficiently repeat the wrong process. Discovery decides which behavior is worth automating and which information the team needs at each step."
+      ],
+      bullets: [
+        "Audience: time-poor BGC and Makati professionals seeking clarity before treatment.",
+        "Friction: uncertainty, disconnected booking, inconsistent follow-up, and missed appointments.",
+        "Opportunity: use the consultation to create trust before discussing whitening or veneers.",
+        "Guardrail: never describe fictional baseline or target figures as achieved results."
+      ],
+      transition: "Once the bottleneck was specific, the next decision was the offer and message that could lower that friction."
+    },
+    {
+      title: "Show why the consultation is the correct front-end offer",
+      paragraphs: [
+        "The campaign does not lead cold traffic with a whitening sale. It leads with a free thirty-minute smile consultation because the audience first needs help understanding options, suitability, timing, and likely next steps. This offer reduces the perceived commitment while still creating a meaningful action for the clinic.",
+        "The message architecture stays consistent from ad to page to form to calendar. It says who the consultation is for, what the patient can discuss, and what the appointment does not require. The wording avoids invented testimonials, guaranteed outcomes, and aggressive urgency. That consistency is conversion design: each handoff confirms the same promise instead of surprising the person with a different request."
+      ],
+      bullets: [
+        "Primary promise: understand your smile options before committing to treatment.",
+        "Audience fit: busy professionals who value clarity, convenience, and a calm clinical tone.",
+        "Conversion action: submit useful context, then choose a consultation time.",
+        "Value path: whitening can be discussed after trust and suitability are established."
+      ],
+      transition: "Before following the customer path, I will decode the small set of GHL objects that make the journey work."
+    },
+    {
+      title: "Translate GHL into familiar business objects",
+      paragraphs: [
+        "For someone new to GoHighLevel, the platform can sound more complicated than the business process. I explain it as a shared record plus a set of rules. The contact is the person. The form is what they told us. The calendar is when they can meet. The opportunity is the business path connected to that person, and the pipeline shows where that path currently sits.",
+        "Tags and custom fields help the system remember facts such as source, service interest, and SMS permission. Workflows watch for a meaningful event, apply conditions, wait when appropriate, perform an action, and stop when the desired state already exists. That distinction between data and behavior is important: fields describe the contact, while workflows decide what the system should do with that information."
+      ],
+      bullets: [
+        "Contacts prevent the page, calendar, and messages from creating disconnected identities.",
+        "Opportunities make commercial movement visible without confusing it with contact activity.",
+        "Consent is stored as data and checked again at the point of an SMS action.",
+        "Workflow stop conditions prevent reminders from continuing after a booking or opt-out."
+      ],
+      transition: "With those objects defined, we can follow one prospective patient through the entire system."
+    },
+    {
+      title: "Follow one person instead of memorizing features",
+      paragraphs: [
+        "The customer journey is the simplest way to understand the project. A person encounters a focused Meta ad and reaches a landing page that explains the consultation. The inquiry form captures their goal, service interest, source, and permission choices. The calendar then turns interest into a scheduled time, while the pipeline gives the team a visible stage to manage.",
+        "After booking, reminders support attendance. The consultation becomes the first human value moment, not merely another conversion event. A relevant whitening conversation may follow, and a six-month recall path can support future care. Finally, the KPI review examines where people moved forward or stopped. Each handoff asks what happens next, what the system must remember, and what evidence will prove the event occurred."
+      ],
+      bullets: [
+        "The path contains ten observable moments from ad exposure to KPI review.",
+        "Plain English explains the business meaning before the interface names the GHL location.",
+        "The form-first decision separates initial interest from an actual calendar commitment.",
+        "The recall step belongs to a later retention horizon, not the initial sixty-day campaign window."
+      ],
+      transition: "The next slide shows how that journey was converted into a buildable funnel blueprint."
+    },
+    {
+      title: "Map every handoff before opening the page builder",
+      paragraphs: [
+        "The funnel blueprint was created before the landing page and workflows because it forces the important implementation questions into the open. For every step, I identified the customer action, the data captured, the GHL object affected, the message that follows, and the condition that ends or changes the path.",
+        "One deliberate departure from the workshop template was the form-first handoff. A direct calendar can be faster, but it gives the team less context and makes form submission impossible to measure separately from booking. In this simulation, the landing page leads to the inquiry form, the form confirmation presents the calendar, and a workflow follows up if a time is not selected. That creates two observable conversion points and a more useful consultation record."
+      ],
+      bullets: [
+        "Entry evidence comes from campaign and UTM values.",
+        "Capture evidence comes from the contact and mapped form fields.",
+        "Booking evidence comes from the appointment and opportunity stage.",
+        "Operational evidence comes from workflow execution, message delivery, and status changes."
+      ],
+      transition: "The blueprint then became eight concrete deliverables that another builder could inspect and implement."
+    },
+    {
+      title: "Explain what the deliverables prove",
+      paragraphs: [
+        "The eight deliverables are not decorative attachments. Each one resolves a different implementation question. The marketing strategy explains the problem, audience, offer, positioning, and projected goals. The integrated campaign plan assigns channel roles and required assets. The funnel blueprint describes the system handoffs before configuration begins.",
+        "The landing-page copy and email plus SMS sequence define what the prospective patient sees. The workflow specification defines the triggers, conditions, waits, actions, branches, and stop logic. The analytics plan defines events, formulas, dashboard questions, and review cadence. Finally, the implementation checklist turns the design into a repeatable build and QA path. The website preserves their full content so a reviewer can inspect the decisions without downloading Markdown or relying on screenshots."
+      ],
+      bullets: [
+        "Strategy answers why the campaign should exist.",
+        "Blueprint and copy answer where the journey goes and what the person experiences.",
+        "Workflow specifications answer what the system does after each event.",
+        "Analytics and QA answer how readiness and future performance will be evaluated."
+      ],
+      transition: "Next I will compress the first five implementation phases into the decisions that created the system foundation."
+    },
+    {
+      title: "Walk through phases one to five",
+      paragraphs: [
+        "Phase one translated discovery into a problem statement, audience, objections, and measurement questions. Phase two chose the consultation offer, campaign message, channel roles, and projected goals. Phase three mapped the customer path and system handoffs before any interface was configured. These phases reduced ambiguity before implementation effort began.",
+        "Phase four produced the conversion content: landing-page sections, form prompts, FAQs, confirmation language, email templates, and consent-aware SMS snippets. Phase five defined the data model with a focused pipeline, custom fields, tags, opportunity naming, and source conventions. I kept the model deliberately small because every extra field creates maintenance and reporting cost. By the end of phase five, the team knows what the system must remember and what each later workflow can reliably check."
+      ],
+      bullets: [
+        "Inputs came from the discovery transcript and the first strategy deliverables.",
+        "Decisions were recorded before implementation so later changes remain explainable.",
+        "Outputs formed a shared vocabulary across copy, GHL configuration, and reporting.",
+        "The business purpose was to prevent random automation from replacing clear process design."
+      ],
+      transition: "The second half of the build converts that foundation into working capture, booking, automation, measurement, and QA."
+    },
+    {
+      title: "Walk through phases six to ten",
+      paragraphs: [
+        "Phase six built the lead-capture form and mapped only the information that improves the consultation or follow-up decision. Phase seven configured the thirty-minute calendar, availability, buffers, notice, and form-to-booking handoff. Phase eight assembled six modular workflows so each operational behavior could be tested without one enormous automation controlling everything.",
+        "Phase nine defined the event model, formulas, source tracking, dashboard widgets, and weekly diagnostic cadence. Phase ten walked the simulation path using test contacts and documented the expected evidence for form submission, booking, consent branches, stage changes, no-show recovery, completed consultation, downstream interest, and workflow exits. Ten out of ten therefore means the workshop build and test logic are documented. It does not mean sender infrastructure, compliance review, paid traffic, or live campaign performance exist."
+      ],
+      bullets: [
+        "Lead capture turns anonymous interest into a usable contact record.",
+        "Booking creates a calendar event and visible pipeline movement.",
+        "Automation handles repeatable timing while preserving channel consent.",
+        "Measurement and QA make the next decision and launch boundary explicit."
+      ],
+      transition: "The next slide looks more closely at the data model that allows those phases to work together."
+    },
+    {
+      title: "Separate identity, lifecycle, and business state",
+      paragraphs: [
+        "The data model has three related layers. The contact holds identity and durable facts such as email, phone, source, service interest, and SMS consent. The opportunity represents the consultation value path and moves through New Lead, Booked Consultation, Consultation Complete, Whitening Booked, Whitening Paid, or Lost. The appointment records the selected time and attendance outcome.",
+        "Tags are used for reusable lifecycle signals such as new lead, consultation booked, no-show, whitening paid, or recall due. Custom fields hold information that should be reported or checked as a value, while tags indicate a recognizable state or permission. Consistent opportunity names and source values make filters and dashboards less fragile. This structure is intentionally modest: the goal is enough context for automation and analysis without building a CRM that the team cannot maintain."
+      ],
+      bullets: [
+        "Contact answers who the person is and what they have told us.",
+        "Appointment answers when the interaction should happen and what its outcome was.",
+        "Opportunity answers where the commercial journey currently sits.",
+        "Tags and fields give workflows dependable conditions instead of guessing from message activity."
+      ],
+      transition: "With the model in place, the first operational handoff connects the page, form, calendar, and pipeline."
+    },
+    {
+      title: "Explain the first conversion handoff",
+      paragraphs: [
+        "The landing page lowers uncertainty before asking for information. It introduces the free consultation, explains the audience fit and benefits, addresses common objections, and uses a clear request action. The form then captures contact details, smile goals, relevant interest, source information, and explicit SMS consent. It does not ask questions that add friction without improving the next conversation.",
+        "After submission, the person receives a clear path to the consultation calendar. The calendar uses the correct location time zone, a thirty-minute duration, buffers, booking notice, availability, and confirmation language. Once a time is selected, the opportunity moves to the booked stage and the reminder workflow begins. If the person submits the form but does not book, the first workflow can send a measured invitation and one reminder without creating duplicate opportunities or sending unauthorized SMS."
+      ],
+      bullets: [
+        "Page view, form submission, and booking are treated as three separate events.",
+        "The form gives the clinical team context before the appointment begins.",
+        "The calendar creates a real commitment and the timing reference for reminders.",
+        "The pipeline lets staff see the state without opening every contact activity log."
+      ],
+      transition: "That handoff starts a set of six automations, each responsible for one clear behavior."
+    },
+    {
+      title: "Introduce the six-workflow architecture",
+      paragraphs: [
+        "The original journey could have been placed into one very long workflow, but that would make testing, troubleshooting, and ownership harder. I separated the system into six automations with explicit triggers and stop conditions. New Lead to Booking owns the gap between inquiry and calendar. Consultation Booking owns confirmation, reminders, and appointment outcome routing.",
+        "No-Show Recovery owns respectful rebooking. Post-Consultation Whitening owns relevant education after an attended consultation. Whitening Payment Update records the verified downstream payment state and hands off to retention. Six-Month Recall owns the later care reminder. Modular design makes execution logs easier to read, limits accidental re-enrollment, and allows one behavior to change without risking the entire customer journey. The interactive Workflow Lab reconstructs every node without pretending to be a screenshot of the GHL interface."
+      ],
+      bullets: [
+        "Each workflow has one primary trigger, responsibility, and stop condition.",
+        "Cross-workflow handoffs occur only after an observable state change.",
+        "Consent is checked at SMS actions rather than assumed from enrollment.",
+        "Appointment and pipeline events stop messages that are no longer relevant."
+      ],
+      transition: "I will use the new-lead and booking path to show what an individual workflow node contributes."
+    },
+    {
+      title: "Read the automation as a decision tree",
+      paragraphs: [
+        "A workflow begins with a trigger, but the trigger alone is not the automation. In the New Lead to Booking workflow, form submission adds the lifecycle tag, creates or updates the opportunity, stores useful interest data, and sends the booking invitation. A consent condition determines whether the optional SMS path is allowed. A wait gives the person time to act before the workflow checks booking status again.",
+        "In the Consultation Booking workflow, the appointment event confirms the correct calendar, advances the opportunity, and sends confirmation. Time-relative waits place reminders twenty-four hours and two hours before the appointment. After the appointment, an outcome condition routes completed consultations to the whitening follow-up and no-shows to recovery. These checks are important because time alone does not prove state. The workflow must look at the appointment or pipeline evidence before deciding what message or handoff is still appropriate."
+      ],
+      bullets: [
+        "Triggers identify when the workflow becomes relevant.",
+        "Conditions protect consent, relevance, and correct routing.",
+        "Waits control timing without replacing a later state check.",
+        "Actions update records or communicate, while stop logic prevents duplicate outreach."
+      ],
+      transition: "The automation only works operationally when ownership, exceptions, and manual updates are also clear."
+    },
+    {
+      title: "Connect automation to human operations",
+      paragraphs: [
+        "Automation does not remove the need for human ownership. Staff still need to update appointment outcomes, confirm payment events, respond to replies, and correct records when reality differs from the expected path. The system should reduce repeated administration while making exceptions more visible, not hide the customer behind a workflow.",
+        "The decision log captures several operating choices. The form comes before the calendar to preserve context. Testimonials were excluded because the scenario has no legitimate patient proof. SMS is gated by explicit consent and should follow approved hours and provider requirements. Free GHL-hosted URLs are acceptable for simulation, while a production sender domain and compliance review remain launch dependencies. Manual payment or stage updates are used only where a verified business event must enter the system."
+      ],
+      bullets: [
+        "Clinic staff own appointment outcomes and conversations that need judgment.",
+        "Marketing operations owns workflow health, templates, source values, and exceptions.",
+        "Analytics owns metric definitions, data checks, and the weekly diagnostic question.",
+        "A production owner must approve sender, advertising, healthcare, and SMS compliance before launch."
+      ],
+      transition: "Once the operating responsibilities are clear, the event model can connect activity to business questions."
+    },
+    {
+      title: "Define metrics that lead to an action",
+      paragraphs: [
+        "The measurement plan separates acquisition, on-page capture, booking, attendance, downstream value, and retention. Impressions and ad clicks describe acquisition. Landing-page views create the denominator for on-page conversion. Form submissions identify leads, bookings represent scheduled consultations, and completed appointments show delivered consultation value. Whitening bookings and later recall bookings belong to downstream and retention horizons.",
+        "The projected goals are sixty bookings in sixty days, a no-show rate below fifteen percent, and a forty-percent whitening attach rate. They are planning goals from the workshop brief, not observations. The dashboard should therefore emphasize definitions and diagnostic relationships rather than celebratory charts. Each weekly review checks volume and delivery health, locates the first meaningful drop, forms a cause hypothesis, changes one variable, and records the expected evidence for the next review."
+      ],
+      bullets: [
+        "CTR equals ad clicks divided by impressions.",
+        "Landing conversion equals form submissions divided by landing-page views.",
+        "Lead-to-booking equals consultation bookings divided by form submissions.",
+        "Attach rate equals whitening bookings divided by completed consultations."
+      ],
+      transition: "The final readiness step is to distinguish what the simulation proves from what only a live pilot can prove."
+    },
+    {
+      title: "Close the build honestly",
+      paragraphs: [
+        "Simulation QA checks that the intended objects, branches, messages, and evidence are documented and testable. A test contact should submit the form, create or update the correct opportunity, receive only permitted messages, book the correct calendar, move through the expected stages, and stop workflows after a relevant outcome. No-show and completed-appointment paths need separate tests because they create different downstream behavior.",
+        "Ten out of ten means all ten workshop phases are represented and the full journey has a defined QA path. Four production gates remain: a verified sender domain and delivery configuration, live advertising and UTM validation, local and provider compliance review, and a real-data pilot with mature appointment outcomes. Only after those gates can the projected goals be compared with observed performance or the portfolio include real results."
+      ],
+      bullets: [
+        "Check positive paths, no-show recovery, opt-out handling, duplicate prevention, and workflow exits.",
+        "Check responsive landing-page behavior and the complete form-to-calendar handoff.",
+        "Check event definitions before relying on dashboard widgets.",
+        "Replace targets with actuals only when the source, denominator, and observation window are trustworthy."
+      ],
+      transition: "I will end by summarizing what this project demonstrates about my approach and the next live test I would run."
+    },
+    {
+      title: "End on contribution, judgment, and next action",
+      paragraphs: [
+        "My contribution spans the full reasoning chain: I synthesized the discovery information, chose the offer and audience position, mapped the funnel, wrote the conversion and lifecycle content, configured the GHL data model, assembled the workflow logic, defined the measurement framework, and documented simulation QA. The value is not familiarity with one interface. It is the ability to connect customer experience, operational behavior, and analytical evidence.",
+        "The strongest design decision was capturing useful context before asking for a booking. The most important unresolved risk is production delivery and compliance, because a correct workflow cannot create value if messages do not reach eligible contacts. My first live analysis would compare landing-page views, form submissions, bookings, and mature appointment outcomes to find the earliest material drop. I would change one variable at that point, document the hypothesis, and review the same event sequence again."
+      ],
+      bullets: [
+        "Strategy establishes why the system should exist.",
+        "Implementation makes the customer and staff journey repeatable.",
+        "Analytics makes friction visible and gives the next test a denominator.",
+        "Truthful boundaries make the portfolio evidence more credible, not less ambitious."
+      ],
+      transition: "The presentation is complete. The System, Build, Deliverables, and Measurement views remain available as supporting evidence for questions."
+    }
+  ];
+
+  const presentationPrompts = [
+    "Pause on the simulation label and ask the audience to judge the system design, not invented outcomes.",
+    "Point to the connected handoffs and emphasize that measurement was designed with the operating journey.",
+    "Distinguish scenario inputs from verified performance before explaining how the bottleneck was selected.",
+    "Ask which feels easier to accept from cold traffic: treatment now, or clarity before deciding.",
+    "Use one audience member as the example contact and translate each GHL object around that person.",
+    "Trace the journey left to right and name the evidence created at every meaningful handoff.",
+    "Compare direct-to-calendar and form-first paths, then explain why this simulation chose richer context.",
+    "Invite the audience to treat each deliverable as an answer to one implementation question.",
+    "Slow down through the first five phases and show how each decision reduces later rework.",
+    "Clarify that completion means documented build and QA coverage, not production launch or performance.",
+    "Give one example of a fact stored on the contact versus a stage stored on the opportunity.",
+    "Describe the difference between submitting interest and committing to a time on the calendar.",
+    "Ask which workflow should own a reminder, then use ownership to explain the modular structure.",
+    "Choose one branch and narrate trigger, condition, wait, action, evidence, and stop in order.",
+    "Name one exception that needs human judgment so automation is never presented as unattended care.",
+    "Read each denominator aloud and explain how a wrong denominator would lead to a wrong test.",
+    "Pause on the four launch gates and reinforce that they protect credibility as well as operations.",
+    "Close by connecting strategy, systems thinking, and analytics to the kind of role being discussed."
+  ];
 
   /*
    * Reconstructed from the completed workflow specification and funnel blueprint.
@@ -222,6 +557,8 @@
   let presentationIndex = 0;
   let presentationReturnHash = "#tour";
   let presentationPreviousFocus = null;
+  let presentationNotesOpen = false;
+  let presentationOutlineOpen = false;
 
   const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -293,23 +630,6 @@
       });
     }
     if (updateUrl) writeHash("deliverables", requested, false);
-  }
-
-  function moveDeliverables() {
-    const outlet = document.getElementById("deliverable-outlet");
-    if (!outlet) return;
-    const sourcePanels = document.querySelectorAll("#documents .document-panel");
-    sourcePanels.forEach((panel) => {
-      panel.classList.add("native-deliverable");
-      const documentKey = panel.id.replace(/^docs-panel-/, "");
-      const tab = document.querySelector(`.doc-tab[data-doc="${documentKey}"]`);
-      if (tab) {
-        tab.id = `new-doc-tab-${documentKey}`;
-        panel.setAttribute("aria-labelledby", tab.id);
-      }
-      outlet.appendChild(panel);
-    });
-    activateDocument(activeDocument, false);
   }
 
   function renderNode(nodeId) {
@@ -620,6 +940,111 @@
     if (options.focus) document.getElementById(`view-${nextView}`)?.focus({ preventScroll: true });
   }
 
+  function hydratePresentationNotes() {
+    document.querySelectorAll(".presentation-message").forEach((message, index) => {
+      const notes = presentationNotes[index];
+      if (!notes) return;
+      message.textContent = "";
+      message.hidden = true;
+
+      const label = document.createElement("span");
+      label.textContent = "PRESENTER NOTES";
+      const talk = document.createElement("div");
+      talk.className = "presentation-talk";
+      const title = document.createElement("h3");
+      title.textContent = notes.title;
+      talk.appendChild(title);
+      notes.paragraphs.forEach((copy) => {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = copy;
+        talk.appendChild(paragraph);
+      });
+      const list = document.createElement("ul");
+      notes.bullets.forEach((copy) => {
+        const item = document.createElement("li");
+        item.textContent = copy;
+        list.appendChild(item);
+      });
+      talk.appendChild(list);
+      const prompt = document.createElement("p");
+      prompt.className = "presentation-prompt";
+      prompt.textContent = `Speaking prompt: ${presentationPrompts[index]}`;
+      talk.appendChild(prompt);
+      const transition = document.createElement("p");
+      transition.className = "presentation-transition";
+      transition.textContent = `Transition: ${notes.transition}`;
+      talk.appendChild(transition);
+      message.append(label, talk);
+    });
+  }
+
+  function currentChapterIndex(index = presentationIndex) {
+    return Math.max(0, presentationChapters.findIndex((chapter) => index >= chapter.start && index <= chapter.end));
+  }
+
+  function syncPresentationNotes() {
+    document.body.classList.toggle("is-presentation-notes-open", presentationNotesOpen);
+    document.querySelectorAll("[data-presentation-slide]").forEach((slide, index) => {
+      const notes = slide.querySelector(".presentation-message");
+      if (notes) notes.hidden = !(presentationNotesOpen && index === presentationIndex);
+    });
+    const toggle = document.getElementById("presentation-notes-toggle");
+    if (toggle) {
+      toggle.setAttribute("aria-pressed", String(presentationNotesOpen));
+      toggle.classList.toggle("is-active", presentationNotesOpen);
+    }
+  }
+
+  function setPresentationNotes(open) {
+    presentationNotesOpen = Boolean(open);
+    syncPresentationNotes();
+  }
+
+  function setPresentationOutline(open) {
+    presentationOutlineOpen = Boolean(open);
+    const outline = document.getElementById("presentation-outline");
+    const toggle = document.getElementById("presentation-outline-toggle");
+    if (outline) outline.hidden = !presentationOutlineOpen;
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", String(presentationOutlineOpen));
+      toggle.classList.toggle("is-active", presentationOutlineOpen);
+    }
+  }
+
+  function setPresentationBackgroundInert(inert) {
+    document.querySelectorAll(".skip-link, .redesign-header, #case-study").forEach((element) => {
+      element.inert = inert;
+      if (inert) {
+        element.dataset.presentationBackground = "true";
+        element.setAttribute("aria-hidden", "true");
+      } else if (element.dataset.presentationBackground === "true") {
+        delete element.dataset.presentationBackground;
+        element.removeAttribute("aria-hidden");
+      }
+    });
+  }
+
+  function trapPresentationFocus(event) {
+    if (event.key !== "Tab") return;
+    const overlay = document.getElementById("presentation-mode");
+    if (!overlay) return;
+    const focusable = Array.from(overlay.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'))
+      .filter((element) => !element.hidden && element.getClientRects().length > 0);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!overlay.contains(document.activeElement)) {
+      event.preventDefault();
+      first.focus();
+    } else if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   function updatePresentation(index, options = {}) {
     const slides = Array.from(document.querySelectorAll("[data-presentation-slide]"));
     if (!slides.length) return;
@@ -632,22 +1057,29 @@
       slide.setAttribute("aria-hidden", String(!selected));
     });
 
+    const activeSlide = slides[presentationIndex];
+    const chapterIndex = currentChapterIndex();
+    const chapter = presentationChapters[chapterIndex];
     const step = document.getElementById("presentation-step");
     const total = document.getElementById("presentation-total");
     const progress = document.querySelector(".presentation-progress");
-    const progressFill = document.getElementById("presentation-progress-fill");
     const timing = document.getElementById("presentation-timing");
     const runtime = document.getElementById("presentation-runtime");
     const previous = document.getElementById("presentation-prev");
     const next = document.getElementById("presentation-next");
+    const stage = document.getElementById("presentation-stage");
+    const announcer = document.getElementById("presentation-announcer");
     if (step) step.textContent = String(presentationIndex + 1).padStart(2, "0");
     if (total) total.textContent = String(slides.length).padStart(2, "0");
     if (progress) {
+      progress.max = slides.length;
+      progress.value = presentationIndex + 1;
       progress.setAttribute("aria-valuemax", String(slides.length));
       progress.setAttribute("aria-valuenow", String(presentationIndex + 1));
+      progress.setAttribute("aria-valuetext", `${chapter.name}, slide ${presentationIndex + 1} of ${slides.length}`);
+      progress.textContent = `Slide ${presentationIndex + 1} of ${slides.length}`;
     }
-    if (progressFill) progressFill.style.transform = `scaleX(${(presentationIndex + 1) / slides.length})`;
-    if (timing) timing.textContent = `~${slides[presentationIndex].dataset.presentationMinutes || "2"} MIN`;
+    if (timing) timing.textContent = `~${activeSlide.dataset.presentationMinutes || "2"} MIN`;
     if (runtime) {
       const totalMinutes = slides.reduce((sum, slide) => sum + Number(slide.dataset.presentationMinutes || 2), 0);
       runtime.textContent = `${totalMinutes} MIN WALKTHROUGH`;
@@ -660,22 +1092,34 @@
         : '<span>Next</span><i data-lucide="arrow-right" aria-hidden="true"></i>';
       next.setAttribute("aria-label", isLast ? "Open the full case study" : "Next presentation slide");
     }
-    document.querySelectorAll("[data-presentation-dot]").forEach((dot) => {
-      const selected = Number(dot.dataset.presentationDot) === presentationIndex;
-      dot.setAttribute("aria-selected", String(selected));
-      dot.setAttribute("aria-controls", `presentation-slide-${Number(dot.dataset.presentationDot) + 1}`);
-      dot.tabIndex = selected ? 0 : -1;
+    document.querySelectorAll("[data-presentation-chapter]").forEach((button) => {
+      const selected = Number(button.dataset.presentationChapter) === chapterIndex;
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
+      button.classList.toggle("is-active", selected);
     });
+    document.querySelectorAll("[data-presentation-outline-slide]").forEach((button) => {
+      const selected = Number(button.dataset.presentationOutlineSlide) === presentationIndex;
+      button.setAttribute("aria-current", selected ? "step" : "false");
+      button.classList.toggle("is-active", selected);
+    });
+    if (stage) {
+      stage.dataset.chapter = String(chapterIndex + 1);
+      stage.scrollTop = 0;
+    }
+    if (announcer) {
+      const heading = activeSlide.querySelector("h1, h2")?.textContent?.trim() || "Presentation slide";
+      announcer.textContent = `${chapter.name}. Slide ${presentationIndex + 1} of ${slides.length}. ${heading}`;
+    }
+    syncPresentationNotes();
     refreshIcons();
 
     if (options.updateUrl !== false) writePresentationHash(presentationIndex, options.replace === true);
-    if (options.focus) document.getElementById("presentation-stage")?.focus({ preventScroll: true });
+    if (options.focus) stage?.focus({ preventScroll: true });
   }
 
   function openPresentation(index = 0, options = {}) {
     const overlay = document.getElementById("presentation-mode");
-    const header = document.querySelector(".redesign-header");
-    const main = document.getElementById("case-study");
     if (!overlay) return;
 
     const alreadyOpen = document.body.classList.contains("is-presentation-open");
@@ -685,11 +1129,9 @@
       overlay.hidden = false;
       overlay.setAttribute("aria-hidden", "false");
       document.body.classList.add("is-presentation-open");
-      if (header) {
-        header.setAttribute("aria-hidden", "true");
-        header.inert = true;
-      }
-      if (main) main.inert = true;
+      setPresentationBackgroundInert(true);
+      setPresentationNotes(false);
+      setPresentationOutline(false);
     }
 
     updatePresentation(index, { updateUrl: options.updateUrl !== false, replace: options.replace === true });
@@ -698,18 +1140,13 @@
 
   function closePresentation(options = {}) {
     const overlay = document.getElementById("presentation-mode");
-    const header = document.querySelector(".redesign-header");
-    const main = document.getElementById("case-study");
     if (!overlay || !document.body.classList.contains("is-presentation-open")) return;
 
     overlay.hidden = true;
     overlay.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("is-presentation-open");
-    if (header) {
-      header.inert = false;
-      header.removeAttribute("aria-hidden");
-    }
-    if (main) main.inert = false;
+    document.body.classList.remove("is-presentation-open", "is-presentation-notes-open");
+    setPresentationBackgroundInert(false);
+    setPresentationOutline(false);
 
     const returnHash = options.returnHash || presentationReturnHash || "#tour";
     if (options.updateUrl !== false && window.location.hash !== returnHash) window.history.replaceState(null, "", returnHash);
@@ -740,18 +1177,37 @@
 
   function initPresentation() {
     const slides = Array.from(document.querySelectorAll("[data-presentation-slide]"));
-    const dotsContainer = document.querySelector(".presentation-dots");
-    if (dotsContainer) {
-      dotsContainer.textContent = "";
+    hydratePresentationNotes();
+    const chapterContainer = document.getElementById("presentation-chapters");
+    if (chapterContainer) {
+      chapterContainer.textContent = "";
+      presentationChapters.forEach((chapter, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.role = "tab";
+        button.setAttribute("aria-selected", String(index === 0));
+        button.setAttribute("aria-controls", `presentation-slide-${chapter.start + 1}`);
+        button.dataset.presentationChapter = String(index);
+        button.tabIndex = index === 0 ? 0 : -1;
+        const number = document.createElement("span");
+        number.textContent = String(index + 1).padStart(2, "0");
+        const name = document.createElement("strong");
+        name.textContent = chapter.name;
+        button.append(number, name);
+        chapterContainer.appendChild(button);
+      });
+    }
+    const outlineList = document.getElementById("presentation-outline-list");
+    if (outlineList) {
+      outlineList.textContent = "";
       slides.forEach((slide, index) => {
-        const dot = document.createElement("button");
-        dot.type = "button";
-        dot.role = "tab";
-        dot.setAttribute("aria-selected", String(index === 0));
-        dot.setAttribute("aria-label", `Go to presentation slide ${index + 1}`);
-        dot.dataset.presentationDot = String(index);
-        dot.tabIndex = index === 0 ? 0 : -1;
-        dotsContainer.appendChild(dot);
+        const button = document.createElement("button");
+        const label = slide.querySelector(".presentation-label")?.textContent?.trim() || `Slide ${index + 1}`;
+        const heading = slide.querySelector("h1, h2")?.textContent?.trim() || "Untitled slide";
+        button.type = "button";
+        button.dataset.presentationOutlineSlide = String(index);
+        button.innerHTML = `<span>${label}</span><strong>${heading}</strong>`;
+        outlineList.appendChild(button);
       });
     }
     document.querySelectorAll("[data-presentation-open]").forEach((trigger) => {
@@ -760,6 +1216,8 @@
         openPresentation(0);
       });
     });
+    document.getElementById("presentation-notes-toggle")?.addEventListener("click", () => setPresentationNotes(!presentationNotesOpen));
+    document.getElementById("presentation-outline-toggle")?.addEventListener("click", () => setPresentationOutline(!presentationOutlineOpen));
     document.querySelector("[data-presentation-close]")?.addEventListener("click", () => closePresentation());
     document.querySelector("[data-presentation-prev]")?.addEventListener("click", () => updatePresentation(presentationIndex - 1));
     document.querySelector("[data-presentation-next]")?.addEventListener("click", () => {
@@ -770,28 +1228,41 @@
         updatePresentation(presentationIndex + 1);
       }
     });
-    document.querySelectorAll("[data-presentation-dot]").forEach((dot) => {
-      dot.addEventListener("click", () => updatePresentation(Number(dot.dataset.presentationDot)));
-      dot.addEventListener("keydown", (event) => {
+    document.querySelectorAll("[data-presentation-chapter]").forEach((button) => {
+      button.addEventListener("click", () => updatePresentation(presentationChapters[Number(button.dataset.presentationChapter)].start));
+      button.addEventListener("keydown", (event) => {
         if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
-        const dots = Array.from(document.querySelectorAll("[data-presentation-dot]"));
-        const current = Number(dot.dataset.presentationDot);
+        const chapterButtons = Array.from(document.querySelectorAll("[data-presentation-chapter]"));
+        const current = Number(button.dataset.presentationChapter);
         let next = current;
-        if (event.key === "ArrowRight") next = (current + 1) % dots.length;
-        if (event.key === "ArrowLeft") next = (current - 1 + dots.length) % dots.length;
+        if (event.key === "ArrowRight") next = (current + 1) % chapterButtons.length;
+        if (event.key === "ArrowLeft") next = (current - 1 + chapterButtons.length) % chapterButtons.length;
         if (event.key === "Home") next = 0;
-        if (event.key === "End") next = dots.length - 1;
+        if (event.key === "End") next = chapterButtons.length - 1;
         event.preventDefault();
         event.stopPropagation();
-        dots[next].focus();
-        updatePresentation(next);
+        chapterButtons[next].focus();
+        updatePresentation(presentationChapters[next].start);
+      });
+    });
+    document.querySelectorAll("[data-presentation-outline-slide]").forEach((button) => {
+      button.addEventListener("click", () => {
+        updatePresentation(Number(button.dataset.presentationOutlineSlide));
+        setPresentationOutline(false);
+        document.getElementById("presentation-stage")?.focus({ preventScroll: true });
       });
     });
     document.addEventListener("keydown", (event) => {
       if (!document.body.classList.contains("is-presentation-open")) return;
+      trapPresentationFocus(event);
       if (event.key === "Escape") {
         event.preventDefault();
-        closePresentation();
+        if (presentationOutlineOpen) {
+          setPresentationOutline(false);
+          document.getElementById("presentation-outline-toggle")?.focus();
+        } else {
+          closePresentation();
+        }
       }
       if (event.key === "ArrowRight" || event.key === "ArrowDown") {
         event.preventDefault();
@@ -830,6 +1301,16 @@
       });
     });
 
+    document.querySelectorAll("[data-tour-start]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        setView("tour", { scroll: false });
+        window.requestAnimationFrame(() => {
+          document.getElementById("view-tour")?.scrollIntoView({ block: "start", behavior: reduceMotion() ? "auto" : "smooth" });
+        });
+      });
+    });
+
     const documentTabs = Array.from(document.querySelectorAll(".doc-tab"));
     documentTabs.forEach((button, index) => {
       button.addEventListener("click", () => {
@@ -854,17 +1335,66 @@
     window.addEventListener("popstate", syncUrlState);
   }
 
+  function renderKpiDiagnostic(key) {
+    const diagnostic = kpiDiagnostics[key] || kpiDiagnostics.arrival;
+    const activeKey = kpiDiagnostics[key] ? key : "arrival";
+    const panel = document.getElementById("kpi-diagnostic-panel");
+    const activeTab = document.querySelector(`[data-kpi="${activeKey}"]`);
+    document.querySelectorAll("[data-kpi]").forEach((button) => {
+      const selected = button.dataset.kpi === activeKey;
+      button.classList.toggle("is-active", selected);
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
+    });
+    if (panel && activeTab) {
+      panel.setAttribute("aria-labelledby", activeTab.id);
+      panel.classList.remove("is-switching");
+      window.requestAnimationFrame(() => panel.classList.add("is-switching"));
+    }
+    const values = {
+      "kpi-diagnostic-label": diagnostic.label,
+      "kpi-diagnostic-name": diagnostic.name,
+      "kpi-diagnostic-formula": diagnostic.formula,
+      "kpi-diagnostic-signal": diagnostic.signal,
+      "kpi-diagnostic-evidence": diagnostic.evidence,
+      "kpi-diagnostic-test": diagnostic.test
+    };
+    Object.entries(values).forEach(([id, value]) => {
+      const element = document.getElementById(id);
+      if (element) element.textContent = value;
+    });
+  }
+
+  function initKpiDiagnostics() {
+    const tabs = Array.from(document.querySelectorAll("[data-kpi]"));
+    tabs.forEach((button, index) => {
+      button.addEventListener("click", () => renderKpiDiagnostic(button.dataset.kpi));
+      button.addEventListener("keydown", (event) => {
+        if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        let next = index;
+        if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+        if (event.key === "ArrowLeft") next = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = tabs.length - 1;
+        tabs[next].focus();
+        renderKpiDiagnostic(tabs[next].dataset.kpi);
+      });
+    });
+    renderKpiDiagnostic("arrival");
+  }
+
   function disableSignalForReducedMotion() {
     if (!reduceMotion()) return;
     document.querySelectorAll("animateMotion").forEach((element) => element.remove());
   }
 
   function start() {
-    moveDeliverables();
     initJourney();
     initWorkflowLab();
     initPresentation();
     initNavigation();
+    initKpiDiagnostics();
     disableSignalForReducedMotion();
     const state = getHashState();
     if (state.presentation) {
