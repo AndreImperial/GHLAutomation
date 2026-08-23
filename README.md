@@ -24,7 +24,7 @@ The site has no build step and no runtime dependency install. Render serves the 
 
 - `#present/1`: guided seven-slide presentation for a fast stakeholder walkthrough. Use the arrow keys to move, `Escape` to exit, or the final handoff button to open the full System view.
 - `#tour`: 90-second plain-English explanation and GHL decoder.
-- `#system`: customer path, Plain English/GHL Detail switch, six-workflow lab, and decision log.
+- `#system`: customer path, Plain English/GHL Detail switch, reconstructed six-workflow node lab, and decision log.
 - `#build`: ten completed phases, each with input, decision, actions, GHL location, output, purpose, and status.
 - `#deliverables`: eight full workshop documents presented as native website content.
 - `#measurement`: projected goals, event model, KPI tree, dashboard plan, formulas, review cadence, and diagnostic playbook.
@@ -44,7 +44,7 @@ Legacy hashes continue to work: `#beginner-path`, `#implementation`, `#board`, `
 
 - `index.html`: five-view shell, guided presentation layer, and all hardcoded workshop deliverables.
 - `styles.css`: dark graphite-green token system, responsive layouts, focus states, and reduced-motion rules.
-- `script.js`: ARIA tab navigation, presentation controls, hashes and history, legacy aliases, journey node explanations, deliverable switching, and GSAP fallback behavior.
+- `script.js`: ARIA tab navigation, presentation controls, hashes and history, legacy aliases, journey explanations, interactive workflow node maps, deliverable switching, and GSAP fallback behavior.
 - `assets/favicon.svg`: publication-safe favicon.
 - `assets/og-bloom-dental.png`: 1200x630 social preview.
 - `design-system/bloom-dental-case-study/MASTER.md`: final dark interaction and visual rules.

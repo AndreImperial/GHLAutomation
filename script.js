@@ -81,11 +81,144 @@
     }
   };
 
+  /*
+   * Reconstructed from the completed workflow specification and funnel blueprint.
+   * The map keeps the logic inspectable without pretending to be a GHL screenshot.
+   */
+  const workflowDefinitions = {
+    "new-lead-booking": {
+      number: "01",
+      name: "New Lead to Booking",
+      summary: "Turn an inquiry form submission into a structured lead and a clear invitation to book.",
+      trigger: "Form submitted: Bloom Dental - New Patient Inquiry",
+      location: "Automation > Workflows",
+      stop: "Appointment booked",
+      nodes: [
+        { type: "trigger", title: "Form submitted", description: "A contact completes the Bloom Dental inquiry form.", function: "Starts the workflow and makes the new contact eligible for the next actions.", ghl: "Automation > Workflows > Trigger: Form Submitted" },
+        { type: "action", title: "Add tag: bd-new-lead", description: "Marks the contact as a new consultation lead.", function: "Creates a simple lifecycle signal that other workflows and reports can read.", ghl: "Contacts > Tags > bd-new-lead" },
+        { type: "action", title: "Create or update opportunity", description: "Creates the consultation opportunity or updates the existing record.", function: "Puts the lead into the New Lead stage instead of leaving the inquiry as an isolated contact.", ghl: "Opportunities > Free Consultation Funnel > New Lead" },
+        { type: "action", title: "Save service interest", description: "Stores what the person selected on the inquiry form.", function: "Preserves the context needed for relevant follow-up, including the whitening-interest branch.", ghl: "Contact > Custom field: Service interest" },
+        { type: "condition", title: "SMS consent checked?", description: "Checks whether the contact explicitly agreed to appointment and follow-up SMS.", function: "Protects the channel boundary so SMS is only sent to opted-in contacts.", ghl: "If/Else > Custom field: SMS consent", outcomes: [{ label: "YES", text: "Add the SMS opt-in tag." }, { label: "NO", text: "Continue without adding an SMS permission signal." }] },
+        { type: "action", title: "Add tag: bd-sms-opt-in", description: "Records the consented SMS channel.", function: "Gives later reminder branches a reusable consent signal.", ghl: "Contacts > Tags > bd-sms-opt-in" },
+        { type: "action", title: "Send booking-link email", description: "Sends the form confirmation and consultation booking link.", function: "Moves the lead from submission to the next concrete action: choosing a time.", ghl: "Send Email > BD Email - Form Confirmation" },
+        { type: "condition", title: "SMS consent checked again?", description: "Re-checks consent immediately before the optional SMS message.", function: "Keeps the send rule explicit at the point where the SMS action occurs.", ghl: "If/Else > SMS consent = true", outcomes: [{ label: "YES", text: "Send the booking-link SMS." }, { label: "NO", text: "Skip SMS and keep email as the available channel." }] },
+        { type: "action", title: "Send booking-link SMS", description: "Sends the short booking prompt to an opted-in contact.", function: "Creates a fast mobile reminder without sending to contacts who did not consent.", ghl: "Send SMS > BD SMS - Booking Link" },
+        { type: "wait", title: "Wait 24 hours", description: "Gives the lead time to book after the first invitation.", function: "Prevents an immediate duplicate nudge and creates a deliberate follow-up window.", ghl: "Wait > 24 hours" },
+        { type: "condition", title: "Appointment still not booked?", description: "Checks whether the contact remains unbooked after the waiting period.", function: "Only sends a reminder to people who still need the booking step.", ghl: "If/Else > Appointment status is not Booked", outcomes: [{ label: "YES", text: "Send the reminder email." }, { label: "NO", text: "Stop because the appointment is already booked." }] },
+        { type: "action", title: "Send booking reminder email", description: "Sends one follow-up reminder with the consultation booking link.", function: "Recovers unfinished intent without starting a new workflow or creating duplicate opportunities.", ghl: "Send Email > Booking reminder" }
+      ]
+    },
+    "consultation-booking": {
+      number: "02",
+      name: "Consultation Booking",
+      summary: "Confirm the booked appointment, protect show-up time, and route the appointment outcome.",
+      trigger: "Appointment status = Booked",
+      location: "Automation > Workflows",
+      stop: "Appointment outcome routes to the correct follow-up workflow",
+      nodes: [
+        { type: "trigger", title: "Appointment booked", description: "A contact books a time on the Bloom Dental consultation calendar.", function: "Starts the confirmation and reminder sequence only for a real calendar event.", ghl: "Automation > Workflows > Trigger: Appointment Status" },
+        { type: "condition", title: "Correct calendar?", description: "Checks that the appointment belongs to Bloom Dental - Free Consultation.", function: "Prevents another calendar in the location from entering this workflow.", ghl: "Filter > Calendar = Bloom Dental - Free Consultation", outcomes: [{ label: "YES", text: "Continue to consultation confirmation." }, { label: "NO", text: "Do not enroll this appointment." }] },
+        { type: "action", title: "Add tag: bd-consult-booked", description: "Marks that the consultation has a scheduled time.", function: "Creates a reusable booking signal for the contact record and reporting.", ghl: "Contacts > Tags > bd-consult-booked" },
+        { type: "action", title: "Move opportunity to Booked Consultation", description: "Advances the opportunity from New Lead to the booked stage.", function: "Makes the pipeline reflect the customer path instead of only the contact activity.", ghl: "Opportunities > Free Consultation Funnel > Booked Consultation" },
+        { type: "action", title: "Send booking confirmation SMS", description: "Confirms the appointment time by SMS when the channel is available.", function: "Gives the patient a fast confirmation and a clear appointment reference.", ghl: "Send SMS > BD SMS - Booking Confirm" },
+        { type: "action", title: "Send booking confirmation email", description: "Sends the fuller appointment confirmation and reschedule link.", function: "Provides the durable appointment details and the safe recovery path if plans change.", ghl: "Send Email > BD Email - Booking Confirmation" },
+        { type: "wait", title: "Wait until 24 hours before", description: "Pauses until the day-before reminder window.", function: "Aligns the message with appointment timing instead of using a fixed delay from booking.", ghl: "Wait > 24 hours before appointment" },
+        { type: "action", title: "Send 24-hour reminder email", description: "Reminds the patient about tomorrow's consultation.", function: "Reduces memory friction and keeps rescheduling available.", ghl: "Send Email > BD Email - 24hr Reminder" },
+        { type: "wait", title: "Wait until 2 hours before", description: "Pauses until the final reminder window.", function: "Places the short SMS close enough to the appointment to be useful.", ghl: "Wait > 2 hours before appointment" },
+        { type: "condition", title: "SMS consent present?", description: "Checks consent before the two-hour reminder SMS.", function: "Keeps the appointment reminder useful without treating consent as assumed.", ghl: "If/Else > Tag: bd-sms-opt-in", outcomes: [{ label: "YES", text: "Send the two-hour reminder SMS." }, { label: "NO", text: "Skip SMS and continue to the outcome check." }] },
+        { type: "action", title: "Send 2-hour reminder SMS", description: "Sends a short appointment reminder to an opted-in contact.", function: "Supports show-up behavior with the minimum necessary message.", ghl: "Send SMS > BD SMS - 2hr Reminder" },
+        { type: "wait", title: "Wait 1 hour after start", description: "Waits long enough for the appointment status to be updated.", function: "Avoids routing the contact before the calendar outcome is available.", ghl: "Wait > 1 hour after appointment start" },
+        { type: "condition", title: "What was the outcome?", description: "Checks whether the appointment was completed or marked no-show.", function: "Routes the same booking event into the correct next workflow.", ghl: "If/Else > Appointment status", outcomes: [{ label: "COMPLETED", text: "Start Post-Consultation Whitening." }, { label: "NO-SHOW", text: "Start No-Show Recovery." }] },
+        { type: "handoff", title: "Start Post-Consultation Whitening", description: "Hands a completed appointment to the whitening follow-up workflow.", function: "Keeps post-consultation education separate from booking reminders.", ghl: "Start Workflow > BD - Post Consultation Whitening" },
+        { type: "handoff", title: "Start No-Show Recovery", description: "Hands a missed appointment to the rebooking workflow.", function: "Creates a respectful recovery path without restarting the lead workflow.", ghl: "Start Workflow > BD - No-Show Recovery" }
+      ]
+    },
+    "no-show-recovery": {
+      number: "03",
+      name: "No-Show Recovery",
+      summary: "Give a missed consultation a clear, time-boxed path back to booking.",
+      trigger: "Appointment status = No-Show",
+      location: "Automation > Workflows",
+      stop: "Appointment booked, or opportunity moved to Lost",
+      nodes: [
+        { type: "trigger", title: "Appointment marked no-show", description: "The calendar records that the contact did not attend.", function: "Starts recovery from the actual appointment outcome instead of guessing from inactivity.", ghl: "Automation > Workflows > Trigger: Appointment Status = No-Show" },
+        { type: "action", title: "Add tag: bd-no-show", description: "Marks the missed appointment on the contact record.", function: "Creates a clear segment for recovery reporting and follow-up logic.", ghl: "Contacts > Tags > bd-no-show" },
+        { type: "action", title: "Send no-show SMS", description: "Sends a friendly rebooking prompt when SMS consent exists.", function: "Offers a low-friction second chance while keeping the tone respectful.", ghl: "Send SMS > BD SMS - No-Show Follow-Up" },
+        { type: "wait", title: "Wait 24 hours", description: "Allows the person a day to respond or rebook.", function: "Creates breathing room before the next channel is used.", ghl: "Wait > 24 hours" },
+        { type: "condition", title: "Appointment still not booked?", description: "Checks whether a new consultation has been scheduled.", function: "Prevents recovery messages from continuing after the person takes action.", ghl: "If/Else > Appointment status is not Booked", outcomes: [{ label: "YES", text: "Send the rebooking email." }, { label: "NO", text: "Stop recovery because a new booking exists." }] },
+        { type: "action", title: "Send no-show rebook email", description: "Sends the longer rebooking explanation and calendar link.", function: "Provides context and a direct path back to a free consultation.", ghl: "Send Email > BD Email - No-Show Rebook" },
+        { type: "wait", title: "Wait 72 hours", description: "Leaves a longer pause before the final reminder.", function: "Time-boxes the recovery sequence so it does not become indefinite chasing.", ghl: "Wait > 72 hours" },
+        { type: "condition", title: "Appointment still not booked?", description: "Checks the booking state again before the final message.", function: "Stops the final SMS from sending to someone who already rescheduled.", ghl: "If/Else > Appointment status is not Booked", outcomes: [{ label: "YES", text: "Send the final SMS with the booking link." }, { label: "NO", text: "Stop because the contact rebooked." }] },
+        { type: "action", title: "Send final rebooking SMS", description: "Sends the last short reminder with the calendar link.", function: "Closes the active outreach sequence with one clear action.", ghl: "Send SMS > Final rebooking prompt" },
+        { type: "condition", title: "Still no appointment?", description: "Checks whether the contact remains inactive after recovery.", function: "Creates a clean end state instead of keeping the opportunity in an ambiguous follow-up loop.", ghl: "If/Else > Appointment status is not Booked", outcomes: [{ label: "YES", text: "Move the opportunity to Lost and add bd-lost." }, { label: "NO", text: "Keep the booked appointment path." }] },
+        { type: "action", title: "Move opportunity to Lost", description: "Closes the recovery attempt when no booking occurs.", function: "Makes the funnel drop-off visible for later diagnosis and reporting.", ghl: "Opportunities > Free Consultation Funnel > Lost" }
+      ]
+    },
+    "post-consult-whitening": {
+      number: "04",
+      name: "Post-Consult Whitening",
+      summary: "Follow up on whitening interest after a completed consultation without claiming a sale.",
+      trigger: "Appointment status = Completed",
+      location: "Automation > Workflows",
+      stop: "Whitening booked",
+      nodes: [
+        { type: "trigger", title: "Consultation completed", description: "The calendar marks the consultation as attended and complete.", function: "Starts the post-consultation path only after the human value moment happens.", ghl: "Automation > Workflows > Trigger: Appointment Status = Completed" },
+        { type: "action", title: "Add tag: bd-consult-complete", description: "Records that the consultation was completed.", function: "Creates the lifecycle event needed for recall and reporting.", ghl: "Contacts > Tags > bd-consult-complete" },
+        { type: "action", title: "Move opportunity to Consultation Complete", description: "Advances the pipeline after the consultation.", function: "Separates completed conversations from people who only booked.", ghl: "Opportunities > Free Consultation Funnel > Consultation Complete" },
+        { type: "action", title: "Send whitening follow-up email", description: "Sends education and a possible whitening next step.", function: "Keeps the next action relevant to the consultation outcome without presenting it as a conversion.", ghl: "Send Email > BD Email - Post Consult Whitening Offer" },
+        { type: "wait", title: "Wait 2 days", description: "Gives the patient time to consider the information.", function: "Avoids immediate pressure and creates a measured follow-up window.", ghl: "Wait > 2 days" },
+        { type: "condition", title: "Not booked + SMS consent?", description: "Checks both the whitening booking state and SMS permission.", function: "Only sends the reminder when it is still relevant and the channel is allowed.", ghl: "If/Else > Whitening booked = false + bd-sms-opt-in", outcomes: [{ label: "YES", text: "Send the whitening reminder SMS." }, { label: "NO", text: "Skip SMS and continue the follow-up sequence." }] },
+        { type: "action", title: "Send whitening reminder SMS", description: "Sends a short reminder to an opted-in contact.", function: "Creates a timely mobile prompt without adding a new offer or claiming a sale.", ghl: "Send SMS > BD SMS - Whitening Reminder" },
+        { type: "wait", title: "Wait 3 days", description: "Creates a second consideration window.", function: "Gives the contact time to book, ask a question, or decide not to continue.", ghl: "Wait > 3 days" },
+        { type: "condition", title: "Whitening still not booked?", description: "Checks whether the patient has booked whitening.", function: "Stops the final email from sending after a booking is already present.", ghl: "If/Else > Whitening booked = false", outcomes: [{ label: "YES", text: "Send the final whitening follow-up email." }, { label: "NO", text: "Move to the booked outcome." }] },
+        { type: "action", title: "Send final whitening email", description: "Sends the last follow-up and invites questions.", function: "Ends the education sequence with a clear response path instead of endless promotion.", ghl: "Send Email > BD Email - Whitening Final Follow-Up" },
+        { type: "condition", title: "Whitening booked?", description: "Checks the downstream appointment or opportunity state.", function: "Turns a future booking into a visible pipeline transition.", ghl: "If/Else > Whitening appointment or stage", outcomes: [{ label: "YES", text: "Move to Whitening Booked and add the booking tag." }, { label: "NO", text: "Keep the contact in the completed-consult state." }] },
+        { type: "action", title: "Move to Whitening Booked", description: "Moves the opportunity to the whitening-booked stage.", function: "Makes the downstream conversion measurable without inventing results.", ghl: "Opportunities > Free Consultation Funnel > Whitening Booked" },
+        { type: "action", title: "Add tag: bd-whitening-booked", description: "Records the whitening booking event.", function: "Creates a reusable signal for payment update and retention logic.", ghl: "Contacts > Tags > bd-whitening-booked" }
+      ]
+    },
+    "whitening-payment": {
+      number: "05",
+      name: "Whitening Payment Update",
+      summary: "Translate a confirmed whitening payment into a clean stage and retention handoff.",
+      trigger: "Manual stage update or payment received",
+      location: "Automation > Workflows",
+      stop: "Retention / recall timer started",
+      nodes: [
+        { type: "trigger", title: "Payment or stage update", description: "The team records payment received or moves the opportunity to the payment event.", function: "Starts the post-booking update from a verified business event.", ghl: "Automation > Workflows > Trigger: Payment or Pipeline Stage" },
+        { type: "action", title: "Move to Whitening Paid", description: "Advances the opportunity after payment is confirmed.", function: "Separates booked treatment from paid treatment for accurate reporting.", ghl: "Opportunities > Free Consultation Funnel > Whitening Paid" },
+        { type: "action", title: "Add tag: bd-whitening-paid", description: "Records the payment state on the contact.", function: "Creates a durable event that downstream retention workflows can use.", ghl: "Contacts > Tags > bd-whitening-paid" },
+        { type: "handoff", title: "Start retention / recall timer", description: "Hands the completed treatment into the longer-term care path.", function: "Keeps payment handling short and lets recall own the six-month timing.", ghl: "Start Workflow > BD - Six Month Cleaning Recall" }
+      ]
+    },
+    "six-month-recall": {
+      number: "06",
+      name: "Six-Month Recall",
+      summary: "Keep the relationship useful after the consultation or treatment with a timed care reminder.",
+      trigger: "Consultation completed, whitening paid, or cleaning completed",
+      location: "Automation > Workflows",
+      stop: "Appointment booked or contact opts out",
+      nodes: [
+        { type: "trigger", title: "Care event completed", description: "A consultation, whitening payment, or cleaning completion qualifies the contact for recall.", function: "Starts the long-term timer from a meaningful service event.", ghl: "Automation > Workflows > Trigger: Tag or service event" },
+        { type: "wait", title: "Wait 6 months", description: "Holds the contact until the planned recall window.", function: "Turns a one-time campaign interaction into a future care moment.", ghl: "Wait > 6 months" },
+        { type: "action", title: "Add tag: bd-recall-due", description: "Marks the contact as due for a reminder.", function: "Creates a measurable recall segment before outreach begins.", ghl: "Contacts > Tags > bd-recall-due" },
+        { type: "action", title: "Send cleaning recall email", description: "Invites the contact to schedule a cleaning or check-up.", function: "Creates a useful next step without assuming the person needs a treatment.", ghl: "Send Email > BD Email - Six Month Recall" },
+        { type: "condition", title: "SMS consent present?", description: "Checks permission before sending the optional recall SMS.", function: "Keeps long-term outreach aligned with the same channel rule as appointment reminders.", ghl: "If/Else > Tag: bd-sms-opt-in", outcomes: [{ label: "YES", text: "Send the cleaning recall SMS." }, { label: "NO", text: "Keep the recall email as the only message." }] },
+        { type: "action", title: "Send cleaning recall SMS", description: "Sends a short recall reminder to an opted-in contact.", function: "Adds a timely mobile option while honoring the contact's consent choice.", ghl: "Send SMS > BD SMS - Six Month Recall" },
+        { type: "condition", title: "Appointment booked?", description: "Checks whether the contact has already scheduled care.", function: "Stops repeated reminders and gives the opportunity record a visible next state.", ghl: "If/Else > Appointment status = Booked", outcomes: [{ label: "YES", text: "Create or update the recall opportunity." }, { label: "NO", text: "Leave the contact in recall follow-up." }] },
+        { type: "action", title: "Create or update recall opportunity", description: "Creates a visible opportunity when the contact books care.", function: "Makes recall bookings count as a separate, traceable business event.", ghl: "Opportunities > Create or update recall opportunity" },
+        { type: "stop", title: "Stop on booking or opt-out", description: "Ends the recall sequence when the contact books or opts out.", function: "Prevents unnecessary outreach after the intended action or a clear preference change.", ghl: "Workflow settings > Stop / remove from workflow" }
+      ]
+    }
+  };
+
   let activeView = "tour";
   let activeDocument = "strategy-doc";
   let explanationMode = "plain";
   let systemTrigger = null;
   let revealObserver = null;
+  let activeWorkflow = "new-lead-booking";
+  let activeWorkflowNode = 0;
   let presentationIndex = 0;
   let presentationReturnHash = "#tour";
   let presentationPreviousFocus = null;
@@ -208,6 +341,154 @@
       });
     });
     renderNode("ad");
+  }
+
+  const workflowTypeLabels = {
+    trigger: "TRIGGER",
+    action: "ACTION",
+    condition: "IF / ELSE",
+    wait: "WAIT",
+    handoff: "HANDOFF",
+    stop: "STOP"
+  };
+
+  function renderWorkflowNode(workflow, nodeIndex) {
+    const node = workflow.nodes[nodeIndex];
+    if (!node) return;
+    activeWorkflowNode = nodeIndex;
+    document.querySelectorAll(".workflow-node-card").forEach((button) => {
+      const selected = Number(button.dataset.workflowNode) === nodeIndex;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+
+    const type = document.getElementById("workflow-node-type");
+    const position = document.getElementById("workflow-node-position");
+    const title = document.getElementById("workflow-node-title");
+    const description = document.getElementById("workflow-node-description");
+    const functionCopy = document.getElementById("workflow-node-function");
+    const ghl = document.getElementById("workflow-node-ghl");
+    const branch = document.getElementById("workflow-node-branch");
+    const outcomes = document.getElementById("workflow-node-outcomes");
+    if (type) type.textContent = workflowTypeLabels[node.type] || "NODE";
+    if (position) position.textContent = String(nodeIndex + 1).padStart(2, "0") + " / " + String(workflow.nodes.length).padStart(2, "0");
+    if (title) title.textContent = node.title;
+    if (description) description.textContent = node.description;
+    if (functionCopy) functionCopy.textContent = node.function;
+    if (ghl) ghl.textContent = node.ghl;
+    if (branch && outcomes) {
+      outcomes.textContent = "";
+      if (node.outcomes?.length) {
+        branch.hidden = false;
+        node.outcomes.forEach((outcome) => {
+          const item = document.createElement("div");
+          item.className = "workflow-node-outcome";
+          const label = document.createElement("span");
+          label.textContent = outcome.label;
+          const copy = document.createElement("p");
+          copy.textContent = outcome.text;
+          item.append(label, copy);
+          outcomes.appendChild(item);
+        });
+      } else {
+        branch.hidden = true;
+      }
+    }
+  }
+
+  function renderWorkflow(workflowId) {
+    const workflow = workflowDefinitions[workflowId];
+    const canvas = document.getElementById("workflow-canvas");
+    if (!workflow || !canvas) return;
+    activeWorkflow = workflowId;
+    activeWorkflowNode = 0;
+
+    document.querySelectorAll(".workflow-picker-tab").forEach((tab) => {
+      const selected = tab.dataset.workflow === workflowId;
+      tab.classList.toggle("is-active", selected);
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    });
+    const workspace = document.getElementById("workflow-workspace");
+    const activeTab = document.querySelector(`.workflow-picker-tab[data-workflow="${workflowId}"]`);
+    if (workspace && activeTab) workspace.setAttribute("aria-labelledby", activeTab.id);
+
+    const values = {
+      "workflow-number": workflow.number,
+      "workflow-title": workflow.name,
+      "workflow-summary": workflow.summary,
+      "workflow-trigger": workflow.trigger,
+      "workflow-location": workflow.location,
+      "workflow-stop": workflow.stop,
+      "workflow-count": String(workflow.nodes.length).padStart(2, "0") + " nodes",
+      "workflow-canvas-label": String(workflow.nodes.length).padStart(2, "0") + " NODE PATH"
+    };
+    Object.entries(values).forEach(([id, value]) => {
+      const element = document.getElementById(id);
+      if (element) element.textContent = value;
+    });
+
+    canvas.textContent = "";
+    workflow.nodes.forEach((node, nodeIndex) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "workflow-node-wrap";
+      wrapper.setAttribute("role", "listitem");
+
+      const button = document.createElement("button");
+      button.className = "workflow-node-card workflow-node-" + node.type + (nodeIndex === 0 ? " is-selected" : "");
+      button.type = "button";
+      button.dataset.workflowNode = String(nodeIndex);
+      button.setAttribute("aria-pressed", String(nodeIndex === 0));
+      button.setAttribute("aria-label", String(nodeIndex + 1).padStart(2, "0") + ". " + node.title + ". " + (workflowTypeLabels[node.type] || "Node"));
+
+      const index = document.createElement("span");
+      index.className = "workflow-node-index";
+      index.textContent = String(nodeIndex + 1).padStart(2, "0");
+      const kind = document.createElement("span");
+      kind.className = "workflow-node-kind";
+      kind.textContent = workflowTypeLabels[node.type] || "NODE";
+      const title = document.createElement("strong");
+      title.textContent = node.title;
+      const summary = document.createElement("p");
+      summary.textContent = node.description;
+      button.append(index, kind, title, summary);
+      button.addEventListener("click", () => renderWorkflowNode(workflow, nodeIndex));
+      wrapper.appendChild(button);
+
+      if (nodeIndex < workflow.nodes.length - 1) {
+        const connector = document.createElement("span");
+        connector.className = "workflow-connector";
+        connector.setAttribute("aria-hidden", "true");
+        const icon = document.createElement("i");
+        icon.dataset.lucide = "arrow-right";
+        connector.appendChild(icon);
+        wrapper.appendChild(connector);
+      }
+      canvas.appendChild(wrapper);
+    });
+    renderWorkflowNode(workflow, 0);
+    refreshIcons();
+  }
+
+  function initWorkflowLab() {
+    const picker = document.querySelector(".workflow-picker-tabs");
+    if (!picker || !document.getElementById("workflow-canvas")) return;
+    const tabs = Array.from(picker.querySelectorAll(".workflow-picker-tab"));
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => renderWorkflow(tab.dataset.workflow));
+      tab.addEventListener("keydown", (event) => {
+        if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        let next = index;
+        if (event.key === "ArrowDown") next = (index + 1) % tabs.length;
+        if (event.key === "ArrowUp") next = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = tabs.length - 1;
+        tabs[next].focus();
+        renderWorkflow(tabs[next].dataset.workflow);
+      });
+    });
+    renderWorkflow(activeWorkflow);
   }
 
   function setupReveals() {
@@ -516,6 +797,7 @@
   function start() {
     moveDeliverables();
     initJourney();
+    initWorkflowLab();
     initPresentation();
     initNavigation();
     disableSignalForReducedMotion();
