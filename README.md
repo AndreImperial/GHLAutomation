@@ -22,7 +22,7 @@ The site has no build step and no runtime dependency install. Render serves the 
 
 ## Experience Map
 
-- `#present/1`: guided seven-slide presentation for a fast stakeholder walkthrough. Use the arrow keys to move, `Escape` to exit, or the final handoff button to open the full System view.
+- `#present/1`: self-contained 18-section, approximately 30-minute presentation covering the problem, journey, GHL model, ten phases, deliverables, workflows, measurement, QA, and launch boundary. Use the arrow keys to move, `Escape` to exit, or the final handoff button to open the full System view.
 - `#tour`: 90-second plain-English explanation and GHL decoder.
 - `#system`: customer path, Plain English/GHL Detail switch, reconstructed six-workflow node lab, and decision log.
 - `#build`: ten completed phases, each with input, decision, actions, GHL location, output, purpose, and status.

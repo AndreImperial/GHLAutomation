@@ -230,7 +230,8 @@
     const parts = raw.split("/");
     if (parts[0] === "present") {
       const requested = Number.parseInt(parts[1] || "1", 10);
-      const slide = Number.isFinite(requested) ? Math.max(1, Math.min(7, requested)) : 1;
+      const slideCount = Math.max(1, document.querySelectorAll("[data-presentation-slide]").length);
+      const slide = Number.isFinite(requested) ? Math.max(1, Math.min(slideCount, requested)) : 1;
       return { view: "tour", documentId: null, presentation: true, presentationIndex: slide - 1 };
     }
     const view = aliases[parts[0]] || "tour";
@@ -596,12 +597,22 @@
     const total = document.getElementById("presentation-total");
     const progress = document.querySelector(".presentation-progress");
     const progressFill = document.getElementById("presentation-progress-fill");
+    const timing = document.getElementById("presentation-timing");
+    const runtime = document.getElementById("presentation-runtime");
     const previous = document.getElementById("presentation-prev");
     const next = document.getElementById("presentation-next");
     if (step) step.textContent = String(presentationIndex + 1).padStart(2, "0");
     if (total) total.textContent = String(slides.length).padStart(2, "0");
-    if (progress) progress.setAttribute("aria-valuenow", String(presentationIndex + 1));
+    if (progress) {
+      progress.setAttribute("aria-valuemax", String(slides.length));
+      progress.setAttribute("aria-valuenow", String(presentationIndex + 1));
+    }
     if (progressFill) progressFill.style.transform = `scaleX(${(presentationIndex + 1) / slides.length})`;
+    if (timing) timing.textContent = `~${slides[presentationIndex].dataset.presentationMinutes || "2"} MIN`;
+    if (runtime) {
+      const totalMinutes = slides.reduce((sum, slide) => sum + Number(slide.dataset.presentationMinutes || 2), 0);
+      runtime.textContent = `${totalMinutes} MIN WALKTHROUGH`;
+    }
     if (previous) previous.disabled = presentationIndex === 0;
     if (next) {
       const isLast = presentationIndex === slides.length - 1;
@@ -689,6 +700,21 @@
   }
 
   function initPresentation() {
+    const slides = Array.from(document.querySelectorAll("[data-presentation-slide]"));
+    const dotsContainer = document.querySelector(".presentation-dots");
+    if (dotsContainer) {
+      dotsContainer.textContent = "";
+      slides.forEach((slide, index) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.role = "tab";
+        dot.setAttribute("aria-selected", String(index === 0));
+        dot.setAttribute("aria-label", `Go to presentation slide ${index + 1}`);
+        dot.dataset.presentationDot = String(index);
+        dot.tabIndex = index === 0 ? 0 : -1;
+        dotsContainer.appendChild(dot);
+      });
+    }
     document.querySelectorAll("[data-presentation-open]").forEach((trigger) => {
       trigger.addEventListener("click", (event) => {
         event.preventDefault();
