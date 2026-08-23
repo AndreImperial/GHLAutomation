@@ -319,6 +319,12 @@
     technical.textContent = detail.technical;
     label.textContent = explanationMode === "plain" ? "Plain English" : "GHL detail";
     if (counter) counter.textContent = `${index.padStart(2, "0")} / 10`;
+    const journeySignal = document.getElementById("journey-signal");
+    if (journeySignal && !systemTrigger) {
+      const progress = Math.max(0, Math.min(1, (Number.parseInt(index, 10) - 1) / 9));
+      journeySignal.setAttribute("cx", String(55 + (850 * progress)));
+      journeySignal.style.opacity = "0.9";
+    }
     document.querySelectorAll(".journey-node").forEach((button) => {
       button.classList.toggle("is-selected", button === node);
       button.setAttribute("aria-pressed", String(button === node));
@@ -352,6 +358,16 @@
     handoff: "HANDOFF",
     stop: "STOP"
   };
+
+  function refreshWorkflowDetailMotion() {
+    const detailPanel = document.querySelector(".workflow-node-detail");
+    if (!detailPanel || reduceMotion()) return;
+    detailPanel.classList.remove("is-refreshing");
+    window.requestAnimationFrame(() => {
+      detailPanel.classList.add("is-refreshing");
+      window.setTimeout(() => detailPanel.classList.remove("is-refreshing"), 420);
+    });
+  }
 
   function renderWorkflowNode(workflow, nodeIndex) {
     const node = workflow.nodes[nodeIndex];
@@ -395,6 +411,7 @@
         branch.hidden = true;
       }
     }
+    refreshWorkflowDetailMotion();
   }
 
   function renderWorkflow(workflowId) {
@@ -433,6 +450,7 @@
     workflow.nodes.forEach((node, nodeIndex) => {
       const wrapper = document.createElement("div");
       wrapper.className = "workflow-node-wrap";
+      wrapper.style.setProperty("--flow-index", String(nodeIndex));
       wrapper.setAttribute("role", "listitem");
 
       const button = document.createElement("button");
@@ -511,7 +529,15 @@
     }
     const path = document.getElementById("journey-draw-path");
     if (!path) return;
+    const signal = document.getElementById("journey-signal");
+    const setSignal = (progress) => {
+      if (!signal) return;
+      const safeProgress = Math.max(0, Math.min(1, progress));
+      signal.setAttribute("cx", String(55 + (850 * safeProgress)));
+      signal.style.opacity = safeProgress > 0.02 ? "0.9" : "0";
+    };
     window.gsap.set(path, { strokeDashoffset: 1 });
+    setSignal(0);
     if (window.ScrollTrigger) {
       window.gsap.registerPlugin(window.ScrollTrigger);
       const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
@@ -523,13 +549,18 @@
           pin: true,
           scrub: 0.8,
           anticipatePin: 1,
-          onUpdate: (self) => { path.style.strokeDashoffset = String(1 - self.progress); }
+          onUpdate: (self) => {
+            path.style.strokeDashoffset = String(1 - self.progress);
+            setSignal(self.progress);
+          }
         });
       } else {
         window.gsap.to(path, { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" });
+        if (signal) window.gsap.to(signal, { attr: { cx: 905 }, opacity: 0.9, duration: 1.2, delay: 0.12, ease: "power2.inOut" });
       }
     } else {
       window.gsap.to(path, { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" });
+      if (signal) window.gsap.to(signal, { attr: { cx: 905 }, opacity: 0.9, duration: 1.2, delay: 0.12, ease: "power2.inOut" });
     }
   }
 
