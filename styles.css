@@ -3859,6 +3859,97 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
   36% { border-color: var(--mint-strong); box-shadow: none; transform: translateY(0); }
 }
 
+/* Content motion: static evidence arrives as a readable sequence. */
+.presentation-slide.is-active .presentation-copy > *,
+.presentation-slide.is-active .presentation-visual > :not(.present-signal),
+.presentation-slide.is-active .presentation-message > *,
+.presentation-slide.is-active .presentation-talk li {
+  animation: presentation-content-in 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.presentation-slide.is-active .presentation-copy > *:nth-child(1) { animation-delay: 40ms; }
+.presentation-slide.is-active .presentation-copy > *:nth-child(2) { animation-delay: 100ms; }
+.presentation-slide.is-active .presentation-copy > *:nth-child(3) { animation-delay: 160ms; }
+.presentation-slide.is-active .presentation-copy > *:nth-child(4) { animation-delay: 220ms; }
+.presentation-slide.is-active .presentation-visual > :not(.present-signal):nth-child(1) { animation-delay: 120ms; }
+.presentation-slide.is-active .presentation-visual > :not(.present-signal):nth-child(2) { animation-delay: 180ms; }
+.presentation-slide.is-active .presentation-visual > :not(.present-signal):nth-child(3) { animation-delay: 240ms; }
+.presentation-slide.is-active .presentation-message > *:nth-child(1) { animation-delay: 220ms; }
+.presentation-slide.is-active .presentation-message > *:nth-child(2) { animation-delay: 280ms; }
+.presentation-slide.is-active .presentation-talk li:nth-child(1) { animation-delay: 340ms; }
+.presentation-slide.is-active .presentation-talk li:nth-child(2) { animation-delay: 400ms; }
+.presentation-slide.is-active .presentation-talk li:nth-child(3) { animation-delay: 460ms; }
+
+.orientation-strip.is-inview > div,
+.decoder-section.is-inview .decoder-row,
+.decision-log.is-inview .decision-grid > div,
+.source-trail.is-inview .source-list > div,
+.measurement-grid.is-inview .kpi-tree > div,
+.dashboard-plan.is-inview .dashboard-list > div,
+.review-plan.is-inview .review-columns > div {
+  animation: information-item-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--info-index, 0) * 58ms);
+}
+
+.orientation-strip.is-inview > :nth-child(1),
+.decoder-section.is-inview .decoder-row:nth-child(1),
+.decision-log.is-inview .decision-grid > :nth-child(1),
+.source-trail.is-inview .source-list > :nth-child(1),
+.measurement-grid.is-inview .kpi-tree > :nth-child(1),
+.dashboard-plan.is-inview .dashboard-list > :nth-child(1),
+.review-plan.is-inview .review-columns > :nth-child(1) { --info-index: 0; }
+
+.orientation-strip.is-inview > :nth-child(2),
+.decoder-section.is-inview .decoder-row:nth-child(2),
+.decision-log.is-inview .decision-grid > :nth-child(2),
+.source-trail.is-inview .source-list > :nth-child(2),
+.measurement-grid.is-inview .kpi-tree > :nth-child(2),
+.dashboard-plan.is-inview .dashboard-list > :nth-child(2),
+.review-plan.is-inview .review-columns > :nth-child(2) { --info-index: 1; }
+
+.orientation-strip.is-inview > :nth-child(3),
+.decoder-section.is-inview .decoder-row:nth-child(3),
+.decision-log.is-inview .decision-grid > :nth-child(3),
+.source-trail.is-inview .source-list > :nth-child(3),
+.measurement-grid.is-inview .kpi-tree > :nth-child(3),
+.dashboard-plan.is-inview .dashboard-list > :nth-child(3) { --info-index: 2; }
+
+.orientation-strip.is-inview > :nth-child(4),
+.decoder-section.is-inview .decoder-row:nth-child(4),
+.decision-log.is-inview .decision-grid > :nth-child(4),
+.source-trail.is-inview .source-list > :nth-child(4),
+.measurement-grid.is-inview .kpi-tree > :nth-child(4),
+.dashboard-plan.is-inview .dashboard-list > :nth-child(4) { --info-index: 3; }
+
+.decoder-section.is-inview .decoder-row:nth-child(5),
+.source-trail.is-inview .source-list > :nth-child(5),
+.measurement-grid.is-inview .kpi-tree > :nth-child(5) { --info-index: 4; }
+
+.decoder-section.is-inview .decoder-row:nth-child(6),
+.source-trail.is-inview .source-list > :nth-child(6) { --info-index: 5; }
+
+.source-trail.is-inview .source-list > :nth-child(7) { --info-index: 6; }
+.source-trail.is-inview .source-list > :nth-child(8) { --info-index: 7; }
+
+.document-panel.is-switching {
+  animation: document-open 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes presentation-content-in {
+  from { opacity: 0; filter: blur(4px); transform: translateY(12px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+@keyframes information-item-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes document-open {
+  from { opacity: 0.35; clip-path: inset(0 0 8% 0); transform: translateY(10px); }
+  to { opacity: 1; clip-path: inset(0); transform: translateY(0); }
+}
+
 @media (max-width: 900px) {
   .presentation-topbar {
     padding-right: 24px;

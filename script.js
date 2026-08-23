@@ -284,6 +284,14 @@
     document.querySelectorAll("#deliverable-outlet .document-panel").forEach((panel) => {
       panel.hidden = panel.id !== `docs-panel-${requested}`;
     });
+    const activePanel = document.getElementById(`docs-panel-${requested}`);
+    if (activePanel && !reduceMotion()) {
+      activePanel.classList.remove("is-switching");
+      window.requestAnimationFrame(() => {
+        activePanel.classList.add("is-switching");
+        window.setTimeout(() => activePanel.classList.remove("is-switching"), 480);
+      });
+    }
     if (updateUrl) writeHash("deliverables", requested, false);
   }
 
