@@ -1,227 +1,111 @@
-# Design System Master File
+# Bloom Dental Dark Portfolio System
 
-> **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
-> If that file exists, its rules **override** this Master file.
-> If not, strictly follow the rules below.
+**Project:** Bloom Dental Studio Consultation Funnel and Automation System
+**Purpose:** Public portfolio case study and beginner-friendly learning experience
+**Design Dials:** Variance 8/10 | Motion 8/10 | Density 4/10
+**Stack:** Vanilla HTML, CSS, JavaScript, GSAP 3.12.5, ScrollTrigger, Lucide
+**Truth boundary:** Workshop simulation only. Projected goals are not live results.
 
----
+## Product Reading
 
-**Project:** Bloom Dental Case Study
-**Generated:** 2026-07-26 11:30:39
-**Category:** Marketing Agency
-**Design Dials:** Variance 6/10 (Balanced / Modern) | Motion 4/10 (Standard) | Density 5/10 (Standard)
+The experience teaches the build in one sequence: business problem, customer journey, GHL implementation, measurement, and launch dependencies. The primary audience is a non-GHL reviewer. The secondary audience is a marketing or data analytics reviewer who wants the complete deliverables and technical details.
 
----
+## Visual Tokens
 
-## Global Rules
+| Role | Hex | CSS variable |
+|---|---|---|
+| Graphite green background | `#13201D` | `--bg` |
+| Deep graphite | `#0C1412` | `--bg-deep` |
+| Surface | `#1B2A26` | `--surface` |
+| Raised surface | `#22342E` | `--surface-raised` |
+| Technical border | `#3B5149` | `--line` |
+| Warm ivory | `#F2EAD9` | `--ivory` |
+| Soft ivory | `#D7D5C8` | `--ivory-soft` |
+| Muted text | `#A7B7AD` | `--muted` |
+| Clinical mint | `#A9D7B7` | `--mint` |
+| Strong mint | `#6EAA88` | `--mint-strong` |
+| Coral action | `#EF8B6C` | `--coral` |
+| Amber projected target | `#E8BD70` | `--amber` |
+| Dark text on action | `#10201A` | `--ink` |
 
-### Color Palette
+Rules:
 
-| Role | Hex | CSS Variable |
-|------|-----|--------------|
-| Primary | `#7C3AED` | `--color-primary` |
-| On Primary | `#FFFFFF` | `--color-on-primary` |
-| Secondary | `#8B5CF6` | `--color-secondary` |
-| Accent/CTA | `#059669` | `--color-accent` |
-| Background | `#FAF5FF` | `--color-background` |
-| Foreground | `#0F172A` | `--color-foreground` |
-| Muted | `#F7F3FD` | `--color-muted` |
-| Border | `#EFE7FC` | `--color-border` |
-| Destructive | `#DC2626` | `--color-destructive` |
-| Ring | `#7C3AED` | `--color-ring` |
+- Dark mode is the only theme.
+- Do not introduce purple, cyan-neon accents, gradient backgrounds, decorative orbs, or excessive glows.
+- Keep borders thin and technical. The shared radius is 6px; circles are reserved for node and icon markers.
+- Use color to explain state: mint means connected or active, coral means action, amber means projected target or launch dependency.
+- Keep contrast at WCAG AA or higher for all body text and controls.
 
-**Color Notes:** Study purple + correct green
+## Typography
 
-### Typography
+- Display: `Instrument Serif`, regular weight, reserved for hero and section titles.
+- Body and controls: `Manrope`, 400 to 800.
+- System labels and data: `JetBrains Mono`, 400 to 600, uppercase only for labels.
+- Letter spacing stays at 0 except small technical labels, which may use 0.04em to 0.08em.
+- Do not use hero-scale type inside tables, lists, document panels, or navigation.
 
-- **Heading Font:** Playfair Display
-- **Body Font:** Source Serif 4
-- **Mood:** monochrome, editorial, austere, typographic, pocket manifesto, luxury, high contrast, brutalist mobile
-- **Google Fonts:** [Playfair Display + Source Serif 4](https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400|Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300)
+## Layout Rules
 
-**CSS Import:**
-```css
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap');
-```
+- The header is sticky and compact, with five hash-linked tabs: Quick Tour, System, 10-Phase Build, Deliverables, Measurement.
+- The hero is a full-width automation scene. At desktop it stays below roughly 82% of the viewport so the orientation strip appears in the first view.
+- Each top-level view uses a constrained 1240px reading width with generous vertical spacing.
+- Use full-width bands and structured rows. Cards are reserved for repeated targets or genuinely framed tools; do not nest cards inside cards.
+- The system map is allowed one horizontal scrolling region on narrow screens. The page itself must never overflow horizontally.
+- Deliverables remain native hardcoded website content. Do not load Markdown, PDF pages, or old GHL screenshots.
 
-### Spacing Variables
+## Component Rules
 
-*Density: 5/10 — Standard*
+### Buttons and tabs
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--space-xs` | `4px` / `0.25rem` | Tight gaps |
-| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
-| `--space-md` | `16px` / `1rem` | Standard padding |
-| `--space-lg` | `24px` / `1.5rem` | Section padding |
-| `--space-xl` | `32px` / `2rem` | Large gaps |
-| `--space-2xl` | `48px` / `3rem` | Section margins |
-| `--space-3xl` | `64px` / `4rem` | Hero padding |
+- Minimum touch target: 44px high.
+- Primary action uses coral fill with dark text.
+- Secondary action uses a transparent surface and mint or technical border.
+- Top-level navigation uses ARIA tabs with one active state, keyboard arrows, Home, End, and visible focus.
+- Familiar actions use Lucide icons. Icon-only controls must have an accessible label.
 
-### Shadow Depths
+### Journey nodes
 
-| Level | Value | Usage |
-|-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
+- The signal path is an authored diagram, not decoration. Every node has a business label and a GHL detail state.
+- Plain English is the default. The GHL Detail toggle changes the explanation without hiding the node path.
+- A selected node uses mint border and coral top rule. Do not use a glow as the only state signal.
 
----
+### Phase rows
 
-## Component Specs
+- Ten phases use the same teaching structure: input, decision, actions taken, where it lives in GHL, output, business purpose, status.
+- Native `details` elements keep the page scannable while preserving full content and keyboard access.
+- Completion is labeled `Complete` for the simulation. Production dependencies are called out separately.
 
-### Buttons
+### Deliverable library
 
-```css
-/* Primary Button */
-.btn-primary {
-  background: #059669;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
+- Eight documents use a persistent index and one visible native document panel.
+- Document content must remain complete, readable, and searchable by browser find.
+- No fake testimonials, client quotes, achieved revenue, or personal account information.
 
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
+## Motion Rules
 
-/* Secondary Button */
-.btn-secondary {
-  background: transparent;
-  color: #7C3AED;
-  border: 2px solid #7C3AED;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-```
+- Use pinned GSAP 3.12.5 core and ScrollTrigger from the public CDN.
+- Signature moment: a coral signal travels through the hero path while the mint path draws into view.
+- Use short reveal staggers, SVG path drawing, tab entry transitions, and node highlighting.
+- Pin only the desktop system-map storytelling stage. Disable pinning below 1024px.
+- Do not use `window` scroll listeners. Use IntersectionObserver and ScrollTrigger.
+- When GSAP fails, every section and all content remain visible with no required animation state.
+- When `prefers-reduced-motion` is active, remove SVG motion, disable pinning, and keep content at rest.
 
-### Cards
+## Content Rules
 
-```css
-.card {
-  background: #FAF5FF;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: var(--shadow-md);
-  transition: all 200ms ease;
-  cursor: pointer;
-}
+- The public reader should understand the problem, solution, path, ten phases, and simulation boundary without opening Deliverables.
+- Label `60 bookings in 60 days`, `<15% no-show rate`, and `40% whitening attach rate` as projected goals wherever they appear.
+- Explain GHL concepts before using platform names without context.
+- Keep the six workflow names and modular ownership visible.
+- Explain the decision log: form-first booking, no fake testimonials, modular workflows, SMS consent gating, free hosted URLs, and sender configuration dependency.
 
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-```
+## QA Checklist
 
-### Inputs
-
-```css
-.input {
-  padding: 12px 16px;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 200ms ease;
-}
-
-.input:focus {
-  border-color: #7C3AED;
-  outline: none;
-  box-shadow: 0 0 0 3px #7C3AED20;
-}
-```
-
-### Modals
-
-```css
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.modal {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: var(--shadow-xl);
-  max-width: 500px;
-  width: 90%;
-}
-```
-
----
-
-## Style Guidelines
-
-**Style:** Soft UI Evolution
-
-**Keywords:** Evolved soft UI, better contrast, modern aesthetics, subtle depth, accessibility-focused, improved shadows, hybrid
-
-**Best For:** Modern enterprise apps, SaaS platforms, health/wellness, modern business tools, professional, hybrid
-
-**Key Effects:** Improved shadows (softer than flat, clearer than neumorphism), modern (200-300ms), focus visible, WCAG AA/AAA
-
-### Page Pattern
-
-**Pattern Name:** Trust & Authority + Conversion
-
-- **Conversion Strategy:** Security badges. Case studies. Transparent pricing. Low-friction form.
-- **CTA Placement:** Contact Sales / Get Quote (primary) + Nav
-- **Section Order:** 1. Hero (mission/credibility), 2. Proof (logos, certs, stats), 3. Solution overview, 4. Clear CTA path
-
----
-
-## Motion
-
-**Stagger List** (Standard) — Trigger: load or scroll | Duration: 300-450ms | Easing: `back.out(1.4)`
-
-```js
-gsap.from('.grid-item', { opacity: 0, scale: 0.92, y: 16, duration: 0.4, stagger: { each: 0.06, from: 'start', grid: 'auto' }, ease: 'back.out(1.4)' });
-```
-
-**Framework notes:** grid: 'auto' lets GSAP infer rows/columns from a CSS grid layout for a natural wave stagger
-
-- ✅ Combine with from: 'center' for a bento-grid layout to draw the eye inward first
-- ❌ Don't use back.out on dense data tables; the overshoot reads as sloppy on informational UI
-- ⚡ Group DOM writes; avoid interleaving layout reads (getBoundingClientRect) between staggered tweens
-
----
-
-## Anti-Patterns (Do NOT Use)
-
-- ❌ Boring design
-- ❌ Hidden work
-
-### Additional Forbidden Patterns
-
-- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)
-- ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointer
-- ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layout
-- ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
-- ❌ **Instant state changes** — Always use transitions (150-300ms)
-- ❌ **Invisible focus states** — Focus states must be visible for a11y
-
----
-
-## Pre-Delivery Checklist
-
-Before delivering any UI code, verify:
-
-- [ ] No emojis used as icons (use SVG instead)
-- [ ] All icons from consistent icon set (Heroicons/Lucide)
-- [ ] `cursor-pointer` on all clickable elements
-- [ ] Hover states with smooth transitions (150-300ms)
-- [ ] Light mode: text contrast 4.5:1 minimum
-- [ ] Focus states visible for keyboard navigation
-- [ ] `prefers-reduced-motion` respected
-- [ ] Responsive: 375px, 768px, 1024px, 1440px
-- [ ] No content hidden behind fixed navbars
-- [ ] No horizontal scroll on mobile
+- [ ] Five top-level tabs work with click, keyboard arrows, Home, End, hashes, and back/forward.
+- [ ] Legacy aliases map correctly: `#beginner-path`, `#implementation`, `#board`, `#process`, `#documents`, `#results`.
+- [ ] Ten phases, six workflows, and eight full deliverables remain present.
+- [ ] 375px, 768px, 1024px, and 1440px have no horizontal overflow or clipped text.
+- [ ] Hero shows a hint of the next section on desktop and mobile.
+- [ ] Focus states, heading order, contrast, and 44px touch targets pass review.
+- [ ] GSAP failure and reduced motion preserve readable content.
+- [ ] No old screenshots with personal email or fake performance claims are published.

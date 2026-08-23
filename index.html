@@ -5,21 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Implemented portfolio case study for the Fast Track Workshop: Bloom Dental Studio consultation funnel, GoHighLevel build, automation workflows, and measurement plan."
+      content="A cinematic, beginner-friendly walkthrough of the Bloom Dental Studio consultation funnel, GHL automation build, workshop deliverables, and measurement plan."
     />
-    <title>Bloom Dental Studio | GHL Funnel & Automation Case Study</title>
+    <meta name="theme-color" content="#13201d" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bloom Dental Studio | Consultation System" />
+    <meta property="og:description" content="See how a simulated dental consultation funnel was planned, built, automated, and measured in GoHighLevel." />
+    <meta property="og:url" content="https://ghlautomation.onrender.com/" />
+    <meta property="og:image" content="https://ghlautomation.onrender.com/assets/og-bloom-dental.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bloom Dental Studio | Consultation System" />
+    <meta name="twitter:description" content="A complete, teachable GHL workshop simulation from business problem to KPI review." />
+    <meta name="twitter:image" content="https://ghlautomation.onrender.com/assets/og-bloom-dental.png" />
+    <link rel="canonical" href="https://ghlautomation.onrender.com/" />
+    <title>Bloom Dental Studio | Consultation Funnel & Automation System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@600;700;800&family=Source+Serif+4:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=implementation-2" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css?v=dark-redesign-1" />
   </head>
   <body>
     <a class="skip-link" href="#case-study">Skip to case study</a>
 
-    <header class="site-header" aria-label="Portfolio header">
+    <header class="redesign-header" aria-label="Bloom Dental portfolio navigation">
+      <a class="redesign-brand" href="#tour" aria-label="Bloom Dental Studio, Quick Tour">
+        <span class="brand-sigil" aria-hidden="true">BD</span>
+        <span class="brand-copy">
+          <strong>Bloom Dental Studio</strong>
+          <small>Fast Track simulation / systems case study</small>
+        </span>
+      </a>
+      <nav class="primary-nav" aria-label="Case study views" role="tablist">
+        <button id="tab-tour" class="primary-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="view-tour" data-view="tour">Quick Tour</button>
+        <button id="tab-system" class="primary-tab" type="button" role="tab" aria-selected="false" aria-controls="view-system" data-view="system" tabindex="-1">System</button>
+        <button id="tab-build" class="primary-tab" type="button" role="tab" aria-selected="false" aria-controls="view-build" data-view="build" tabindex="-1">10-Phase Build</button>
+        <button id="tab-deliverables" class="primary-tab" type="button" role="tab" aria-selected="false" aria-controls="view-deliverables" data-view="deliverables" tabindex="-1">Deliverables</button>
+        <button id="tab-measurement" class="primary-tab" type="button" role="tab" aria-selected="false" aria-controls="view-measurement" data-view="measurement" tabindex="-1">Measurement</button>
+      </nav>
+      <a class="header-contact" href="mailto:imperial.andrejoseece@gmail.com" aria-label="Email Andre about this case study">
+        <span>Contact</span><i data-lucide="arrow-up-right" aria-hidden="true"></i>
+      </a>
+    </header>
+
+    <header class="site-header" aria-label="Legacy portfolio header" hidden>
       <a class="brand" href="#case-study" aria-label="Bloom Dental case study home">
         <span class="brand-mark" aria-hidden="true">BD</span>
         <span>
@@ -39,6 +73,145 @@
     </header>
 
     <main id="case-study">
+      <section id="new-case-study" class="redesign-shell" aria-label="Bloom Dental Studio consultation system case study">
+        <section class="dark-hero" aria-labelledby="page-title">
+          <div class="hero-copy">
+            <div class="hero-status"><span class="status-dot" aria-hidden="true"></span>SIMULATION BUILD / 10 OF 10 PHASES COMPLETE</div>
+            <h1 id="page-title">Bloom Dental Studio <em>Consultation System</em></h1>
+            <p class="hero-lede">A start-to-finish funnel, GHL automation, and measurement blueprint for a simulated BGC dental campaign.</p>
+            <div class="hero-actions" aria-label="Start the case study">
+              <a class="button button-coral" href="#system" data-view-link="system">Start with the system map <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+              <a class="button button-quiet" href="#build" data-view-link="build">See the ten phases</a>
+            </div>
+            <p class="hero-boundary">Projected targets are planning goals, not live results.</p>
+          </div>
+          <div class="hero-scene" aria-label="Interactive diagram showing a lead moving from interest to measurement">
+            <div class="scene-heading"><span>THE SIGNAL PATH</span><strong>Interest to insight</strong></div>
+            <svg class="automation-scene" viewBox="0 0 760 360" role="img" aria-labelledby="scene-title scene-desc">
+              <title id="scene-title">Bloom Dental automation signal path</title>
+              <desc id="scene-desc">Four connected nodes show a prospective patient moving through capture, booking, follow-up, and measurement.</desc>
+              <path id="hero-signal-path" class="scene-path scene-path-back" d="M70 184 C146 60 222 305 304 184 S465 66 548 184 S636 298 690 184" pathLength="1"></path>
+              <path class="scene-path scene-path-front" d="M70 184 C146 60 222 305 304 184 S465 66 548 184 S636 298 690 184" pathLength="1"></path>
+              <circle class="signal-dot" r="8" cx="70" cy="184">
+                <animateMotion dur="5.2s" repeatCount="indefinite" path="M0 0 C76 -124 152 121 234 0 S395 -118 478 0 S566 114 620 0"></animateMotion>
+              </circle>
+              <g class="scene-node" transform="translate(70 184)"><circle r="28"></circle><text y="4">01</text><text class="scene-label" y="70">CAPTURE</text><text class="scene-sub" y="88">Form</text></g>
+              <g class="scene-node" transform="translate(304 184)"><circle r="28"></circle><text y="4">02</text><text class="scene-label" y="70">BOOK</text><text class="scene-sub" y="88">Calendar</text></g>
+              <g class="scene-node" transform="translate(548 184)"><circle r="28"></circle><text y="4">03</text><text class="scene-label" y="70">FOLLOW UP</text><text class="scene-sub" y="88">Workflow</text></g>
+              <g class="scene-node scene-node-target" transform="translate(690 184)"><circle r="28"></circle><text y="4">04</text><text class="scene-label" y="70">MEASURE</text><text class="scene-sub" y="88">KPI</text></g>
+            </svg>
+            <div class="scene-foot"><span>Plain language first</span><span>Platform detail when useful</span></div>
+          </div>
+        </section>
+
+        <div class="orientation-strip" aria-label="Project overview">
+          <div><span>PROJECT TYPE</span><strong>Workshop simulation</strong></div>
+          <div><span>BUILD SCOPE</span><strong>10 phases / 6 workflows</strong></div>
+          <div><span>EVIDENCE</span><strong>8 native deliverables</strong></div>
+          <div><span>LAUNCH STATE</span><strong>Ready for QA dependencies</strong></div>
+        </div>
+
+        <section id="view-tour" class="view-panel is-active" role="tabpanel" aria-labelledby="tab-tour" data-view-panel="tour">
+          <div class="view-heading" data-reveal>
+            <div><span class="section-label">01 / QUICK TOUR</span><h2>Understand the build before opening GHL.</h2></div>
+            <p>One business problem becomes one connected customer journey, then a system that can be tested and measured.</p>
+          </div>
+
+          <div class="tour-sequence" data-story-section>
+            <article class="sequence-step" data-reveal><span class="step-number">01</span><div><h3>The problem</h3><p>Bloom Dental had interest, but too many people dropped before a consultation. Booking and follow-up lived in separate, mostly manual steps.</p></div></article>
+            <article class="sequence-step" data-reveal><span class="step-number">02</span><div><h3>The proposed journey</h3><p>A person sees a Meta ad, reads the offer, submits an inquiry, chooses a time, receives reminders, and arrives with context.</p></div></article>
+            <article class="sequence-step" data-reveal><span class="step-number">03</span><div><h3>The implementation</h3><p>GHL stores the contact, opportunity, fields, tags, calendar booking, messages, and workflow decisions in one operating model.</p></div></article>
+            <article class="sequence-step" data-reveal><span class="step-number">04</span><div><h3>The measurement</h3><p>Events connect the path from lead to consultation to whitening. Projected goals guide the dashboard; they are not reported outcomes.</p></div></article>
+          </div>
+
+          <section class="decoder-section" aria-labelledby="decoder-title" data-reveal>
+            <div class="section-intro"><span class="section-label">GHL IN 60 SECONDS</span><h2 id="decoder-title">Seven platform ideas in plain English.</h2><p>GHL is the workspace that holds the person, the stage, the booking, the messages, and the rules.</p></div>
+            <div class="decoder-list">
+              <div class="decoder-row"><span class="decoder-icon" aria-hidden="true"><i data-lucide="user-round"></i></span><div><h3>Contact</h3><p>The person record: name, email, phone, consent, source, and preferences.</p></div><code>Contacts</code></div>
+              <div class="decoder-row"><span class="decoder-icon" aria-hidden="true"><i data-lucide="columns-3"></i></span><div><h3>Pipeline</h3><p>A visual line of stages showing where an opportunity is in the process.</p></div><code>Opportunities</code></div>
+              <div class="decoder-row"><span class="decoder-icon" aria-hidden="true"><i data-lucide="file-pen-line"></i></span><div><h3>Form</h3><p>The inquiry questions that capture intent before someone picks a time.</p></div><code>Sites &gt; Forms</code></div>
+              <div class="decoder-row"><span class="decoder-icon" aria-hidden="true"><i data-lucide="calendar-days"></i></span><div><h3>Calendar</h3><p>The availability layer that turns interest into a real consultation slot.</p></div><code>Calendars</code></div>
+              <div class="decoder-row"><span class="decoder-icon" aria-hidden="true"><i data-lucide="workflow"></i></span><div><h3>Workflow</h3><p>An if-this-then-that rule set for messages, tags, stages, waits, and exits.</p></div><code>Automation &gt; Workflows</code></div>
+              <div class="decoder-row"><span class="decoder-icon" aria-hidden="true"><i data-lucide="tag"></i></span><div><h3>Tag</h3><p>A small label that helps the system remember source, consent, intent, or status.</p></div><code>Contact tags</code></div>
+              <div class="decoder-row"><span class="decoder-icon" aria-hidden="true"><i data-lucide="target"></i></span><div><h3>Opportunity</h3><p>The trackable chance to create value, moving through the consultation pipeline.</p></div><code>Pipeline record</code></div>
+            </div>
+          </section>
+
+          <section class="tour-boundary" data-reveal><div><span class="section-label">THE BOUNDARY</span><h2>Simulation complete. Launch still has gates.</h2></div><p>The workshop build is presented as 10/10 complete. Sender-domain setup, live ads, production compliance review, and real campaign data are intentionally outside this simulation.</p><a class="text-link" href="#build" data-view-link="build">Open the build phases <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></section>
+        </section>
+
+        <section id="view-system" class="view-panel" role="tabpanel" aria-labelledby="tab-system" data-view-panel="system" hidden>
+          <div class="view-heading" data-reveal>
+            <div><span class="section-label">02 / SYSTEM</span><h2>Follow the customer path, then open the rules underneath it.</h2></div>
+            <div class="segmented-control" role="group" aria-label="Choose explanation level"><button type="button" class="segment is-active" data-mode="plain" aria-pressed="true">Plain English</button><button type="button" class="segment" data-mode="detail" aria-pressed="false">GHL detail</button></div>
+          </div>
+          <div class="journey-layout">
+            <div class="journey-map-stage" data-story-section>
+              <div class="journey-map-head"><span>THE CUSTOMER PATH</span><span id="journey-counter">01 / 10</span></div>
+              <div class="journey-map" role="list" aria-label="Interactive customer path">
+                <svg class="journey-svg" viewBox="0 0 960 170" aria-hidden="true"><path class="journey-svg-back" d="M55 85 H905"></path><path id="journey-draw-path" class="journey-svg-front" d="M55 85 H905" pathLength="1"></path></svg>
+                <button class="journey-node is-selected" type="button" role="listitem" data-node="ad"><span class="node-index">01</span><i data-lucide="megaphone" aria-hidden="true"></i><strong>Meta ad</strong><small>Interest begins</small></button>
+                <button class="journey-node" type="button" role="listitem" data-node="page"><span class="node-index">02</span><i data-lucide="layout-template" aria-hidden="true"></i><strong>Landing page</strong><small>Offer explained</small></button>
+                <button class="journey-node" type="button" role="listitem" data-node="form"><span class="node-index">03</span><i data-lucide="file-input" aria-hidden="true"></i><strong>Inquiry form</strong><small>Intent captured</small></button>
+                <button class="journey-node" type="button" role="listitem" data-node="calendar"><span class="node-index">04</span><i data-lucide="calendar-check-2" aria-hidden="true"></i><strong>Calendar</strong><small>Time selected</small></button>
+                <button class="journey-node" type="button" role="listitem" data-node="pipeline"><span class="node-index">05</span><i data-lucide="kanban" aria-hidden="true"></i><strong>Pipeline</strong><small>Stage created</small></button>
+                <button class="journey-node" type="button" role="listitem" data-node="reminders"><span class="node-index">06</span><i data-lucide="message-circle-more" aria-hidden="true"></i><strong>Reminders</strong><small>Show-up supported</small></button>
+                <button class="journey-node" type="button" role="listitem" data-node="consultation"><span class="node-index">07</span><i data-lucide="stethoscope" aria-hidden="true"></i><strong>Consultation</strong><small>Need understood</small></button>
+                <button class="journey-node" type="button" role="listitem" data-node="whitening"><span class="node-index">08</span><i data-lucide="sparkles" aria-hidden="true"></i><strong>Whitening</strong><small>Interest tracked</small></button>
+                <button class="journey-node" type="button" role="listitem" data-node="recall"><span class="node-index">09</span><i data-lucide="refresh-cw" aria-hidden="true"></i><strong>Recall</strong><small>Future care</small></button>
+                <button class="journey-node" type="button" role="listitem" data-node="kpi"><span class="node-index">10</span><i data-lucide="chart-no-axes-combined" aria-hidden="true"></i><strong>KPI review</strong><small>Learn and improve</small></button>
+              </div>
+              <div class="node-detail" aria-live="polite"><span class="detail-label" id="node-detail-label">Plain English</span><h3 id="node-detail-title">Interest begins with a focused offer.</h3><p id="node-detail-copy">The person sees a consultation message designed for time-poor BGC and Makati professionals.</p><code id="node-detail-technical">Source: Meta ad / UTM campaign parameters</code></div>
+            </div>
+          </div>
+
+          <section class="workflow-lab" aria-labelledby="workflow-lab-title" data-reveal><div class="section-intro"><span class="section-label">WORKFLOW LAB / 06 AUTOMATIONS</span><h2 id="workflow-lab-title">Six smaller rule sets make the journey easier to test.</h2><p>Each workflow owns one moment. That keeps the build understandable, modular, and easier to troubleshoot.</p></div><div class="workflow-list">
+            <details class="workflow-row" open><summary><span class="workflow-number">01</span><span><strong>New Lead to Booking</strong><small>Capture, tag, create an opportunity, and invite the lead to book.</small></span><i data-lucide="plus" aria-hidden="true"></i></summary><div class="workflow-detail"><p><b>Trigger:</b> inquiry form submitted. <b>Rules:</b> add source and consent tags, create the New Lead opportunity, send the confirmation, then offer the calendar. <b>Exit:</b> contact books or opts out.</p><code>Form Submitted &gt; Tags &gt; Opportunity &gt; Email/SMS &gt; Calendar link</code></div></details>
+            <details class="workflow-row"><summary><span class="workflow-number">02</span><span><strong>Consultation Booking Flow</strong><small>Move a booked lead to the right stage and prepare the appointment.</small></span><i data-lucide="plus" aria-hidden="true"></i></summary><div class="workflow-detail"><p><b>Trigger:</b> appointment booked. <b>Rules:</b> move the opportunity to Booked Consultation, apply the booking tag, send confirmation and reminders, and stop the new-lead sequence.</p><code>Appointment status = confirmed &gt; Stage = Booked Consultation</code></div></details>
+            <details class="workflow-row"><summary><span class="workflow-number">03</span><span><strong>No-Show Recovery</strong><small>Give a missed appointment a respectful second chance.</small></span><i data-lucide="plus" aria-hidden="true"></i></summary><div class="workflow-detail"><p><b>Trigger:</b> appointment marked no-show. <b>Rules:</b> tag no-show, move the opportunity to follow-up, wait, send one rescheduling message, then stop if a new booking arrives.</p><code>Appointment status = no-show &gt; Wait &gt; Reschedule message</code></div></details>
+            <details class="workflow-row"><summary><span class="workflow-number">04</span><span><strong>Post-Consultation Whitening</strong><small>Follow up on relevant interest without pretending a sale happened.</small></span><i data-lucide="plus" aria-hidden="true"></i></summary><div class="workflow-detail"><p><b>Trigger:</b> consultation complete plus whitening interest. <b>Rules:</b> create the next-step opportunity, send the approved education sequence, and stop when the patient books or declines.</p><code>Stage = Consultation Complete + field = Interested</code></div></details>
+            <details class="workflow-row"><summary><span class="workflow-number">05</span><span><strong>Whitening Payment Update</strong><small>Turn a confirmed payment into a clear pipeline signal.</small></span><i data-lucide="plus" aria-hidden="true"></i></summary><div class="workflow-detail"><p><b>Trigger:</b> payment or stage update. <b>Rules:</b> move to Whitening Paid, add the completion tag, and suppress upsell messages so the record stays clean.</p><code>Payment received &gt; Stage = Whitening Paid &gt; Stop promotion</code></div></details>
+            <details class="workflow-row"><summary><span class="workflow-number">06</span><span><strong>Six-Month Cleaning Recall</strong><small>Keep the relationship useful after the first treatment.</small></span><i data-lucide="plus" aria-hidden="true"></i></summary><div class="workflow-detail"><p><b>Trigger:</b> completed service and recall date. <b>Rules:</b> wait six months, send a reminder with consent controls, and exit when an appointment is booked or contact opts out.</p><code>Service complete + 6 months &gt; Recall message &gt; Appointment check</code></div></details>
+          </div></section>
+
+          <section class="decision-log" aria-labelledby="decision-title" data-reveal><div><span class="section-label">DECISION LOG</span><h2 id="decision-title">The build has reasons, not just objects.</h2></div><div class="decision-grid"><div><span>01</span><h3>Form first, booking second</h3><p>The form captures goals and consent before the calendar asks for a commitment.</p></div><div><span>02</span><h3>No fake proof</h3><p>The public case study does not invent testimonials or live results for a simulation.</p></div><div><span>03</span><h3>Modular workflows</h3><p>Six smaller automations make ownership, stop conditions, and QA visible.</p></div><div><span>04</span><h3>Launch dependencies stay visible</h3><p>Sender setup, free hosted URLs, compliance review, and real data are separate from build completion.</p></div></div></section>
+        </section>
+
+        <section id="view-build" class="view-panel" role="tabpanel" aria-labelledby="tab-build" data-view-panel="build" hidden>
+          <div class="view-heading" data-reveal><div><span class="section-label">03 / 10-PHASE BUILD</span><h2>From a blank brief to a testable system.</h2></div><p>Every phase answers the same teaching question: what went in, what changed, where it lives, and what came out?</p></div>
+          <div class="build-status"><span class="status-dot" aria-hidden="true"></span><div><strong>Simulation build complete</strong><p>10/10 workshop phases documented. Production launch gates remain clearly marked.</p></div><span class="status-score">10 / 10</span></div>
+          <div class="phase-timeline">
+            <details class="phase-row" open data-reveal><summary><span class="phase-number">01</span><span><strong>Discovery</strong><small>Turn the conversation into a problem worth solving.</small></span><span class="phase-status">Complete</span></summary><div class="phase-grid"><div><span>INPUT</span><p>Discovery transcript: location, services, audience, objections, current numbers, and business goals.</p></div><div><span>DECISION</span><p>Focus the offer on a free 30-minute smile consultation for time-poor BGC and Makati professionals.</p></div><div><span>ACTIONS TAKEN</span><p>Extract the 70% pre-booking drop, 35% no-show pattern, trust concerns, and whitening opportunity.</p></div><div><span>WHERE IT LIVES IN GHL</span><p>Source and audience decisions become fields, tags, pipeline stages, and campaign naming conventions.</p></div><div><span>OUTPUT</span><p>Problem statement, audience profile, offer guardrails, and measurement questions.</p></div><div><span>BUSINESS PURPOSE</span><p>Make the system respond to a real business bottleneck instead of adding random automation.</p></div></div></details>
+            <details class="phase-row" data-reveal><summary><span class="phase-number">02</span><span><strong>Campaign strategy</strong><small>Choose the message, audience, and success direction.</small></span><span class="phase-status">Complete</span></summary><div class="phase-grid"><div><span>INPUT</span><p>Discovery facts plus the Marketing Strategy and Integrated Campaign Plan deliverables.</p></div><div><span>DECISION</span><p>Use warm, professional, non-intimidating language and a consultation as the first conversion.</p></div><div><span>ACTIONS TAKEN</span><p>Define the Meta ad angle, content pillars, channel roles, CTA, and projected campaign goals.</p></div><div><span>WHERE IT LIVES IN GHL</span><p>Campaign names, UTM values, source tags, landing page sections, and dashboard filters.</p></div><div><span>OUTPUT</span><p>Campaign brief with channel plan, audience, message hierarchy, and target definitions.</p></div><div><span>BUSINESS PURPOSE</span><p>Give every later asset the same promise so the journey feels continuous.</p></div></div></details>
+            <details class="phase-row" data-reveal><summary><span class="phase-number">03</span><span><strong>Funnel blueprint</strong><small>Draw the path before building screens and rules.</small></span><span class="phase-status">Complete</span></summary><div class="phase-grid"><div><span>INPUT</span><p>Campaign strategy, offer, objections, and the Funnel Map and GHL Automation Blueprint.</p></div><div><span>DECISION</span><p>Use a form-first handoff: landing page to inquiry form to calendar, with a pipeline record early.</p></div><div><span>ACTIONS TAKEN</span><p>Map every step, data capture point, branch, wait, stop condition, and handoff to a person.</p></div><div><span>WHERE IT LIVES IN GHL</span><p>Sites, Forms, Calendars, Opportunities, and Workflows.</p></div><div><span>OUTPUT</span><p>Customer path plus system map that a builder can implement and a reviewer can follow.</p></div><div><span>BUSINESS PURPOSE</span><p>Prevent the landing page, form, calendar, and follow-up from becoming disconnected tools.</p></div></div></details>
+            <details class="phase-row" data-reveal><summary><span class="phase-number">04</span><span><strong>Conversion content</strong><small>Write the words that lower uncertainty.</small></span><span class="phase-status">Complete</span></summary><div class="phase-grid"><div><span>INPUT</span><p>Audience anxieties, offer guardrails, and the Landing Page Copy Deck plus Email and SMS Sequence.</p></div><div><span>DECISION</span><p>Lead with clarity: understand options first, decide on treatment later.</p></div><div><span>ACTIONS TAKEN</span><p>Write hero, benefits, FAQs, form prompts, confirmation copy, email messages, and consent-aware SMS.</p></div><div><span>WHERE IT LIVES IN GHL</span><p>Sites page builder, Forms, Calendars, Email templates, Snippets, and SMS actions.</p></div><div><span>OUTPUT</span><p>Approved copy set with merge fields, sender notes, and message timing.</p></div><div><span>BUSINESS PURPOSE</span><p>Make the next action feel safe and specific without using pressure or invented proof.</p></div></div></details>
+            <details class="phase-row" data-reveal><summary><span class="phase-number">05</span><span><strong>GHL data model</strong><small>Decide what the system needs to remember.</small></span><span class="phase-status">Complete</span></summary><div class="phase-grid"><div><span>INPUT</span><p>Funnel blueprint, CRM Configuration guide, and reporting questions.</p></div><div><span>DECISION</span><p>Use a small, purposeful model: pipeline stages, three custom fields, source and behavior tags.</p></div><div><span>ACTIONS TAKEN</span><p>Configure the Free Consultation Funnel, fields, tags, opportunity naming, and consent logic.</p></div><div><span>WHERE IT LIVES IN GHL</span><p>Settings, Custom Fields, Tags, Pipelines, and Opportunities.</p></div><div><span>OUTPUT</span><p>A consistent record structure that workflows and reports can read.</p></div><div><span>BUSINESS PURPOSE</span><p>Make follow-up and measurement dependable because the data has a shared vocabulary.</p></div></div></details>
+            <details class="phase-row" data-reveal><summary><span class="phase-number">06</span><span><strong>Lead capture</strong><small>Build the first working conversion handoff.</small></span><span class="phase-status">Complete</span></summary><div class="phase-grid"><div><span>INPUT</span><p>Form copy, field model, consent requirement, and landing page structure.</p></div><div><span>DECISION</span><p>Collect only information that helps the consultation or the follow-up decision.</p></div><div><span>ACTIONS TAKEN</span><p>Build the inquiry form, map fields, add SMS consent, and connect the submit action to the workflow.</p></div><div><span>WHERE IT LIVES IN GHL</span><p>Sites &gt; Forms and the landing page CTA.</p></div><div><span>OUTPUT</span><p>A testable form submission with contact, source, intent, and consent data.</p></div><div><span>BUSINESS PURPOSE</span><p>Turn anonymous interest into an understandable lead without creating unnecessary friction.</p></div></div></details>
+            <details class="phase-row" data-reveal><summary><span class="phase-number">07</span><span><strong>Booking</strong><small>Turn a lead into a time on the calendar.</small></span><span class="phase-status">Complete</span></summary><div class="phase-grid"><div><span>INPUT</span><p>Calendar guide, consultation duration, hours, buffers, notice, and form-first experience.</p></div><div><span>DECISION</span><p>Use a 30-minute simple calendar with Asia/Manila time, 10-minute buffers, and a clear booking handoff.</p></div><div><span>ACTIONS TAKEN</span><p>Configure availability, booking questions where useful, confirmation copy, and the calendar link/widget route.</p></div><div><span>WHERE IT LIVES IN GHL</span><p>Calendars &gt; Simple Calendar, plus the landing page and confirmation workflow.</p></div><div><span>OUTPUT</span><p>A booked appointment that updates the opportunity and starts reminder logic.</p></div><div><span>BUSINESS PURPOSE</span><p>Reduce the gap between “interested” and “actually scheduled.”</p></div></div></details>
+            <details class="phase-row" data-reveal><summary><span class="phase-number">08</span><span><strong>Automation</strong><small>Make the system respond at the right moments.</small></span><span class="phase-status">Complete</span></summary><div class="phase-grid"><div><span>INPUT</span><p>Workflow Specification, message templates, consent rules, stages, and stop conditions.</p></div><div><span>DECISION</span><p>Split the original journey into six modular workflows so each behavior is testable.</p></div><div><span>ACTIONS TAKEN</span><p>Build triggers, conditions, waits, email/SMS actions, stage changes, tags, and exits for each workflow.</p></div><div><span>WHERE IT LIVES IN GHL</span><p>Automation &gt; Workflows, Email templates, Snippets, and Pipeline actions.</p></div><div><span>OUTPUT</span><p>New lead, booking, no-show, whitening, payment, and recall automations.</p></div><div><span>BUSINESS PURPOSE</span><p>Make timely follow-up repeatable while protecting consent and avoiding duplicate messages.</p></div></div></details>
+            <details class="phase-row" data-reveal><summary><span class="phase-number">09</span><span><strong>Measurement</strong><small>Define what the system should teach us.</small></span><span class="phase-status">Complete</span></summary><div class="phase-grid"><div><span>INPUT</span><p>Analytics and KPI Plan, dashboard guide, projected goals, and funnel events.</p></div><div><span>DECISION</span><p>Measure progression and friction, not vanity activity alone.</p></div><div><span>ACTIONS TAKEN</span><p>Define event names, formulas, UTM fields, dashboard widgets, weekly review, and diagnostic playbook.</p></div><div><span>WHERE IT LIVES IN GHL</span><p>Dashboard, opportunity reports, appointment reports, email/SMS stats, and campaign parameters.</p></div><div><span>OUTPUT</span><p>A measurement plan that can be activated when real traffic arrives.</p></div><div><span>BUSINESS PURPOSE</span><p>Make the next optimization decision visible instead of relying on guesswork.</p></div></div></details>
+            <details class="phase-row" data-reveal><summary><span class="phase-number">10</span><span><strong>Simulation QA</strong><small>Walk the complete path before calling it done.</small></span><span class="phase-status">Complete</span></summary><div class="phase-grid"><div><span>INPUT</span><p>All configured objects, eight deliverables, test contacts, and the QA checklist.</p></div><div><span>DECISION</span><p>Call the workshop build complete only when the intended path and boundary cases are documented.</p></div><div><span>ACTIONS TAKEN</span><p>Test submission, booking, stage change, consent branch, no-show path, workflow exits, mobile page, and dashboard definitions.</p></div><div><span>WHERE IT LIVES IN GHL</span><p>Sites preview, Contacts, Opportunities, Calendars, Workflow execution logs, and reporting surfaces.</p></div><div><span>OUTPUT</span><p>10/10 simulation completion with launch dependencies listed separately.</p></div><div><span>BUSINESS PURPOSE</span><p>Replace “it should work” with a repeatable review path.</p></div></div></details>
+          </div>
+          <div class="build-next"><div><span class="section-label">NEXT AFTER THE WORKSHOP</span><h2>Activate the dependency list before live traffic.</h2></div><ol><li>Configure a production sender domain and deliverability settings.</li><li>Complete local/provider compliance review for SMS and healthcare advertising.</li><li>Connect live ad tracking and validate UTM values.</li><li>Run a real-data pilot, then replace projected goals with observed performance.</li></ol></div>
+          <section class="source-trail" data-reveal><div><span class="section-label">SOURCE TRAIL</span><h2>What informed the build?</h2><p>The implementation is grounded in the discovery transcript plus all seven GHL setup guides from the workshop folder.</p></div><div class="source-list"><div><span>BASE BRIEF</span><strong>Bloom Dental discovery transcript</strong><p>Audience, bottleneck, objections, offer guardrails, and projected goals.</p></div><div><span>GUIDE 01</span><strong>CRM Configuration</strong><p>Pipeline stages, tags, fields, and opportunity structure.</p></div><div><span>GUIDE 02</span><strong>Calendar for Booking</strong><p>30-minute appointment, buffers, notice, availability, and handoff.</p></div><div><span>GUIDE 03</span><strong>Landing Page Build</strong><p>Page sections, booking widget, mobile QA, publish, and test path.</p></div><div><span>GUIDE 04</span><strong>Email Templates</strong><p>Seven approved email moments, merge fields, sender, and deliverability rules.</p></div><div><span>GUIDE 05</span><strong>SMS Templates + Compliance</strong><p>Consent gate, STOP language, sending hours, and provider review.</p></div><div><span>GUIDE 06</span><strong>Workflow Builder Walkthrough</strong><p>Triggers, waits, conditions, branches, actions, and stop logic.</p></div><div><span>GUIDE 07</span><strong>Analytics Dashboard</strong><p>Widgets, weekly review, event definitions, and diagnostic questions.</p></div></div></section>
+        </section>
+
+        <section id="view-deliverables" class="view-panel" role="tabpanel" aria-labelledby="tab-deliverables" data-view-panel="deliverables" hidden>
+          <div class="view-heading" data-reveal><div><span class="section-label">04 / DELIVERABLES</span><h2>The workshop work, presented as a working library.</h2></div><p>These are the full deliverables in native website layouts, not screenshots or file downloads. Open a document to read the actual build decisions.</p></div>
+          <div class="deliverables-layout"><aside class="deliverables-index" role="tablist" aria-orientation="vertical" aria-label="Workshop deliverables"><span class="index-label">EIGHT WORKSHOP OUTPUTS</span><button class="doc-tab is-active" type="button" role="tab" aria-controls="docs-panel-strategy-doc" data-doc="strategy-doc" aria-selected="true" tabindex="0"><span>01</span>Marketing Strategy</button><button class="doc-tab" type="button" role="tab" aria-controls="docs-panel-campaign-doc" data-doc="campaign-doc" aria-selected="false" tabindex="-1"><span>02</span>Integrated Campaign Plan</button><button class="doc-tab" type="button" role="tab" aria-controls="docs-panel-funnel-doc" data-doc="funnel-doc" aria-selected="false" tabindex="-1"><span>03</span>Funnel Map + GHL Blueprint</button><button class="doc-tab" type="button" role="tab" aria-controls="docs-panel-copy-doc" data-doc="copy-doc" aria-selected="false" tabindex="-1"><span>04</span>Landing Page Copy Deck</button><button class="doc-tab" type="button" role="tab" aria-controls="docs-panel-messages-doc" data-doc="messages-doc" aria-selected="false" tabindex="-1"><span>05</span>Email + SMS Sequence</button><button class="doc-tab" type="button" role="tab" aria-controls="docs-panel-workflow-doc" data-doc="workflow-doc" aria-selected="false" tabindex="-1"><span>06</span>GHL Workflow Specification</button><button class="doc-tab" type="button" role="tab" aria-controls="docs-panel-kpi-doc" data-doc="kpi-doc" aria-selected="false" tabindex="-1"><span>07</span>Analytics + KPI Plan</button><button class="doc-tab" type="button" role="tab" aria-controls="docs-panel-checklist-doc" data-doc="checklist-doc" aria-selected="false" tabindex="-1"><span>08</span>Implementation Checklist</button></aside><div id="deliverable-outlet" class="deliverable-outlet" aria-live="polite"></div></div>
+        </section>
+
+        <section id="view-measurement" class="view-panel" role="tabpanel" aria-labelledby="tab-measurement" data-view-panel="measurement" hidden>
+          <div class="view-heading" data-reveal><div><span class="section-label">05 / MEASUREMENT</span><h2>Make the next decision visible.</h2></div><p>The dashboard is a learning instrument for the simulation plan. It does not claim that a live campaign achieved the targets.</p></div>
+          <section class="target-grid" aria-label="Projected campaign goals"><article class="target-card"><span class="target-kind">PROJECTED GOAL / BOOKING VOLUME</span><strong>60</strong><h3>bookings in 60 days</h3><p>Directional campaign goal from the discovery brief.</p></article><article class="target-card"><span class="target-kind">PROJECTED GOAL / SHOW RATE</span><strong>&lt;15%</strong><h3>no-show rate</h3><p>Guardrail for reminder and confirmation quality.</p></article><article class="target-card"><span class="target-kind">PROJECTED GOAL / VALUE PATH</span><strong>40%</strong><h3>whitening attach rate</h3><p>Directional downstream conversion goal, not a result.</p></article></section>
+          <section class="measurement-grid" data-reveal><div class="measurement-block"><span class="section-label">EVENT MODEL</span><h2>Track the handoffs, not just the clicks.</h2><table><thead><tr><th>Event</th><th>What it tells us</th><th>GHL evidence</th></tr></thead><tbody><tr><td><code>ad_click</code></td><td>Interest reached the funnel.</td><td>UTM source / campaign</td></tr><tr><td><code>form_submit</code></td><td>Interest became an identifiable lead.</td><td>Contact + form record</td></tr><tr><td><code>booking_created</code></td><td>Lead selected a consultation time.</td><td>Appointment + stage</td></tr><tr><td><code>show_completed</code></td><td>Booked time became a consultation.</td><td>Appointment status</td></tr><tr><td><code>whitening_booked</code></td><td>Consultation created a next step.</td><td>Pipeline stage + field</td></tr><tr><td><code>recall_booked</code></td><td>Future care was scheduled.</td><td>Appointment + recall workflow</td></tr></tbody></table></div><div class="measurement-block"><span class="section-label">KPI TREE</span><h2>Separate volume, quality, and value.</h2><div class="kpi-tree"><div><span>ACQUISITION</span><strong>Reach &gt; clicks</strong><small>CTR = ad clicks / impressions</small></div><div><span>CAPTURE</span><strong>Clicks &gt; leads</strong><small>Lead rate = form submits / clicks</small></div><div><span>BOOKING</span><strong>Leads &gt; bookings</strong><small>Booking rate = bookings / leads</small></div><div><span>SHOW RATE</span><strong>Bookings &gt; completed</strong><small>Show rate = completed / bookings</small></div><div><span>VALUE</span><strong>Consults &gt; whitening</strong><small>Attach rate = whitening booked / completed consults</small></div></div></div></section>
+          <section class="dashboard-plan" data-reveal><div><span class="section-label">DASHBOARD PLAN</span><h2>Five widgets answer five operating questions.</h2></div><div class="dashboard-list"><div><span>01</span><strong>Opportunities by stage</strong><p>Where are people accumulating or disappearing?</p></div><div><span>02</span><strong>Appointment summary</strong><p>Are bookings becoming completed consultations?</p></div><div><span>03</span><strong>Email and SMS health</strong><p>Are messages being delivered and engaged with?</p></div><div><span>04</span><strong>Source and UTM view</strong><p>Which campaign path creates qualified movement?</p></div><div><span>05</span><strong>Whitening and recall path</strong><p>What happens after the consultation?</p></div></div></section>
+          <section class="review-plan" data-reveal><div><span class="section-label">WEEKLY REVIEW</span><h2>Diagnose before optimizing.</h2></div><div class="review-columns"><div><h3>Cadence</h3><ol><li>Check volume and delivery health.</li><li>Compare each stage to its prior week.</li><li>Find the first meaningful drop.</li><li>Change one variable and record it.</li></ol></div><div><h3>Diagnostic playbook</h3><ul><li>Clicks high, form submits low: clarify the offer or reduce friction.</li><li>Leads high, bookings low: inspect the calendar handoff and message timing.</li><li>Bookings high, shows low: review reminder content, timing, and availability.</li><li>Consults high, whitening low: inspect fit, education, and the interest field.</li></ul></div></div></section>
+          <section class="measurement-boundary"><span class="section-label">MEASUREMENT BOUNDARY</span><h2>Projected goals become real KPIs only after launch.</h2><p>Until live traffic, sender delivery, compliance, and production tracking are active, the numbers above are targets to test against, not evidence to celebrate.</p></section>
+        </section>
+
+        <footer class="redesign-footer"><div><span class="brand-sigil" aria-hidden="true">BD</span><p>Bloom Dental Studio consultation funnel and automation system.<br />Fast Track Workshop simulation / portfolio case study.</p></div><a class="text-link" href="mailto:imperial.andrejoseece@gmail.com">Open a conversation <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></footer>
+      </section>
       <section class="hero section-band" aria-labelledby="page-title">
         <div class="hero-copy reveal">
           <p class="eyebrow">Portfolio case study / Strategy to implementation</p>
@@ -2236,12 +2409,15 @@
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" hidden>
       <p>Fast Track Workshop portfolio piece by Andre.</p>
       <a href="mailto:imperial.andrejoseece@gmail.com">imperial.andrejoseece@gmail.com</a>
     </footer>
 
-    <script src="script.js?v=implementation-2"></script>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+    <script src="script.js?v=dark-redesign-1" defer></script>
   </body>
 </html>
 

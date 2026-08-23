@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Bloom Dental Studio">
+  <rect width="64" height="64" fill="#13201d"/>
+  <rect x="8" y="8" width="48" height="48" fill="none" stroke="#a9d7b7" stroke-width="2"/>
+  <text x="32" y="38" fill="#f2ead9" font-family="monospace" font-size="17" text-anchor="middle">BD</text>
+</svg>

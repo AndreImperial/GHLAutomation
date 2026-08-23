@@ -1,47 +1,55 @@
 # Bloom Dental Studio Portfolio Site
 
-Static portfolio case study for the Fast Track Workshop project, updated to show the implemented GoHighLevel simulation rather than only the original blueprint.
+Dark, static portfolio case study for the Fast Track Workshop simulation. The site teaches the project from business problem to customer journey, GHL implementation, automation, measurement, and simulation QA.
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https%3A%2F%2Fgithub.com%2FAndreImperial%2FGHLAutomation)
 
 ## Open Locally
 
-From this folder:
-
-```powershell
-py -3 -m http.server 4173 --bind 127.0.0.1
-```
-
-Then open:
+Serve this folder with any static server, then open:
 
 ```text
 http://127.0.0.1:4173/
 ```
 
+For example, with Python installed:
+
+```powershell
+py -3 -m http.server 4173 --bind 127.0.0.1
+```
+
+The site has no build step and no runtime dependency install. Render serves the repository root using `render.yaml`.
+
+## Experience Map
+
+- `#tour`: 90-second plain-English explanation and GHL decoder.
+- `#system`: customer path, Plain English/GHL Detail switch, six-workflow lab, and decision log.
+- `#build`: ten completed phases, each with input, decision, actions, GHL location, output, purpose, and status.
+- `#deliverables`: eight full workshop documents presented as native website content.
+- `#measurement`: projected goals, event model, KPI tree, dashboard plan, formulas, review cadence, and diagnostic playbook.
+
+Legacy hashes continue to work: `#beginner-path`, `#implementation`, `#board`, `#process`, `#documents`, and `#results` map to the nearest new view.
+
 ## Edit Before Publishing
 
-- Update the footer email in `index.html`.
-- Replace "Andre" with your preferred public name if needed.
-- Keep the results language as targets unless you later add verified campaign performance data.
-- The site now uses the workshop content directly instead of document preview images.
-- The Workshop Docs section has tabs for each deliverable with the full content hardcoded into `index.html`.
-- The implementation tracker shows all ten workshop phases as complete, from strategy through simulation QA.
-- The tracker can show all phases or only completed phases; each phase opens into an educational explanation.
-- The Guide, Implemented System, Glossary, Status, and Reflection sections frame the project as a simulation learning showcase.
-- The Process and Funnel sections use flowchart-style visuals to show how the strategic workstreams connect.
-- The Project Map and phase links connect the visual flow directly to the matching Workshop Docs tab.
-- The Board layer presents the workshop as a Miro-style canvas with phase lanes, sticky-note decisions, funnel steps, and deliverable links.
-- Each Workshop Docs tab includes a key-decision callout to make the hardcoded deliverables feel more guided and less static.
-- The hardcoded Workshop Docs are enhanced into native reading pages with section cards, mini tables of contents, and desktop reading progress.
+- Change the public name and contact email in `index.html` and the footer.
+- Update the `<title>`, description, canonical URL, and social preview URLs in `index.html` when the site moves.
+- Replace copy directly in the native HTML. The deliverables are intentionally hardcoded into the site; no Markdown or document images are loaded.
+- Replace `assets/og-bloom-dental.png` with another 1200x630 publication-safe image if the visual identity changes.
+- Keep `60 bookings in 60 days`, `<15% no-show rate`, and `40% whitening attach rate` labeled as projected goals until verified campaign data exists.
+- Add real proof only after it is publication-safe. The current release intentionally contains no GHL screenshots, personal account information, fake testimonials, or achieved campaign results.
 
 ## Structure
 
-- `index.html`: case study content, phase-by-phase process narrative, workshop document-content tabs, and learning guide sections
-- `styles.css`: visual system, responsive layout, accessibility states
-- `script.js`: tabs, hash navigation, phase-status filtering, document interfaces, and reveal motion
-- `assets/`: archived workshop preview images, currently not shown on the page
-- `render.yaml`: Render static-site deployment configuration
+- `index.html`: five-view shell plus all hardcoded workshop deliverables.
+- `styles.css`: dark graphite-green token system, responsive layouts, focus states, and reduced-motion rules.
+- `script.js`: ARIA tab navigation, hashes and history, legacy aliases, journey node explanations, deliverable switching, and GSAP fallback behavior.
+- `assets/favicon.svg`: publication-safe favicon.
+- `assets/og-bloom-dental.png`: 1200x630 social preview.
+- `design-system/bloom-dental-case-study/MASTER.md`: final dark interaction and visual rules.
+- `PRODUCT.md`: product context used to keep the redesign aligned to the simulation and its audiences.
+- `render.yaml`: Render static-site configuration.
 
-## Portfolio Framing
+## Truth Boundary
 
-Best positioning: this is a simulated campaign strategy and implemented GoHighLevel system. It teaches the phase-by-phase flow used to turn a business case into a funnel, conversion copy, CRM objects, workflows, and a measurement plan without claiming live campaign results. Email delivery remains a disclosed configuration/QA item rather than a claimed success.
+This is a completed workshop simulation, not a live performance case study. `10/10` means the workshop build is documented and configured for simulation QA. Sender-domain setup, live ads, production compliance review, and real campaign data remain launch dependencies.

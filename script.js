@@ -1,470 +1,365 @@
-const tabGroups = new Map();
+(() => {
+  "use strict";
 
-document.querySelectorAll("[data-tab-group]").forEach((group) => {
-  const groupName = group.dataset.tabGroup;
-  const tabs = Array.from(group.querySelectorAll('[role="tab"]'));
-  const panels = tabs
-    .map((tab) => document.getElementById(tab.getAttribute("aria-controls")))
-    .filter(Boolean);
-  const validTabs = new Set(tabs.map((tab) => tab.dataset.tab));
-  const defaultTab = tabs.find((tab) => tab.getAttribute("aria-selected") === "true")?.dataset.tab || tabs[0]?.dataset.tab;
+  const views = ["tour", "system", "build", "deliverables", "measurement"];
+  const aliases = {
+    "": "tour",
+    tour: "tour",
+    "quick-tour": "tour",
+    "beginner-path": "tour",
+    system: "system",
+    board: "system",
+    build: "build",
+    implementation: "build",
+    process: "build",
+    deliverables: "deliverables",
+    documents: "deliverables",
+    measurement: "measurement",
+    results: "measurement"
+  };
 
-  function activate(tabName, options = {}) {
-    const nextName = validTabs.has(tabName) ? tabName : defaultTab;
-
-    tabs.forEach((tab) => {
-      const isActive = tab.dataset.tab === nextName;
-      tab.setAttribute("aria-selected", String(isActive));
-      tab.tabIndex = isActive ? 0 : -1;
-    });
-
-    const activePanelId = tabs.find((tab) => tab.dataset.tab === nextName)?.getAttribute("aria-controls");
-    panels.forEach((panel) => {
-      panel.hidden = panel.id !== activePanelId;
-    });
-
-    if (options.focus) {
-      tabs.find((tab) => tab.dataset.tab === nextName)?.focus();
+  const nodeDetails = {
+    ad: {
+      title: "Interest begins with a focused offer.",
+      plain: "The person sees a consultation message designed for time-poor BGC and Makati professionals.",
+      detail: "UTM source and campaign values identify where the click came from before the contact record exists.",
+      technical: "Source: Meta ad / UTM campaign parameters"
+    },
+    page: {
+      title: "The landing page makes the next step understandable.",
+      plain: "The page answers what the consultation is, who it is for, and what happens after someone asks for help.",
+      detail: "A GHL funnel step holds the hero, benefit block, FAQ, booking handoff, and footer CTA.",
+      technical: "Sites > Funnels > Bloom Dental - Free Consultation"
+    },
+    form: {
+      title: "The inquiry form captures useful intent.",
+      plain: "The person shares what they want to improve and gives the team enough context to respond well.",
+      detail: "Form submission maps contact fields, preferred date, referral source, whitening interest, and SMS consent.",
+      technical: "Sites > Forms > Bloom Dental Smile Consultation"
+    },
+    calendar: {
+      title: "The calendar turns interest into a real time.",
+      plain: "After the form, the person chooses a 30-minute consultation slot that fits their schedule.",
+      detail: "The Simple Calendar uses Asia/Manila time, buffers, notice, availability, and a booking confirmation trigger.",
+      technical: "Calendars > Bloom Dental - Free Consultation"
+    },
+    pipeline: {
+      title: "The pipeline gives the lead a visible place in the process.",
+      plain: "The team can see whether someone is new, booked, complete, interested in whitening, paid, or lost.",
+      detail: "An opportunity is created in the Free Consultation Funnel with a consistent name, source, value, and stage.",
+      technical: "Opportunities > Free Consultation Funnel"
+    },
+    reminders: {
+      title: "Reminders protect the time that was booked.",
+      plain: "The system confirms the appointment and sends respectful reminders while honoring SMS consent.",
+      detail: "Confirmation and reminder actions use approved email templates, consent-gated SMS snippets, wait steps, and stop conditions.",
+      technical: "Automation > Workflows > Appointment actions"
+    },
+    consultation: {
+      title: "The consultation is the first human value moment.",
+      plain: "The team understands the patient goal, answers questions, and recommends a next step without pressure.",
+      detail: "Appointment status and pipeline stage updates provide the evidence for a completed consultation event.",
+      technical: "Calendar status = show / Pipeline stage = Consultation Complete"
+    },
+    whitening: {
+      title: "Relevant interest becomes a measured next step.",
+      plain: "If whitening fits the person, follow-up education can continue. The system does not claim a sale happened.",
+      detail: "The whitening workflow branches on the interest field, stage, and later payment update to prevent duplicate promotion.",
+      technical: "Custom field: Whitening Interest / Stage: Whitening Booked"
+    },
+    recall: {
+      title: "The relationship can continue after the first outcome.",
+      plain: "A future cleaning reminder keeps the patient relationship useful beyond the original consultation.",
+      detail: "The recall workflow waits six months, checks appointment status, and exits on booking or opt-out.",
+      technical: "Workflow: Six-Month Cleaning Recall"
+    },
+    kpi: {
+      title: "The dashboard closes the learning loop.",
+      plain: "The team reviews where people move forward or drop, then chooses one improvement to test next.",
+      detail: "Opportunity stages, appointments, delivery stats, UTMs, and downstream events populate the measurement plan.",
+      technical: "Reporting > Dashboard widgets / KPI event model"
     }
+  };
 
-    if (options.updateHash) {
-      history.pushState({ group: groupName, tab: nextName }, "", `#${nextName}`);
+  let activeView = "tour";
+  let activeDocument = "strategy-doc";
+  let explanationMode = "plain";
+  let systemTrigger = null;
+  let revealObserver = null;
+
+  const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function getHashState() {
+    const raw = window.location.hash.replace(/^#/, "");
+    const parts = raw.split("/");
+    const view = aliases[parts[0]] || "tour";
+    const documentId = parts[1] || null;
+    return { view, documentId };
+  }
+
+  function writeHash(view, documentId, replace) {
+    const next = documentId ? `#${view}/${documentId}` : `#${view}`;
+    if (replace) {
+      window.history.replaceState(null, "", next);
+    } else if (window.location.hash !== next) {
+      window.history.pushState(null, "", next);
     }
   }
 
-  tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activate(tab.dataset.tab, { updateHash: groupName === "case" }));
-    tab.addEventListener("keydown", (event) => {
-      const lastIndex = tabs.length - 1;
-      let nextIndex = index;
+  function updateTabs(view) {
+    document.querySelectorAll(".primary-tab").forEach((tab) => {
+      const selected = tab.dataset.view === view;
+      tab.classList.toggle("is-active", selected);
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    });
+  }
 
-      if (event.key === "ArrowRight") nextIndex = index === lastIndex ? 0 : index + 1;
-      if (event.key === "ArrowLeft") nextIndex = index === 0 ? lastIndex : index - 1;
-      if (event.key === "Home") nextIndex = 0;
-      if (event.key === "End") nextIndex = lastIndex;
+  function refreshIcons() {
+    if (window.lucide && typeof window.lucide.createIcons === "function") {
+      window.lucide.createIcons({ attrs: { "stroke-width": 1.7 } });
+    }
+  }
 
-      if (nextIndex !== index) {
-        event.preventDefault();
-        activate(tabs[nextIndex].dataset.tab, { focus: true, updateHash: groupName === "case" });
+  function activateDocument(documentId, updateUrl) {
+    const requested = document.getElementById(`docs-panel-${documentId}`) ? documentId : "strategy-doc";
+    activeDocument = requested;
+    document.querySelectorAll(".doc-tab").forEach((button) => {
+      const selected = button.dataset.doc === requested;
+      button.classList.toggle("is-active", selected);
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
+    });
+    document.querySelectorAll("#deliverable-outlet .document-panel").forEach((panel) => {
+      panel.hidden = panel.id !== `docs-panel-${requested}`;
+    });
+    if (updateUrl) writeHash("deliverables", requested, false);
+  }
+
+  function moveDeliverables() {
+    const outlet = document.getElementById("deliverable-outlet");
+    if (!outlet) return;
+    const sourcePanels = document.querySelectorAll("#documents .document-panel");
+    sourcePanels.forEach((panel) => {
+      panel.classList.add("native-deliverable");
+      const documentKey = panel.id.replace(/^docs-panel-/, "");
+      const tab = document.querySelector(`.doc-tab[data-doc="${documentKey}"]`);
+      if (tab) {
+        tab.id = `new-doc-tab-${documentKey}`;
+        panel.setAttribute("aria-labelledby", tab.id);
       }
+      outlet.appendChild(panel);
     });
-  });
-
-  activate(defaultTab);
-  tabGroups.set(groupName, { activate, validTabs, defaultTab });
-});
-
-const caseViewTabs = Array.from(document.querySelectorAll("[data-case-view-tab]"));
-const caseViewPanels = Array.from(document.querySelectorAll("[data-case-panel]"));
-const caseViewTargets = new Map(caseViewTabs.map((tab) => [tab.dataset.caseViewTab, tab.dataset.caseTarget]));
-
-function caseViewForHash(hash) {
-  if (!hash) return "overview";
-
-  const matchingPanel = caseViewPanels.find((panel) => panel.id === hash || panel.querySelector(`#${CSS.escape(hash)}`));
-  if (matchingPanel) return matchingPanel.dataset.casePanel;
-
-  if (tabGroups.get("case")?.validTabs.has(hash)) return "overview";
-  if (hash.startsWith("docs-panel-") || tabGroups.get("docs")?.validTabs.has(hash)) return "documents";
-
-  return "overview";
-}
-
-function activateCaseView(viewName, options = {}) {
-  if (!caseViewTabs.length || !caseViewPanels.length) return;
-
-  const nextView = caseViewTargets.has(viewName) ? viewName : "overview";
-
-  caseViewTabs.forEach((tab) => {
-    const isActive = tab.dataset.caseViewTab === nextView;
-    tab.setAttribute("aria-selected", String(isActive));
-    tab.tabIndex = isActive ? 0 : -1;
-  });
-
-  caseViewPanels.forEach((panel) => {
-    panel.hidden = panel.dataset.casePanel !== nextView;
-  });
-
-  if (options.updateHash) {
-    const target = options.target || caseViewTargets.get(nextView);
-    if (target) {
-      history.pushState({ caseView: nextView }, "", `#${target}`);
-      document.getElementById(target)?.scrollIntoView({ block: "start" });
-    }
+    activateDocument(activeDocument, false);
   }
 
-  if (options.focus) {
-    caseViewTabs.find((tab) => tab.dataset.caseViewTab === nextView)?.focus();
-  }
-}
-
-caseViewTabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => activateCaseView(tab.dataset.caseViewTab, { updateHash: true }));
-  tab.addEventListener("keydown", (event) => {
-    const lastIndex = caseViewTabs.length - 1;
-    let nextIndex = index;
-
-    if (event.key === "ArrowRight") nextIndex = index === lastIndex ? 0 : index + 1;
-    if (event.key === "ArrowLeft") nextIndex = index === 0 ? lastIndex : index - 1;
-    if (event.key === "Home") nextIndex = 0;
-    if (event.key === "End") nextIndex = lastIndex;
-
-    if (nextIndex !== index) {
-      event.preventDefault();
-      activateCaseView(caseViewTabs[nextIndex].dataset.caseViewTab, { focus: true, updateHash: true });
-    }
-  });
-});
-
-function activateFromHash() {
-  const hash = window.location.hash.slice(1);
-  activateCaseView(caseViewForHash(hash));
-
-  const caseTabs = tabGroups.get("case");
-  let scrollTarget = hash;
-  if (caseTabs?.validTabs.has(hash)) {
-    caseTabs.activate(hash);
-    scrollTarget = document.getElementById(hash) ? hash : "strategy";
-  } else {
-    caseTabs?.activate(caseTabs.defaultTab);
-  }
-
-  const docsTabs = tabGroups.get("docs");
-  if (caseViewForHash(hash) === "documents" && docsTabs) {
-    const nestedDocMatch = hash.match(/^docs-panel-(.+?)(?:-section-\d+)?$/);
-    const docName = docsTabs.validTabs.has(hash)
-      ? hash
-      : nestedDocMatch && docsTabs.validTabs.has(nestedDocMatch[1])
-        ? nestedDocMatch[1]
-        : docsTabs.defaultTab;
-    docsTabs.activate(docName);
-    scrollTarget = document.getElementById(hash) ? hash : "documents";
-  }
-
-  if (scrollTarget) {
-    window.requestAnimationFrame(() => {
-      const target = document.getElementById(scrollTarget);
-      if (!target) return;
-
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const top = target.getBoundingClientRect().top + window.scrollY - 96;
-      window.scrollTo({ top, behavior: reducedMotion ? "auto" : "smooth" });
+  function renderNode(nodeId) {
+    const detail = nodeDetails[nodeId] || nodeDetails.ad;
+    const title = document.getElementById("node-detail-title");
+    const copy = document.getElementById("node-detail-copy");
+    const technical = document.getElementById("node-detail-technical");
+    const label = document.getElementById("node-detail-label");
+    const counter = document.getElementById("journey-counter");
+    const node = document.querySelector(`.journey-node[data-node="${nodeId}"]`);
+    if (!title || !copy || !technical || !label || !node) return;
+    const index = node.querySelector(".node-index")?.textContent || "01";
+    title.textContent = detail.title;
+    copy.textContent = explanationMode === "plain" ? detail.plain : detail.detail;
+    technical.textContent = detail.technical;
+    label.textContent = explanationMode === "plain" ? "Plain English" : "GHL detail";
+    if (counter) counter.textContent = `${index.padStart(2, "0")} / 10`;
+    document.querySelectorAll(".journey-node").forEach((button) => {
+      button.classList.toggle("is-selected", button === node);
+      button.setAttribute("aria-pressed", String(button === node));
     });
   }
-}
 
-window.addEventListener("popstate", activateFromHash);
-window.addEventListener("hashchange", activateFromHash);
-activateFromHash();
-
-const documentProfiles = {
-  "docs-panel-strategy-doc": {
-    type: "Strategy",
-    output: "Diagnosis, positioning, KPIs",
-    buildState: "Foundation",
-    context: "This explains the clinic, the audience, the bottleneck, and why the campaign should focus on booking and follow-up instead of broad awareness.",
-    question: "What is stopping interested people from becoming attended consultations?",
-    flow: ["Clinic facts", "Audience", "Bottleneck", "Offer", "Goals"],
-    handoff: "The campaign plan receives a defined audience, offer, positioning, and measurable goal."
-  },
-  "docs-panel-campaign-doc": {
-    type: "Campaign",
-    output: "Channel roles, flow, risks",
-    buildState: "Operating plan",
-    context: "This turns the strategy into a 60-day campaign plan: where traffic comes from, what each channel does, and what could go wrong.",
-    question: "How will the offer reach the right people and move them toward booking?",
-    flow: ["Goal", "Audience", "Channel", "Message", "60-day plan"],
-    handoff: "The funnel blueprint receives the traffic source, offer promise, campaign timing, and conversion target."
-  },
-  "docs-panel-funnel-doc": {
-    type: "Funnel",
-    output: "Lead path and GHL handoff",
-    buildState: "Journey map",
-    context: "This shows the exact journey a prospective patient would follow, from seeing an ad to booking, attending, receiving whitening follow-up, and entering recall.",
-    question: "What should happen at every step after someone clicks the ad?",
-    flow: ["Ad", "Page", "Form", "Calendar", "Consult", "Follow-up"],
-    handoff: "The copy and automation documents receive an exact list of pages, messages, decisions, and customer states."
-  },
-  "docs-panel-copy-doc": {
-    type: "Conversion",
-    output: "Landing page and objections",
-    buildState: "Copy system",
-    context: "This is the patient-facing page copy. It explains the offer, reduces concerns about time, price, and pressure, and guides people toward booking.",
-    question: "What does a visitor need to understand and believe before submitting the form?",
-    flow: ["Problem", "Promise", "Benefits", "Trust", "FAQ", "CTA"],
-    handoff: "The finished page copy moves into the GHL landing-page builder and connects to the inquiry form."
-  },
-  "docs-panel-messages-doc": {
-    type: "Messaging",
-    output: "Email and SMS sequence",
-    buildState: "Nurture layer",
-    context: "This contains the automated messages that confirm bookings, remind patients, recover no-shows, and follow up after consultations.",
-    question: "What should the lead hear at each moment so they keep moving?",
-    flow: ["Form reply", "Booking", "24h reminder", "2h reminder", "Recovery", "Upsell"],
-    handoff: "The workflow specification receives approved messages matched to triggers, waiting periods, and appointment outcomes."
-  },
-  "docs-panel-workflow-doc": {
-    type: "Automation",
-    output: "Triggers, branches, stop rules",
-    buildState: "GHL spec",
-    context: "This translates the patient journey into automation logic: what starts each workflow, what message sends, when the system waits, and when it stops.",
-    question: "What should GoHighLevel do automatically when a lead takes an action?",
-    flow: ["Trigger", "Action", "Wait", "Condition", "Branch", "Stop"],
-    handoff: "The build checklist receives exact GHL objects and rules that can be configured and tested."
-  },
-  "docs-panel-kpi-doc": {
-    type: "Analytics",
-    output: "Metrics, formulas, actions",
-    buildState: "Measurement loop",
-    context: "This explains how the campaign would be judged after launch, including the core metrics, formulas, dashboard widgets, and weekly improvement rules.",
-    question: "Which number tells us where the customer journey is leaking?",
-    flow: ["Ad clicks", "Leads", "Bookings", "Shows", "Whitening", "Recall"],
-    handoff: "A weekly review receives clear metrics and a rule for choosing which stage to improve first."
-  },
-  "docs-panel-checklist-doc": {
-    type: "Implementation",
-    output: "Paste-ready build tasks",
-    buildState: "Launch checklist",
-    context: "This is the practical setup list for building the system in GoHighLevel: pipeline, tags, fields, calendar, form, messages, workflows, and dashboard.",
-    question: "What must be built, connected, and tested before this system is launch-ready?",
-    flow: ["Foundation", "Capture", "Schedule", "Automate", "Measure", "Test"],
-    handoff: "The finished checklist becomes the implementation and QA record for the complete GHL build."
-  }
-};
-
-document.querySelectorAll(".document-panel").forEach((panel) => {
-  const article = panel.querySelector(".document-markdown");
-  const aside = panel.querySelector(".document-layout aside");
-  const content = panel.querySelector(".document-content");
-  if (!article || !aside) return;
-
-  const title = article.querySelector("h4");
-  const sectionHeadings = Array.from(article.querySelectorAll("h5"));
-  if (!sectionHeadings.length) return;
-
-  if (title) {
-    title.classList.add("document-title");
-  }
-
-  const progress = document.createElement("div");
-  progress.className = "doc-progress";
-  progress.innerHTML = '<span style="width: 0%"></span>';
-  article.prepend(progress);
-
-  const toc = document.createElement("nav");
-  toc.className = "doc-mini-toc";
-  toc.setAttribute("aria-label", "Deliverable sections");
-  toc.innerHTML = "<strong>Module jump list</strong>";
-  const tocList = document.createElement("ol");
-  toc.append(tocList);
-  aside.append(toc);
-
-  sectionHeadings.forEach((heading, index) => {
-    const section = document.createElement("section");
-    section.className = "doc-section";
-    section.id = `${panel.id}-section-${index + 1}`;
-    heading.before(section);
-    section.append(heading);
-
-    let sibling = section.nextSibling;
-    while (sibling && !(sibling.nodeType === Node.ELEMENT_NODE && sibling.matches("h5"))) {
-      const next = sibling.nextSibling;
-      section.append(sibling);
-      sibling = next;
-    }
-
-    const item = document.createElement("li");
-    const link = document.createElement("a");
-    link.href = `#${section.id}`;
-    link.textContent = heading.textContent;
-    item.append(link);
-    tocList.append(item);
-  });
-
-  const profile = documentProfiles[panel.id] || {
-    type: "Deliverable",
-    output: "Workshop artifact",
-    buildState: "Reference",
-    question: "What decision does this deliverable make easier?",
-    flow: ["Input", "Decision", "Output"],
-    handoff: "The next phase receives a clear, usable output."
-  };
-  const callout = panel.querySelector(".doc-callout");
-  const calloutText = callout?.querySelector("p")?.textContent.trim() || "Review the core decisions and implementation details for this deliverable.";
-  const sourceNote = content?.querySelector(".source-note");
-  if (sourceNote) {
-    sourceNote.textContent = "Full deliverable content, organized into scannable modules";
-  }
-
-  const dashboard = document.createElement("div");
-  dashboard.className = "doc-interface";
-  dashboard.setAttribute("aria-label", "Deliverable interface summary");
-  dashboard.innerHTML = `
-    <div class="doc-interface-main">
-      <span>${profile.type}</span>
-      <strong>${profile.output}</strong>
-      <p>${calloutText}</p>
-      <p class="doc-context-note">${profile.context}</p>
-    </div>
-    <div class="doc-blueprint" aria-label="Visual deliverable blueprint">
-      <div class="doc-blueprint-heading">
-        <span>Question this document answers</span>
-        <strong>${profile.question}</strong>
-      </div>
-      <div class="doc-flow" aria-label="Deliverable logic flow">
-        ${profile.flow.map((step, index) => `<div><span>${String(index + 1).padStart(2, "0")}</span><strong>${step}</strong></div>`).join("")}
-      </div>
-      <div class="doc-decision-grid">
-        <div>
-          <span>Key decision</span>
-          <p>${calloutText}</p>
-        </div>
-        <div>
-          <span>What the next phase receives</span>
-          <p>${profile.handoff}</p>
-        </div>
-      </div>
-    </div>
-    <div class="doc-stat-grid" aria-label="Deliverable facts">
-      <div>
-        <span>Modules</span>
-        <strong>${sectionHeadings.length}</strong>
-      </div>
-      <div>
-        <span>Status</span>
-        <strong>${profile.buildState}</strong>
-      </div>
-      <div>
-        <span>Use</span>
-        <strong>Review + build</strong>
-      </div>
-    </div>
-    <div class="doc-module-launcher" aria-label="Open deliverable modules">
-      ${sectionHeadings
-        .slice(0, 6)
-        .map((heading, index) => `<a href="#${heading.parentElement.id}"><span>${String(index + 1).padStart(2, "0")}</span>${heading.textContent}</a>`)
-        .join("")}
-    </div>
-  `;
-
-  article.id = `${panel.id}-full-document`;
-  article.hidden = true;
-
-  const evidenceControl = document.createElement("div");
-  evidenceControl.className = "doc-evidence-control";
-  evidenceControl.innerHTML = `
-    <div>
-      <span>Full working document</span>
-      <strong>${sectionHeadings.length} detailed modules are available as supporting evidence.</strong>
-    </div>
-    <button type="button" aria-expanded="false" aria-controls="${article.id}">Open full document</button>
-  `;
-
-  const evidenceButton = evidenceControl.querySelector("button");
-  const setDocumentExpanded = (expanded) => {
-    article.hidden = !expanded;
-    evidenceButton.setAttribute("aria-expanded", String(expanded));
-    evidenceButton.textContent = expanded ? "Hide full document" : "Open full document";
-  };
-
-  evidenceButton.addEventListener("click", () => {
-    const expanded = evidenceButton.getAttribute("aria-expanded") !== "true";
-    setDocumentExpanded(expanded);
-    if (expanded) {
-      window.requestAnimationFrame(() => article.scrollIntoView({ block: "start" }));
-    }
-  });
-
-  const openDocumentSection = (event) => {
-    const targetId = event.currentTarget.getAttribute("href")?.slice(1);
-    const target = targetId ? document.getElementById(targetId) : null;
-    if (!target) return;
-
-    event.preventDefault();
-    setDocumentExpanded(true);
-    history.pushState({}, "", `#${targetId}`);
-    window.requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
-  };
-
-  dashboard.querySelectorAll(".doc-module-launcher a").forEach((link) => link.addEventListener("click", openDocumentSection));
-  toc.querySelectorAll("a").forEach((link) => link.addEventListener("click", openDocumentSection));
-
-  const initialSectionId = window.location.hash.slice(1);
-  if (initialSectionId.startsWith(`${panel.id}-section-`)) {
-    setDocumentExpanded(true);
-    window.requestAnimationFrame(() => document.getElementById(initialSectionId)?.scrollIntoView({ block: "start" }));
-  }
-
-  callout?.remove();
-  if (sourceNote) {
-    sourceNote.before(dashboard);
-    sourceNote.replaceWith(evidenceControl);
-  } else {
-    article.before(dashboard);
-    dashboard.after(evidenceControl);
-  }
-
-  article.addEventListener("scroll", () => {
-    const max = article.scrollHeight - article.clientHeight;
-    const percent = max > 0 ? (article.scrollTop / max) * 100 : 0;
-    progress.querySelector("span").style.width = `${Math.min(100, Math.max(0, percent))}%`;
-  });
-});
-
-document.querySelectorAll("[data-open-doc]").forEach((link) => {
-  link.addEventListener("click", () => {
-    const docTab = link.dataset.openDoc;
-    activateCaseView("documents");
-    window.setTimeout(() => {
-      tabGroups.get("docs")?.activate(docTab);
-      document.getElementById("documents")?.scrollIntoView({ block: "start" });
-    }, 0);
-  });
-});
-
-const phaseFilterButtons = Array.from(document.querySelectorAll("[data-phase-filter]"));
-const implementationCards = Array.from(document.querySelectorAll("[data-phase-status]"));
-const phaseFilterStatus = document.querySelector(".filter-status");
-
-phaseFilterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const filter = button.dataset.phaseFilter;
-    let visibleCount = 0;
-
-    phaseFilterButtons.forEach((item) => {
-      item.setAttribute("aria-pressed", String(item === button));
+  function initJourney() {
+    document.querySelectorAll(".journey-node").forEach((node) => {
+      node.addEventListener("click", () => renderNode(node.dataset.node));
     });
-
-    implementationCards.forEach((card) => {
-      const isVisible = filter === "all" || card.dataset.phaseStatus === filter;
-      card.hidden = !isVisible;
-      if (!isVisible) card.open = false;
-      if (isVisible) visibleCount += 1;
+    document.querySelectorAll(".segment").forEach((segment) => {
+      segment.addEventListener("click", () => {
+        explanationMode = segment.dataset.mode === "detail" ? "detail" : "plain";
+        document.querySelectorAll(".segment").forEach((button) => {
+          const selected = button.dataset.mode === explanationMode;
+          button.classList.toggle("is-active", selected);
+          button.setAttribute("aria-pressed", String(selected));
+        });
+        const selectedNode = document.querySelector(".journey-node.is-selected")?.dataset.node || "ad";
+        renderNode(selectedNode);
+      });
     });
+    renderNode("ad");
+  }
 
-    if (phaseFilterStatus) {
-      const label = button.firstChild?.textContent.trim().toLowerCase() || filter;
-      phaseFilterStatus.textContent = `Showing ${visibleCount} ${label === "all" ? "project" : label} phase${visibleCount === 1 ? "" : "s"}.`;
-    }
-  });
-});
-
-const revealItems = document.querySelectorAll(".reveal");
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
+  function setupReveals() {
+    if (!window.IntersectionObserver) return;
+    if (revealObserver) revealObserver.disconnect();
+    revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+        if (entry.isIntersecting) entry.target.classList.add("is-inview");
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll("[data-reveal]").forEach((element) => revealObserver.observe(element));
+  }
+
+  function setupSystemMotion() {
+    if (!window.gsap || reduceMotion()) return;
+    if (systemTrigger) {
+      systemTrigger.kill();
+      systemTrigger = null;
+    }
+    const path = document.getElementById("journey-draw-path");
+    if (!path) return;
+    window.gsap.set(path, { strokeDashoffset: 1 });
+    if (window.ScrollTrigger) {
+      window.gsap.registerPlugin(window.ScrollTrigger);
+      const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+      if (isDesktop) {
+        systemTrigger = window.ScrollTrigger.create({
+          trigger: ".journey-map-stage",
+          start: "top top+=100",
+          end: "+=520",
+          pin: true,
+          scrub: 0.8,
+          anticipatePin: 1,
+          onUpdate: (self) => { path.style.strokeDashoffset = String(1 - self.progress); }
+        });
+      } else {
+        window.gsap.to(path, { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" });
+      }
+    } else {
+      window.gsap.to(path, { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" });
+    }
+  }
+
+  function setupHeroMotion() {
+    if (!window.gsap || reduceMotion()) return;
+    window.gsap.from(".hero-copy > *", { y: 18, opacity: 0, duration: 0.55, stagger: 0.07, ease: "power2.out" });
+    window.gsap.from(".hero-scene", { y: 20, opacity: 0, duration: 0.7, delay: 0.16, ease: "power2.out" });
+    window.gsap.fromTo(".scene-path-front", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.6, delay: 0.25, ease: "power2.out" });
+    window.gsap.from(".scene-node", { scale: 0.76, transformOrigin: "center", opacity: 0, duration: 0.45, stagger: 0.12, delay: 0.3, ease: "back.out(1.4)" });
+  }
+
+  function initMotion(view) {
+    const canAnimate = Boolean(window.gsap) && !reduceMotion();
+    document.body.classList.toggle("motion-enhanced", canAnimate);
+    setupReveals();
+    if (!canAnimate) return;
+    if (view === "tour" && !document.body.dataset.heroAnimated) {
+      setupHeroMotion();
+      document.body.dataset.heroAnimated = "true";
+    }
+    if (view === "system") setupSystemMotion();
+  }
+
+  function setView(view, options = {}) {
+    const nextView = views.includes(view) ? view : "tour";
+    activeView = nextView;
+    document.querySelectorAll("[data-view-panel]").forEach((panel) => {
+      panel.hidden = panel.dataset.viewPanel !== nextView;
+      panel.classList.toggle("is-active", panel.dataset.viewPanel === nextView);
+    });
+    updateTabs(nextView);
+    document.body.dataset.view = nextView;
+    if (nextView === "deliverables") activateDocument(activeDocument, false);
+    if (nextView !== "system" && systemTrigger) {
+      systemTrigger.kill();
+      systemTrigger = null;
+    }
+    if (options.updateUrl !== false) writeHash(nextView, nextView === "deliverables" ? activeDocument : null, options.replace === true);
+    initMotion(nextView);
+    if (options.scroll !== false) {
+      window.requestAnimationFrame(() => {
+        if (nextView === "tour") {
+          window.scrollTo({ top: 0, behavior: reduceMotion() ? "auto" : "smooth" });
+        } else {
+          document.getElementById(`view-${nextView}`)?.scrollIntoView({ block: "start", behavior: reduceMotion() ? "auto" : "smooth" });
         }
       });
-    },
-    { threshold: 0.18 }
-  );
+    }
+    if (options.focus) document.getElementById(`view-${nextView}`)?.focus({ preventScroll: true });
+  }
 
-  revealItems.forEach((item) => observer.observe(item));
-} else {
-  revealItems.forEach((item) => item.classList.add("is-visible"));
-}
+  function initNavigation() {
+    const tabs = Array.from(document.querySelectorAll(".primary-tab"));
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => setView(tab.dataset.view));
+      tab.addEventListener("keydown", (event) => {
+        if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        let next = index;
+        if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+        if (event.key === "ArrowLeft") next = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = tabs.length - 1;
+        tabs[next].focus();
+        setView(tabs[next].dataset.view);
+      });
+    });
+
+    document.querySelectorAll("[data-view-link]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const view = link.dataset.viewLink;
+        if (!views.includes(view)) return;
+        event.preventDefault();
+        setView(view);
+      });
+    });
+
+    const documentTabs = Array.from(document.querySelectorAll(".doc-tab"));
+    documentTabs.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        activateDocument(button.dataset.doc, true);
+        setView("deliverables", { updateUrl: false, scroll: true });
+      });
+      button.addEventListener("keydown", (event) => {
+        if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        let next = index;
+        if (event.key === "ArrowDown") next = (index + 1) % documentTabs.length;
+        if (event.key === "ArrowUp") next = (index - 1 + documentTabs.length) % documentTabs.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = documentTabs.length - 1;
+        documentTabs[next].focus();
+        activateDocument(documentTabs[next].dataset.doc, true);
+        setView("deliverables", { updateUrl: false, scroll: true });
+      });
+    });
+
+    window.addEventListener("hashchange", () => {
+      const state = getHashState();
+      if (state.documentId) activeDocument = state.documentId;
+      setView(state.view, { updateUrl: false });
+    });
+    window.addEventListener("popstate", () => {
+      const state = getHashState();
+      if (state.documentId) activeDocument = state.documentId;
+      setView(state.view, { updateUrl: false });
+    });
+  }
+
+  function disableSignalForReducedMotion() {
+    if (!reduceMotion()) return;
+    document.querySelectorAll("animateMotion").forEach((element) => element.remove());
+  }
+
+  function start() {
+    moveDeliverables();
+    initJourney();
+    initNavigation();
+    disableSignalForReducedMotion();
+    const state = getHashState();
+    if (state.documentId) activeDocument = state.documentId;
+    setView(state.view, { replace: true, scroll: state.view !== "tour" });
+    refreshIcons();
+    window.setTimeout(refreshIcons, 80);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start, { once: true });
+  } else {
+    start();
+  }
+})();
