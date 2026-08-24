@@ -893,9 +893,7 @@
           trigger: ".journey-map-stage",
           start: "top top+=100",
           end: "+=520",
-          pin: true,
           scrub: 0.8,
-          anticipatePin: 1,
           onUpdate: (self) => {
             path.style.strokeDashoffset = String(1 - self.progress);
             setSignal(self.progress);
@@ -949,10 +947,15 @@
     initMotion(nextView);
     if (options.scroll !== false) {
       window.requestAnimationFrame(() => {
+        const behavior = options.replace ? "auto" : (reduceMotion() ? "auto" : "smooth");
         if (nextView === "tour") {
-          window.scrollTo({ top: 0, behavior: reduceMotion() ? "auto" : "smooth" });
+          window.scrollTo({ top: 0, behavior });
         } else {
-          document.getElementById(`view-${nextView}`)?.scrollIntoView({ block: "start", behavior: reduceMotion() ? "auto" : "smooth" });
+          const target = document.getElementById(`view-${nextView}`);
+          if (!target) return;
+          const scrollMargin = Number.parseFloat(window.getComputedStyle(target).scrollMarginTop) || 0;
+          const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - scrollMargin);
+          window.scrollTo({ top, behavior });
         }
       });
     }
