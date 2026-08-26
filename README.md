@@ -23,7 +23,7 @@ The site has no build step and no runtime dependency install. Render serves the 
 ## Experience Map
 
 - `#tour`: approximately 90 seconds covering the problem, proposed path, Andre's contribution, and simulation boundary.
-- `#present/1`: self-contained 18-slide presentation grouped into Context, Journey, Build, Automation, and Measurement. Use the five chapter markers or outline to navigate, toggle presenter notes when speaking, use the arrow keys to move, and press `Escape` to exit.
+- `#present/1`: self-contained 25-slide, 45-minute knowledge share grouped into The Bridge, Marketing Basics, GHL Foundations, Bloom Dental Case, System Build, and Measurement. Use the six chapter markers or outline to navigate, open the glossary when a term is unfamiliar, toggle presenter notes when speaking, use the arrow keys to move, and press `Escape` to exit.
 - `#system`: customer path, Plain English/GHL Detail switch, reconstructed six-workflow node lab, and decision log.
 - `#build`: ten completed phases, each with input, decision, actions, GHL location, output, purpose, and status.
 - `#deliverables`: eight full workshop documents presented as native website content.

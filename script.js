@@ -19,11 +19,40 @@
   };
 
   const presentationChapters = [
-    { name: "Context", start: 0, end: 3 },
-    { name: "Journey", start: 4, end: 7 },
-    { name: "Build", start: 8, end: 11 },
-    { name: "Automation", start: 12, end: 14 },
-    { name: "Measurement", start: 15, end: 17 }
+    { name: "The Bridge", start: 0, end: 2 },
+    { name: "Marketing Basics", start: 3, end: 6 },
+    { name: "GHL Foundations", start: 7, end: 10 },
+    { name: "Bloom Dental Case", start: 11, end: 15 },
+    { name: "System Build", start: 16, end: 21 },
+    { name: "Measurement", start: 22, end: 24 }
+  ];
+
+  const presentationSlideOrder = [
+    "presentation-slide-1",
+    "presentation-slide-b2b-bridge",
+    "presentation-slide-marketing-martech",
+    "presentation-slide-four-decisions",
+    "presentation-slide-journey-funnel",
+    "presentation-slide-funnel-math",
+    "presentation-slide-dtc-realities",
+    "presentation-slide-5",
+    "presentation-slide-analyst-lens",
+    "presentation-slide-11",
+    "presentation-slide-13",
+    "presentation-slide-2",
+    "presentation-slide-3",
+    "presentation-slide-4",
+    "presentation-slide-6",
+    "presentation-slide-7",
+    "presentation-slide-8",
+    "presentation-slide-9",
+    "presentation-slide-10",
+    "presentation-slide-12",
+    "presentation-slide-14",
+    "presentation-slide-15",
+    "presentation-slide-16",
+    "presentation-slide-17",
+    "presentation-slide-18"
   ];
 
   const kpiDiagnostics = {
@@ -416,6 +445,145 @@
     "Close by connecting strategy, systems thinking, and analytics to the kind of role being discussed."
   ];
 
+  const teachingPresentationNotes = {
+    "presentation-slide-b2b-bridge": {
+      title: "Connect familiar analytical work to a new customer motion",
+      paragraphs: [
+        "Begin with reassurance: the analytical discipline does not disappear when moving from B2B into direct-to-consumer marketing. We still define a business outcome, identify stages, observe events, compare cohorts, and ask what changed. What changes is the unit of analysis and the speed of the journey. B2B work often follows an account, buying committee, sales opportunity, and a cycle measured in weeks or months. DTC work usually follows an individual through behavioral signals that can occur within one session or a few days.",
+        "That faster rhythm creates both opportunity and risk. The team receives more signals sooner, but those signals can be mistaken for value if the funnel is poorly defined. A click is not a lead, a lead is not a booking, and a booking is not an attended consultation. The martech system must preserve those distinctions so analysts can see where movement actually occurred. This presentation uses the Bloom Dental simulation to make that translation concrete.",
+        "A useful mental model is to compare the B2B sales process with a DTC service journey. An account stage and a pipeline opportunity still describe state; the difference is that the customer may create the next state themselves by submitting a form or selecting a calendar time. That means the interface, the CRM record, and the event taxonomy must agree. When they do, analysts can segment the journey, identify leakage, and recommend an experiment without treating every platform interaction as an outcome."
+      ],
+      bullets: [
+        "B2B buying units are often accounts; DTC buying units are usually people or households.",
+        "B2B conversion states may be MQL, meeting, and opportunity; DTC states may be form, booking, show, and purchase.",
+        "DTC feedback arrives faster, so event definitions and consent checks must be ready before traffic.",
+        "The transferable skill is turning business movement into observable states and trustworthy denominators."
+      ],
+      transition: "Now that the audience can see what transfers, define the three disciplines that operate the customer journey together."
+    },
+    "presentation-slide-marketing-martech": {
+      title: "Separate the responsibilities without separating the experience",
+      paragraphs: [
+        "Marketing, martech, and analytics are easiest to understand as one loop. Marketing decides which problem matters, who experiences it, what next step is valuable, and where the message should appear. Martech turns those decisions into a working journey: pages, forms, customer records, calendars, messages, rules, and handoffs. Analytics checks whether people moved as expected and identifies the first place where the evidence disagrees with the plan.",
+        "A weak implementation often treats these as disconnected deliverables. A campaign is launched, automation is added later, and reporting is asked to reconstruct the journey after the fact. This project follows the opposite sequence. The business question shapes the journey, the journey shapes the data model, and the data model makes the later KPI possible. For analysts, that means measurement is part of system design rather than a dashboard request at the end."
+      ],
+      bullets: [
+        "Marketing asks why this audience should take this action.",
+        "Martech asks what the system should remember and do next.",
+        "Analytics asks where movement changed and which test would produce useful evidence.",
+        "The customer experiences one journey even when different teams own parts of it."
+      ],
+      transition: "With the three responsibilities clear, reduce marketing strategy to four decisions the whole team can inspect."
+    },
+    "presentation-slide-four-decisions": {
+      title: "Teach the minimum viable marketing strategy",
+      paragraphs: [
+        "A campaign should not begin with a tool, creative format, or automation. It begins with four connected decisions. The problem defines the friction worth solving. The audience defines who experiences that friction and in what context. The offer defines the useful next step that reduces uncertainty. The channel defines where the team can reach that person with enough context for the offer to make sense.",
+        "These decisions behave like upstream dimensions in a data model: changing one alters everything downstream. A different audience changes language and objections. A different offer changes the conversion event. A different channel changes attribution and intent. When campaign performance looks weak, the team should diagnose which assumption is failing instead of changing every asset at once. Bloom Dental will later show how a booking bottleneck becomes a consultation offer, a form-first journey, and specific funnel events."
+      ],
+      bullets: [
+        "Problem: the customer or business friction the campaign is meant to reduce.",
+        "Audience: the people, context, and constraints that shape relevance.",
+        "Offer: the exchange of value that earns the next meaningful action.",
+        "Channel: the environment that delivers the message and creates source evidence."
+      ],
+      transition: "The next distinction prevents three common terms from collapsing into the same vague diagram."
+    },
+    "presentation-slide-journey-funnel": {
+      title: "Give journey, funnel, and campaign separate jobs",
+      paragraphs: [
+        "The customer journey is the human story. It includes what the person sees, understands, worries about, submits, books, and experiences. The funnel is the measurement model placed over that journey. It defines which transitions count, which denominator belongs to each rate, and where drop-off can be observed. The campaign is the coordinated work that attempts to create the movement: audience selection, creative, landing experience, follow-up, and measurement.",
+        "Keeping the terms separate improves cross-functional conversations. A journey problem may be unclear expectations. A funnel problem may be a large drop between page view and form submission. A campaign problem may be an audience or message mismatch. Those require different responses. Analysts contribute by linking the measured symptom back to the customer moment and the campaign assumption that produced it."
+      ],
+      bullets: [
+        "Journey language is experiential: see, understand, trust, ask, book, attend.",
+        "Funnel language is quantitative: entered, converted, dropped, matured, retained.",
+        "Campaign language is operational: audience, creative, channel, landing page, follow-up.",
+        "One diagram can show all three only when its labels make the layers explicit."
+      ],
+      transition: "Next, use a small fictional funnel to show how those layers become rates without confusing the denominator."
+    },
+    "presentation-slide-funnel-math": {
+      title: "Calculate the handoffs before interpreting them",
+      paragraphs: [
+        "This is a fictional teaching dataset, intentionally separate from Bloom Dental. One thousand impressions create fifty clicks, so click-through rate is five percent. Forty of those clicks become usable landing-page views, so arrival rate is eighty percent. Eight visitors submit the form, producing a twenty-percent landing conversion rate. Four leads book, so lead-to-booking is fifty percent. Three mature bookings attend, producing a seventy-five-percent show rate and a twenty-five-percent no-show rate.",
+        "The important lesson is not whether any of those rates are good. The lesson is that every rate describes one handoff and points to different evidence. A weak arrival rate suggests routing or load problems. Weak landing conversion suggests offer, copy, or form friction. Weak booking suggests the calendar handoff. Weak attendance suggests confirmation, reminders, or expectation setting. Analysts should locate the first material loss before recommending a test."
+      ],
+      bullets: [
+        "CTR = clicks / impressions = 50 / 1,000 = 5%.",
+        "Arrival rate = landing-page views / clicks = 40 / 50 = 80%.",
+        "Landing conversion = forms / page views = 8 / 40 = 20%.",
+        "Lead-to-booking = bookings / forms = 4 / 8 = 50%; show rate = 3 / 4 = 75%."
+      ],
+      transition: "Those fast handoffs make DTC measurable, but they also make permission and message relevance operational requirements."
+    },
+    "presentation-slide-dtc-realities": {
+      title: "Frame speed as responsibility, not only opportunity",
+      paragraphs: [
+        "Direct-to-consumer journeys can move from impression to booking in minutes. That speed allows rapid learning, but it also means a poorly designed system can send the wrong message just as quickly. The contact record must preserve identity and source. The journey must check whether a booking already exists. SMS must depend on explicit consent. Timing must reflect the person’s current state rather than a generic sequence.",
+        "Trust matters because the buyer is also the person receiving the experience. In healthcare-adjacent marketing, a conversion goal cannot override clarity, relevance, or appropriate review. Automation should reduce repeated administration and make exceptions visible. It should never create the impression that every response, recommendation, or care decision can be handled unattended."
+      ],
+      bullets: [
+        "Fast signals support weekly learning only when event quality is stable.",
+        "Identity resolution prevents one person from becoming disconnected records.",
+        "Consent and opt-out state belong inside workflow conditions.",
+        "Human ownership remains necessary for judgment, exceptions, and care conversations."
+      ],
+      transition: "Now translate these responsibilities into the record, state, and event model analysts already know."
+    },
+    "presentation-slide-analyst-lens": {
+      title: "Use an analytical model to decode GHL",
+      paragraphs: [
+        "GHL becomes easier to reason about when its objects are grouped into records, states, and events. The contact is the durable person record. Fields preserve values such as source, service interest, and consent. The opportunity and appointment expose current business and scheduling state. Events record what changed: a form was submitted, a booking was created, an appointment was completed, or a payment was verified.",
+        "This model prevents several reporting mistakes. Message activity should not be used as proof of booking. A pipeline stage should not replace the appointment outcome unless the operating process keeps both synchronized. Attribution needs source values before the anonymous visitor becomes a contact. Metric denominators need observation windows: a future appointment should not be counted as a show or no-show until its scheduled date has passed. GHL configuration is therefore part of data quality."
+      ],
+      bullets: [
+        "Record answers who the person is and what context persists.",
+        "State answers where the current journey or appointment sits.",
+        "Event answers what changed, when it changed, and what triggered the next rule.",
+        "Attribution and maturity windows determine whether later rates are interpretable."
+      ],
+      transition: "With that model established, the Bloom Dental scenario can be presented as a worked system rather than a collection of platform features."
+    }
+  };
+
+  const teachingPresentationPrompts = {
+    "presentation-slide-b2b-bridge": "Ask the team to name one B2B stage they already analyze, then translate it into a DTC event.",
+    "presentation-slide-marketing-martech": "Point to the three responsibilities and emphasize that the customer experiences one connected loop.",
+    "presentation-slide-four-decisions": "Use a familiar campaign and ask which of the four decisions would change first if the audience changed.",
+    "presentation-slide-journey-funnel": "Read one row across all three layers so the distinction becomes concrete.",
+    "presentation-slide-funnel-math": "Click each stage and ask which evidence source and owner would diagnose that handoff.",
+    "presentation-slide-dtc-realities": "Pause on consent and relevance before introducing any automation feature.",
+    "presentation-slide-analyst-lens": "Ask for one example each of a record, state, and event from the team’s current B2B work."
+  };
+
+  const presentationNotesBySlide = Object.fromEntries(
+    Array.from({ length: 18 }, (_, index) => [`presentation-slide-${index + 1}`, presentationNotes[index]])
+  );
+  Object.assign(presentationNotesBySlide, teachingPresentationNotes);
+
+  const presentationPromptsBySlide = Object.fromEntries(
+    Array.from({ length: 18 }, (_, index) => [`presentation-slide-${index + 1}`, presentationPrompts[index]])
+  );
+  Object.assign(presentationPromptsBySlide, teachingPresentationPrompts);
+
+  const teachingFunnelDetails = {
+    impressions: ["STARTING VOLUME", "1,000 opportunities to be seen", "Denominator for CTR"],
+    clicks: ["CLICK-THROUGH RATE / 5%", "50 people clicked from 1,000 impressions", "50 / 1,000"],
+    views: ["ARRIVAL RATE / 80%", "40 usable page views from 50 clicks", "40 / 50"],
+    forms: ["LANDING CONVERSION / 20%", "8 form submissions from 40 page views", "8 / 40"],
+    bookings: ["LEAD-TO-BOOKING / 50%", "4 bookings from 8 submitted leads", "4 / 8"],
+    shows: ["SHOW RATE / 75%", "3 attended consultations from 4 mature bookings", "3 / 4"]
+  };
+
+  const presentationWorkflowDetails = {
+    trigger: ["TRIGGER", "Form submitted", "The workflow starts only after the consultation form creates or updates a contact."],
+    record: ["DATA ACTION", "Tag and opportunity", "GHL marks the lead, preserves intent, and creates the visible pipeline record the team can work."],
+    invite: ["COMMUNICATION", "Email and consent-gated SMS", "The contact receives the calendar link. SMS runs only when the consent field permits it."],
+    wait: ["TIMING", "Wait 24 hours", "The system gives the person time to act before evaluating whether another message is useful."],
+    condition: ["DECISION", "Has an appointment been booked?", "Yes exits this path. No sends one reminder, preventing messages after the desired action already happened."]
+  };
+
   /*
    * Reconstructed from the completed workflow specification and funnel blueprint.
    * The map keeps the logic inspectable without pretending to be a GHL screenshot.
@@ -559,6 +727,7 @@
   let presentationPreviousFocus = null;
   let presentationNotesOpen = false;
   let presentationOutlineOpen = false;
+  let presentationGlossaryOpen = false;
 
   const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -962,9 +1131,27 @@
     if (options.focus) document.getElementById(`view-${nextView}`)?.focus({ preventScroll: true });
   }
 
+  function arrangePresentationSlides() {
+    const stage = document.getElementById("presentation-stage");
+    if (!stage) return;
+    presentationSlideOrder.forEach((id) => {
+      const slide = document.getElementById(id);
+      if (slide) stage.appendChild(slide);
+    });
+    stage.querySelectorAll("[data-presentation-slide]").forEach((slide, index) => {
+      slide.dataset.presentationSlide = String(index);
+      const label = slide.querySelector(".presentation-label");
+      if (!label) return;
+      const topic = label.dataset.topic || label.textContent.replace(/^\d+\s*\/\s*/, "").trim();
+      label.dataset.topic = topic;
+      label.textContent = `${String(index + 1).padStart(2, "0")} / ${topic}`;
+    });
+  }
+
   function hydratePresentationNotes() {
-    document.querySelectorAll(".presentation-message").forEach((message, index) => {
-      const notes = presentationNotes[index];
+    document.querySelectorAll(".presentation-message").forEach((message) => {
+      const slide = message.closest("[data-presentation-slide]");
+      const notes = slide ? presentationNotesBySlide[slide.id] : null;
       if (!notes) return;
       message.textContent = "";
       message.hidden = true;
@@ -990,7 +1177,7 @@
       talk.appendChild(list);
       const prompt = document.createElement("p");
       prompt.className = "presentation-prompt";
-      prompt.textContent = `Speaking prompt: ${presentationPrompts[index]}`;
+      prompt.textContent = `Speaking prompt: ${presentationPromptsBySlide[slide.id] || "Connect this slide to the next customer or system decision."}`;
       talk.appendChild(prompt);
       const transition = document.createElement("p");
       transition.className = "presentation-transition";
@@ -1031,6 +1218,91 @@
       toggle.setAttribute("aria-expanded", String(presentationOutlineOpen));
       toggle.classList.toggle("is-active", presentationOutlineOpen);
     }
+  }
+
+  function setPresentationGlossary(open) {
+    presentationGlossaryOpen = Boolean(open);
+    const glossary = document.getElementById("presentation-glossary");
+    const toggle = document.getElementById("presentation-glossary-toggle");
+    if (glossary) glossary.hidden = !presentationGlossaryOpen;
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", String(presentationGlossaryOpen));
+      toggle.classList.toggle("is-active", presentationGlossaryOpen);
+    }
+  }
+
+  function renderTeachingFunnel(key) {
+    const detail = teachingFunnelDetails[key] || teachingFunnelDetails.impressions;
+    document.querySelectorAll("[data-funnel-stage]").forEach((button) => {
+      const selected = button.dataset.funnelStage === key;
+      button.setAttribute("aria-pressed", String(selected));
+      button.classList.toggle("is-active", selected);
+    });
+    const panel = document.getElementById("teaching-funnel-detail");
+    if (!panel) return;
+    panel.innerHTML = `<span>${detail[0]}</span><strong>${detail[1]}</strong><code>${detail[2]}</code>`;
+  }
+
+  function initTeachingFunnel() {
+    const buttons = Array.from(document.querySelectorAll("[data-funnel-stage]"));
+    buttons.forEach((button, index) => {
+      button.addEventListener("click", () => renderTeachingFunnel(button.dataset.funnelStage));
+      button.addEventListener("keydown", (event) => {
+        if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        event.stopPropagation();
+        let next = index;
+        if (event.key === "ArrowRight") next = Math.min(buttons.length - 1, index + 1);
+        if (event.key === "ArrowLeft") next = Math.max(0, index - 1);
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = buttons.length - 1;
+        buttons[next].focus();
+        renderTeachingFunnel(buttons[next].dataset.funnelStage);
+      });
+    });
+    renderTeachingFunnel("impressions");
+  }
+
+  function renderPresentationJourney(key) {
+    const detail = nodeDetails[key] || nodeDetails.ad;
+    document.querySelectorAll("[data-journey-teach-node]").forEach((button) => {
+      const selected = button.dataset.journeyTeachNode === key;
+      button.setAttribute("aria-pressed", String(selected));
+      button.classList.toggle("is-active", selected);
+    });
+    const panel = document.getElementById("presentation-journey-detail");
+    if (panel) panel.innerHTML = `<span>WHY IT EXISTS</span><strong>${detail.title}</strong><p>${detail.plain}</p><code>${detail.technical}</code>`;
+  }
+
+  function renderPresentationWorkflow(key) {
+    const detail = presentationWorkflowDetails[key] || presentationWorkflowDetails.trigger;
+    document.querySelectorAll("[data-workflow-teach-node]").forEach((button) => {
+      const selected = button.dataset.workflowTeachNode === key;
+      button.setAttribute("aria-pressed", String(selected));
+      button.classList.toggle("is-active", selected);
+    });
+    const panel = document.getElementById("presentation-workflow-node-detail");
+    if (panel) panel.innerHTML = `<span>${detail[0]}</span><strong>${detail[1]}</strong><p>${detail[2]}</p>`;
+  }
+
+  function initPresentationTeachingGroup(selector, keyName, render, initialKey) {
+    const buttons = Array.from(document.querySelectorAll(selector));
+    buttons.forEach((button, index) => {
+      button.addEventListener("click", () => render(button.dataset[keyName]));
+      button.addEventListener("keydown", (event) => {
+        if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        event.stopPropagation();
+        let next = index;
+        if (event.key === "ArrowRight") next = Math.min(buttons.length - 1, index + 1);
+        if (event.key === "ArrowLeft") next = Math.max(0, index - 1);
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = buttons.length - 1;
+        buttons[next].focus();
+        render(buttons[next].dataset[keyName]);
+      });
+    });
+    if (buttons.length) render(initialKey);
   }
 
   function setPresentationBackgroundInert(inert) {
@@ -1155,6 +1427,7 @@
       setPresentationBackgroundInert(true);
       setPresentationNotes(false);
       setPresentationOutline(false);
+      setPresentationGlossary(false);
     }
 
     updatePresentation(index, { updateUrl: options.updateUrl !== false, replace: options.replace === true });
@@ -1170,6 +1443,7 @@
     document.body.classList.remove("is-presentation-open", "is-presentation-notes-open");
     setPresentationBackgroundInert(false);
     setPresentationOutline(false);
+    setPresentationGlossary(false);
 
     const returnHash = options.returnHash || presentationReturnHash || "#tour";
     if (options.updateUrl !== false && window.location.hash !== returnHash) window.history.replaceState(null, "", returnHash);
@@ -1199,8 +1473,12 @@
   }
 
   function initPresentation() {
+    arrangePresentationSlides();
     const slides = Array.from(document.querySelectorAll("[data-presentation-slide]"));
     hydratePresentationNotes();
+    initTeachingFunnel();
+    initPresentationTeachingGroup("[data-journey-teach-node]", "journeyTeachNode", renderPresentationJourney, "ad");
+    initPresentationTeachingGroup("[data-workflow-teach-node]", "workflowTeachNode", renderPresentationWorkflow, "trigger");
     const chapterContainer = document.getElementById("presentation-chapters");
     if (chapterContainer) {
       chapterContainer.textContent = "";
@@ -1209,7 +1487,7 @@
         button.type = "button";
         button.role = "tab";
         button.setAttribute("aria-selected", String(index === 0));
-        button.setAttribute("aria-controls", `presentation-slide-${chapter.start + 1}`);
+        button.setAttribute("aria-controls", slides[chapter.start]?.id || "presentation-stage");
         button.dataset.presentationChapter = String(index);
         button.tabIndex = index === 0 ? 0 : -1;
         const number = document.createElement("span");
@@ -1240,7 +1518,16 @@
       });
     });
     document.getElementById("presentation-notes-toggle")?.addEventListener("click", () => setPresentationNotes(!presentationNotesOpen));
-    document.getElementById("presentation-outline-toggle")?.addEventListener("click", () => setPresentationOutline(!presentationOutlineOpen));
+    document.getElementById("presentation-glossary-toggle")?.addEventListener("click", () => {
+      const next = !presentationGlossaryOpen;
+      if (next) setPresentationOutline(false);
+      setPresentationGlossary(next);
+    });
+    document.getElementById("presentation-outline-toggle")?.addEventListener("click", () => {
+      const next = !presentationOutlineOpen;
+      if (next) setPresentationGlossary(false);
+      setPresentationOutline(next);
+    });
     document.querySelector("[data-presentation-close]")?.addEventListener("click", () => closePresentation());
     document.querySelector("[data-presentation-prev]")?.addEventListener("click", () => updatePresentation(presentationIndex - 1));
     document.querySelector("[data-presentation-next]")?.addEventListener("click", () => {
@@ -1280,7 +1567,10 @@
       trapPresentationFocus(event);
       if (event.key === "Escape") {
         event.preventDefault();
-        if (presentationOutlineOpen) {
+        if (presentationGlossaryOpen) {
+          setPresentationGlossary(false);
+          document.getElementById("presentation-glossary-toggle")?.focus();
+        } else if (presentationOutlineOpen) {
           setPresentationOutline(false);
           document.getElementById("presentation-outline-toggle")?.focus();
         } else {

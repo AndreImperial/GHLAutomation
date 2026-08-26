@@ -11,7 +11,7 @@
 The opening offers two distinct paths:
 
 1. **90-second tour:** the business problem, proposed journey, Andre's contribution, and simulation boundary.
-2. **30-minute presentation:** an 18-slide, five-chapter narrative that stands on its own with optional presenter notes.
+2. **45-minute team presentation:** a 25-slide, six-chapter lesson that bridges B2B analytics into DTC marketing, GHL, the case study, and measurement with optional presenter notes.
 
 The five persistent views are Quick Tour, System, 10-Phase Build, Deliverables, and Measurement. Detailed evidence is available without interrupting the opening story.
 
@@ -52,10 +52,10 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 
 ## Presentation Rules
 
-- The deck contains 18 slides grouped into Context, Journey, Build, Automation, and Measurement.
+- The deck contains 25 slides grouped into The Bridge, Marketing Basics, GHL Foundations, Bloom Dental Case, System Build, and Measurement.
 - The default is a clean audience slide. Presenter notes are optional and never change the URL.
-- Five chapter markers replace a row of tiny slide dots; the outline provides direct slide access.
-- Direct `#present/1-18` links, history navigation, arrow keys, Escape, focus restoration, an accessible focus trap, and slide announcements must remain supported.
+- Six chapter markers replace a row of tiny slide dots; the outline provides direct slide access.
+- Direct `#present/1-25` links, history navigation, arrow keys, Escape, focus restoration, an accessible focus trap, and slide announcements must remain supported.
 - Motion emphasizes chapter changes and active relationships. It must not imply that projected figures are achieved results.
 
 ## Motion And Resilience
@@ -79,10 +79,9 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 ## Release Checklist
 
 - [ ] Quick Tour can be understood in roughly 90 seconds.
-- [ ] Presenter notes support 28-32 minutes across all 18 slides.
+- [ ] Presenter notes and interactive pauses support 43-47 minutes across all 25 slides.
 - [ ] Ten phases, six workflows, and eight full deliverables are present.
 - [ ] Hashes, legacy aliases, browser history, keyboard controls, and focus restoration work.
 - [ ] 375px, 768px, 1024px, and 1440px layouts have no page-level overflow or overlap.
 - [ ] Focus, contrast, heading order, touch targets, reduced motion, and library-failure fallbacks pass review.
 - [ ] No external runtime dependencies, personal account screenshots, duplicate IDs, or false performance claims ship.
-

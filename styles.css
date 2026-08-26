@@ -3381,7 +3381,6 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-progress::-webkit-progress-value,
 .presentation-progress::-moz-progress-bar {
   background: var(--coral);
-  transition: width 280ms ease;
 }
 
 .presentation-outline {
@@ -3760,7 +3759,7 @@ body.motion-enhanced [data-reveal].is-inview {
   gap: 7px;
 }
 
-.presentation-mini-flow span {
+.presentation-mini-flow button {
   display: grid;
   min-height: 58px;
   place-items: center;
@@ -3772,6 +3771,14 @@ body.motion-enhanced [data-reveal].is-inview {
   font-size: 9px;
   line-height: 1.3;
   text-align: center;
+  cursor: pointer;
+}
+
+.presentation-mini-flow button:hover,
+.presentation-mini-flow button.is-active {
+  border-color: var(--coral);
+  color: var(--ivory);
+  box-shadow: inset 0 -3px 0 var(--coral);
 }
 
 .presentation-mini-flow i {
@@ -3987,7 +3994,7 @@ body.motion-enhanced [data-reveal].is-inview {
   gap: 12px;
 }
 
-.presentation-journey-grid span {
+.presentation-journey-grid button {
   display: grid;
   min-height: 70px;
   place-items: center;
@@ -3998,15 +4005,48 @@ body.motion-enhanced [data-reveal].is-inview {
   font-size: 12px;
   line-height: 1.35;
   text-align: center;
+  cursor: pointer;
 }
 
-.presentation-journey-grid span:nth-child(5n + 1) {
+.presentation-journey-grid button:nth-child(5n + 1) {
   border-color: var(--mint-strong);
 }
 
-.presentation-journey-grid span:nth-child(5n) {
+.presentation-journey-grid button:nth-child(5n) {
   border-color: var(--coral);
 }
+
+.presentation-journey-grid button:hover,
+.presentation-journey-grid button.is-active {
+  background: var(--mint-soft);
+  border-color: var(--mint);
+  color: var(--ink);
+}
+
+.presentation-teaching-detail {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto minmax(0, 0.8fr) minmax(0, 1.4fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 68px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface-raised);
+}
+
+.presentation-teaching-detail span,
+.presentation-teaching-detail code {
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.presentation-teaching-detail span { color: var(--mint); }
+.presentation-teaching-detail code { color: var(--amber); }
+.presentation-teaching-detail strong { color: var(--ivory); font-size: 13px; }
+.presentation-teaching-detail p { margin: 0; color: var(--ivory-soft); font-size: 11px; line-height: 1.5; }
 
 .presentation-journey-line {
   position: absolute;
@@ -4613,6 +4653,341 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
   to { opacity: 1; clip-path: inset(0); transform: translateY(0); }
 }
 
+.presentation-glossary {
+  position: fixed;
+  z-index: 44;
+  top: 79px;
+  right: 0;
+  bottom: 0;
+  width: min(620px, 100%);
+  padding: 30px;
+  overflow-y: auto;
+  border-left: 1px solid var(--line-strong);
+  background: var(--bg-deep);
+  box-shadow: -20px 0 50px rgba(4, 10, 8, 0.36);
+  animation: outline-enter 260ms ease both;
+}
+
+.presentation-glossary-head > span {
+  color: var(--coral);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.presentation-glossary h2 {
+  margin: 10px 0 26px;
+  color: var(--ivory);
+  font-family: var(--display);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.presentation-glossary dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.presentation-glossary dl > div {
+  min-height: 112px;
+  padding: 16px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.presentation-glossary dl > div:nth-child(2n) {
+  border-right: 0;
+}
+
+.presentation-glossary dt {
+  color: var(--mint);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.presentation-glossary dd {
+  margin: 9px 0 0;
+  color: var(--ivory-soft);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.teaching-comparison,
+.teaching-four,
+.teaching-maps,
+.teaching-funnel,
+.teaching-realities,
+.teaching-analyst {
+  display: grid;
+  align-content: center;
+  gap: 20px;
+}
+
+.teaching-comparison-grid {
+  display: grid;
+  grid-template-columns: minmax(118px, 0.75fr) repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.teaching-comparison-grid > * {
+  min-height: 48px;
+  padding: 11px 12px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.teaching-comparison-grid b,
+.teaching-comparison-grid strong,
+.teaching-four b,
+.teaching-maps span,
+.teaching-realities strong,
+.teaching-analyst > div > span,
+.teaching-funnel-detail span {
+  color: var(--mint);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.teaching-comparison-grid b {
+  color: var(--coral);
+}
+
+.teaching-comparison-grid strong {
+  background: var(--surface);
+  color: var(--ivory-soft);
+}
+
+.teaching-comparison-grid span {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.teaching-triad {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20px minmax(0, 1fr) 20px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.teaching-triad > div,
+.teaching-four > div,
+.teaching-maps > div,
+.teaching-realities > div,
+.teaching-analyst > div {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-height: 170px;
+  padding: 16px;
+  border-top: 2px solid var(--mint-strong);
+  background: var(--surface);
+}
+
+.teaching-triad > div:nth-of-type(2),
+.teaching-four > div:nth-child(2),
+.teaching-maps > div:nth-child(2),
+.teaching-realities > div:nth-child(2),
+.teaching-analyst > div:nth-of-type(2) {
+  border-top-color: var(--amber);
+}
+
+.teaching-triad > div:nth-of-type(3),
+.teaching-four > div:nth-child(4),
+.teaching-maps > div:nth-child(3),
+.teaching-realities > div:nth-child(3),
+.teaching-analyst > div:nth-of-type(3) {
+  border-top-color: var(--coral);
+}
+
+.teaching-triad span,
+.teaching-four b,
+.teaching-maps span,
+.teaching-analyst > div > span {
+  color: var(--mint);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+.teaching-triad strong,
+.teaching-four span,
+.teaching-maps strong,
+.teaching-realities strong,
+.teaching-analyst strong {
+  color: var(--ivory);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.teaching-triad small,
+.teaching-maps small,
+.teaching-realities span,
+.teaching-analyst small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.teaching-triad > svg,
+.teaching-analyst > svg {
+  width: 18px;
+  color: var(--coral);
+}
+
+.teaching-four {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.teaching-four > div {
+  min-height: 108px;
+}
+
+.teaching-four > p,
+.teaching-analyst > p {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--amber);
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.teaching-maps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.teaching-maps > div {
+  min-height: 190px;
+}
+
+.teaching-maps strong {
+  margin-top: 20px;
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.teaching-funnel {
+  overflow-x: auto;
+}
+
+.teaching-funnel-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(92px, 1fr) 18px) minmax(92px, 1fr);
+  align-items: center;
+  min-width: 760px;
+  gap: 6px;
+}
+
+.teaching-funnel-flow button {
+  display: grid;
+  place-items: center;
+  gap: 5px;
+  min-height: 92px;
+  padding: 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.teaching-funnel-flow button:hover,
+.teaching-funnel-flow button:focus-visible,
+.teaching-funnel-flow button.is-active {
+  border-color: var(--mint);
+  color: var(--ivory);
+}
+
+.teaching-funnel-flow button.is-active {
+  box-shadow: inset 0 -2px 0 var(--coral);
+}
+
+.teaching-funnel-flow b {
+  color: var(--ivory);
+  font-family: var(--display);
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.teaching-funnel-flow span {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.teaching-funnel-flow svg {
+  width: 15px;
+  color: var(--coral);
+}
+
+.teaching-funnel-detail {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  min-width: 640px;
+  padding: 14px 16px;
+  border-top: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.teaching-funnel-detail strong {
+  color: var(--ivory);
+  font-size: 13px;
+}
+
+.teaching-funnel-detail code {
+  color: var(--amber);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+.teaching-realities {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.teaching-realities > div {
+  min-height: 188px;
+}
+
+.teaching-realities svg {
+  width: 26px;
+  height: 26px;
+  margin-bottom: 16px;
+  color: var(--mint);
+}
+
+.teaching-analyst {
+  grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr) 18px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.teaching-analyst > div {
+  min-height: 166px;
+}
+
+.teaching-analyst code {
+  color: var(--mint);
+}
+
 @media (max-width: 900px) {
   .presentation-topbar {
     padding-right: 24px;
@@ -4628,8 +5003,20 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
     padding-left: 8px;
   }
 
-  .presentation-outline {
+  .presentation-outline,
+  .presentation-glossary {
     width: min(480px, 100%);
+  }
+
+  .teaching-triad,
+  .teaching-analyst {
+    grid-template-columns: 1fr;
+  }
+
+  .teaching-triad > svg,
+  .teaching-analyst > svg {
+    justify-self: center;
+    transform: rotate(90deg);
   }
 
   .presentation-stage {
@@ -4707,11 +5094,21 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
     padding-left: 8px;
   }
 
-  .presentation-outline {
+  .presentation-outline,
+  .presentation-glossary {
     top: 67px;
     width: 100%;
     padding: 24px 20px;
     border-left: 0;
+  }
+
+  .presentation-glossary dl {
+    grid-template-columns: 1fr;
+  }
+
+  .presentation-glossary dl > div {
+    min-height: auto;
+    border-right: 0;
   }
 
   .presentation-outline-list button {
@@ -4762,6 +5159,29 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
   .presentation-visual {
     min-height: 220px;
     padding: 16px;
+  }
+
+  .teaching-comparison-grid {
+    grid-template-columns: 92px repeat(2, minmax(130px, 1fr));
+    min-width: 420px;
+  }
+
+  .teaching-comparison {
+    overflow-x: auto;
+  }
+
+  .teaching-four,
+  .teaching-maps,
+  .teaching-realities {
+    grid-template-columns: 1fr;
+  }
+
+  .teaching-triad > div,
+  .teaching-four > div,
+  .teaching-maps > div,
+  .teaching-realities > div,
+  .teaching-analyst > div {
+    min-height: auto;
   }
 
   .presentation-visual-executive,
@@ -4829,7 +5249,7 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
     min-height: auto;
   }
 
-  .presentation-mini-flow span {
+  .presentation-mini-flow button {
     min-height: 44px;
   }
 
@@ -4909,10 +5329,15 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
     gap: 7px;
   }
 
-  .presentation-journey-grid span {
+  .presentation-journey-grid button {
     min-height: 48px;
     padding: 7px;
     font-size: 10px;
+  }
+
+  .presentation-teaching-detail {
+    grid-template-columns: 1fr;
+    gap: 5px;
   }
 
   .presentation-journey-line {
@@ -5058,7 +5483,8 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
   .review-plan.is-inview .review-columns > div,
   .document-panel.is-switching,
   .kpi-diagnostic-panel.is-switching,
-  .presentation-outline {
+  .presentation-outline,
+  .presentation-glossary {
     animation: none !important;
   }
 
