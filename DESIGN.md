@@ -15,6 +15,8 @@ The opening offers two distinct paths:
 
 The five persistent views use the audience labels The Problem, The Fix, How I Built It, What I Made, and How We’d Know. They map to `#problem`, `#solution`, `#build`, `#evidence`, and `#measurement`. They use one canonical five-problem story so terminology and relationships remain consistent across the website and presentation.
 
+The page also carries one recommended reading path: start with the problem, follow the fix, inspect the build, open the outputs, and finish with measurement. Every view has one next-stop handoff, while the header remains available for non-linear browsing.
+
 ## Beginner-First Content
 
 - The first sentence answers the human question before naming a platform object.

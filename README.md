@@ -22,6 +22,8 @@ The site has no build step and no runtime dependency install. Render serves the 
 
 The public version is available at [ghlautomation.onrender.com](https://ghlautomation.onrender.com/).
 
+Start at `#problem` and follow the on-page reading path in order: The Problem, The Fix, How I Built It, What I Made, then How We’d Know. Each view ends with one clear next step, so the site can be presented without asking the audience to choose where to go next.
+
 ## Experience Map
 
 - `#problem`: The Problem. A short, plain-English story showing five places where Sam could get lost.
@@ -45,7 +47,7 @@ Legacy hashes continue to work: `#tour` and `#beginner-path` open Problem; `#sys
 
 ## Structure
 
-- `index.html`: five-view shell, Sam’s story, guided presentation layer, and all hardcoded workshop evidence.
+- `index.html`: five-view shell, Sam’s story, guided reading path, presentation layer, and all hardcoded workshop evidence.
 - `styles.css`: dark graphite-green token system, beginner summaries, technical disclosures, responsive layouts, focus states, and reduced-motion rules.
 - `script.js`: canonical five-problem story model, ARIA tab navigation, chaptered presentation and notes, hashes and history, legacy aliases, workflow maps, evidence relationships, measurement diagnostics, and GSAP fallback behavior.
 - `DESIGN.md`: canonical visual, interaction, content, and release rules for the beginner-first architecture.

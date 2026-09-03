@@ -1053,6 +1053,12 @@
   }
 
   function updateTabs(view) {
+    document.querySelectorAll("[data-reading-step]").forEach((link) => {
+      const selected = link.dataset.readingStep === view;
+      link.classList.toggle("is-active", selected);
+      if (selected) link.setAttribute("aria-current", "step");
+      else link.removeAttribute("aria-current");
+    });
     document.querySelectorAll(".primary-tab").forEach((tab) => {
       const selected = tab.dataset.view === view;
       tab.classList.toggle("is-active", selected);
