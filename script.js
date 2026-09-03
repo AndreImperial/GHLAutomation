@@ -22,12 +22,12 @@
   };
 
   const presentationChapters = [
-    { name: "Setup", start: 0, end: 3 },
-    { name: "Conversion", start: 4, end: 7 },
-    { name: "Booking", start: 8, end: 11 },
-    { name: "Attendance", start: 12, end: 15 },
-    { name: "Customer State", start: 16, end: 19 },
-    { name: "Learning Loop", start: 20, end: 24 }
+    { name: "What Was Going Wrong", start: 0, end: 3 },
+    { name: "Helping People Ask", start: 4, end: 7 },
+    { name: "Helping People Book", start: 8, end: 11 },
+    { name: "Helping People Show Up", start: 12, end: 15 },
+    { name: "Helping the Clinic Follow Up", start: 16, end: 19 },
+    { name: "Learning What Works", start: 20, end: 24 }
   ];
 
   const presentationSlideOrder = [
@@ -61,117 +61,147 @@
   const problemStories = [
     {
       id: "conversion",
-      number: "01 / CONVERSION",
-      short: "Qualified intent",
-      problem: "Interest was not becoming qualified intent.",
-      symptom: "People could notice the clinic without taking a meaningful next step.",
-      cause: "The offer did not yet reduce uncertainty for cold traffic or explain the consultation clearly.",
-      impact: "A prospective patient still did not know what would happen after clicking or whether they would be pressured into treatment.",
-      solution: "Lead with a calm, consultation-first offer and carry the same promise from ad to landing page and form.",
-      plainImplementation: "The message explains the consultation, lowers pressure, and asks for useful context before a treatment decision.",
-      implementation: "GHL funnel page, consultation copy, inquiry form, source tags, and UTM campaign values.",
-      proof: "Marketing Strategy, Campaign Plan, and Landing Page Copy Deck.",
-      kpi: "CTR > arrival rate > landing conversion",
-      phases: ["01", "02", "04"],
-      evidence: ["strategy-doc", "campaign-doc", "copy-doc"],
-      diagnostic: "capture"
+      number: "01",
+      shortLabel: "Ask for help",
+      customerStep: "See the offer → ask for help",
+      simpleProblem: "People could see the offer without understanding the next step.",
+      simpleCause: "The message did not explain the consultation clearly enough for someone new to the clinic.",
+      customerImpact: "Sam could leave without knowing what the visit was for or what would happen next.",
+      simpleFix: "Explain the free consultation in plain language and use the same promise everywhere.",
+      whatSystemDoes: "The page and form give Sam one clear action and ask only for useful context.",
+      simpleMeasure: "Of the people who opened the page, how many completed the form?",
+      example: "Sam sees a smile consultation ad. The page makes the offer feel clear and low pressure.",
+      technical: {
+        problem: "Interest was not becoming qualified intent.",
+        implementation: "GHL funnel page, consultation copy, inquiry form, source tags, and UTM campaign values.",
+        ghlLocation: "Sites > Funnels, Forms, Tags, and campaign tracking values",
+        events: "ad_click → landing_page_view → form_submit",
+        formula: "form_submit / landing_page_view",
+        phases: ["01", "02", "04"],
+        evidence: ["strategy-doc", "campaign-doc", "copy-doc"],
+        diagnosticKey: "capture"
+      }
     },
     {
       id: "booking",
-      number: "02 / BOOKING",
-      short: "Scheduled time",
-      problem: "Qualified intent was not becoming a booking.",
-      symptom: "An inquiry could exist without a consultation time or a clear next action.",
-      cause: "The form, calendar, and opportunity record were disconnected handoffs.",
-      impact: "The person had to carry momentum across separate steps while the team lacked useful context.",
-      solution: "Use a form-first journey that captures intent and consent, then immediately offers an appropriate calendar.",
-      plainImplementation: "The inquiry and calendar behave as one continuous next step instead of two unrelated tasks.",
-      implementation: "Mapped form fields, a 30-minute calendar, appointment settings, and New Lead-to-Booked pipeline movement.",
-      proof: "Funnel Map, Landing Page Copy Deck, and Implementation Checklist.",
-      kpi: "Lead-to-booking = bookings / form submissions",
-      phases: ["03", "06", "07"],
-      evidence: ["funnel-doc", "copy-doc", "checklist-doc"],
-      diagnostic: "booking"
+      number: "02",
+      shortLabel: "Choose a time",
+      customerStep: "Ask for help → choose a time",
+      simpleProblem: "Someone could complete the form and still leave without booking.",
+      simpleCause: "The form and calendar did not feel like one connected next step.",
+      customerImpact: "Sam could share information but still not know how to schedule the consultation.",
+      simpleFix: "Show the calendar right after the form and follow up when a time is still missing.",
+      whatSystemDoes: "The form saves Sam’s answers, then the calendar offers a 30-minute consultation.",
+      simpleMeasure: "Of the people who completed the form, how many chose a time?",
+      example: "Sam finishes the questions and immediately sees available consultation times.",
+      technical: {
+        problem: "Qualified intent was not becoming a booking.",
+        implementation: "Mapped form fields, a 30-minute calendar, appointment settings, and New Lead-to-Booked stage movement.",
+        ghlLocation: "Forms, Calendars, Opportunities, and Automation > Workflows",
+        events: "form_submit → booking_created",
+        formula: "booking_created / form_submit",
+        phases: ["03", "06", "07"],
+        evidence: ["funnel-doc", "copy-doc", "checklist-doc"],
+        diagnosticKey: "booking"
+      }
     },
     {
       id: "attendance",
-      number: "03 / ATTENDANCE",
-      short: "Attended consult",
-      problem: "Bookings were not reliably becoming attended consultations.",
-      symptom: "The workshop baseline included a 35% no-show pattern.",
-      cause: "Confirmation, reminders, consent checks, and no-show recovery were not operating as one timed system.",
-      impact: "Patients could forget or miss appointments while the clinic lost protected consultation capacity.",
-      solution: "Separate booking protection and no-show recovery into timed workflows with channel consent and stop conditions.",
-      plainImplementation: "The system confirms the time, reminds respectfully, checks the outcome, and stops or recovers appropriately.",
-      implementation: "Confirmation email, consent-gated SMS, reminder waits, appointment-status branches, and recovery exits.",
-      proof: "Email and SMS Sequence, Workflow Specification, and Implementation Checklist.",
-      kpi: "Show rate and no-show rate using mature bookings",
-      phases: ["08", "10"],
-      evidence: ["messages-doc", "workflow-doc", "checklist-doc"],
-      diagnostic: "attendance"
+      number: "03",
+      shortLabel: "Show up",
+      customerStep: "Choose a time → show up",
+      simpleProblem: "A booked appointment could be forgotten or missed.",
+      simpleCause: "Confirmation, reminders, permission, and rebooking rules were not connected.",
+      customerImpact: "Sam could miss the visit, while the clinic loses time reserved for the consultation.",
+      simpleFix: "Confirm the appointment, send respectful reminders, and offer a clear way to rebook.",
+      whatSystemDoes: "The system checks the appointment status and stops or changes the messages when needed.",
+      simpleMeasure: "Of the appointments whose dates passed, how many were attended?",
+      example: "Sam gets a confirmation, a reminder, and a simple way to ask for another time.",
+      technical: {
+        problem: "Bookings were not reliably becoming attended consultations.",
+        implementation: "Confirmation email, consent-gated SMS, reminder waits, appointment-status branches, and recovery exits.",
+        ghlLocation: "Automation > Workflows, Email templates, Snippets, and Calendars",
+        events: "booking_created → show_completed or no_show",
+        formula: "no_show / mature_booking",
+        phases: ["08", "10"],
+        evidence: ["messages-doc", "workflow-doc", "checklist-doc"],
+        diagnosticKey: "attendance"
+      }
     },
     {
       id: "continuity",
-      number: "04 / CUSTOMER STATE",
-      short: "Coordinated next step",
-      problem: "Customer outcomes were not producing coordinated follow-up.",
-      symptom: "Attended, missed, interested, paid, and recall-due contacts could remain indistinguishable.",
-      cause: "Customer state, stage ownership, and downstream automation were not represented consistently.",
-      impact: "The team could send irrelevant follow-up, duplicate work, or lose a valuable next step.",
-      solution: "Give every meaningful outcome a shared record, pipeline state, responsible workflow, and explicit exit.",
-      plainImplementation: "The customer outcome determines the next responsible action, while irrelevant follow-up stops.",
-      implementation: "Contact fields, source and consent tags, opportunity stages, and six modular GHL workflows.",
-      proof: "Funnel Blueprint, Workflow Specification, and Implementation Checklist.",
-      kpi: "Whitening attach rate and six-month recall conversion",
-      phases: ["05", "08"],
-      evidence: ["funnel-doc", "workflow-doc", "checklist-doc"],
-      diagnostic: "value"
+      number: "04",
+      shortLabel: "Take the next step",
+      customerStep: "Attend → take the next step",
+      simpleProblem: "The clinic could lose track of what happened after the consultation.",
+      simpleCause: "The team did not have one shared place for the person, outcome, and next action.",
+      customerImpact: "Sam could receive the wrong message or be forgotten after the visit.",
+      simpleFix: "Record the outcome and place each person in the correct next step.",
+      whatSystemDoes: "The record tells the team whether to follow up about whitening, payment, recall, or nothing yet.",
+      simpleMeasure: "Of completed consultations, how many produced the appropriate next step?",
+      example: "After Sam’s visit, the clinic records the outcome so the next message matches the conversation.",
+      technical: {
+        problem: "Customer outcomes were not producing coordinated follow-up.",
+        implementation: "Contact fields, source and consent tags, opportunity stages, and six modular GHL workflows.",
+        ghlLocation: "Contacts, Custom Fields, Tags, Opportunities, and Automation > Workflows",
+        events: "show_completed → whitening_booked or whitening_paid → recall_due",
+        formula: "whitening_booked / show_completed; recall_booked / contact_due",
+        phases: ["05", "08"],
+        evidence: ["funnel-doc", "workflow-doc", "checklist-doc"],
+        diagnosticKey: "value"
+      }
     },
     {
       id: "learning",
-      number: "05 / LEARNING LOOP",
-      short: "Optimization decision",
-      problem: "Marketing activity was not producing clear optimization decisions.",
-      symptom: "Clicks, leads, bookings, and future-care outcomes could be discussed without consistent denominators or time windows.",
-      cause: "The event model, attribution fields, cohort maturity, and diagnostic cadence had not been defined together.",
-      impact: "A team could optimize the wrong handoff or describe a projected target as if it were observed performance.",
-      solution: "Connect named events to explicit formulas, evidence sources, measurement windows, and one controlled next test.",
-      plainImplementation: "The team finds the first weak handoff, checks its evidence, and changes one variable instead of guessing.",
-      implementation: "UTMs, funnel events, GHL reporting surfaces, KPI tree, weekly review, and simulation QA checklist.",
-      proof: "Analytics and KPI Plan plus the complete Implementation Checklist.",
-      kpi: "First material drop > evidence check > one next test",
-      phases: ["09", "10"],
-      evidence: ["kpi-doc", "checklist-doc"],
-      diagnostic: "arrival"
+      number: "05",
+      shortLabel: "Learn what worked",
+      customerStep: "Take the next step → learn what worked",
+      simpleProblem: "Activity numbers alone could not explain where people got stuck.",
+      simpleCause: "The team had not agreed on what to count, who to compare, or when to review it.",
+      customerImpact: "The team could change the wrong part of the journey or mistake a target for a result.",
+      simpleFix: "Count each step separately and review the first place where people drop away.",
+      whatSystemDoes: "The dashboard connects each customer step to one question and one next test.",
+      simpleMeasure: "Which step loses the largest share of the people who reached it?",
+      example: "The team sees that many people opened the page but fewer completed the form, then tests the page copy.",
+      technical: {
+        problem: "Marketing activity was not producing clear optimization decisions.",
+        implementation: "UTMs, funnel events, GHL reporting surfaces, KPI tree, weekly review, and simulation QA checklist.",
+        ghlLocation: "Dashboard, Opportunities, Appointments, message reporting, and campaign tracking",
+        events: "ad_click → landing_page_view → form_submit → booking_created → show_completed",
+        formula: "first material drop → evidence check → one next test",
+        phases: ["09", "10"],
+        evidence: ["kpi-doc", "checklist-doc"],
+        diagnosticKey: "arrival"
+      }
     }
   ];
 
   const presentationNarrative = [
-    { id: "presentation-slide-1", topic: "THE CENTRAL DIAGNOSIS", title: "Five broken handoffs. One connected consultation system.", body: "Bloom Dental did not need isolated marketing assets. It needed a dependable path from attention to a measurable next decision.", minutes: 1, note: "Open with the business diagnosis, not the platform. The case is about repairing movement between customer states; GHL is the implementation environment.", transition: "First, establish what the simulation can and cannot prove." },
-    { id: "presentation-slide-3", topic: "SIMULATION BOUNDARY", title: "The baseline explains the problem. It does not claim live performance.", body: "The workshop supplied fictional operating inputs: 20 leads per month, 30% reaching booking, and a 35% no-show pattern.", minutes: 2, note: "Separate evidence about the design process from evidence about campaign outcomes. The baseline is a training input used to choose what the system must solve.", transition: "Now translate the problem into language familiar to a B2B analytics audience." },
-    { id: "presentation-slide-b2b-bridge", topic: "B2B TO DTC", title: "The analytical habits transfer. The customer motion changes.", body: "Both environments model progression, friction, and outcomes. DTC usually follows an individual through faster behavioral events.", minutes: 2, note: "Anchor the audience in familiar concepts: identity, lifecycle stage, event time, conversion, attribution, and cohort maturity still matter.", transition: "Those transferable habits let us diagnose the entire case as connected handoffs." },
-    { id: "presentation-slide-2", topic: "THE FIVE-PROBLEM MAP", title: "Read the project as five linked business problems.", body: "Qualified intent, booking, attendance, coordinated customer state, and learning form one chain. A weak handoff changes every step after it.", minutes: 2, note: "Use the five-problem map as the contract for the rest of the presentation. Every chapter will move from symptom to cause, solution, proof, and KPI.", transition: "The first handoff is the difference between being noticed and expressing useful intent.", problem: "conversion" },
-    { id: "presentation-slide-marketing-martech", topic: "PROBLEM 01 / CONVERSION", title: "Attention was not reliably becoming qualified intent.", body: "Awareness alone did not tell the clinic who needed help, what they wanted, or whether the offer reduced uncertainty.", minutes: 1, note: "Name the symptom before suggesting content or technology. Someone seeing an ad is an opportunity to communicate, not yet a lead or business outcome.", transition: "The cause sits in the relationship between problem, audience, offer, and channel.", problem: "conversion" },
-    { id: "presentation-slide-four-decisions", topic: "WHY CONVERSION LEAKED", title: "The offer had to answer uncertainty before asking for commitment.", body: "Cold traffic needed to know who the consultation was for, what would happen, and that treatment would not be forced.", minutes: 2, note: "Explain that conversion copy is a decision system. If the offer, audience, or channel changes, the page and metric definition must change with it.", transition: "The response was to make the consultation the low-friction first conversion." },
-    { id: "presentation-slide-4", topic: "SOLUTION 01 / CONSULTATION OFFER", title: "Lead with clarity, not a treatment sale.", body: "A free 30-minute smile consultation gives the audience a specific, lower-pressure next step and keeps the promise continuous across the funnel.", minutes: 2, note: "Show how the audience, offer, and guardrail work together. The consultation creates a meaningful action without inventing urgency or proof.", transition: "The evidence is whether each message handoff can be observed with the right denominator." },
-    { id: "presentation-slide-funnel-math", topic: "PROOF + KPI / CONVERSION", title: "Conversion becomes diagnosable when every rate has a denominator.", body: "Strategy, campaign, and copy deliverables define the path; CTR, arrival rate, and landing conversion locate the first leak.", minutes: 2, note: "Use the fictional mini-funnel to teach rate discipline. Click through each stage and distinguish an ad click from a successfully loaded page view.", transition: "After qualified intent exists, the next problem is turning it into a scheduled time." },
-    { id: "presentation-slide-journey-funnel", topic: "PROBLEM 02 / BOOKING", title: "Submitted interest was not reliably becoming a booking.", body: "A form completion could still end without a consultation time, a visible opportunity, or a clear next action.", minutes: 1, note: "Separate the customer journey from the measurable funnel. A submitted form is a useful state change, but it is not the same event as a booking.", transition: "The root cause was a disconnected handoff between context capture and scheduling." },
-    { id: "presentation-slide-6", topic: "WHY BOOKING LEAKED", title: "The form and calendar were behaving like separate tools.", body: "The person had to preserve momentum while the clinic risked receiving a booking without the context needed for a useful consultation.", minutes: 2, note: "Follow one person through the handoff. Ask what the system must remember, what the person must do next, and what evidence proves the transition.", transition: "The solution puts context first and scheduling immediately after it." },
-    { id: "presentation-slide-7", topic: "SOLUTION 02 / FORM-FIRST FUNNEL", title: "Capture useful intent, then offer the right calendar.", body: "The landing page leads to a mapped inquiry form, then a 30-minute consultation calendar and a visible pipeline stage.", minutes: 2, note: "Explain why form-first is a deliberate tradeoff: slightly more effort before booking, but better consultation context, consent, and measurable separation of events.", transition: "The implementation proof is the working page-to-form-to-calendar-to-pipeline chain." },
-    { id: "presentation-slide-12", topic: "PROOF + KPI / BOOKING", title: "The booking handoff has one owner, one event, and one rate.", body: "Mapped fields, appointment settings, and the New Lead-to-Booked stage support lead-to-booking measurement without confusing forms with appointments.", minutes: 2, note: "Walk through explain, ask, schedule, and operate. The primary diagnostic is bookings divided by form submissions, segmented by source and elapsed time.", transition: "A booked time still has to become an attended consultation." },
-    { id: "presentation-slide-dtc-realities", topic: "PROBLEM 03 / ATTENDANCE", title: "Bookings were vulnerable to inconsistent follow-up and no-shows.", body: "The scenario included a 35% no-show pattern, making appointment protection a business problem rather than a messaging preference.", minutes: 1, note: "Frame no-show as a mature appointment outcome. Future, cancelled, or rescheduled appointments cannot safely enter the denominator.", transition: "The cause was not simply too few reminders; it was missing timing, permission, and exit logic." },
-    { id: "presentation-slide-13", topic: "WHY ATTENDANCE LEAKED", title: "Manual follow-up could not reliably respect timing, consent, or changed status.", body: "One large sequence would also make it harder to prevent reminders after booking changes or completed attendance.", minutes: 2, note: "Explain why modularity matters operationally. Confirmation, reminders, and recovery respond to different triggers and should stop for different reasons.", transition: "The solution gives booking protection and no-show recovery their own inspectable paths." },
-    { id: "presentation-slide-14", topic: "SOLUTION 03 / TIMED WORKFLOWS", title: "Confirm, remind, check, recover, and stop at the right moment.", body: "Consent-gated messages, waits, appointment conditions, and exits create a respectful path from booking to attendance or recovery.", minutes: 2, note: "Select workflow nodes to show that every action has a function. Emphasize that the condition protects the experience as much as it controls automation.", transition: "The proof is not message volume; it is correct routing and mature attendance outcomes." },
-    { id: "presentation-slide-15", topic: "PROOF + KPI / ATTENDANCE", title: "Outcome workflows make show and no-show states explicit.", body: "The workflow specification and QA checklist define the branches; show rate and no-show rate evaluate only appointments whose date has passed.", minutes: 2, note: "Contrast booked, completed, and no-show states. A reliable denominator is the basis for deciding whether timing, channel, or scheduling policy needs a test.", transition: "Once the appointment outcome is known, the system still needs to coordinate what happens next." },
-    { id: "presentation-slide-5", topic: "PROBLEM 04 / CUSTOMER STATE", title: "Customer outcomes were not producing coordinated next steps.", body: "Without shared state, attended, missed, interested, paid, and recall-due contacts could remain operationally indistinguishable.", minutes: 1, note: "Introduce GHL only after naming the coordination problem. The platform objects exist to preserve identity, state, time, and responsible action.", transition: "The root cause becomes clearer when we separate records, states, and events." },
-    { id: "presentation-slide-analyst-lens", topic: "WHY STATE FRAGMENTED", title: "Records, states, and events did not yet share one vocabulary.", body: "A contact could exist without a reliable opportunity stage, consent signal, service interest, or downstream ownership rule.", minutes: 2, note: "Translate the problem into analytical terms. A record stores context, a state describes where the journey sits, and an event proves that something changed.", transition: "The solution is a small data model connected to modular automation." },
-    { id: "presentation-slide-11", topic: "SOLUTION 04 / SHARED OPERATING STATE", title: "Give every meaningful outcome a record, stage, workflow, and exit.", body: "Contact fields, tags, opportunities, pipeline stages, and six workflows coordinate booking, recovery, whitening, payment, and recall.", minutes: 2, note: "Show the data model as a shared operating contract. Smaller workflows can read the same fields and stages without hiding every behavior in one sequence.", transition: "The build phases and workflow specifications provide the implementation evidence." },
-    { id: "presentation-slide-9", topic: "PROOF + KPI / CUSTOMER STATE", title: "The system can trace an outcome into its next responsible path.", body: "The CRM model and modular workflows support whitening attach and six-month recall measurement without treating either target as achieved.", minutes: 2, note: "Connect each downstream KPI to eligibility. Whitening uses completed consultations; recall uses only contacts whose six-month due date has matured.", transition: "Even a coordinated system is incomplete if its activity cannot guide a decision." },
-    { id: "presentation-slide-16", topic: "PROBLEM 05 / LEARNING", title: "Marketing activity was not yet producing trustworthy optimization decisions.", body: "Counts could be discussed without explicit denominators, attribution fields, maturity rules, or separate acquisition and retention windows.", minutes: 1, note: "Distinguish a dashboard from a learning system. More widgets do not help when events, denominators, and decision ownership remain ambiguous.", transition: "The root cause is a measurement model assembled after execution instead of designed with the journey." },
-    { id: "presentation-slide-10", topic: "WHY LEARNING FAILED", title: "Vanity activity mixed different events and time horizons.", body: "Ad clicks, page views, form submissions, bookings, attended consultations, and six-month recall cannot share one denominator or reporting window.", minutes: 2, note: "Explain acquisition, appointment maturity, and retention as separate clocks. This prevents early cohorts or future appointments from distorting decisions.", transition: "The response connects every business question to an event, formula, source, and next test." },
-    { id: "presentation-slide-8", topic: "SOLUTION 05 / MEASUREMENT MODEL", title: "Design the learning loop before live traffic arrives.", body: "An event model, KPI tree, UTM plan, dashboard layout, and weekly diagnostic cadence turn activity into inspectable evidence.", minutes: 2, note: "Use the eight deliverables as proof that strategy, implementation, and measurement were designed together. The analytics plan is not a decorative final document.", transition: "Simulation QA checks whether those definitions and paths are ready to receive real evidence." },
-    { id: "presentation-slide-17", topic: "PROOF + KPI / LEARNING", title: "QA proves the model is coherent, not that the campaign succeeded.", body: "The simulation verifies routes, branches, consent, stages, formulas, and stop conditions. Sender setup, compliance, live tracking, and real data remain launch gates.", minutes: 2, note: "Use the KPI Diagnostic Lab as the operating behavior: find the first material drop, inspect the relevant evidence, and change one variable.", transition: "Close by returning to the five problems and the capability demonstrated by solving them as one system." },
-    { id: "presentation-slide-18", topic: "CLOSE / FIVE RESPONSES", title: "The project turns five business problems into one measurable operating system.", body: "The work demonstrates diagnosis, campaign strategy, funnel design, GHL configuration, workflow logic, measurement design, and honest simulation QA.", minutes: 3, note: "Summarize the chain: clarify intent, make booking continuous, protect attendance, coordinate customer state, and close the learning loop. Then restate the boundary between a complete workshop simulation and a production campaign.", transition: "Invite questions about the decisions, evidence, tradeoffs, or first live experiment." }
+    { id: "presentation-slide-1", topic: "START HERE", title: "People were interested, but the process could lose them.", body: "This project connects one person’s journey from an ad to an appointment and follow-up. You can inspect each decision as we go.", minutes: 1, note: "Main idea: The project fixes the path between interest and care. Explain: A person can like an ad and still get lost before booking. Example: Sam sees the offer but needs clear help. Ask: Where might Sam stop? Technical backup: The complete system uses GHL to store the person, appointment, messages, and progress.", transition: "First, explain what the simulation can and cannot prove." },
+    { id: "presentation-slide-3", topic: "WHAT THIS IS", title: "This is a finished practice project, not a live campaign report.", body: "The workshop gave us example numbers. I used them to design and test the system.", minutes: 2, note: "Main idea: This project shows how I think and build. Explain: The clinic was a workshop scenario, so no real campaign ran. Example: The 35% no-show figure is an input, not a result. Ask: What would we need before calling a number real? Technical backup: Targets, source tracking, sender setup, compliance, and live data remain launch dependencies.", transition: "Now connect this customer example to familiar data work." },
+    { id: "presentation-slide-b2b-bridge", topic: "FROM B2B TO DTC", title: "The data habits transfer. The person’s journey is faster.", body: "We still track people, steps, timing, and outcomes. Here, one person may move in minutes or days.", minutes: 2, note: "Main idea: B2B analytics skills still apply. Explain: We ask what happened, when it happened, and what happened next. Example: A lead can move from page view to form to booking in one session. Ask: Which parts of your current data work already follow this pattern? Technical backup: Identity, lifecycle, event time, source, and mature groups remain useful concepts.", transition: "With that bridge, we can name the five places the journey may break." },
+    { id: "presentation-slide-2", topic: "MEET SAM", title: "Meet Sam, our fictional example visitor.", body: "Sam sees an ad, asks for help, chooses a time, gets reminders, attends, and helps the team learn what to check next.", minutes: 2, note: "Main idea: One fictional visitor makes the system easy to follow. Explain: Sam is not a real patient or a reported result. Example: We will follow Sam from the first ad through the appointment and the team’s review. Ask: Which step would you want to make easiest for Sam? Technical backup: Use the canonical journey model to connect events, records, workflows, phases, deliverables, and measures.", transition: "Start with the first moment: Sam sees the offer." },
+    { id: "presentation-slide-marketing-martech", topic: "1 / ASK FOR HELP", title: "Sam sees an ad, but seeing is not asking.", body: "An ad can get attention without making the next step feel clear or safe. That gap is the first problem this project addresses.", minutes: 1, note: "Main idea: Attention is only the beginning. Explain: The clinic needs Sam to understand what help is available. Example: Sam may like the idea of a better smile but still wonder about cost, pressure, or the first visit. Ask: What question might stop Sam? Technical backup: A click is not yet a lead or business outcome.", transition: "The cause is uncertainty, so the offer must answer simple questions." , problem: "conversion" },
+    { id: "presentation-slide-four-decisions", topic: "1 / WHY IT HAPPENS", title: "The offer must answer questions before it asks for action.", body: "Sam needs to know who the visit is for, what happens there, and what is not required.", minutes: 2, note: "Main idea: Clear words reduce uncertainty. Explain: A person is more likely to ask for help when the visit feels specific and low pressure. Example: ‘Talk about your options first’ feels different from ‘Buy whitening now.’ Ask: Which message would make you more comfortable? Technical backup: Audience, offer, channel, and message must stay aligned.", transition: "That leads to the first response: a clear consultation offer." },
+    { id: "presentation-slide-4", topic: "1 / THE FIX", title: "Make the first step easy to understand.", body: "The page explains the free consultation, repeats the same promise, and asks for useful information. The goal is clarity before commitment.", minutes: 2, note: "Main idea: The first action is a conversation, not a treatment sale. Explain: The page, form, and follow-up use the same calm message. Example: Sam knows what the consultation is for before sharing details. Ask: What would you want to know before asking a clinic for help? Technical backup: The GHL funnel page, form, tags, and tracking values support the message path.", transition: "Next, show how we would know the page is helping." },
+    { id: "presentation-slide-funnel-math", topic: "1 / HOW WE CHECK", title: "Count each step so we can find the first weak point.", body: "We separate page visits from form answers. That tells us where people stop. The question is about the page, not the whole ad.", minutes: 2, note: "Main idea: One big number cannot explain a journey. Explain: We count page views, then form completions, instead of calling both ‘leads.’ Example: If many people open the page but few complete the form, test the page first. Ask: What should we change if the first drop is here? Technical backup: The detailed rates are CTR, arrival rate, and landing conversion.", transition: "Once Sam asks for help, the next question is whether Sam chooses a time." },
+    { id: "presentation-slide-journey-funnel", topic: "2 / CHOOSE A TIME", title: "Sam fills in the form, but may still leave without a time.", body: "Sharing information and choosing an appointment are two different actions. The project treats both actions as important.", minutes: 1, note: "Main idea: A completed form is not a booked appointment. Explain: Sam can answer questions and still stop before scheduling. Example: The clinic knows Sam is interested but does not know when to expect the visit. Ask: What should Sam see immediately after submitting? Technical backup: Form submission and appointment creation are separate events.", transition: "The fix connects those two actions without hiding either one." , problem: "booking" },
+    { id: "presentation-slide-6", topic: "2 / WHY IT HAPPENS", title: "A form and a calendar can feel like two unrelated tasks.", body: "The person can lose momentum, and the clinic can lose useful context. The next action should be visible.", minutes: 2, note: "Main idea: The gap between form and calendar is a real customer problem. Explain: Sam has already made an effort, so the next step should be obvious. Example: A vague thank-you page makes Sam wonder what to do now. Ask: What would make the next action impossible to miss? Technical backup: The system must preserve context while moving the contact toward an appointment.", transition: "That leads to a form-first path." },
+    { id: "presentation-slide-7", topic: "2 / THE FIX", title: "Ask a few useful questions, then show the calendar.", body: "The form saves Sam’s goal and permission. The calendar then offers a 30-minute consultation. This keeps the journey simple for Sam and the clinic.", minutes: 2, note: "Main idea: Ask first, schedule next. Explain: The form gives the clinic context and gives Sam a clear next action. Example: Sam explains what to improve, then sees available times right away. Ask: Which questions help the conversation, and which only add work? Technical backup: Mapped fields, calendar settings, and the New Lead-to-Booked stage support the handoff.", transition: "Now connect the path to one simple booking check." },
+    { id: "presentation-slide-12", topic: "2 / HOW WE CHECK", title: "Ask one clear booking question.", body: "Of the people who completed the form, how many chose a time? This is the booking check. It tells us where to look next.", minutes: 2, note: "Main idea: Measure booking from the people who could actually book. Explain: We do not divide bookings by everyone who saw the ad. Example: Sam belongs in this group only after completing the form. Ask: What evidence would show that the calendar handoff failed? Technical backup: Lead-to-booking is booking_created divided by form_submit, reviewed by source and time.", transition: "A chosen time is progress, but Sam still needs to show up." },
+    { id: "presentation-slide-dtc-realities", topic: "3 / SHOW UP", title: "A booked visit can still be missed.", body: "The workshop used a 35% no-show pattern as a problem to plan for, not a live result. This is a planning input for the reminder design.", minutes: 1, note: "Main idea: Booking is not the same as attendance. Explain: People get busy, forget, or need another time. Example: Sam may want the consultation and still miss Tuesday’s appointment. Ask: What kind of reminder would help without becoming annoying? Technical backup: No-show rates use only appointments whose dates have passed.", transition: "The next question is how reminders can help without creating new problems.", problem: "attendance" },
+    { id: "presentation-slide-13", topic: "3 / WHY IT HAPPENS", title: "Reminders need timing, permission, and stop rules.", body: "A message sent at the wrong time, or after a change, can hurt trust. Good timing protects both sides of the appointment.", minutes: 2, note: "Main idea: More messages are not automatically better. Explain: The system must know when to send, which channel is allowed, and when to stop. Example: Sam should not receive a ‘please book’ reminder after already booking. Ask: What should stop a reminder? Technical backup: Separate workflows use triggers, waits, conditions, appointment status, and consent.", transition: "That is why the response uses small automatic helpers." },
+    { id: "presentation-slide-14", topic: "3 / THE FIX", title: "Confirm, remind, check, and help Sam rebook.", body: "Each automatic helper has one job and stops when the appointment changes. Good timing protects both sides of the appointment.", minutes: 2, note: "Main idea: Small rules are easier to understand and fix. Explain: One helper confirms, another reminds, and another helps after a missed visit. Example: If Sam books, the booking reminder stops. If Sam misses, recovery begins. Ask: Which rule protects the customer experience most? Technical backup: Consent-gated email and SMS actions use branches, waits, and exits.", transition: "Now show how attendance becomes a checkable outcome." },
+    { id: "presentation-slide-15", topic: "3 / HOW WE CHECK", title: "Compare attended visits with appointments that were ready to happen.", body: "We do not count future, cancelled, or rescheduled appointments as no-shows. The same rule keeps the measure honest.", minutes: 2, note: "Main idea: Use the right group before calculating a rate. Explain: An appointment must reach its date before we know if it was attended. Example: Tomorrow’s appointment cannot be called a success or failure today. Ask: Which appointments should be left out? Technical backup: Show rate and no-show rate use mature bookings and appointment-status evidence.", transition: "After the visit, the clinic needs to know what should happen next." },
+    { id: "presentation-slide-5", topic: "4 / TAKE THE NEXT STEP", title: "After the visit, the next step must be clear.", body: "Sam may need whitening information, payment follow-up, future care, or no message yet. Follow-up should match the conversation.", minutes: 1, note: "Main idea: A completed visit is not the end of the relationship. Explain: The next message should match what happened. Example: Sam should not receive a whitening message if the conversation did not lead there. Ask: What should the clinic remember after a visit? Technical backup: GHL records, stages, fields, tags, and workflows preserve customer state.", transition: "To solve this, separate what the record knows from what the system does.", problem: "continuity" },
+    { id: "presentation-slide-analyst-lens", topic: "4 / WHY IT HAPPENS", title: "The clinic needs one shared place to remember the story.", body: "Without shared information, different people may make different guesses about what happens next. A shared record makes the next step easier to see.", minutes: 2, note: "Main idea: Good follow-up starts with a clear record. Explain: The team needs to know who Sam is, what happened, and who owns the next action. Example: One person sees ‘interested’ while another sees ‘already booked.’ Ask: Which fact would you save first? Technical backup: Contacts store context, pipeline stages show progress, and events prove change.", transition: "The fix is a small shared record connected to clear actions." },
+    { id: "presentation-slide-11", topic: "4 / THE FIX", title: "Give every outcome a record and a next action.", body: "The system remembers the person, the appointment result, the current step, and the rule that should run next.", minutes: 2, note: "Main idea: The right next action comes from the latest known outcome. Explain: The clinic can see whether Sam is new, booked, complete, interested, paid, or due for future care. Example: A completed consultation can start a relevant follow-up, while an opt-out stops a message. Ask: What should the system never guess? Technical backup: Contact fields, tags, opportunities, pipeline stages, and six workflows form the operating model.", transition: "Now connect the model to the outcomes we would check." },
+    { id: "presentation-slide-9", topic: "4 / HOW WE CHECK", title: "Check whether one outcome leads to the right next step.", body: "Whitening and six-month recall are future paths, not proof that a sale happened. The answer depends on the outcome we are measuring.", minutes: 2, note: "Main idea: Downstream numbers need eligibility rules. Explain: We only count whitening after a completed consultation, and recall after the six-month date is due. Example: Sam cannot belong to the recall group on the day of the first ad. Ask: Who is allowed into each group? Technical backup: Attach rate uses completed consultations; recall rate uses contacts due.", transition: "The final problem is learning from the whole path." },
+    { id: "presentation-slide-16", topic: "5 / LEARN WHAT WORKED", title: "The team needs more than activity counts.", body: "It needs to know where people stopped and what to try next. The next test should follow the first weak step.", minutes: 1, note: "Main idea: A dashboard should help someone make a decision. Explain: ‘We had clicks’ does not tell us why bookings were low. Example: The page may load well, but the form may be confusing. Ask: What is the first weak step you would inspect? Technical backup: A measurement model needs events, sources, timing rules, and ownership.", transition: "The cause is mixing different events and time windows.", problem: "learning" },
+    { id: "presentation-slide-10", topic: "5 / WHY IT HAPPENS", title: "Different steps need different questions and different clocks.", body: "A page view, a form answer, a booking, and a six-month recall are not the same event.", minutes: 2, note: "Main idea: Do not place every number in one bucket. Explain: We measure the launch path over 60 days, appointment outcomes after their dates pass, and recall much later. Example: A future recall appointment cannot explain this week’s ad. Ask: Which time window belongs to this question? Technical backup: Separate acquisition, appointment maturity, and retention cohorts.", transition: "The fix is a simple event path with a question at every step." },
+    { id: "presentation-slide-8", topic: "5 / THE FIX", title: "Count each step, then choose one next test.", body: "The plan connects page views, forms, bookings, visits, follow-up, and future care. That turns a report into a decision.", minutes: 2, note: "Main idea: Measurement should lead to action. Explain: The team finds the first meaningful drop, checks the related evidence, and changes one thing. Example: If form completion is weak, test the page promise before changing the ads. Ask: What single test would you run first? Technical backup: Events, formulas, UTM values, dashboard widgets, and review cadence make the learning loop usable.", transition: "Before live traffic, the model must be checked from end to end." },
+    { id: "presentation-slide-17", topic: "READY FOR A REAL TEST", title: "The practice build is complete. A real launch still has gates.", body: "The system is documented and ready for the next checks, but it has no live results yet.", minutes: 2, note: "Main idea: Complete design is not the same as live performance. Explain: The workshop build can be reviewed, but sender setup, compliance, tracking, traffic, and real data are still needed. Example: 10/10 means the simulation path is complete. Ask: Which launch gate would you check first? Technical backup: QA covers routes, branches, consent, stages, formulas, stop conditions, and mobile behavior.", transition: "Close by returning to Sam and the work I contributed." },
+    { id: "presentation-slide-18", topic: "CLOSE / WHAT I CONTRIBUTED", title: "I turned five customer problems into one clear system.", body: "I connected the message, page, form, calendar, follow-up, records, and measurement plan. I would launch with a small test and learn from it.", minutes: 3, note: "Main idea: My contribution was the reasoning chain, not just a set of screens. Explain: I translated the situation into a customer path, built the GHL logic, wrote the communication layer, defined what to count, and documented QA. Example: Sam can now be followed from first interest to the next responsible action. Ask: Which part would you like to inspect? Technical backup: The portfolio contains the strategy, funnel, copy, messages, workflows, analytics plan, and implementation checklist. Transition: The first live experiment should find the earliest meaningful drop after the page loads.", transition: "Invite questions about the decisions, evidence, tradeoffs, or first live experiment." }
   ];
 
   const documentTitles = {
@@ -185,17 +215,132 @@
     "checklist-doc": "Implementation Checklist"
   };
 
+  const beginnerDocumentCopy = {
+    "strategy-doc": { label: "Campaign reasoning", question: "What problem should the campaign solve?", why: "The team needs a clear reason for the offer before building pages or messages.", learn: "How the audience, offer, concerns, and projected goals shaped the build.", journey: "Before Sam sees the offer" },
+    "campaign-doc": { label: "Promotion plan", question: "How will people first hear about Bloom Dental?", why: "The same helpful promise should appear in the promotion and on the page.", learn: "How the audience, channel, message, and first action fit together.", journey: "Sam sees the offer" },
+    "funnel-doc": { label: "Customer path", question: "What should happen from the first click to follow-up?", why: "A drawn path makes missing steps visible before anything is built.", learn: "How the page, questions, calendar, progress record, and helpers connect.", journey: "Sam moves through the full path" },
+    "copy-doc": { label: "Page wording", question: "What should Sam read before asking for help?", why: "Clear words lower worry and make the next action easier to understand.", learn: "How the page, form, FAQs, and calls to action guide the first step.", journey: "Sam understands the offer and asks for help" },
+    "messages-doc": { label: "Follow-up messages", question: "What should Sam receive after each important moment?", why: "Useful messages help people remember, prepare, rebook, or continue.", learn: "How timing, permission, tone, and stop rules shape the messages.", journey: "Sam gets reminders and follow-up" },
+    "workflow-doc": { label: "Automatic rules", question: "Which repeat tasks should happen without manual chasing?", why: "Writing each rule down makes the system easier to build and check.", learn: "How the six helpers notice events, wait, branch, act, and stop.", journey: "Sam is reminded and followed up" },
+    "kpi-doc": { label: "Numbers to check", question: "How will the team know where people stop?", why: "A number is useful only when it answers a clear question.", learn: "How events, formulas, time windows, and tests turn activity into learning.", journey: "The team learns what worked" },
+    "checklist-doc": { label: "Build checklist", question: "What must be built and tested before launch?", why: "A checklist turns the plan into a repeatable review.", learn: "How to check the records, page, calendar, messages, helpers, and measurement plan.", journey: "The whole Sam journey" }
+  };
+
+  function prepareDocuments() {
+    document.querySelectorAll(".native-deliverable").forEach((panel) => {
+      if (panel.dataset.beginnerReady === "true") return;
+      const documentId = panel.id.replace(/^docs-panel-/, "");
+      const copy = beginnerDocumentCopy[documentId];
+      const layout = panel.querySelector(".document-layout");
+      const aside = layout?.querySelector(":scope > aside");
+      const content = layout?.querySelector(":scope > .document-content");
+      if (!copy || !layout || !aside || !content) return;
+      panel.dataset.beginnerReady = "true";
+
+      const officialTitle = documentTitles[documentId] || aside.querySelector("h3")?.textContent?.trim() || "Workshop document";
+      const title = aside.querySelector("h3");
+      const description = aside.querySelector("p:last-child");
+      if (title) title.textContent = copy.label;
+      if (description) description.textContent = copy.question;
+      const originalContent = Array.from(content.children);
+      content.textContent = "";
+      const beginner = document.createElement("div");
+      beginner.className = "document-beginner-intro";
+      beginner.innerHTML = `<span class="section-label">START HERE</span><h3>${copy.label}</h3><p class="document-official-title">Official workshop document: ${officialTitle}</p><div class="document-learning-grid"><div><span>QUESTION THIS ANSWERS</span><p>${copy.question}</p></div><div><span>WHY IT WAS NEEDED</span><p>${copy.why}</p></div><div><span>WHAT YOU CAN LEARN HERE</span><p>${copy.learn}</p></div><div><span>PART OF SAM’S JOURNEY</span><p>${copy.journey}</p></div></div>`;
+
+      const complete = document.createElement("details");
+      complete.className = "full-document";
+      const summary = document.createElement("summary");
+      summary.textContent = "Read the complete workshop document";
+      const completeBody = document.createElement("div");
+      completeBody.className = "full-document-body";
+      originalContent.forEach((child) => completeBody.appendChild(child));
+      complete.append(summary, completeBody);
+      content.append(beginner, complete);
+    });
+  }
+
+  function prepareMeasurementView() {
+    const view = document.getElementById("view-measurement");
+    if (!view || view.dataset.beginnerReady === "true") return;
+    view.dataset.beginnerReady = "true";
+
+    const heading = view.querySelector(".view-heading");
+    const headingLabel = heading?.querySelector(".section-label");
+    const headingTitle = heading?.querySelector("h2");
+    const headingCopy = heading?.querySelector(":scope > p");
+    if (headingLabel) headingLabel.textContent = "HOW WE’D KNOW";
+    if (headingTitle) headingTitle.textContent = "We count each step so the team knows where to help.";
+    if (headingCopy) headingCopy.textContent = "Because this is a simulation, there are no campaign results. This section explains what the team would count after launch.";
+
+    const bridgeTitle = view.querySelector("#measurement-problem-title");
+    const bridgeCopy = bridgeTitle?.parentElement?.querySelector("p");
+    if (bridgeTitle) bridgeTitle.textContent = "Choose the question before looking at the number.";
+    if (bridgeCopy) bridgeCopy.textContent = "Each step in Sam’s journey has one simple question and one next check.";
+    view.querySelectorAll(".measurement-problem-panel [data-problem-field]").forEach((field) => {
+      if (field.textContent.trim() === "DECISION QUESTION") field.textContent = "QUESTION";
+      if (field.textContent.trim() === "EVIDENCE") field.textContent = "WHY IT HELPS";
+    });
+
+    const path = document.createElement("section");
+    path.className = "measurement-path";
+    path.setAttribute("aria-labelledby", "measurement-path-title");
+    path.dataset.reveal = "";
+    path.innerHTML = `<div class="section-intro"><span class="section-label">THE SIX THINGS WE COUNT</span><h2 id="measurement-path-title">Follow people, not just numbers.</h2><p>We count people as they move through the journey. Each count tells the team what to check next.</p></div><div class="measurement-path-grid"><article><span>01 / OPENED</span><h3>People who opened the page</h3><p><strong>Question:</strong> Did people reach the page after the ad?</p><p><strong>If low:</strong> The link or page may not be reaching people.</p><p><strong>Check next:</strong> The ad link, page load, and phone experience.</p></article><article><span>02 / ASKED</span><h3>People who completed the form</h3><p><strong>Question:</strong> Did the page make Sam comfortable asking for help?</p><p><strong>If low:</strong> The words or questions may feel unclear.</p><p><strong>Check next:</strong> The promise, page order, and form length.</p></article><article><span>03 / CHOSE</span><h3>People who chose a time</h3><p><strong>Question:</strong> Did people book after answering the questions?</p><p><strong>If low:</strong> The calendar step may be easy to miss.</p><p><strong>Check next:</strong> The confirmation page, booking link, and available times.</p></article><article><span>04 / ATTENDED</span><h3>People who attended</h3><p><strong>Question:</strong> Did booked visits happen after their dates passed?</p><p><strong>If low:</strong> People may forget, need a new time, or miss a reminder.</p><p><strong>Check next:</strong> Message timing, permission, and rebooking.</p></article><article><span>05 / CONTINUED</span><h3>People who booked whitening</h3><p><strong>Question:</strong> Did completed visits lead to a suitable next step?</p><p><strong>If low:</strong> The offer or follow-up may not match the conversation.</p><p><strong>Check next:</strong> The recorded outcome, fit, price clarity, and message.</p></article><article><span>06 / RETURNED</span><h3>People who returned for future care</h3><p><strong>Question:</strong> Did people due for care choose another visit?</p><p><strong>If low:</strong> The reminder may arrive late or make booking hard.</p><p><strong>Check next:</strong> The six-month timing, message, and booking path.</p></article></div>`;
+    const targetGrid = view.querySelector(".target-grid");
+    targetGrid?.before(path);
+
+    const horizonCopy = [
+      ["FIRST 60 DAYS", "The launch path", "Count page visits, questions, and bookings."],
+      ["AFTER THE VISIT DATE", "The appointment outcome", "Count attendance only after the scheduled date passes."],
+      ["SIX MONTHS LATER", "Future care", "Keep future-care reminders separate from the first launch." ]
+    ];
+    view.querySelectorAll(".measurement-horizons > div").forEach((item, index) => {
+      const copy = horizonCopy[index];
+      if (!copy) return;
+      const label = item.querySelector("span");
+      const title = item.querySelector("strong");
+      const paragraph = item.querySelector("p");
+      if (label) label.textContent = copy[0];
+      if (title) title.textContent = copy[1];
+      if (paragraph) paragraph.textContent = copy[2];
+    });
+
+    const technicalSections = [".measurement-grid", ".dashboard-plan", ".kpi-diagnostic", ".review-plan"]
+      .map((selector) => view.querySelector(selector))
+      .filter(Boolean);
+    const boundary = view.querySelector(".measurement-boundary");
+    if (technicalSections.length && boundary) {
+      const details = document.createElement("details");
+      details.className = "analyst-details";
+      const summary = document.createElement("summary");
+      summary.textContent = "Analyst details";
+      const body = document.createElement("div");
+      body.className = "analyst-details-body";
+      details.append(summary, body);
+      boundary.before(details);
+      technicalSections.forEach((section) => body.appendChild(section));
+    }
+
+    const boundaryLabel = view.querySelector(".measurement-boundary .section-label");
+    const boundaryTitle = view.querySelector(".measurement-boundary h2");
+    const boundaryCopy = view.querySelector(".measurement-boundary p");
+    if (boundaryLabel) boundaryLabel.textContent = "ONE IMPORTANT NOTE";
+    if (boundaryTitle) boundaryTitle.textContent = "The goals become real numbers only after launch.";
+    if (boundaryCopy) boundaryCopy.textContent = "The campaign was not launched. The three figures above are projected goals, not results.";
+  }
+
   const phaseAnnotations = [
-    { problems: ["conversion"], solution: "Turn discovery evidence into a specific conversion problem and a low-friction consultation offer." },
-    { problems: ["conversion"], solution: "Align audience, message, channel, and projected goals around qualified intent." },
-    { problems: ["booking"], solution: "Design the page-to-form-to-calendar handoff before configuring individual GHL objects." },
-    { problems: ["conversion"], solution: "Use clear, continuous copy to lower uncertainty across the conversion path." },
-    { problems: ["continuity"], solution: "Create a shared vocabulary for identity, consent, service interest, and opportunity stage." },
-    { problems: ["booking"], solution: "Capture only the context needed to create an understandable, actionable lead." },
-    { problems: ["booking"], solution: "Convert submitted intent into a configured consultation time and visible stage change." },
-    { problems: ["attendance", "continuity"], solution: "Run timely, consent-aware actions while routing every outcome to its responsible next path." },
-    { problems: ["learning"], solution: "Connect journey events to explicit formulas, reporting windows, and diagnostic questions." },
-    { problems: ["attendance", "learning"], solution: "Verify branches, exits, state changes, and metric definitions before live traffic." }
+    { name: "Understand the situation", summary: "Find out where people could get lost.", problems: ["conversion"], solution: "Make the first request feel clear and safe.", needed: "Understand Bloom Dental, its people, its offer, and the current journey.", decided: "Focus on a free smile consultation for busy BGC and Makati professionals.", made: "A clear problem statement, audience notes, offer guardrails, and first questions.", journey: "Before Sam sees the offer", source: "Discovery transcript and workshop brief" },
+    { name: "Choose the campaign direction", summary: "Choose one message and one audience.", problems: ["conversion"], solution: "Keep the same helpful promise from the ad to the page.", needed: "Turn the situation into a message that feels useful and calm.", decided: "Lead with help and options before asking Sam to choose treatment.", made: "The campaign brief, channel plan, message direction, and projected goals.", journey: "Sam sees the offer", source: "GHL Setup Guide 01 and campaign planning documents" },
+    { name: "Draw the customer path", summary: "Draw the full path before building it.", problems: ["booking"], solution: "Join the questions and the time choice into one path.", needed: "See every step between an ad, a question, a time, and follow-up.", decided: "Ask questions first, then show the calendar immediately.", made: "The customer path and the system map for every handoff.", journey: "Sam moves from the page to the calendar", source: "Funnel Map and GHL Automation Blueprint" },
+    { name: "Write what people will see", summary: "Write clear words for every moment.", problems: ["conversion"], solution: "Use simple words that answer Sam’s first questions.", needed: "Give Sam enough context to feel ready for the first conversation.", decided: "Explain what the visit is, what it is not, and what happens next.", made: "Page wording, form prompts, FAQs, email messages, and SMS messages.", journey: "Sam understands, asks, and receives help", source: "Landing Page Copy Deck and Email + SMS Sequence" },
+    { name: "Decide what GHL must remember", summary: "Choose the few details the team needs.", problems: ["continuity"], solution: "Give the team one shared record of what Sam needs.", needed: "Make sure the system can remember the person, permission, need, and progress.", decided: "Use a small shared record instead of collecting everything.", made: "The record fields, labels, progress steps, and naming rules.", journey: "The team sees where Sam is", source: "CRM Configuration guide" },
+    { name: "Build the inquiry form", summary: "Build the first useful question set.", problems: ["booking"], solution: "Ask only for details that help the visit or the next message.", needed: "Collect Sam’s goal, contact details, source, and message permission.", decided: "Ask only questions that help the consultation or follow-up.", made: "A working inquiry form connected to the next step.", journey: "Sam asks for help", source: "CRM Configuration and Landing Page Build guides" },
+    { name: "Build the booking calendar", summary: "Make choosing a time simple.", problems: ["booking"], solution: "Make the next available time easy to find and choose.", needed: "Offer a clear 30-minute consultation with realistic availability.", decided: "Use buffers, notice, and a direct next step after the form.", made: "A testable calendar, booking copy, and confirmation path.", journey: "Sam chooses a time", source: "Calendar for Booking guide" },
+    { name: "Build the automatic follow-up", summary: "Make repeat messages happen at the right time.", problems: ["attendance", "continuity"], solution: "Send the right message at the right moment, then stop when the path changes.", needed: "Protect the appointment and guide the next step without manual chasing.", decided: "Use six small helpers with clear starts, checks, waits, and stops.", made: "Confirmation, reminder, missed-visit, follow-up, payment, and recall rules.", journey: "Sam gets reminders and follow-up", source: "Email, SMS, and Workflow Builder guides" },
+    { name: "Decide what to measure", summary: "Choose the numbers that answer real questions.", problems: ["learning"], solution: "Give every step one simple question and one number to check.", needed: "Know where people move forward and where they stop.", decided: "Count each step separately and review the first meaningful drop.", made: "The event list, formulas, dashboard plan, review rhythm, and next-test rules.", journey: "The team learns what worked", source: "Analytics Dashboard guide and KPI Plan" },
+    { name: "Test the complete journey", summary: "Walk through the whole practice build.", problems: ["attendance", "learning"], solution: "Walk through the happy path and the paths where Sam needs help.", needed: "Check the normal path and the moments where Sam needs another option.", decided: "Call the simulation complete only after routes, rules, consent, and mobile behavior are checked.", made: "The QA checklist, documented test paths, and launch dependency list.", journey: "The whole Sam journey", source: "Implementation Checklist and all seven setup guides" }
   ];
 
   const kpiDiagnostics = {
@@ -251,38 +396,38 @@
 
   const nodeDetails = {
     ad: {
-      title: "Interest begins with a focused offer.",
-      plain: "The person sees a consultation message designed for time-poor BGC and Makati professionals.",
+      title: "Sam sees the offer.",
+      plain: "Sam sees a clear consultation message designed for busy professionals.",
       detail: "UTM source and campaign values identify where the click came from before the contact record exists.",
       technical: "Source: Meta ad / UTM campaign parameters"
     },
     page: {
-      title: "The landing page makes the next step understandable.",
-      plain: "The page answers what the consultation is, who it is for, and what happens after someone asks for help.",
+      title: "Sam understands the offer.",
+      plain: "The page explains what the consultation is, who it is for, and what happens next.",
       detail: "A GHL funnel step holds the hero, benefit block, FAQ, booking handoff, and footer CTA.",
       technical: "Sites > Funnels > Bloom Dental - Free Consultation"
     },
     form: {
-      title: "The inquiry form captures useful intent.",
-      plain: "The person shares what they want to improve and gives the team enough context to respond well.",
+      title: "Sam asks for help.",
+      plain: "Sam shares what needs help and gives the team enough context to respond well.",
       detail: "Form submission maps contact fields, preferred date, referral source, whitening interest, and SMS consent.",
       technical: "Sites > Forms > Bloom Dental Smile Consultation"
     },
     calendar: {
-      title: "The calendar turns interest into a real time.",
-      plain: "After the form, the person chooses a 30-minute consultation slot that fits their schedule.",
+      title: "Sam chooses a time.",
+      plain: "After the questions, Sam chooses a 30-minute consultation slot that fits the day.",
       detail: "The Simple Calendar uses Asia/Manila time, buffers, notice, availability, and a booking confirmation trigger.",
       technical: "Calendars > Bloom Dental - Free Consultation"
     },
     pipeline: {
-      title: "The pipeline gives the lead a visible place in the process.",
-      plain: "The team can see whether someone is new, booked, complete, interested in whitening, paid, or lost.",
+      title: "The clinic records what happened.",
+      plain: "The team saves whether Sam is new, booked, finished, interested in whitening, paid, or done.",
       detail: "An opportunity is created in the Free Consultation Funnel with a consistent name, source, value, and stage.",
       technical: "Opportunities > Free Consultation Funnel"
     },
     reminders: {
-      title: "Reminders protect the time that was booked.",
-      plain: "The system confirms the appointment and sends respectful reminders while honoring SMS consent.",
+      title: "Sam gets reminders.",
+      plain: "The system confirms the appointment and sends respectful reminders with permission.",
       detail: "Confirmation and reminder actions use approved email templates, consent-gated SMS snippets, wait steps, and stop conditions.",
       technical: "Automation > Workflows > Appointment actions"
     },
@@ -305,7 +450,7 @@
       technical: "Workflow: Six-Month Cleaning Recall"
     },
     kpi: {
-      title: "The dashboard closes the learning loop.",
+      title: "The team learns what worked.",
       plain: "The team reviews where people move forward or drop, then chooses one improvement to test next.",
       detail: "Opportunity stages, appointments, delivery stats, UTMs, and downstream events populate the measurement plan.",
       technical: "Reporting > Dashboard widgets / KPI event model"
@@ -711,20 +856,20 @@
   Object.assign(presentationPromptsBySlide, teachingPresentationPrompts);
 
   const teachingFunnelDetails = {
-    impressions: ["STARTING VOLUME", "1,000 opportunities to be seen", "Denominator for CTR"],
-    clicks: ["CLICK-THROUGH RATE / 5%", "50 people clicked from 1,000 impressions", "50 / 1,000"],
-    views: ["ARRIVAL RATE / 80%", "40 usable page views from 50 clicks", "40 / 50"],
-    forms: ["LANDING CONVERSION / 20%", "8 form submissions from 40 page views", "8 / 40"],
-    bookings: ["LEAD-TO-BOOKING / 50%", "4 bookings from 8 submitted leads", "4 / 8"],
-    shows: ["SHOW RATE / 75%", "3 attended consultations from 4 mature bookings", "3 / 4"]
+    impressions: ["PEOPLE WHO COULD SEE IT", "1,000 example people could see the message", "The group used for the first comparison"],
+    clicks: ["PEOPLE WHO CAME TO THE PAGE", "50 example people clicked from 1,000 views", "50 / 1,000"],
+    views: ["PEOPLE WHO OPENED THE PAGE", "40 example people reached a usable page", "40 / 50"],
+    forms: ["PEOPLE WHO ASKED FOR HELP", "8 example people completed the questions", "8 / 40"],
+    bookings: ["PEOPLE WHO CHOSE A TIME", "4 example people booked from 8 questions", "4 / 8"],
+    shows: ["PEOPLE WHO ATTENDED", "3 example people attended from 4 ready appointments", "3 / 4"]
   };
 
   const presentationWorkflowDetails = {
-    trigger: ["TRIGGER", "Form submitted", "The workflow starts only after the consultation form creates or updates a contact."],
-    record: ["DATA ACTION", "Tag and opportunity", "GHL marks the lead, preserves intent, and creates the visible pipeline record the team can work."],
-    invite: ["COMMUNICATION", "Email and consent-gated SMS", "The contact receives the calendar link. SMS runs only when the consent field permits it."],
-    wait: ["TIMING", "Wait 24 hours", "The system gives the person time to act before evaluating whether another message is useful."],
-    condition: ["DECISION", "Has an appointment been booked?", "Yes exits this path. No sends one reminder, preventing messages after the desired action already happened."]
+    trigger: ["WHAT STARTS IT", "Sam sends the questions", "The helper begins after the inquiry form is sent.", "GHL trigger: Form Submitted"],
+    record: ["SAVE THE STORY", "Remember what Sam said", "The system saves the answers and gives the team a clear place to follow the person.", "GHL actions: tag and opportunity"],
+    invite: ["SEND THE NEXT STEP", "Invite Sam to choose a time", "Email sends the calendar link. A text only sends when Sam gave permission.", "GHL actions: email, consent check, and SMS"],
+    wait: ["GIVE IT TIME", "Wait before reminding", "The system gives Sam time to choose a time before checking again.", "GHL wait: 24 hours"],
+    condition: ["CHECK THE PATH", "Did Sam choose a time?", "If yes, stop. If no, send one helpful reminder.", "GHL condition: appointment status"]
   };
 
   /*
@@ -977,8 +1122,8 @@
     title.textContent = detail.title;
     copy.textContent = explanationMode === "plain" ? detail.plain : detail.detail;
     technical.textContent = detail.technical;
-    label.textContent = explanationMode === "plain" ? "Plain English" : "GHL detail";
-    if (counter) counter.textContent = `${index.padStart(2, "0")} / 10`;
+    label.textContent = explanationMode === "plain" ? "Simple explanation" : "GHL setup shown";
+    if (counter) counter.textContent = `${index.padStart(2, "0")} / ${String(document.querySelectorAll(".journey-node").length).padStart(2, "0")}`;
     const journeySignal = document.getElementById("journey-signal");
     if (journeySignal && !systemTrigger) {
       const progress = Math.max(0, Math.min(1, (Number.parseInt(index, 10) - 1) / 9));
@@ -1034,17 +1179,57 @@
       if (activeTab) panel.setAttribute("aria-labelledby", activeTab.id);
       panel.querySelectorAll("[data-problem-field]").forEach((field) => {
         const key = field.dataset.problemField;
-        let value = story[key] || "";
-        if (key === "implementation" && explanationMode === "plain") value = story.plainImplementation;
-        if (key === "phases") value = `Build phases: ${story.phases.join(", ")}`;
-        if (key === "evidence") value = `Evidence: ${story.evidence.map((doc) => documentTitles[doc]).join(", ")}`;
-        field.textContent = value;
+        const technical = story.technical;
+        const simpleValues = {
+          number: `${story.number} / ${story.shortLabel.toUpperCase()}`,
+          label: story.shortLabel,
+          step: story.customerStep,
+          problem: story.simpleProblem,
+          cause: story.simpleCause,
+          impact: story.customerImpact,
+          solution: story.simpleFix,
+          system: story.whatSystemDoes,
+          measure: story.simpleMeasure,
+          example: story.example,
+          implementation: story.whatSystemDoes,
+          proof: `I made: ${technical.evidence.map((doc) => beginnerDocumentCopy[doc]?.label || documentTitles[doc]).join(", ")}`,
+          kpi: story.simpleMeasure,
+          phases: `This improves build steps ${technical.phases.join(", ")}`,
+          evidence: `Related items: ${technical.evidence.map((doc) => beginnerDocumentCopy[doc]?.label || documentTitles[doc]).join(", ")}`,
+          events: technical.events,
+          formula: technical.formula,
+          location: technical.ghlLocation,
+          technicalProblem: technical.problem
+        };
+        const detailValues = {
+          number: `${story.number} / ${story.shortLabel.toUpperCase()}`,
+          label: story.shortLabel,
+          step: story.customerStep,
+          problem: technical.problem,
+          cause: technical.problem,
+          impact: story.customerImpact,
+          solution: story.simpleFix,
+          system: technical.implementation,
+          measure: technical.formula,
+          example: story.example,
+          implementation: technical.implementation,
+          proof: technical.evidence.map((doc) => documentTitles[doc]).join(", "),
+          kpi: technical.formula,
+          phases: `Build phases: ${technical.phases.join(", ")}`,
+          evidence: `Evidence: ${technical.evidence.map((doc) => documentTitles[doc]).join(", ")}`,
+          events: technical.events,
+          formula: technical.formula,
+          location: technical.ghlLocation,
+          technicalProblem: technical.problem
+        };
+        const values = (scope === "brief" || scope === "measurement") ? simpleValues : (explanationMode === "detail" ? detailValues : simpleValues);
+        field.textContent = values[key] || "";
       });
       panel.dataset.activeProblem = story.id;
       panel.classList.remove("is-switching");
       if (!reduceMotion()) window.requestAnimationFrame(() => panel.classList.add("is-switching"));
       window.setTimeout(() => panel.classList.remove("is-switching"), 380);
-      if (scope === "measurement" && options.syncKpi !== false) renderKpiDiagnostic(story.diagnostic);
+      if (scope === "measurement" && options.syncKpi !== false) renderKpiDiagnostic(story.technical.diagnosticKey);
     });
 
     document.querySelectorAll("[data-evidence-problem]").forEach((item) => {
@@ -1068,7 +1253,7 @@
         button.setAttribute("aria-selected", String(index === 0));
         if (panel) button.setAttribute("aria-controls", panel.id);
         button.tabIndex = index === 0 ? 0 : -1;
-        button.innerHTML = `<span>${String(index + 1).padStart(2, "0")}</span><strong>${story.short}</strong>`;
+        button.innerHTML = `<span>${String(index + 1).padStart(2, "0")}</span><strong>${story.shortLabel}</strong>`;
         button.addEventListener("click", () => renderProblemStory(story.id));
         button.addEventListener("keydown", (event) => {
           if (!["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
@@ -1090,17 +1275,17 @@
   function buildEvidenceMatrix() {
     const matrix = document.querySelector("[data-problem-evidence-matrix]");
     if (!matrix) return;
-    matrix.innerHTML = problemStories.map((story) => `
+    matrix.innerHTML = `<div class="evidence-matrix-heading"><span>WHICH ITEM HELPED WITH EACH STEP?</span><h3>Every part of Sam’s journey has a document behind it.</h3><p>Use this map to see why each item exists. Open a document below for the beginner guide and the full workshop content.</p></div>${problemStories.map((story) => `
       <article data-evidence-problem="${story.id}">
-        <span>${story.number}</span>
-        <h3>${story.problem}</h3>
-        <p>${story.solution}</p>
-        <div>${story.evidence.map((doc) => `<a href="#evidence/${doc}">${documentTitles[doc]}</a>`).join("")}</div>
-      </article>`).join("");
+        <span>${story.number} / ${story.shortLabel.toUpperCase()}</span>
+        <h3>${story.simpleProblem}</h3>
+        <p>${story.simpleFix}</p>
+        <div>${story.technical.evidence.map((doc) => `<a href="#evidence/${doc}">${beginnerDocumentCopy[doc]?.label || documentTitles[doc]}</a>`).join("")}</div>
+      </article>`).join("")}`;
 
     const inverse = {};
-    problemStories.forEach((story) => story.evidence.forEach((doc) => {
-      inverse[doc] = [...(inverse[doc] || []), story.number.replace(/^\d+\s*\/\s*/, "")];
+    problemStories.forEach((story) => story.technical.evidence.forEach((doc) => {
+      inverse[doc] = [...(inverse[doc] || []), story.shortLabel];
     }));
     document.querySelectorAll(".doc-tab").forEach((button) => {
       const existing = button.querySelector(".doc-problem-tags");
@@ -1115,13 +1300,43 @@
   function annotateBuildPhases() {
     document.querySelectorAll(".phase-row").forEach((row, index) => {
       const annotation = phaseAnnotations[index];
-      if (!annotation || row.querySelector(".phase-problem-summary")) return;
+      const copy = annotation;
+      if (!annotation || !copy || row.dataset.beginnerReady === "true") return;
+      row.dataset.beginnerReady = "true";
+
+      const phaseName = row.querySelector("summary strong");
+      const phaseSummary = row.querySelector("summary small");
+      if (phaseName) phaseName.textContent = copy.name;
+      if (phaseSummary) phaseSummary.textContent = copy.summary;
+
+      const technicalGrid = row.querySelector(".phase-grid");
+      if (!technicalGrid) return;
+
+      const beginnerGrid = document.createElement("div");
+      beginnerGrid.className = "phase-beginner-grid";
+      beginnerGrid.innerHTML = `<div><span>WHAT I NEEDED</span><p>${copy.needed}</p></div><div><span>WHAT I DECIDED</span><p>${copy.decided}</p></div><div><span>WHAT I PRODUCED</span><p>${copy.made}</p></div><div><span>PART OF SAM’S JOURNEY</span><p>${copy.journey}</p></div>`;
+
       const summary = document.createElement("div");
       summary.className = "phase-problem-summary";
       const problems = annotation.problems.map((id) => problemStory(id));
-      summary.innerHTML = `<div><span>PROBLEM ADDRESSED</span><p>${problems.map((story) => story.problem).join(" ")}</p></div><i data-lucide="arrow-right" aria-hidden="true"></i><div><span>SOLUTION DELIVERED</span><p>${annotation.solution}</p></div>`;
-      row.querySelector(".phase-grid")?.prepend(summary);
+      summary.innerHTML = `<div><span>WHAT THIS IMPROVES</span><p>${problems.map((story) => story.simpleFix).join(" ")}</p></div>`;
+      beginnerGrid.appendChild(summary);
+
+      const technical = document.createElement("details");
+      technical.className = "inline-technical phase-technical-setup";
+      technical.innerHTML = `<summary>Technical setup</summary>`;
+      const technicalIntro = document.createElement("p");
+      technicalIntro.className = "phase-technical-intro";
+      technicalIntro.textContent = `Official workshop detail for phase ${String(index + 1).padStart(2, "0")}.`;
+      technical.appendChild(technicalIntro);
+      technical.appendChild(technicalGrid);
+      const source = document.createElement("p");
+      source.className = "phase-source-note";
+      source.textContent = `Source guide: ${copy.source}`;
+      technical.appendChild(source);
+      row.append(beginnerGrid, technical);
     });
+    refreshIcons();
   }
 
   function configureProblemCentricPresentation() {
@@ -1142,14 +1357,22 @@
     });
 
     const openingRoute = document.querySelector("#presentation-slide-1 .present-route");
-    if (openingRoute) openingRoute.innerHTML = problemStories.map((story, index) => `${index ? '<i data-lucide="arrow-right" aria-hidden="true"></i>' : ""}<span>${story.short.toUpperCase()}</span>`).join("");
+    if (openingRoute) openingRoute.innerHTML = problemStories.map((story, index) => `${index ? '<i data-lucide="arrow-right" aria-hidden="true"></i>' : ""}<span>${story.shortLabel.toUpperCase()}</span>`).join("");
     const mapVisual = document.querySelector("#presentation-slide-2 .presentation-visual");
     if (mapVisual) {
       mapVisual.className = "presentation-visual presentation-problem-map";
-      mapVisual.innerHTML = problemStories.map((story, index) => `<div><span>${String(index + 1).padStart(2, "0")}</span><strong>${story.problem}</strong><small>${story.short}</small></div>`).join("");
+      const samJourney = [
+        ["See an ad", "Sam notices the offer"],
+        ["Ask for help", "Sam explains the goal"],
+        ["Choose a time", "Sam picks a visit"],
+        ["Show up", "Sam gets reminders"],
+        ["Learn what worked", "The team reviews the path"]
+      ];
+      mapVisual.setAttribute("aria-label", "Sam's five-step example journey");
+      mapVisual.innerHTML = samJourney.map(([label, detail], index) => `<div><span>${String(index + 1).padStart(2, "0")}</span><strong>${label}</strong><small>${detail}</small></div>`).join("");
     }
     const closeGrid = document.querySelector("#presentation-slide-18 .presentation-close-grid");
-    if (closeGrid) closeGrid.innerHTML = problemStories.map((story) => `<div><span>${story.number}</span><strong>${story.short}</strong></div>`).join("");
+    if (closeGrid) closeGrid.innerHTML = problemStories.map((story) => `<div><span>${story.number}</span><strong>${story.shortLabel}</strong></div>`).join("");
   }
 
   function framePresentationNotes() {
@@ -1158,12 +1381,37 @@
       if (!talk) return;
       const title = talk.querySelector("h3");
       if (title) title.textContent = entry.title;
-      const frame = document.createElement("p");
-      frame.className = "presentation-problem-frame";
-      frame.textContent = entry.note;
-      title?.after(frame);
-      const transition = talk.querySelector(".presentation-transition");
-      if (transition) transition.textContent = `Transition: ${entry.transition}`;
+      const originalNodes = Array.from(talk.children).filter((node) => node !== title);
+      const technicalExcerpt = originalNodes
+        .map((node) => node.textContent || "")
+        .join(" ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .split(/\s+/)
+        .slice(0, 70)
+        .join(" ");
+      const guide = document.createElement("div");
+      guide.className = "presentation-beginner-guide";
+      const guideLabel = document.createElement("span");
+      guideLabel.textContent = "BEGINNER SPEAKER GUIDE";
+      const guideCopy = document.createElement("p");
+      guideCopy.textContent = entry.note
+        .replace("Explain:", "Beginner explanation:")
+        .replace("Example:", "Sam example:")
+        .replace("Ask:", "Audience question:")
+        .replace("Technical backup:", "Technical detail if asked:");
+      const prompt = document.createElement("p");
+      prompt.className = "presentation-prompt";
+      prompt.textContent = `Audience question: ${presentationPromptsBySlide[entry.id] || "Where could Sam get stuck here?"}`;
+      const transition = document.createElement("p");
+      transition.className = "presentation-transition";
+      transition.textContent = `Transition: ${entry.transition}`;
+      const evidence = document.createElement("p");
+      evidence.className = "presentation-evidence-walkthrough";
+      evidence.textContent = `Evidence walkthrough: ${technicalExcerpt || "Use the linked build, document, and measurement views to show how this decision becomes inspectable."}`;
+      guide.append(guideLabel, guideCopy, evidence, prompt, transition);
+      talk.textContent = "";
+      talk.append(title, guide);
     });
   }
 
@@ -1175,13 +1423,74 @@
   }
 
   const workflowTypeLabels = {
-    trigger: "TRIGGER",
-    action: "ACTION",
-    condition: "IF / ELSE",
+    trigger: "START",
+    action: "DO",
+    condition: "CHECK",
     wait: "WAIT",
-    handoff: "HANDOFF",
-    stop: "STOP"
+    handoff: "PASS ON",
+    stop: "FINISH"
   };
+
+  const workflowBeginnerCopy = {
+    "new-lead-booking": { name: "Help a new person choose a time", summary: "After Sam asks for help, save the answers and make choosing a time easy.", trigger: "Starts when the inquiry form is sent", stop: "Stops when a time is booked" },
+    "consultation-booking": { name: "Confirm the appointment and send reminders", summary: "After Sam chooses a time, protect that appointment with clear messages.", trigger: "Starts when a consultation is booked", stop: "Stops when the appointment reaches its outcome" },
+    "no-show-recovery": { name: "Help someone rebook after a missed visit", summary: "If Sam misses the visit, offer a respectful way to choose another time.", trigger: "Starts when an appointment is marked missed", stop: "Stops when Sam rebooks or the follow-up ends" },
+    "post-consult-whitening": { name: "Follow up after the consultation", summary: "After the visit, send useful information about a possible next step.", trigger: "Starts when a consultation is completed", stop: "Stops when the next step is booked or the sequence ends" },
+    "whitening-payment": { name: "Record that payment was completed", summary: "When the team confirms payment, save it and start the future-care timer.", trigger: "Starts when payment is confirmed", stop: "Stops after the payment is recorded" },
+    "six-month-recall": { name: "Remind the person about future care", summary: "After enough time passes, remind Sam about a future check-up or cleaning.", trigger: "Starts after a completed care event", stop: "Stops when care is booked or Sam opts out" }
+  };
+
+  function beginnerNodeTitle(node) {
+    if (node.beginnerTitle) return node.beginnerTitle;
+    if (node.type === "trigger") return "Something happens";
+    if (node.type === "condition") return "Check what is true";
+    if (node.type === "wait") return "Give the person time";
+    if (node.type === "handoff") return "Pass to the next helper";
+    if (node.type === "stop") return "Finish this path";
+    if (/send/i.test(node.title)) return "Send a helpful message";
+    if (/tag/i.test(node.title)) return "Save a label";
+    if (/move|create|update|save|add/i.test(node.title)) return "Update the record";
+    return "Take the next action";
+  }
+
+  function beginnerNodeWhy(node) {
+    if (node.why) return node.why;
+    if (node.type === "trigger") return "It starts the right part of Sam’s journey.";
+    if (node.type === "condition") return "It keeps the person from receiving the wrong message or path.";
+    if (node.type === "wait") return "It gives the person time before the system checks again.";
+    if (node.type === "handoff") return "It passes the result to the helper that owns the next step.";
+    if (node.type === "stop") return "It prevents more follow-up when the path is complete.";
+    return "It keeps the team record and the next step up to date.";
+  }
+
+  function beginnerNodeNotice(node) {
+    if (node.type === "trigger") return "Sam reaches this moment in the journey.";
+    if (node.type === "condition") return "The system checks whether the next step is still needed.";
+    if (node.type === "wait") return "The system waits until the useful time.";
+    if (node.type === "handoff") return "The current helper finishes and passes the person onward.";
+    if (node.type === "stop") return "The journey reaches an ending point.";
+    if (/send/i.test(node.title)) return "A message is ready for the person.";
+    if (/tag/i.test(node.title)) return "A small label needs to be saved.";
+    return "The team record needs an update.";
+  }
+
+  function beginnerNodeAction(node) {
+    if (node.type === "trigger") return "Starts the right helper for Sam’s next step.";
+    if (node.type === "condition") return "Chooses the correct path so Sam gets the right next action.";
+    if (node.type === "wait") return "Pauses before checking or sending anything else.";
+    if (node.type === "handoff") return "Lets the next helper own the next part of the journey.";
+    if (node.type === "stop") return "Ends follow-up when the intended path is complete.";
+    if (/send/i.test(node.title)) return "Sends a useful message at this moment.";
+    if (/tag/i.test(node.title)) return "Saves a label so the next step can be understood.";
+    return "Updates the shared record so the team can see what happened.";
+  }
+
+  function beginnerOutcomeText(outcome) {
+    const text = String(outcome.text || "");
+    if (/stop|no.?show|lost|skip/i.test(text)) return "Stop this path or leave the optional message out.";
+    if (/start|continue|send|add|move|keep|create|update/i.test(text)) return "Continue to the next helpful step.";
+    return text;
+  }
 
   function refreshWorkflowDetailMotion() {
     const detailPanel = document.querySelector(".workflow-node-detail");
@@ -1208,14 +1517,18 @@
     const title = document.getElementById("workflow-node-title");
     const description = document.getElementById("workflow-node-description");
     const functionCopy = document.getElementById("workflow-node-function");
+    const whyCopy = document.getElementById("workflow-node-why");
+    const technicalTitle = document.getElementById("workflow-node-technical-title");
     const ghl = document.getElementById("workflow-node-ghl");
     const branch = document.getElementById("workflow-node-branch");
     const outcomes = document.getElementById("workflow-node-outcomes");
-    if (type) type.textContent = workflowTypeLabels[node.type] || "NODE";
+    if (type) type.textContent = workflowTypeLabels[node.type] || "STEP";
     if (position) position.textContent = String(nodeIndex + 1).padStart(2, "0") + " / " + String(workflow.nodes.length).padStart(2, "0");
-    if (title) title.textContent = node.title;
-    if (description) description.textContent = node.description;
-    if (functionCopy) functionCopy.textContent = node.function;
+    if (title) title.textContent = beginnerNodeTitle(node);
+    if (description) description.textContent = beginnerNodeNotice(node);
+    if (functionCopy) functionCopy.textContent = beginnerNodeAction(node);
+    if (whyCopy) whyCopy.textContent = beginnerNodeWhy(node);
+    if (technicalTitle) technicalTitle.textContent = node.title;
     if (ghl) ghl.textContent = node.ghl;
     if (branch && outcomes) {
       outcomes.textContent = "";
@@ -1227,7 +1540,7 @@
           const label = document.createElement("span");
           label.textContent = outcome.label;
           const copy = document.createElement("p");
-          copy.textContent = outcome.text;
+          copy.textContent = beginnerOutcomeText(outcome);
           item.append(label, copy);
           outcomes.appendChild(item);
         });
@@ -1255,15 +1568,17 @@
     const activeTab = document.querySelector(`.workflow-picker-tab[data-workflow="${workflowId}"]`);
     if (workspace && activeTab) workspace.setAttribute("aria-labelledby", activeTab.id);
 
+    const beginner = workflowBeginnerCopy[workflowId] || {};
     const values = {
       "workflow-number": workflow.number,
-      "workflow-title": workflow.name,
-      "workflow-summary": workflow.summary,
-      "workflow-trigger": workflow.trigger,
-      "workflow-location": workflow.location,
-      "workflow-stop": workflow.stop,
-      "workflow-count": String(workflow.nodes.length).padStart(2, "0") + " nodes",
-      "workflow-canvas-label": String(workflow.nodes.length).padStart(2, "0") + " NODE PATH"
+      "workflow-title": beginner.name || workflow.name,
+      "workflow-summary": beginner.summary || workflow.summary,
+      "workflow-trigger": beginner.trigger || workflow.trigger,
+      "workflow-location": "The shared customer record",
+      "workflow-technical-location": workflow.location,
+      "workflow-stop": beginner.stop || workflow.stop,
+      "workflow-count": String(workflow.nodes.length).padStart(2, "0") + " steps",
+      "workflow-canvas-label": String(workflow.nodes.length).padStart(2, "0") + " STEP PATH"
     };
     Object.entries(values).forEach(([id, value]) => {
       const element = document.getElementById(id);
@@ -1282,18 +1597,19 @@
       button.type = "button";
       button.dataset.workflowNode = String(nodeIndex);
       button.setAttribute("aria-pressed", String(nodeIndex === 0));
-      button.setAttribute("aria-label", String(nodeIndex + 1).padStart(2, "0") + ". " + node.title + ". " + (workflowTypeLabels[node.type] || "Node"));
+      const displayTitle = beginnerNodeTitle(node);
+      button.setAttribute("aria-label", String(nodeIndex + 1).padStart(2, "0") + ". " + displayTitle + ". " + (workflowTypeLabels[node.type] || "Step"));
 
       const index = document.createElement("span");
       index.className = "workflow-node-index";
       index.textContent = String(nodeIndex + 1).padStart(2, "0");
       const kind = document.createElement("span");
       kind.className = "workflow-node-kind";
-      kind.textContent = workflowTypeLabels[node.type] || "NODE";
+      kind.textContent = workflowTypeLabels[node.type] || "STEP";
       const title = document.createElement("strong");
-      title.textContent = node.title;
+      title.textContent = displayTitle;
       const summary = document.createElement("p");
-      summary.textContent = node.description;
+      summary.textContent = beginnerNodeNotice(node);
       button.append(index, kind, title, summary);
       button.addEventListener("click", () => renderWorkflowNode(workflow, nodeIndex));
       wrapper.appendChild(button);
@@ -1460,7 +1776,8 @@
     document.querySelectorAll(".presentation-message").forEach((message) => {
       const slide = message.closest("[data-presentation-slide]");
       const notes = slide ? presentationNotesBySlide[slide.id] : null;
-      if (!notes) return;
+      const narrative = slide ? presentationNarrative.find((entry) => entry.id === slide.id) : null;
+      if (!slide || (!notes && !narrative)) return;
       message.textContent = "";
       message.hidden = true;
 
@@ -1469,15 +1786,15 @@
       const talk = document.createElement("div");
       talk.className = "presentation-talk";
       const title = document.createElement("h3");
-      title.textContent = notes.title;
+      title.textContent = notes?.title || narrative.title;
       talk.appendChild(title);
-      notes.paragraphs.forEach((copy) => {
+      (notes?.paragraphs || [narrative.body]).forEach((copy) => {
         const paragraph = document.createElement("p");
         paragraph.textContent = copy;
         talk.appendChild(paragraph);
       });
       const list = document.createElement("ul");
-      notes.bullets.forEach((copy) => {
+      (notes?.bullets || []).forEach((copy) => {
         const item = document.createElement("li");
         item.textContent = copy;
         list.appendChild(item);
@@ -1489,7 +1806,7 @@
       talk.appendChild(prompt);
       const transition = document.createElement("p");
       transition.className = "presentation-transition";
-      transition.textContent = `Transition: ${notes.transition}`;
+      transition.textContent = `Transition: ${notes?.transition || narrative.transition}`;
       talk.appendChild(transition);
       message.append(label, talk);
     });
@@ -1548,7 +1865,7 @@
     });
     const panel = document.getElementById("teaching-funnel-detail");
     if (!panel) return;
-    panel.innerHTML = `<span>${detail[0]}</span><strong>${detail[1]}</strong><code>${detail[2]}</code>`;
+    panel.innerHTML = `<span>${detail[0]}</span><strong>${detail[1]}</strong><details class="inline-technical"><summary>Show the analyst detail</summary><code>${detail[2]}</code></details>`;
   }
 
   function initTeachingFunnel() {
@@ -1579,7 +1896,7 @@
       button.classList.toggle("is-active", selected);
     });
     const panel = document.getElementById("presentation-journey-detail");
-    if (panel) panel.innerHTML = `<span>WHY IT EXISTS</span><strong>${detail.title}</strong><p>${detail.plain}</p><code>${detail.technical}</code>`;
+    if (panel) panel.innerHTML = `<span>WHY IT EXISTS</span><strong>${detail.title}</strong><p>${detail.plain}</p><details class="inline-technical"><summary>Show the GHL setup</summary><code>${detail.technical}</code></details>`;
   }
 
   function renderPresentationWorkflow(key) {
@@ -1590,7 +1907,7 @@
       button.classList.toggle("is-active", selected);
     });
     const panel = document.getElementById("presentation-workflow-node-detail");
-    if (panel) panel.innerHTML = `<span>${detail[0]}</span><strong>${detail[1]}</strong><p>${detail[2]}</p>`;
+    if (panel) panel.innerHTML = `<span>${detail[0]}</span><strong>${detail[1]}</strong><p>${detail[2]}</p><details class="inline-technical"><summary>Show the GHL setup</summary><p>${detail[3]}</p></details>`;
   }
 
   function initPresentationTeachingGroup(selector, keyName, render, initialKey) {
@@ -2013,6 +2330,8 @@
   }
 
   function start() {
+    prepareDocuments();
+    prepareMeasurementView();
     initProblemStory();
     initJourney();
     initWorkflowLab();

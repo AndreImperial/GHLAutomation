@@ -1,6 +1,6 @@
 # Bloom Dental Portfolio Design System
 
-**Purpose:** A public, beginner-friendly systems case study for marketing and data hiring managers.
+**Purpose:** A public, beginner-first systems case study for marketing and data hiring managers. The site teaches the project through one fictional visitor, Sam, before exposing implementation vocabulary.
 
 **Design dials:** Variance 8/10 | Motion 8/10 | Density 4/10
 
@@ -13,7 +13,17 @@ The opening offers two distinct paths:
 1. **90-second diagnosis:** five customer handoff problems, their likely root causes, proposed responses, evidence, KPIs, and the simulation boundary.
 2. **45-minute team presentation:** a 25-slide, six-chapter lesson that bridges B2B analytics into DTC martech through problem, diagnosis, solution, implementation, evidence, and measurement.
 
-The five persistent views are Problem, Solution, Build, Evidence, and Measurement. They use one canonical five-problem story so terminology and relationships remain consistent across the website and presentation.
+The five persistent views use the audience labels The Problem, The Fix, How I Built It, What I Made, and How We’d Know. They map to `#problem`, `#solution`, `#build`, `#evidence`, and `#measurement`. They use one canonical five-problem story so terminology and relationships remain consistent across the website and presentation.
+
+## Beginner-First Content
+
+- The first sentence answers the human question before naming a platform object.
+- The teaching example is always Sam, a fictional visitor. Sam sees an offer, asks for help, chooses a time, gets reminders, attends, receives follow-up, and helps the team learn.
+- The public layer uses concrete verbs: saw, asked, booked, attended, followed up, and checked.
+- GHL is explained once in plain language: “GoHighLevel, or GHL, is a tool that keeps customer information, bookings, follow-up messages, and progress in one place.”
+- Technical vocabulary appears inside `details` disclosures, the analyst layer, the glossary, or presenter notes.
+- Each phase, document, workflow node, and measurement step uses the same order: what happened, why it matters, what I made, then technical detail.
+- The 25-slide presentation is self-contained. Audience slides teach one idea at a time; notes carry the deeper walkthrough.
 
 ## Visual Tokens
 
@@ -46,8 +56,8 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 - Use full-width bands and structured rows. Do not nest decorative cards.
 - Use 6px radii, thin borders, visible focus, and minimum 44px interactive targets.
 - Top-level navigation and nested document/KPI controls use ARIA tabs and keyboard arrows.
-- The workflow lab is an authored explanation, not a screenshot recreation. Every node exposes its trigger, action, condition, and business purpose.
-- The ten phases share one teaching structure: input, decision, actions, GHL location, output, purpose, and status.
+- The Automatic Helpers lab is an authored explanation, not a screenshot recreation. Every node exposes what it notices, what it does, why it matters, and its technical GHL location.
+- The ten phases share one teaching structure: what I needed, what I decided, what I produced, which part of Sam’s journey it improves, and the technical setup.
 - Each phase also names the problem addressed and solution delivered.
 - The eight evidence documents remain complete, hardcoded, searchable website content.
 - Problem selection remains consistent across the diagnostic explorer, solution detail, evidence matrix, and KPI diagnostic.
@@ -71,7 +81,7 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 
 ## Content And Measurement Rules
 
-- Explain GHL concepts in plain language before platform detail.
+- Explain GHL concepts in plain language before platform detail. “Simple explanation” is the default; “Show the GHL setup” is opt-in.
 - Label `60 bookings in 60 days`, `<15% no-show rate`, and `40% whitening attach rate` as projected everywhere.
 - Separate the 60-day acquisition window, appointment maturity window, and six-month recall cohort.
 - Keep ad clicks and successful landing-page views as separate events.

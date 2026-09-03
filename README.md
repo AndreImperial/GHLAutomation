@@ -1,6 +1,6 @@
 # Bloom Dental Studio Portfolio Site
 
-Dark, static portfolio case study for the Fast Track Workshop simulation. The site teaches the project from business problem to customer journey, GHL implementation, automation, measurement, and simulation QA.
+Dark, static portfolio case study for the Fast Track Workshop simulation. It teaches the project to a complete beginner through one fictional visitor, Sam: Sam sees an offer, asks for help, chooses a time, receives reminders, attends, receives follow-up, and helps the team learn what to check next.
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https%3A%2F%2Fgithub.com%2FAndreImperial%2FGHLAutomation)
 
@@ -20,14 +20,16 @@ py -3 -m http.server 4173 --bind 127.0.0.1
 
 The site has no build step and no runtime dependency install. Render serves the repository root using `render.yaml`.
 
+The public version is available at [ghlautomation.onrender.com](https://ghlautomation.onrender.com/).
+
 ## Experience Map
 
-- `#problem`: a 90-second diagnostic of five unreliable customer handoffs, with an interactive problem explorer and simulation boundary.
-- `#solution`: customer path, Plain English/GHL Detail switch, reconstructed six-workflow node lab, and decision log.
-- `#build`: ten completed phases. Each phase explains its input, decision, actions, GHL location, output, business purpose, problem addressed, and solution delivered.
-- `#evidence`: eight full workshop documents plus a matrix connecting every document to the problems it supports.
-- `#measurement`: projected goals, measurement windows, event model, KPI tree, formulas, dashboard plan, and an interactive diagnostic tied to each problem.
-- `#present/1`: self-contained 25-slide, 45-minute knowledge share grouped into Setup, Conversion, Booking, Attendance, Customer State, and Learning Loop. Use the chapter markers or outline to navigate, open the glossary when a term is unfamiliar, toggle presenter notes when speaking, use the arrow keys to move, and press `Escape` to exit.
+- `#problem`: The Problem. A short, plain-English story showing five places where Sam could get lost.
+- `#solution`: The Fix. Sam’s seven-step journey, a Simple explanation/GHL setup disclosure, and six interactive Automatic Helpers.
+- `#build`: How I Built It. Ten chronological beginner phases, with the original technical setup inside each phase.
+- `#evidence`: What I Made. Eight complete workshop documents, native website content, beginner introductions, and a journey evidence map.
+- `#measurement`: How We’d Know. Six people-based checks, projected goals, measurement windows, analyst details, and the KPI Diagnostic Lab.
+- `#present/1`: a self-contained 25-slide, 45-minute beginner knowledge share grouped into six chapters. Use the chapter markers or outline, open the glossary when a term is unfamiliar, toggle presenter notes when speaking, use the arrow keys to move, and press `Escape` to exit.
 
 Legacy hashes continue to work: `#tour` and `#beginner-path` open Problem; `#system` and `#board` open Solution; `#implementation` and `#process` open Build; `#deliverables` and `#documents` open Evidence; and `#results` opens Measurement.
 
@@ -43,10 +45,10 @@ Legacy hashes continue to work: `#tour` and `#beginner-path` open Problem; `#sys
 
 ## Structure
 
-- `index.html`: five-view shell, problem-solution story, guided presentation layer, and all hardcoded workshop evidence.
-- `styles.css`: dark graphite-green token system, responsive layouts, focus states, and reduced-motion rules.
-- `script.js`: canonical five-problem story model, ARIA tab navigation, chaptered presentation and notes, hashes and history, legacy aliases, workflow maps, evidence relationships, KPI diagnostics, and GSAP fallback behavior.
-- `DESIGN.md`: canonical visual, interaction, content, and release rules.
+- `index.html`: five-view shell, Sam’s story, guided presentation layer, and all hardcoded workshop evidence.
+- `styles.css`: dark graphite-green token system, beginner summaries, technical disclosures, responsive layouts, focus states, and reduced-motion rules.
+- `script.js`: canonical five-problem story model, ARIA tab navigation, chaptered presentation and notes, hashes and history, legacy aliases, workflow maps, evidence relationships, measurement diagnostics, and GSAP fallback behavior.
+- `DESIGN.md`: canonical visual, interaction, content, and release rules for the beginner-first architecture.
 - `THIRD_PARTY_NOTICES.md`: versions, licenses, and sources for self-hosted browser assets.
 - `assets/favicon.svg`: publication-safe favicon.
 - `assets/og-bloom-dental.png`: 1200x630 social preview.
@@ -55,4 +57,4 @@ Legacy hashes continue to work: `#tour` and `#beginner-path` open Problem; `#sys
 
 ## Truth Boundary
 
-This is a completed workshop simulation, not a live performance case study. `10/10` means the workshop build is documented and configured for simulation QA. Sender-domain setup, live ads, production compliance review, and real campaign data remain launch dependencies.
+This is a completed workshop simulation, not a live performance case study. Sam is a fictional teaching example. `10/10` means the workshop build is documented and configured for simulation QA. Sender-domain setup, live ads, production compliance review, and real campaign data remain launch dependencies.
