@@ -22,14 +22,14 @@ The site has no build step and no runtime dependency install. Render serves the 
 
 ## Experience Map
 
-- `#tour`: approximately 90 seconds covering the problem, proposed path, Andre's contribution, and simulation boundary.
-- `#present/1`: self-contained 25-slide, 45-minute knowledge share grouped into The Bridge, Marketing Basics, GHL Foundations, Bloom Dental Case, System Build, and Measurement. Use the six chapter markers or outline to navigate, open the glossary when a term is unfamiliar, toggle presenter notes when speaking, use the arrow keys to move, and press `Escape` to exit.
-- `#system`: customer path, Plain English/GHL Detail switch, reconstructed six-workflow node lab, and decision log.
-- `#build`: ten completed phases, each with input, decision, actions, GHL location, output, purpose, and status.
-- `#deliverables`: eight full workshop documents presented as native website content.
-- `#measurement`: projected goals, measurement windows, event model, KPI tree, dashboard plan, formulas, and interactive KPI Diagnostic Lab.
+- `#problem`: a 90-second diagnostic of five unreliable customer handoffs, with an interactive problem explorer and simulation boundary.
+- `#solution`: customer path, Plain English/GHL Detail switch, reconstructed six-workflow node lab, and decision log.
+- `#build`: ten completed phases. Each phase explains its input, decision, actions, GHL location, output, business purpose, problem addressed, and solution delivered.
+- `#evidence`: eight full workshop documents plus a matrix connecting every document to the problems it supports.
+- `#measurement`: projected goals, measurement windows, event model, KPI tree, formulas, dashboard plan, and an interactive diagnostic tied to each problem.
+- `#present/1`: self-contained 25-slide, 45-minute knowledge share grouped into Setup, Conversion, Booking, Attendance, Customer State, and Learning Loop. Use the chapter markers or outline to navigate, open the glossary when a term is unfamiliar, toggle presenter notes when speaking, use the arrow keys to move, and press `Escape` to exit.
 
-Legacy hashes continue to work: `#beginner-path`, `#implementation`, `#board`, `#process`, `#documents`, and `#results` map to the nearest new view.
+Legacy hashes continue to work: `#tour` and `#beginner-path` open Problem; `#system` and `#board` open Solution; `#implementation` and `#process` open Build; `#deliverables` and `#documents` open Evidence; and `#results` opens Measurement.
 
 ## Edit Before Publishing
 
@@ -43,9 +43,9 @@ Legacy hashes continue to work: `#beginner-path`, `#implementation`, `#board`, `
 
 ## Structure
 
-- `index.html`: five-view shell, contribution story, guided presentation layer, and all hardcoded workshop deliverables.
+- `index.html`: five-view shell, problem-solution story, guided presentation layer, and all hardcoded workshop evidence.
 - `styles.css`: dark graphite-green token system, responsive layouts, focus states, and reduced-motion rules.
-- `script.js`: ARIA tab navigation, chaptered presentation and notes, hashes and history, legacy aliases, journey explanations, workflow maps, KPI diagnostics, deliverable switching, and GSAP fallback behavior.
+- `script.js`: canonical five-problem story model, ARIA tab navigation, chaptered presentation and notes, hashes and history, legacy aliases, workflow maps, evidence relationships, KPI diagnostics, and GSAP fallback behavior.
 - `DESIGN.md`: canonical visual, interaction, content, and release rules.
 - `THIRD_PARTY_NOTICES.md`: versions, licenses, and sources for self-hosted browser assets.
 - `assets/favicon.svg`: publication-safe favicon.

@@ -10,10 +10,10 @@
 
 The opening offers two distinct paths:
 
-1. **90-second tour:** the business problem, proposed journey, Andre's contribution, and simulation boundary.
-2. **45-minute team presentation:** a 25-slide, six-chapter lesson that bridges B2B analytics into DTC marketing, GHL, the case study, and measurement with optional presenter notes.
+1. **90-second diagnosis:** five customer handoff problems, their likely root causes, proposed responses, evidence, KPIs, and the simulation boundary.
+2. **45-minute team presentation:** a 25-slide, six-chapter lesson that bridges B2B analytics into DTC martech through problem, diagnosis, solution, implementation, evidence, and measurement.
 
-The five persistent views are Quick Tour, System, 10-Phase Build, Deliverables, and Measurement. Detailed evidence is available without interrupting the opening story.
+The five persistent views are Problem, Solution, Build, Evidence, and Measurement. They use one canonical five-problem story so terminology and relationships remain consistent across the website and presentation.
 
 ## Visual Tokens
 
@@ -48,11 +48,13 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 - Top-level navigation and nested document/KPI controls use ARIA tabs and keyboard arrows.
 - The workflow lab is an authored explanation, not a screenshot recreation. Every node exposes its trigger, action, condition, and business purpose.
 - The ten phases share one teaching structure: input, decision, actions, GHL location, output, purpose, and status.
-- The eight deliverables remain complete, hardcoded, searchable website content.
+- Each phase also names the problem addressed and solution delivered.
+- The eight evidence documents remain complete, hardcoded, searchable website content.
+- Problem selection remains consistent across the diagnostic explorer, solution detail, evidence matrix, and KPI diagnostic.
 
 ## Presentation Rules
 
-- The deck contains 25 slides grouped into The Bridge, Marketing Basics, GHL Foundations, Bloom Dental Case, System Build, and Measurement.
+- The deck contains 25 slides grouped into Setup, Conversion, Booking, Attendance, Customer State, and Learning Loop.
 - The default is a clean audience slide. Presenter notes are optional and never change the URL.
 - Six chapter markers replace a row of tiny slide dots; the outline provides direct slide access.
 - Direct `#present/1-25` links, history navigation, arrow keys, Escape, focus restoration, an accessible focus trap, and slide announcements must remain supported.
@@ -60,7 +62,7 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 
 ## Motion And Resilience
 
-- Signature motion: a signal travels through the funnel path.
+- Signature motion: a signal travels through five problem nodes as each friction resolves into a proposed solution and KPI.
 - Use short reveal staggers, path drawing, connected-node highlighting, and deliberate panel transitions.
 - Pin at most one desktop story section and disable pinning on mobile.
 - GSAP 3.12.5, ScrollTrigger 3.12.5, and Lucide 0.468.0 are pinned and self-hosted in `assets/vendor`.
@@ -78,8 +80,8 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 
 ## Release Checklist
 
-- [ ] Quick Tour can be understood in roughly 90 seconds.
-- [ ] Presenter notes and interactive pauses support 43-47 minutes across all 25 slides.
+- [ ] The five problems and proposed solutions can be understood in roughly 90 seconds.
+- [ ] Presenter notes and interactive pauses support exactly 45 minutes across all 25 slides.
 - [ ] Ten phases, six workflows, and eight full deliverables are present.
 - [ ] Hashes, legacy aliases, browser history, keyboard controls, and focus restoration work.
 - [ ] 375px, 768px, 1024px, and 1440px layouts have no page-level overflow or overlap.

@@ -1,58 +1,201 @@
 (() => {
   "use strict";
 
-  const views = ["tour", "system", "build", "deliverables", "measurement"];
+  const views = ["problem", "solution", "build", "evidence", "measurement"];
   const aliases = {
-    "": "tour",
-    tour: "tour",
-    "quick-tour": "tour",
-    "beginner-path": "tour",
-    system: "system",
-    board: "system",
+    "": "problem",
+    problem: "problem",
+    tour: "problem",
+    "quick-tour": "problem",
+    "beginner-path": "problem",
+    solution: "solution",
+    system: "solution",
+    board: "solution",
     build: "build",
     implementation: "build",
     process: "build",
-    deliverables: "deliverables",
-    documents: "deliverables",
+    evidence: "evidence",
+    deliverables: "evidence",
+    documents: "evidence",
     measurement: "measurement",
     results: "measurement"
   };
 
   const presentationChapters = [
-    { name: "The Bridge", start: 0, end: 2 },
-    { name: "Marketing Basics", start: 3, end: 6 },
-    { name: "GHL Foundations", start: 7, end: 10 },
-    { name: "Bloom Dental Case", start: 11, end: 15 },
-    { name: "System Build", start: 16, end: 21 },
-    { name: "Measurement", start: 22, end: 24 }
+    { name: "Setup", start: 0, end: 3 },
+    { name: "Conversion", start: 4, end: 7 },
+    { name: "Booking", start: 8, end: 11 },
+    { name: "Attendance", start: 12, end: 15 },
+    { name: "Customer State", start: 16, end: 19 },
+    { name: "Learning Loop", start: 20, end: 24 }
   ];
 
   const presentationSlideOrder = [
     "presentation-slide-1",
+    "presentation-slide-3",
     "presentation-slide-b2b-bridge",
+    "presentation-slide-2",
     "presentation-slide-marketing-martech",
     "presentation-slide-four-decisions",
-    "presentation-slide-journey-funnel",
+    "presentation-slide-4",
     "presentation-slide-funnel-math",
+    "presentation-slide-journey-funnel",
+    "presentation-slide-6",
+    "presentation-slide-7",
+    "presentation-slide-12",
     "presentation-slide-dtc-realities",
+    "presentation-slide-13",
+    "presentation-slide-14",
+    "presentation-slide-15",
     "presentation-slide-5",
     "presentation-slide-analyst-lens",
     "presentation-slide-11",
-    "presentation-slide-13",
-    "presentation-slide-2",
-    "presentation-slide-3",
-    "presentation-slide-4",
-    "presentation-slide-6",
-    "presentation-slide-7",
-    "presentation-slide-8",
     "presentation-slide-9",
-    "presentation-slide-10",
-    "presentation-slide-12",
-    "presentation-slide-14",
-    "presentation-slide-15",
     "presentation-slide-16",
+    "presentation-slide-10",
+    "presentation-slide-8",
     "presentation-slide-17",
     "presentation-slide-18"
+  ];
+
+  const problemStories = [
+    {
+      id: "conversion",
+      number: "01 / CONVERSION",
+      short: "Qualified intent",
+      problem: "Interest was not becoming qualified intent.",
+      symptom: "People could notice the clinic without taking a meaningful next step.",
+      cause: "The offer did not yet reduce uncertainty for cold traffic or explain the consultation clearly.",
+      impact: "A prospective patient still did not know what would happen after clicking or whether they would be pressured into treatment.",
+      solution: "Lead with a calm, consultation-first offer and carry the same promise from ad to landing page and form.",
+      plainImplementation: "The message explains the consultation, lowers pressure, and asks for useful context before a treatment decision.",
+      implementation: "GHL funnel page, consultation copy, inquiry form, source tags, and UTM campaign values.",
+      proof: "Marketing Strategy, Campaign Plan, and Landing Page Copy Deck.",
+      kpi: "CTR > arrival rate > landing conversion",
+      phases: ["01", "02", "04"],
+      evidence: ["strategy-doc", "campaign-doc", "copy-doc"],
+      diagnostic: "capture"
+    },
+    {
+      id: "booking",
+      number: "02 / BOOKING",
+      short: "Scheduled time",
+      problem: "Qualified intent was not becoming a booking.",
+      symptom: "An inquiry could exist without a consultation time or a clear next action.",
+      cause: "The form, calendar, and opportunity record were disconnected handoffs.",
+      impact: "The person had to carry momentum across separate steps while the team lacked useful context.",
+      solution: "Use a form-first journey that captures intent and consent, then immediately offers an appropriate calendar.",
+      plainImplementation: "The inquiry and calendar behave as one continuous next step instead of two unrelated tasks.",
+      implementation: "Mapped form fields, a 30-minute calendar, appointment settings, and New Lead-to-Booked pipeline movement.",
+      proof: "Funnel Map, Landing Page Copy Deck, and Implementation Checklist.",
+      kpi: "Lead-to-booking = bookings / form submissions",
+      phases: ["03", "06", "07"],
+      evidence: ["funnel-doc", "copy-doc", "checklist-doc"],
+      diagnostic: "booking"
+    },
+    {
+      id: "attendance",
+      number: "03 / ATTENDANCE",
+      short: "Attended consult",
+      problem: "Bookings were not reliably becoming attended consultations.",
+      symptom: "The workshop baseline included a 35% no-show pattern.",
+      cause: "Confirmation, reminders, consent checks, and no-show recovery were not operating as one timed system.",
+      impact: "Patients could forget or miss appointments while the clinic lost protected consultation capacity.",
+      solution: "Separate booking protection and no-show recovery into timed workflows with channel consent and stop conditions.",
+      plainImplementation: "The system confirms the time, reminds respectfully, checks the outcome, and stops or recovers appropriately.",
+      implementation: "Confirmation email, consent-gated SMS, reminder waits, appointment-status branches, and recovery exits.",
+      proof: "Email and SMS Sequence, Workflow Specification, and Implementation Checklist.",
+      kpi: "Show rate and no-show rate using mature bookings",
+      phases: ["08", "10"],
+      evidence: ["messages-doc", "workflow-doc", "checklist-doc"],
+      diagnostic: "attendance"
+    },
+    {
+      id: "continuity",
+      number: "04 / CUSTOMER STATE",
+      short: "Coordinated next step",
+      problem: "Customer outcomes were not producing coordinated follow-up.",
+      symptom: "Attended, missed, interested, paid, and recall-due contacts could remain indistinguishable.",
+      cause: "Customer state, stage ownership, and downstream automation were not represented consistently.",
+      impact: "The team could send irrelevant follow-up, duplicate work, or lose a valuable next step.",
+      solution: "Give every meaningful outcome a shared record, pipeline state, responsible workflow, and explicit exit.",
+      plainImplementation: "The customer outcome determines the next responsible action, while irrelevant follow-up stops.",
+      implementation: "Contact fields, source and consent tags, opportunity stages, and six modular GHL workflows.",
+      proof: "Funnel Blueprint, Workflow Specification, and Implementation Checklist.",
+      kpi: "Whitening attach rate and six-month recall conversion",
+      phases: ["05", "08"],
+      evidence: ["funnel-doc", "workflow-doc", "checklist-doc"],
+      diagnostic: "value"
+    },
+    {
+      id: "learning",
+      number: "05 / LEARNING LOOP",
+      short: "Optimization decision",
+      problem: "Marketing activity was not producing clear optimization decisions.",
+      symptom: "Clicks, leads, bookings, and future-care outcomes could be discussed without consistent denominators or time windows.",
+      cause: "The event model, attribution fields, cohort maturity, and diagnostic cadence had not been defined together.",
+      impact: "A team could optimize the wrong handoff or describe a projected target as if it were observed performance.",
+      solution: "Connect named events to explicit formulas, evidence sources, measurement windows, and one controlled next test.",
+      plainImplementation: "The team finds the first weak handoff, checks its evidence, and changes one variable instead of guessing.",
+      implementation: "UTMs, funnel events, GHL reporting surfaces, KPI tree, weekly review, and simulation QA checklist.",
+      proof: "Analytics and KPI Plan plus the complete Implementation Checklist.",
+      kpi: "First material drop > evidence check > one next test",
+      phases: ["09", "10"],
+      evidence: ["kpi-doc", "checklist-doc"],
+      diagnostic: "arrival"
+    }
+  ];
+
+  const presentationNarrative = [
+    { id: "presentation-slide-1", topic: "THE CENTRAL DIAGNOSIS", title: "Five broken handoffs. One connected consultation system.", body: "Bloom Dental did not need isolated marketing assets. It needed a dependable path from attention to a measurable next decision.", minutes: 1, note: "Open with the business diagnosis, not the platform. The case is about repairing movement between customer states; GHL is the implementation environment.", transition: "First, establish what the simulation can and cannot prove." },
+    { id: "presentation-slide-3", topic: "SIMULATION BOUNDARY", title: "The baseline explains the problem. It does not claim live performance.", body: "The workshop supplied fictional operating inputs: 20 leads per month, 30% reaching booking, and a 35% no-show pattern.", minutes: 2, note: "Separate evidence about the design process from evidence about campaign outcomes. The baseline is a training input used to choose what the system must solve.", transition: "Now translate the problem into language familiar to a B2B analytics audience." },
+    { id: "presentation-slide-b2b-bridge", topic: "B2B TO DTC", title: "The analytical habits transfer. The customer motion changes.", body: "Both environments model progression, friction, and outcomes. DTC usually follows an individual through faster behavioral events.", minutes: 2, note: "Anchor the audience in familiar concepts: identity, lifecycle stage, event time, conversion, attribution, and cohort maturity still matter.", transition: "Those transferable habits let us diagnose the entire case as connected handoffs." },
+    { id: "presentation-slide-2", topic: "THE FIVE-PROBLEM MAP", title: "Read the project as five linked business problems.", body: "Qualified intent, booking, attendance, coordinated customer state, and learning form one chain. A weak handoff changes every step after it.", minutes: 2, note: "Use the five-problem map as the contract for the rest of the presentation. Every chapter will move from symptom to cause, solution, proof, and KPI.", transition: "The first handoff is the difference between being noticed and expressing useful intent.", problem: "conversion" },
+    { id: "presentation-slide-marketing-martech", topic: "PROBLEM 01 / CONVERSION", title: "Attention was not reliably becoming qualified intent.", body: "Awareness alone did not tell the clinic who needed help, what they wanted, or whether the offer reduced uncertainty.", minutes: 1, note: "Name the symptom before suggesting content or technology. Someone seeing an ad is an opportunity to communicate, not yet a lead or business outcome.", transition: "The cause sits in the relationship between problem, audience, offer, and channel.", problem: "conversion" },
+    { id: "presentation-slide-four-decisions", topic: "WHY CONVERSION LEAKED", title: "The offer had to answer uncertainty before asking for commitment.", body: "Cold traffic needed to know who the consultation was for, what would happen, and that treatment would not be forced.", minutes: 2, note: "Explain that conversion copy is a decision system. If the offer, audience, or channel changes, the page and metric definition must change with it.", transition: "The response was to make the consultation the low-friction first conversion." },
+    { id: "presentation-slide-4", topic: "SOLUTION 01 / CONSULTATION OFFER", title: "Lead with clarity, not a treatment sale.", body: "A free 30-minute smile consultation gives the audience a specific, lower-pressure next step and keeps the promise continuous across the funnel.", minutes: 2, note: "Show how the audience, offer, and guardrail work together. The consultation creates a meaningful action without inventing urgency or proof.", transition: "The evidence is whether each message handoff can be observed with the right denominator." },
+    { id: "presentation-slide-funnel-math", topic: "PROOF + KPI / CONVERSION", title: "Conversion becomes diagnosable when every rate has a denominator.", body: "Strategy, campaign, and copy deliverables define the path; CTR, arrival rate, and landing conversion locate the first leak.", minutes: 2, note: "Use the fictional mini-funnel to teach rate discipline. Click through each stage and distinguish an ad click from a successfully loaded page view.", transition: "After qualified intent exists, the next problem is turning it into a scheduled time." },
+    { id: "presentation-slide-journey-funnel", topic: "PROBLEM 02 / BOOKING", title: "Submitted interest was not reliably becoming a booking.", body: "A form completion could still end without a consultation time, a visible opportunity, or a clear next action.", minutes: 1, note: "Separate the customer journey from the measurable funnel. A submitted form is a useful state change, but it is not the same event as a booking.", transition: "The root cause was a disconnected handoff between context capture and scheduling." },
+    { id: "presentation-slide-6", topic: "WHY BOOKING LEAKED", title: "The form and calendar were behaving like separate tools.", body: "The person had to preserve momentum while the clinic risked receiving a booking without the context needed for a useful consultation.", minutes: 2, note: "Follow one person through the handoff. Ask what the system must remember, what the person must do next, and what evidence proves the transition.", transition: "The solution puts context first and scheduling immediately after it." },
+    { id: "presentation-slide-7", topic: "SOLUTION 02 / FORM-FIRST FUNNEL", title: "Capture useful intent, then offer the right calendar.", body: "The landing page leads to a mapped inquiry form, then a 30-minute consultation calendar and a visible pipeline stage.", minutes: 2, note: "Explain why form-first is a deliberate tradeoff: slightly more effort before booking, but better consultation context, consent, and measurable separation of events.", transition: "The implementation proof is the working page-to-form-to-calendar-to-pipeline chain." },
+    { id: "presentation-slide-12", topic: "PROOF + KPI / BOOKING", title: "The booking handoff has one owner, one event, and one rate.", body: "Mapped fields, appointment settings, and the New Lead-to-Booked stage support lead-to-booking measurement without confusing forms with appointments.", minutes: 2, note: "Walk through explain, ask, schedule, and operate. The primary diagnostic is bookings divided by form submissions, segmented by source and elapsed time.", transition: "A booked time still has to become an attended consultation." },
+    { id: "presentation-slide-dtc-realities", topic: "PROBLEM 03 / ATTENDANCE", title: "Bookings were vulnerable to inconsistent follow-up and no-shows.", body: "The scenario included a 35% no-show pattern, making appointment protection a business problem rather than a messaging preference.", minutes: 1, note: "Frame no-show as a mature appointment outcome. Future, cancelled, or rescheduled appointments cannot safely enter the denominator.", transition: "The cause was not simply too few reminders; it was missing timing, permission, and exit logic." },
+    { id: "presentation-slide-13", topic: "WHY ATTENDANCE LEAKED", title: "Manual follow-up could not reliably respect timing, consent, or changed status.", body: "One large sequence would also make it harder to prevent reminders after booking changes or completed attendance.", minutes: 2, note: "Explain why modularity matters operationally. Confirmation, reminders, and recovery respond to different triggers and should stop for different reasons.", transition: "The solution gives booking protection and no-show recovery their own inspectable paths." },
+    { id: "presentation-slide-14", topic: "SOLUTION 03 / TIMED WORKFLOWS", title: "Confirm, remind, check, recover, and stop at the right moment.", body: "Consent-gated messages, waits, appointment conditions, and exits create a respectful path from booking to attendance or recovery.", minutes: 2, note: "Select workflow nodes to show that every action has a function. Emphasize that the condition protects the experience as much as it controls automation.", transition: "The proof is not message volume; it is correct routing and mature attendance outcomes." },
+    { id: "presentation-slide-15", topic: "PROOF + KPI / ATTENDANCE", title: "Outcome workflows make show and no-show states explicit.", body: "The workflow specification and QA checklist define the branches; show rate and no-show rate evaluate only appointments whose date has passed.", minutes: 2, note: "Contrast booked, completed, and no-show states. A reliable denominator is the basis for deciding whether timing, channel, or scheduling policy needs a test.", transition: "Once the appointment outcome is known, the system still needs to coordinate what happens next." },
+    { id: "presentation-slide-5", topic: "PROBLEM 04 / CUSTOMER STATE", title: "Customer outcomes were not producing coordinated next steps.", body: "Without shared state, attended, missed, interested, paid, and recall-due contacts could remain operationally indistinguishable.", minutes: 1, note: "Introduce GHL only after naming the coordination problem. The platform objects exist to preserve identity, state, time, and responsible action.", transition: "The root cause becomes clearer when we separate records, states, and events." },
+    { id: "presentation-slide-analyst-lens", topic: "WHY STATE FRAGMENTED", title: "Records, states, and events did not yet share one vocabulary.", body: "A contact could exist without a reliable opportunity stage, consent signal, service interest, or downstream ownership rule.", minutes: 2, note: "Translate the problem into analytical terms. A record stores context, a state describes where the journey sits, and an event proves that something changed.", transition: "The solution is a small data model connected to modular automation." },
+    { id: "presentation-slide-11", topic: "SOLUTION 04 / SHARED OPERATING STATE", title: "Give every meaningful outcome a record, stage, workflow, and exit.", body: "Contact fields, tags, opportunities, pipeline stages, and six workflows coordinate booking, recovery, whitening, payment, and recall.", minutes: 2, note: "Show the data model as a shared operating contract. Smaller workflows can read the same fields and stages without hiding every behavior in one sequence.", transition: "The build phases and workflow specifications provide the implementation evidence." },
+    { id: "presentation-slide-9", topic: "PROOF + KPI / CUSTOMER STATE", title: "The system can trace an outcome into its next responsible path.", body: "The CRM model and modular workflows support whitening attach and six-month recall measurement without treating either target as achieved.", minutes: 2, note: "Connect each downstream KPI to eligibility. Whitening uses completed consultations; recall uses only contacts whose six-month due date has matured.", transition: "Even a coordinated system is incomplete if its activity cannot guide a decision." },
+    { id: "presentation-slide-16", topic: "PROBLEM 05 / LEARNING", title: "Marketing activity was not yet producing trustworthy optimization decisions.", body: "Counts could be discussed without explicit denominators, attribution fields, maturity rules, or separate acquisition and retention windows.", minutes: 1, note: "Distinguish a dashboard from a learning system. More widgets do not help when events, denominators, and decision ownership remain ambiguous.", transition: "The root cause is a measurement model assembled after execution instead of designed with the journey." },
+    { id: "presentation-slide-10", topic: "WHY LEARNING FAILED", title: "Vanity activity mixed different events and time horizons.", body: "Ad clicks, page views, form submissions, bookings, attended consultations, and six-month recall cannot share one denominator or reporting window.", minutes: 2, note: "Explain acquisition, appointment maturity, and retention as separate clocks. This prevents early cohorts or future appointments from distorting decisions.", transition: "The response connects every business question to an event, formula, source, and next test." },
+    { id: "presentation-slide-8", topic: "SOLUTION 05 / MEASUREMENT MODEL", title: "Design the learning loop before live traffic arrives.", body: "An event model, KPI tree, UTM plan, dashboard layout, and weekly diagnostic cadence turn activity into inspectable evidence.", minutes: 2, note: "Use the eight deliverables as proof that strategy, implementation, and measurement were designed together. The analytics plan is not a decorative final document.", transition: "Simulation QA checks whether those definitions and paths are ready to receive real evidence." },
+    { id: "presentation-slide-17", topic: "PROOF + KPI / LEARNING", title: "QA proves the model is coherent, not that the campaign succeeded.", body: "The simulation verifies routes, branches, consent, stages, formulas, and stop conditions. Sender setup, compliance, live tracking, and real data remain launch gates.", minutes: 2, note: "Use the KPI Diagnostic Lab as the operating behavior: find the first material drop, inspect the relevant evidence, and change one variable.", transition: "Close by returning to the five problems and the capability demonstrated by solving them as one system." },
+    { id: "presentation-slide-18", topic: "CLOSE / FIVE RESPONSES", title: "The project turns five business problems into one measurable operating system.", body: "The work demonstrates diagnosis, campaign strategy, funnel design, GHL configuration, workflow logic, measurement design, and honest simulation QA.", minutes: 3, note: "Summarize the chain: clarify intent, make booking continuous, protect attendance, coordinate customer state, and close the learning loop. Then restate the boundary between a complete workshop simulation and a production campaign.", transition: "Invite questions about the decisions, evidence, tradeoffs, or first live experiment." }
+  ];
+
+  const documentTitles = {
+    "strategy-doc": "Marketing Strategy",
+    "campaign-doc": "Integrated Campaign Plan",
+    "funnel-doc": "Funnel Map + GHL Blueprint",
+    "copy-doc": "Landing Page Copy Deck",
+    "messages-doc": "Email + SMS Sequence",
+    "workflow-doc": "GHL Workflow Specification",
+    "kpi-doc": "Analytics + KPI Plan",
+    "checklist-doc": "Implementation Checklist"
+  };
+
+  const phaseAnnotations = [
+    { problems: ["conversion"], solution: "Turn discovery evidence into a specific conversion problem and a low-friction consultation offer." },
+    { problems: ["conversion"], solution: "Align audience, message, channel, and projected goals around qualified intent." },
+    { problems: ["booking"], solution: "Design the page-to-form-to-calendar handoff before configuring individual GHL objects." },
+    { problems: ["conversion"], solution: "Use clear, continuous copy to lower uncertainty across the conversion path." },
+    { problems: ["continuity"], solution: "Create a shared vocabulary for identity, consent, service interest, and opportunity stage." },
+    { problems: ["booking"], solution: "Capture only the context needed to create an understandable, actionable lead." },
+    { problems: ["booking"], solution: "Convert submitted intent into a configured consultation time and visible stage change." },
+    { problems: ["attendance", "continuity"], solution: "Run timely, consent-aware actions while routing every outcome to its responsible next path." },
+    { problems: ["learning"], solution: "Connect journey events to explicit formulas, reporting windows, and diagnostic questions." },
+    { problems: ["attendance", "learning"], solution: "Verify branches, exits, state changes, and metric definitions before live traffic." }
   ];
 
   const kpiDiagnostics = {
@@ -715,7 +858,8 @@
     }
   };
 
-  let activeView = "tour";
+  let activeView = "problem";
+  let activeProblem = "conversion";
   let activeDocument = "strategy-doc";
   let explanationMode = "plain";
   let systemTrigger = null;
@@ -723,7 +867,7 @@
   let activeWorkflow = "new-lead-booking";
   let activeWorkflowNode = 0;
   let presentationIndex = 0;
-  let presentationReturnHash = "#tour";
+  let presentationReturnHash = "#problem";
   let presentationPreviousFocus = null;
   let presentationNotesOpen = false;
   let presentationOutlineOpen = false;
@@ -738,9 +882,9 @@
       const requested = Number.parseInt(parts[1] || "1", 10);
       const slideCount = Math.max(1, document.querySelectorAll("[data-presentation-slide]").length);
       const slide = Number.isFinite(requested) ? Math.max(1, Math.min(slideCount, requested)) : 1;
-      return { view: "tour", documentId: null, presentation: true, presentationIndex: slide - 1 };
+      return { view: "problem", documentId: null, presentation: true, presentationIndex: slide - 1 };
     }
-    const view = aliases[parts[0]] || "tour";
+    const view = aliases[parts[0]] || "problem";
     const documentId = parts[1] || null;
     return { view, documentId, presentation: false, presentationIndex: 0 };
   }
@@ -817,7 +961,7 @@
         window.setTimeout(() => activePanel.classList.remove("is-switching"), 480);
       });
     }
-    if (updateUrl) writeHash("deliverables", requested, false);
+    if (updateUrl) writeHash("evidence", requested, false);
   }
 
   function renderNode(nodeId) {
@@ -861,9 +1005,173 @@
         });
         const selectedNode = document.querySelector(".journey-node.is-selected")?.dataset.node || "ad";
         renderNode(selectedNode);
+        renderProblemStory(activeProblem, { syncKpi: false });
       });
     });
     renderNode("ad");
+  }
+
+  function problemStory(id) {
+    return problemStories.find((story) => story.id === id) || problemStories[0];
+  }
+
+  function renderProblemStory(id, options = {}) {
+    const story = problemStory(id);
+    activeProblem = story.id;
+    document.body.dataset.problem = story.id;
+
+    document.querySelectorAll("[data-problem-selector] button").forEach((button) => {
+      const selected = button.dataset.problemSelect === story.id;
+      button.classList.toggle("is-active", selected);
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
+    });
+
+    document.querySelectorAll("[data-problem-panel]").forEach((panel) => {
+      const explorer = panel.closest("[data-problem-explorer]");
+      const scope = explorer?.dataset.problemExplorer || "brief";
+      const activeTab = explorer?.querySelector(`[data-problem-select="${story.id}"]`);
+      if (activeTab) panel.setAttribute("aria-labelledby", activeTab.id);
+      panel.querySelectorAll("[data-problem-field]").forEach((field) => {
+        const key = field.dataset.problemField;
+        let value = story[key] || "";
+        if (key === "implementation" && explanationMode === "plain") value = story.plainImplementation;
+        if (key === "phases") value = `Build phases: ${story.phases.join(", ")}`;
+        if (key === "evidence") value = `Evidence: ${story.evidence.map((doc) => documentTitles[doc]).join(", ")}`;
+        field.textContent = value;
+      });
+      panel.dataset.activeProblem = story.id;
+      panel.classList.remove("is-switching");
+      if (!reduceMotion()) window.requestAnimationFrame(() => panel.classList.add("is-switching"));
+      window.setTimeout(() => panel.classList.remove("is-switching"), 380);
+      if (scope === "measurement" && options.syncKpi !== false) renderKpiDiagnostic(story.diagnostic);
+    });
+
+    document.querySelectorAll("[data-evidence-problem]").forEach((item) => {
+      item.classList.toggle("is-active", item.dataset.evidenceProblem === story.id);
+    });
+  }
+
+  function buildProblemSelectors() {
+    document.querySelectorAll("[data-problem-selector]").forEach((selector, selectorIndex) => {
+      const explorer = selector.closest("[data-problem-explorer]");
+      const scope = explorer?.dataset.problemExplorer || `scope-${selectorIndex + 1}`;
+      const panel = explorer?.querySelector("[data-problem-panel]");
+      if (panel && !panel.id) panel.id = `problem-panel-${scope}`;
+      selector.textContent = "";
+      problemStories.forEach((story, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.id = `problem-tab-${scope}-${story.id}`;
+        button.role = "tab";
+        button.dataset.problemSelect = story.id;
+        button.setAttribute("aria-selected", String(index === 0));
+        if (panel) button.setAttribute("aria-controls", panel.id);
+        button.tabIndex = index === 0 ? 0 : -1;
+        button.innerHTML = `<span>${String(index + 1).padStart(2, "0")}</span><strong>${story.short}</strong>`;
+        button.addEventListener("click", () => renderProblemStory(story.id));
+        button.addEventListener("keydown", (event) => {
+          if (!["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+          event.preventDefault();
+          let next = index;
+          if (["ArrowRight", "ArrowDown"].includes(event.key)) next = (index + 1) % problemStories.length;
+          if (["ArrowLeft", "ArrowUp"].includes(event.key)) next = (index - 1 + problemStories.length) % problemStories.length;
+          if (event.key === "Home") next = 0;
+          if (event.key === "End") next = problemStories.length - 1;
+          const nextButton = selector.querySelectorAll("button")[next];
+          nextButton?.focus();
+          renderProblemStory(problemStories[next].id);
+        });
+        selector.appendChild(button);
+      });
+    });
+  }
+
+  function buildEvidenceMatrix() {
+    const matrix = document.querySelector("[data-problem-evidence-matrix]");
+    if (!matrix) return;
+    matrix.innerHTML = problemStories.map((story) => `
+      <article data-evidence-problem="${story.id}">
+        <span>${story.number}</span>
+        <h3>${story.problem}</h3>
+        <p>${story.solution}</p>
+        <div>${story.evidence.map((doc) => `<a href="#evidence/${doc}">${documentTitles[doc]}</a>`).join("")}</div>
+      </article>`).join("");
+
+    const inverse = {};
+    problemStories.forEach((story) => story.evidence.forEach((doc) => {
+      inverse[doc] = [...(inverse[doc] || []), story.number.replace(/^\d+\s*\/\s*/, "")];
+    }));
+    document.querySelectorAll(".doc-tab").forEach((button) => {
+      const existing = button.querySelector(".doc-problem-tags");
+      if (existing) existing.remove();
+      const tags = document.createElement("small");
+      tags.className = "doc-problem-tags";
+      tags.textContent = (inverse[button.dataset.doc] || []).join(" + ");
+      button.appendChild(tags);
+    });
+  }
+
+  function annotateBuildPhases() {
+    document.querySelectorAll(".phase-row").forEach((row, index) => {
+      const annotation = phaseAnnotations[index];
+      if (!annotation || row.querySelector(".phase-problem-summary")) return;
+      const summary = document.createElement("div");
+      summary.className = "phase-problem-summary";
+      const problems = annotation.problems.map((id) => problemStory(id));
+      summary.innerHTML = `<div><span>PROBLEM ADDRESSED</span><p>${problems.map((story) => story.problem).join(" ")}</p></div><i data-lucide="arrow-right" aria-hidden="true"></i><div><span>SOLUTION DELIVERED</span><p>${annotation.solution}</p></div>`;
+      row.querySelector(".phase-grid")?.prepend(summary);
+    });
+  }
+
+  function configureProblemCentricPresentation() {
+    presentationNarrative.forEach((entry) => {
+      const slide = document.getElementById(entry.id);
+      if (!slide) return;
+      slide.dataset.presentationMinutes = String(entry.minutes);
+      slide.dataset.problem = entry.problem || "setup";
+      const label = slide.querySelector(".presentation-label");
+      const heading = slide.querySelector(".presentation-copy h1, .presentation-copy h2");
+      const body = slide.querySelector(".presentation-copy > p");
+      if (label) {
+        label.dataset.topic = entry.topic;
+        label.textContent = entry.topic;
+      }
+      if (heading) heading.textContent = entry.title;
+      if (body) body.textContent = entry.body;
+    });
+
+    const openingRoute = document.querySelector("#presentation-slide-1 .present-route");
+    if (openingRoute) openingRoute.innerHTML = problemStories.map((story, index) => `${index ? '<i data-lucide="arrow-right" aria-hidden="true"></i>' : ""}<span>${story.short.toUpperCase()}</span>`).join("");
+    const mapVisual = document.querySelector("#presentation-slide-2 .presentation-visual");
+    if (mapVisual) {
+      mapVisual.className = "presentation-visual presentation-problem-map";
+      mapVisual.innerHTML = problemStories.map((story, index) => `<div><span>${String(index + 1).padStart(2, "0")}</span><strong>${story.problem}</strong><small>${story.short}</small></div>`).join("");
+    }
+    const closeGrid = document.querySelector("#presentation-slide-18 .presentation-close-grid");
+    if (closeGrid) closeGrid.innerHTML = problemStories.map((story) => `<div><span>${story.number}</span><strong>${story.short}</strong></div>`).join("");
+  }
+
+  function framePresentationNotes() {
+    presentationNarrative.forEach((entry) => {
+      const talk = document.querySelector(`#${entry.id} .presentation-talk`);
+      if (!talk) return;
+      const title = talk.querySelector("h3");
+      if (title) title.textContent = entry.title;
+      const frame = document.createElement("p");
+      frame.className = "presentation-problem-frame";
+      frame.textContent = entry.note;
+      title?.after(frame);
+      const transition = talk.querySelector(".presentation-transition");
+      if (transition) transition.textContent = `Transition: ${entry.transition}`;
+    });
+  }
+
+  function initProblemStory() {
+    buildProblemSelectors();
+    buildEvidenceMatrix();
+    annotateBuildPhases();
+    renderProblemStory(activeProblem, { syncKpi: false });
   }
 
   const workflowTypeLabels = {
@@ -1091,15 +1399,15 @@
     document.body.classList.toggle("motion-enhanced", canAnimate);
     setupReveals();
     if (!canAnimate) return;
-    if (view === "tour" && !document.body.dataset.heroAnimated) {
+    if (view === "problem" && !document.body.dataset.heroAnimated) {
       setupHeroMotion();
       document.body.dataset.heroAnimated = "true";
     }
-    if (view === "system") setupSystemMotion();
+    if (view === "solution") setupSystemMotion();
   }
 
   function setView(view, options = {}) {
-    const nextView = views.includes(view) ? view : "tour";
+    const nextView = views.includes(view) ? view : "problem";
     activeView = nextView;
     document.querySelectorAll("[data-view-panel]").forEach((panel) => {
       panel.hidden = panel.dataset.viewPanel !== nextView;
@@ -1107,17 +1415,17 @@
     });
     updateTabs(nextView);
     document.body.dataset.view = nextView;
-    if (nextView === "deliverables") activateDocument(activeDocument, false);
-    if (nextView !== "system" && systemTrigger) {
+    if (nextView === "evidence") activateDocument(activeDocument, false);
+    if (nextView !== "solution" && systemTrigger) {
       systemTrigger.kill();
       systemTrigger = null;
     }
-    if (options.updateUrl !== false) writeHash(nextView, nextView === "deliverables" ? activeDocument : null, options.replace === true);
+    if (options.updateUrl !== false) writeHash(nextView, nextView === "evidence" ? activeDocument : null, options.replace === true);
     initMotion(nextView);
     if (options.scroll !== false) {
       window.requestAnimationFrame(() => {
         const behavior = options.replace ? "auto" : (reduceMotion() ? "auto" : "smooth");
-        if (nextView === "tour") {
+        if (nextView === "problem") {
           window.scrollTo({ top: 0, behavior });
         } else {
           const target = document.getElementById(`view-${nextView}`);
@@ -1420,7 +1728,7 @@
     const alreadyOpen = document.body.classList.contains("is-presentation-open");
     if (!alreadyOpen) {
       presentationPreviousFocus = document.activeElement;
-      if (!window.location.hash.startsWith("#present")) presentationReturnHash = window.location.hash || "#tour";
+      if (!window.location.hash.startsWith("#present")) presentationReturnHash = window.location.hash || "#problem";
       overlay.hidden = false;
       overlay.setAttribute("aria-hidden", "false");
       document.body.classList.add("is-presentation-open");
@@ -1445,7 +1753,7 @@
     setPresentationOutline(false);
     setPresentationGlossary(false);
 
-    const returnHash = options.returnHash || presentationReturnHash || "#tour";
+    const returnHash = options.returnHash || presentationReturnHash || "#problem";
     if (options.updateUrl !== false && window.location.hash !== returnHash) window.history.replaceState(null, "", returnHash);
     const state = getHashState();
     if (state.documentId) activeDocument = state.documentId;
@@ -1465,7 +1773,7 @@
       return;
     }
     if (document.body.classList.contains("is-presentation-open")) {
-      closePresentation({ updateUrl: false, returnHash: window.location.hash || "#tour" });
+      closePresentation({ updateUrl: false, returnHash: window.location.hash || "#problem" });
       return;
     }
     if (state.documentId) activeDocument = state.documentId;
@@ -1473,9 +1781,11 @@
   }
 
   function initPresentation() {
+    configureProblemCentricPresentation();
     arrangePresentationSlides();
     const slides = Array.from(document.querySelectorAll("[data-presentation-slide]"));
     hydratePresentationNotes();
+    framePresentationNotes();
     initTeachingFunnel();
     initPresentationTeachingGroup("[data-journey-teach-node]", "journeyTeachNode", renderPresentationJourney, "ad");
     initPresentationTeachingGroup("[data-workflow-teach-node]", "workflowTeachNode", renderPresentationWorkflow, "trigger");
@@ -1533,7 +1843,7 @@
     document.querySelector("[data-presentation-next]")?.addEventListener("click", () => {
       const last = document.querySelectorAll("[data-presentation-slide]").length - 1;
       if (presentationIndex >= last) {
-        closePresentation({ returnHash: "#system" });
+        closePresentation({ returnHash: "#solution" });
       } else {
         updatePresentation(presentationIndex + 1);
       }
@@ -1617,9 +1927,9 @@
     document.querySelectorAll("[data-tour-start]").forEach((link) => {
       link.addEventListener("click", (event) => {
         event.preventDefault();
-        setView("tour", { scroll: false });
+        setView("problem", { scroll: false });
         window.requestAnimationFrame(() => {
-          document.getElementById("view-tour")?.scrollIntoView({ block: "start", behavior: reduceMotion() ? "auto" : "smooth" });
+          document.getElementById("view-problem")?.scrollIntoView({ block: "start", behavior: reduceMotion() ? "auto" : "smooth" });
         });
       });
     });
@@ -1628,7 +1938,7 @@
     documentTabs.forEach((button, index) => {
       button.addEventListener("click", () => {
         activateDocument(button.dataset.doc, true);
-        setView("deliverables", { updateUrl: false, scroll: true });
+        setView("evidence", { updateUrl: false, scroll: true });
       });
       button.addEventListener("keydown", (event) => {
         if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
@@ -1640,7 +1950,7 @@
         if (event.key === "End") next = documentTabs.length - 1;
         documentTabs[next].focus();
         activateDocument(documentTabs[next].dataset.doc, true);
-        setView("deliverables", { updateUrl: false, scroll: true });
+        setView("evidence", { updateUrl: false, scroll: true });
       });
     });
 
@@ -1703,6 +2013,7 @@
   }
 
   function start() {
+    initProblemStory();
     initJourney();
     initWorkflowLab();
     initPresentation();
@@ -1714,7 +2025,7 @@
       openPresentation(state.presentationIndex, { updateUrl: false, focus: false });
     } else {
       if (state.documentId) activeDocument = state.documentId;
-      setView(state.view, { replace: true, scroll: state.view !== "tour" });
+      setView(state.view, { replace: true, scroll: state.view !== "problem" });
     }
     refreshIcons();
     window.setTimeout(refreshIcons, 80);
