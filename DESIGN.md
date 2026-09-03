@@ -13,9 +13,9 @@ The opening offers two distinct paths:
 1. **90-second diagnosis:** five customer handoff problems, their likely root causes, proposed responses, evidence, KPIs, and the simulation boundary.
 2. **45-minute team presentation:** a 25-slide, six-chapter lesson that bridges B2B analytics into DTC martech through problem, diagnosis, solution, implementation, evidence, and measurement.
 
-The five persistent views use the audience labels The Problem, The Fix, How I Built It, What I Made, and How We’d Know. They map to `#problem`, `#solution`, `#build`, `#evidence`, and `#measurement`. They use one canonical five-problem story so terminology and relationships remain consistent across the website and presentation.
+The six persistent views use the audience labels The Problem, The Fix, How I Built It, What I Made, How We’d Know, and Conclusion. They map to `#problem`, `#solution`, `#build`, `#evidence`, `#measurement`, and `#conclusion`. They use one canonical five-problem story so terminology and relationships remain consistent across the website, presentation, and final learnings.
 
-The page also carries one recommended reading path: start with the problem, follow the fix, inspect the build, open the outputs, and finish with measurement. Every view has one next-stop handoff, while the header remains available for non-linear browsing.
+The page also carries one recommended reading path: start with the problem, follow the fix, inspect the build, open the outputs, review measurement, and finish with the conclusion. Every view has one next-stop handoff, while the header remains available for non-linear browsing.
 
 ## Beginner-First Content
 

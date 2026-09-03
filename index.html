@@ -21,7 +21,7 @@
     <link rel="canonical" href="https://ghlautomation.onrender.com/">
     <title>Bloom Dental Studio | Consultation Funnel &amp; Automation System</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=beginner-first-8">
+    <link rel="stylesheet" href="styles.css?v=beginner-first-9">
   </head>
   <body>
     <a class="skip-link" href="#case-study">Skip to case study</a>
@@ -40,6 +40,7 @@
         <button id="tab-build" class="primary-tab" type="button" role="tab" aria-selected="false" aria-controls="view-build" data-view="build" tabindex="-1">How I Built It</button>
         <button id="tab-evidence" class="primary-tab" type="button" role="tab" aria-selected="false" aria-controls="view-evidence" data-view="evidence" tabindex="-1">What I Made</button>
         <button id="tab-measurement" class="primary-tab" type="button" role="tab" aria-selected="false" aria-controls="view-measurement" data-view="measurement" tabindex="-1">How We’d Know</button>
+        <button id="tab-conclusion" class="primary-tab" type="button" role="tab" aria-selected="false" aria-controls="view-conclusion" data-view="conclusion" tabindex="-1">Conclusion</button>
       </nav>
       <a class="header-contact" href="mailto:imperial.andrejoseece@gmail.com" aria-label="Email Andre about this case study" title="Email Andre about this case study">
         <span>Contact</span><i data-lucide="arrow-up-right" aria-hidden="true"></i>
@@ -243,13 +244,14 @@
         </div>
 
         <nav class="reading-path" aria-label="Recommended case study path" data-reveal>
-          <div class="reading-path-intro"><span class="section-label">READ THIS IN ORDER</span><strong>Problem → fix → build → outputs → learning</strong><p>Follow the five stops below. Open technical details only when you need them.</p></div>
+          <div class="reading-path-intro"><span class="section-label">READ THIS IN ORDER</span><strong>Problem → fix → build → outputs → learning</strong><p>Follow the six stops below. Open technical details only when you need them.</p></div>
           <ol class="reading-path-steps">
             <li><a href="#problem" data-view-link="problem" data-reading-step="problem" aria-current="step"><span>01</span><strong>The Problem</strong><small>Where Sam could get stuck</small></a></li>
             <li><a href="#solution" data-view-link="solution" data-reading-step="solution"><span>02</span><strong>The Fix</strong><small>How the path stays connected</small></a></li>
             <li><a href="#build" data-view-link="build" data-reading-step="build"><span>03</span><strong>How I Built It</strong><small>The ten steps behind it</small></a></li>
             <li><a href="#evidence" data-view-link="evidence" data-reading-step="evidence"><span>04</span><strong>What I Made</strong><small>The eight full outputs</small></a></li>
             <li><a href="#measurement" data-view-link="measurement" data-reading-step="measurement"><span>05</span><strong>How We’d Know</strong><small>The numbers we would check</small></a></li>
+            <li><a href="#conclusion" data-view-link="conclusion" data-reading-step="conclusion"><span>06</span><strong>Conclusion</strong><small>The lessons to carry forward</small></a></li>
           </ol>
         </nav>
 
@@ -1431,7 +1433,48 @@
           <section class="kpi-diagnostic" aria-labelledby="kpi-diagnostic-title" data-reveal><div class="section-intro"><span class="section-label">KPI DIAGNOSTIC LAB</span><h2 id="kpi-diagnostic-title">Select the weak handoff, then inspect the evidence.</h2><p>This is a decision tool, not a chart of simulated results. Each path links a symptom to the GHL evidence and one controlled test.</p></div><div class="kpi-diagnostic-shell"><div class="kpi-diagnostic-tabs" role="tablist" aria-label="Choose a KPI to diagnose"><button id="kpi-tab-arrival" class="kpi-diagnostic-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="kpi-diagnostic-panel" data-kpi="arrival">Page arrival</button><button id="kpi-tab-capture" class="kpi-diagnostic-tab" type="button" role="tab" aria-selected="false" aria-controls="kpi-diagnostic-panel" data-kpi="capture" tabindex="-1">Lead capture</button><button id="kpi-tab-booking" class="kpi-diagnostic-tab" type="button" role="tab" aria-selected="false" aria-controls="kpi-diagnostic-panel" data-kpi="booking" tabindex="-1">Booking</button><button id="kpi-tab-attendance" class="kpi-diagnostic-tab" type="button" role="tab" aria-selected="false" aria-controls="kpi-diagnostic-panel" data-kpi="attendance" tabindex="-1">Attendance</button><button id="kpi-tab-value" class="kpi-diagnostic-tab" type="button" role="tab" aria-selected="false" aria-controls="kpi-diagnostic-panel" data-kpi="value" tabindex="-1">Whitening</button><button id="kpi-tab-retention" class="kpi-diagnostic-tab" type="button" role="tab" aria-selected="false" aria-controls="kpi-diagnostic-panel" data-kpi="retention" tabindex="-1">Recall</button></div><div id="kpi-diagnostic-panel" class="kpi-diagnostic-panel" role="tabpanel" aria-labelledby="kpi-tab-arrival" aria-live="polite"><div class="kpi-diagnostic-head"><span id="kpi-diagnostic-label">ARRIVAL RATE</span><h3 id="kpi-diagnostic-name">Are ad clicks becoming page views?</h3><code id="kpi-diagnostic-formula">landing_page_view / ad_click</code></div><div class="kpi-diagnostic-grid"><div><span>LIKELY SIGNAL</span><p id="kpi-diagnostic-signal">Clicks are recorded, but fewer sessions reach a usable landing page.</p></div><div><span>INSPECT</span><p id="kpi-diagnostic-evidence">Compare Meta clicks with funnel page views by UTM campaign and device.</p></div><div><span>NEXT TEST</span><p id="kpi-diagnostic-test">Validate link routing and mobile load behavior before changing the offer.</p></div></div></div></div></section>
           <section class="review-plan" data-reveal><div><span class="section-label">WEEKLY REVIEW</span><h2>Diagnose before optimizing.</h2></div><div class="review-columns"><div><h3>Decision cadence</h3><ol><li>Check source completeness and delivery health.</li><li>Use mature denominators for appointment outcomes.</li><li>Find the first material drop in the journey.</li><li>Change one variable and record the hypothesis.</li></ol></div><div><h3>Data-quality guardrails</h3><ul><li>Separate ad clicks from successfully loaded page views.</li><li>Deduplicate contacts and opportunities before counting leads.</li><li>Exclude future, cancelled, and rescheduled appointments from no-show denominators.</li><li>Report six-month recall only for contacts who have reached the due date.</li></ul></div></div></section>
           <section class="measurement-boundary"><span class="section-label">MEASUREMENT BOUNDARY</span><h2>Projected goals become real KPIs only after launch.</h2><p>Until live traffic, sender delivery, compliance, and production tracking are active, the numbers above are targets to test against, not evidence to celebrate.</p></section>
-          <nav class="guided-next guided-next-finish" aria-label="Finish the case study" data-reveal><div><span class="section-label">05 / 05 · HOW WE’D KNOW</span><strong>The story is ready to share.</strong><p>Finish with the 45-minute presentation, or return to the beginning and follow Sam again.</p></div><div class="guided-next-actions"><a class="button button-coral" href="#present/1" data-presentation-open>Open the presentation <i data-lucide="presentation" aria-hidden="true"></i></a><a class="text-link" href="#problem" data-view-link="problem">Back to The Problem <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div></nav>
+          <nav class="guided-next" aria-label="Next case study stop" data-reveal><div><span class="section-label">05 / 06 · HOW WE’D KNOW</span><strong>Next: Conclusion</strong><p>Gather the lessons, honest status, and first real experiment in one place.</p></div><a class="button button-coral" href="#conclusion" data-view-link="conclusion">Continue to Conclusion <i data-lucide="arrow-right" aria-hidden="true"></i></a></nav>
+        </section>
+
+        <section id="view-conclusion" class="view-panel" role="tabpanel" aria-labelledby="tab-conclusion" data-view-panel="conclusion" hidden>
+          <div class="view-heading" data-reveal><div><span class="section-label">06 / CONCLUSION</span><h2>What this project taught me.</h2></div><p>Use this page when you need the whole lesson in one place: what I learned, what I built, and what I would test next.</p></div>
+
+          <section class="conclusion-lead" aria-labelledby="conclusion-lead-title" data-reveal>
+            <h2 id="conclusion-lead-title">The tool matters less than the path around it.</h2>
+            <p>Bloom Dental is a fictional practice build from a workshop simulation. The strongest lesson is simple: a good customer system keeps the promise, next step, record, follow-up, and learning loop connected.</p>
+          </section>
+
+          <section class="conclusion-learning" aria-labelledby="conclusion-learning-title">
+            <div class="section-intro" data-reveal><span class="section-label">THE LEARNINGS</span><h2 id="conclusion-learning-title">Six ideas I would carry into the next project.</h2><p>These are the choices behind the build. Each one links back to the part of the case study where it was made visible.</p></div>
+            <div class="conclusion-learning-grid" data-reveal>
+              <article><span>01 / START WITH THE PERSON</span><h3>Find where someone could get stuck.</h3><p>Start with Sam’s experience, not platform features. A clear human problem tells you what the system must do.</p><a class="text-link" href="#problem" data-view-link="problem">Revisit The Problem <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></article>
+              <article><span>02 / JOIN THE STEPS</span><h3>Make each next step feel expected.</h3><p>The ad, page, questions, calendar, and messages should feel like one conversation, not separate tools.</p><a class="text-link" href="#solution" data-view-link="solution">Revisit The Fix <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></article>
+              <article><span>03 / REDUCE FRICTION</span><h3>Ask only what the next step needs.</h3><p>Useful context helps the team. Too many questions make it harder for a person to keep moving.</p><a class="text-link" href="#build" data-view-link="build">Revisit How I Built It <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></article>
+              <article><span>04 / DESIGN THE RULES</span><h3>Automation needs permission and stop rules.</h3><p>Timing, consent, branches, and exits matter as much as the message itself. Helpful automation knows when to stop.</p><a class="text-link" href="#solution" data-view-link="solution">See the automatic helpers <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></article>
+              <article><span>05 / COUNT WITH PURPOSE</span><h3>A number matters only when it answers a question.</h3><p>Separate the step, the eligible group, and the time window. Then choose one test that could improve the weak point.</p><a class="text-link" href="#measurement" data-view-link="measurement">Revisit How We’d Know <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></article>
+              <article><span>06 / MAKE IT TEACHABLE</span><h3>A build is easier to trust when others can follow it.</h3><p>Phases, documents, workflow maps, and QA turn a private build into a story another person can inspect and learn from.</p><a class="text-link" href="#evidence" data-view-link="evidence">Revisit What I Made <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></article>
+            </div>
+          </section>
+
+          <section class="conclusion-transfer" aria-labelledby="conclusion-transfer-title" data-reveal>
+            <div><span class="section-label">THE TRANSFERABLE SKILL</span><h2 id="conclusion-transfer-title">The analyst habits still apply.</h2><p>This was a direct-to-customer martech simulation, but the thinking transfers to B2B data work.</p></div>
+            <ol class="conclusion-transfer-list">
+              <li><span>01</span><div><strong>Ask the business question first.</strong><p>What is the team trying to help a person do, and where could that person stop?</p></div></li>
+              <li><span>02</span><div><strong>Define each event clearly.</strong><p>Agree on what “opened,” “completed,” “booked,” and “attended” mean before counting.</p></div></li>
+              <li><span>03</span><div><strong>Find the first meaningful drop.</strong><p>Do not jump to the final number. Look for the earliest step that needs attention.</p></div></li>
+              <li><span>04</span><div><strong>Test one change and learn.</strong><p>Keep the question, change, time window, and outcome visible so the next decision is grounded.</p></div></li>
+            </ol>
+          </section>
+
+          <section class="conclusion-status" aria-labelledby="conclusion-status-title" data-reveal>
+            <span class="section-label">HONEST PROJECT STATUS</span><h2 id="conclusion-status-title">Complete as a simulation. Not yet a live campaign.</h2>
+            <div class="conclusion-status-grid"><div><span>10 / 10</span><strong>Workshop build complete</strong><p>The strategy, funnel, content, data model, workflows, measurement plan, and QA are documented.</p></div><div><span>PROJECTED</span><strong>Goals still need real data</strong><p>60 bookings, below 15% no-show, and 40% whitening attach are targets to test.</p></div><div><span>LAUNCH DEPENDENCIES</span><strong>Production checks remain</strong><p>Sender setup, consent review, live traffic, tracking, and a real clinic process still need confirmation.</p></div></div>
+          </section>
+
+          <section class="conclusion-next" aria-labelledby="conclusion-next-title" data-reveal>
+            <div><span class="section-label">THE FIRST REAL EXPERIMENT</span><h2 id="conclusion-next-title">Run a small test, then learn from the first weak step.</h2><p>Before scaling, confirm the path works for one controlled group and make the result easy to inspect.</p></div>
+            <div><ol><li>Confirm the sender, consent, tracking, calendar, and booking handoff.</li><li>Compare page views, form starts, completed forms, and bookings.</li><li>Change one page or message variable and write down the hypothesis.</li><li>Review the same eligible group after the test window, then decide what to do next.</li></ol><div class="conclusion-next-actions"><a class="button button-coral" href="#present/1" data-presentation-open>Open the 45-minute presentation <i data-lucide="presentation" aria-hidden="true"></i></a><a class="text-link" href="#problem" data-view-link="problem">Start at The Problem <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div></div>
+          </section>
         </section>
 
         <footer class="redesign-footer"><div><span class="brand-sigil" aria-hidden="true">BD</span><p>Bloom Dental Studio consultation funnel and automation system.<br>Fast Track Workshop simulation / portfolio case study.</p></div><a class="text-link" href="mailto:imperial.andrejoseece@gmail.com">Open a conversation <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></footer>
@@ -1442,7 +1485,7 @@
     <script src="assets/vendor/lucide-0.468.0.min.js" defer></script>
     <script src="assets/vendor/gsap-3.12.5.min.js" defer></script>
     <script src="assets/vendor/ScrollTrigger-3.12.5.min.js" defer></script>
-    <script src="script.js?v=beginner-first-8" defer></script>
+    <script src="script.js?v=beginner-first-9" defer></script>
   </body>
 </html>
 

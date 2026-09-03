@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const views = ["problem", "solution", "build", "evidence", "measurement"];
+  const views = ["problem", "solution", "build", "evidence", "measurement", "conclusion"];
   const aliases = {
     "": "problem",
     problem: "problem",
@@ -18,7 +18,10 @@
     deliverables: "evidence",
     documents: "evidence",
     measurement: "measurement",
-    results: "measurement"
+    results: "measurement",
+    conclusion: "conclusion",
+    learnings: "conclusion",
+    takeaways: "conclusion"
   };
 
   const presentationChapters = [
