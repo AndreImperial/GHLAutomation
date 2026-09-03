@@ -1105,6 +1105,7 @@
       panel.hidden = panel.id !== `docs-panel-${requested}`;
     });
     const activePanel = document.getElementById(`docs-panel-${requested}`);
+    activePanel?.querySelector(".full-document")?.setAttribute("open", "");
     if (activePanel && !reduceMotion()) {
       activePanel.classList.remove("is-switching");
       window.requestAnimationFrame(() => {
