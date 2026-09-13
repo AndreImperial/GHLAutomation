@@ -429,6 +429,31 @@ h1 em {
   margin-bottom: 18px;
 }
 
+.hero-presentation-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 8px 2px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 4px;
+  transition: color 160ms ease;
+}
+
+.hero-presentation-link:hover,
+.hero-presentation-link:focus-visible {
+  color: var(--ivory);
+}
+
+.hero-presentation-link svg {
+  width: 16px;
+  height: 16px;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -472,10 +497,9 @@ h1 em {
 
 .hero-boundary {
   margin-bottom: 0;
-  color: var(--muted-dark);
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.02em;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .hero-scene {
@@ -514,6 +538,10 @@ h1 em {
   height: auto;
   min-height: 310px;
   margin: 3px 0 0;
+}
+
+.scene-mobile-steps {
+  display: none;
 }
 
 .scene-path {
@@ -583,20 +611,20 @@ h1 em {
 
 .orientation-strip {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-bottom: 1px solid var(--line);
 }
 
 .orientation-strip > div {
   display: grid;
   gap: 6px;
-  min-height: 98px;
+  min-height: 78px;
   align-content: center;
   padding: 18px 28px;
   border-right: 1px solid var(--line);
 }
 
-.orientation-strip > div:last-child {
+.orientation-strip > div:nth-child(3n) {
   border-right: 0;
 }
 
@@ -613,6 +641,14 @@ h1 em {
   padding: 74px max(40px, calc((100vw - 1240px) / 2));
   border-bottom: 1px solid var(--line);
   background: var(--bg-deep);
+}
+
+.view-panel .contribution-section {
+  margin: 70px 0;
+  padding: 48px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: transparent;
 }
 
 .contribution-heading {
@@ -1026,8 +1062,8 @@ h1 em {
 }
 
 .decoder-row .inline-technical summary {
-  min-height: 34px;
-  padding: 8px 0;
+  min-height: 44px;
+  padding: 12px 0;
   color: var(--muted-dark);
   text-align: right;
 }
@@ -3476,22 +3512,20 @@ body.motion-enhanced [data-reveal].is-inview {
     height: 170px;
   }
 
-  .orientation-strip {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .orientation-strip > div:nth-child(2) {
-    border-right: 0;
-  }
-
-  .orientation-strip > div:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--line);
+  .orientation-strip > div {
+    padding-right: 20px;
+    padding-left: 20px;
   }
 
   .contribution-section {
     grid-template-columns: 1fr;
     gap: 38px;
     padding: 64px 24px;
+  }
+
+  .view-panel .contribution-section {
+    margin: 56px 0;
+    padding: 40px 0;
   }
 
   .contribution-heading {
@@ -3803,8 +3837,27 @@ body.motion-enhanced [data-reveal].is-inview {
     padding: 30px 20px 28px;
   }
 
+  .orientation-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .orientation-strip > div,
+  .orientation-strip > div:nth-child(3n) {
+    min-height: 68px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .orientation-strip > div:last-child {
+    border-bottom: 0;
+  }
+
   .contribution-section {
     padding: 50px 20px;
+  }
+
+  .view-panel .contribution-section {
+    padding: 34px 0;
   }
 
   .contribution-heading h2 {
@@ -3853,6 +3906,10 @@ body.motion-enhanced [data-reveal].is-inview {
     flex-direction: column;
   }
 
+  .hero-presentation-link {
+    min-height: 44px;
+  }
+
   .button {
     width: 100%;
   }
@@ -3862,8 +3919,39 @@ body.motion-enhanced [data-reveal].is-inview {
   }
 
   .automation-scene {
-    height: 124px;
-    min-height: 0;
+    display: none;
+  }
+
+  .scene-mobile-steps {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 7px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .scene-mobile-steps li {
+    display: grid;
+    align-content: start;
+    gap: 6px;
+    min-width: 0;
+    padding-top: 8px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .scene-mobile-steps li > span {
+    color: var(--mint);
+    font-family: var(--mono);
+    font-size: 9px;
+    line-height: 1.2;
+  }
+
+  .scene-mobile-steps strong {
+    color: var(--ivory-soft);
+    font-size: 10px;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
   }
 
   .scene-heading {

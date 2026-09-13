@@ -22,14 +22,14 @@ The site has no build step and no runtime dependency install. Render serves the 
 
 The public version is available at [ghlautomation.onrender.com](https://ghlautomation.onrender.com/).
 
-Start at `#problem` and follow the on-page reading path in order: The Problem, The Fix, How I Built It, What I Made, How We’d Know, then Conclusion. Each view ends with one clear next step, so the site can be presented without asking the audience to choose where to go next.
+Start at `#problem` and choose **Start the self-guided tour**. The six views lead from the problem to the conclusion, with a clear Continue link at each stop. The optional 45-minute presentation and full workshop documents are there for deeper learning, but the main story does not depend on them.
 
 ## Experience Map
 
-- `#problem`: The Problem. A short, plain-English story showing five places where Sam could get lost.
+- `#problem`: The Problem. A short, plain-English story showing five places where Sam could get lost, followed by Andre’s contribution and the GHL basics.
 - `#solution`: The Fix. Sam’s seven-step journey, a Simple explanation/GHL setup disclosure, and six interactive Automatic Helpers.
 - `#build`: How I Built It. Ten chronological beginner phases, with the original technical setup inside each phase.
-- `#evidence`: What I Made. Eight complete workshop documents, native website content, beginner introductions, and a journey evidence map.
+- `#evidence`: What I Made. Eight complete workshop documents, each introduced in plain language. Full documents start collapsed so readers can open only what they need.
 - `#measurement`: How We’d Know. Six people-based checks, projected goals, measurement windows, analyst details, and the KPI Diagnostic Lab.
 - `#conclusion`: Conclusion. Six practical learnings, transferable analyst habits, honest project status, and the first real experiment.
 - `#present/1`: a self-contained 25-slide, 45-minute beginner knowledge share grouped into six chapters. Use the chapter markers or outline, open the glossary when a term is unfamiliar, toggle presenter notes when speaking, use the arrow keys to move, and press `Escape` to exit.
@@ -48,7 +48,7 @@ Legacy hashes continue to work: `#tour` and `#beginner-path` open Problem; `#sys
 
 ## Structure
 
-- `index.html`: six-view shell, Sam’s story, guided reading path, presentation layer, and all hardcoded workshop evidence.
+- `index.html`: six-view shell, self-guided reading path, Sam’s story, presentation layer, and all hardcoded workshop evidence.
 - `styles.css`: dark graphite-green token system, beginner summaries, technical disclosures, responsive layouts, focus states, and reduced-motion rules.
 - `script.js`: canonical five-problem story model, ARIA tab navigation, chaptered presentation and notes, hashes and history, legacy aliases, workflow maps, evidence relationships, measurement diagnostics, conclusion routing, and GSAP fallback behavior.
 - `DESIGN.md`: canonical visual, interaction, content, and release rules for the beginner-first architecture.

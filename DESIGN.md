@@ -8,14 +8,14 @@
 
 ## Experience Hierarchy
 
-The opening offers two distinct paths:
+The opening has one default path and one optional presentation path:
 
-1. **90-second diagnosis:** five customer handoff problems, their likely root causes, proposed responses, evidence, KPIs, and the simulation boundary.
+1. **Self-guided story:** start with the customer problem and follow the Continue links through the fix, build, outputs, measurement, and conclusion. Setup details and full documents stay optional.
 2. **45-minute team presentation:** a 25-slide, six-chapter lesson that bridges B2B analytics into DTC martech through problem, diagnosis, solution, implementation, evidence, and measurement.
 
 The six persistent views use the audience labels The Problem, The Fix, How I Built It, What I Made, How We’d Know, and Conclusion. They map to `#problem`, `#solution`, `#build`, `#evidence`, `#measurement`, and `#conclusion`. They use one canonical five-problem story so terminology and relationships remain consistent across the website, presentation, and final learnings.
 
-The page also carries one recommended reading path: start with the problem, follow the fix, inspect the build, open the outputs, review measurement, and finish with the conclusion. Every view has one next-stop handoff, while the header remains available for non-linear browsing.
+The page carries one visible reading path: start with the problem, follow the fix, inspect the build, open the outputs, review measurement, and finish with the conclusion. Every view has one accurate next-stop marker, while the header remains available for non-linear browsing. The contribution summary follows the first problem, so readers understand the situation before reviewing the work.
 
 ## Beginner-First Content
 
@@ -61,7 +61,7 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 - The Automatic Helpers lab is an authored explanation, not a screenshot recreation. Every node exposes what it notices, what it does, why it matters, and its technical GHL location.
 - The ten phases share one teaching structure: what I needed, what I decided, what I produced, which part of Sam’s journey it improves, and the technical setup.
 - Each phase also names the problem addressed and solution delivered.
-- The eight evidence documents remain complete, hardcoded, searchable website content.
+- The eight evidence documents remain complete, hardcoded, searchable website content. Their beginner introductions appear first; the full source content is collapsed until requested.
 - Problem selection remains consistent across the diagnostic explorer, solution detail, evidence matrix, and KPI diagnostic.
 
 ## Presentation Rules
