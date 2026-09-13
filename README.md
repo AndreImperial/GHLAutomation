@@ -29,7 +29,7 @@ Start at `#problem` and choose **Start the self-guided tour**. The six views lea
 - `#problem`: The Problem. A short, plain-English story showing five places where Sam could get lost, followed by Andre’s contribution and the GHL basics.
 - `#solution`: The Fix. Sam’s seven-step journey, a Simple explanation/GHL setup disclosure, and six interactive Automatic Helpers.
 - `#build`: How I Built It. Ten chronological beginner phases, with the original technical setup inside each phase.
-- `#evidence`: What I Made. Eight complete workshop documents, each introduced in plain language. Full documents start collapsed so readers can open only what they need.
+- `#evidence`: What I Made. Eight complete project deliverables, followed by a collapsible source library with the full discovery transcript, all seven GHL setup guides, and the original 23-message Email/SMS Sequence v2.0. Original source instructions and draft copy are kept distinct from the final simulation decisions.
 - `#measurement`: How We’d Know. Six people-based checks, projected goals, measurement windows, analyst details, and the KPI Diagnostic Lab.
 - `#conclusion`: Conclusion. Six practical learnings, transferable analyst habits, honest project status, and the first real experiment.
 - `#present/1`: a self-contained 25-slide, 45-minute beginner knowledge share grouped into six chapters. Use the chapter markers or outline, open the glossary when a term is unfamiliar, toggle presenter notes when speaking, use the arrow keys to move, and press `Escape` to exit.
@@ -41,6 +41,7 @@ Legacy hashes continue to work: `#tour` and `#beginner-path` open Problem; `#sys
 - Change the public name and contact email in `index.html` and the footer.
 - Update the `<title>`, description, canonical URL, and social preview URLs in `index.html` when the site moves.
 - Replace copy directly in the native HTML. The deliverables are intentionally hardcoded into the site; no Markdown or document images are loaded.
+- The source library keeps workshop material readable in the site itself. Six additional message assets fill gaps in the final teaching model: three new form-first simulation messages and three adapted source messages. The original 23-message sequence remains separately available with its assumptions, timing tables, placeholders, and planning targets.
 - Replace `assets/og-bloom-dental.png` with another 1200x630 publication-safe image if the visual identity changes.
 - Keep runtime libraries pinned in `assets/vendor` and fonts in `assets/fonts`; see `THIRD_PARTY_NOTICES.md` before upgrading them.
 - Keep `60 bookings in 60 days`, `<15% no-show rate`, and `40% whitening attach rate` labeled as projected goals until verified campaign data exists.
@@ -57,6 +58,14 @@ Legacy hashes continue to work: `#tour` and `#beginner-path` open Problem; `#sys
 - `assets/og-bloom-dental.png`: 1200x630 social preview.
 - `PRODUCT.md`: product context used to keep the redesign aligned to the simulation and its audiences.
 - `render.yaml`: Render static-site configuration.
+
+## Content Completeness Check
+
+Run the focused regression checks after editing source content or workflow-linked message names:
+
+```powershell
+node --test tests/content-completeness.test.js
+```
 
 ## Truth Boundary
 

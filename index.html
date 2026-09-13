@@ -21,7 +21,7 @@
     <link rel="canonical" href="https://ghlautomation.onrender.com/">
     <title>Bloom Dental Studio | Consultation Funnel &amp; Automation System</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=self-guided-10">
+    <link rel="stylesheet" href="styles.css?v=complete-sources-11">
   </head>
   <body>
     <a class="skip-link" href="#case-study">Skip to case study</a>
@@ -386,7 +386,7 @@
             <details class="phase-row" data-reveal><summary><span class="phase-number">10</span><span><strong>Test the complete journey</strong><small>Walk the complete path before calling it done.</small></span><span class="phase-status">Complete</span></summary><div class="phase-grid"><div><span>INPUT</span><p>All configured objects, eight deliverables, test contacts, and the QA checklist.</p></div><div><span>DECISION</span><p>Call the workshop build complete only when the intended path and boundary cases are documented.</p></div><div><span>ACTIONS TAKEN</span><p>Test submission, booking, stage change, consent branch, no-show path, workflow exits, mobile page, and dashboard definitions.</p></div><div><span>WHERE IT LIVES IN GHL</span><p>Sites preview, Contacts, Opportunities, Calendars, Workflow execution logs, and reporting surfaces.</p></div><div><span>OUTPUT</span><p>10/10 simulation completion with launch dependencies listed separately.</p></div><div><span>BUSINESS PURPOSE</span><p>Replace “it should work” with a repeatable review path.</p></div></div></details>
           </div>
           <div class="build-next"><div><span class="section-label">AFTER THIS PRACTICE BUILD</span><h2>Complete the real-world checks before launch.</h2></div><ol><li>Set up a sender address and make sure messages can arrive.</li><li>Review SMS and healthcare advertising rules for the launch location.</li><li>Connect live ad tracking and check where each visitor came from.</li><li>Run a small real-data test, then replace projected goals with observed results.</li></ol></div>
-          <section class="source-trail" data-reveal><details class="inline-technical source-trail-technical"><summary>Open the source trail</summary><div><span class="section-label">SOURCE TRAIL</span><h2>What informed the build?</h2><p>The implementation is grounded in the discovery transcript plus all seven workshop setup guides.</p></div><div class="source-list"><div><span>BASE BRIEF</span><strong>Bloom Dental discovery transcript</strong><p>Audience, bottleneck, objections, offer guardrails, and projected goals.</p></div><div><span>GUIDE 01</span><strong>Record setup guide</strong><p>How the team saves a person’s details, permission, and progress.</p></div><div><span>GUIDE 02</span><strong>Booking calendar guide</strong><p>How the team sets visit length, open times, buffers, and notice.</p></div><div><span>GUIDE 03</span><strong>Page build guide</strong><p>How the page, booking area, phone layout, and test path are built.</p></div><div><span>GUIDE 04</span><strong>Email message guide</strong><p>Seven approved message moments, sender details, and delivery checks.</p></div><div><span>GUIDE 05</span><strong>Text message and permission guide</strong><p>Permission gate, STOP language, sending hours, and provider review.</p></div><div><span>GUIDE 06</span><strong>Automatic helper guide</strong><p>What starts a helper, what it checks, what it does, and when it stops.</p></div><div><span>GUIDE 07</span><strong>Numbers and dashboard guide</strong><p>Counts, weekly review, event definitions, and questions to ask.</p></div></div></details></section>
+          <section class="source-trail" data-reveal><details class="inline-technical source-trail-technical"><summary>Open the source trail</summary><div><span class="section-label">SOURCE TRAIL</span><h2>What informed the build?</h2><p>The implementation is grounded in the discovery transcript, all seven setup guides, and the original message sequence. Open their complete contents at the bottom of What I Made.</p></div><div class="source-list"><div><span>BASE BRIEF</span><strong>Bloom Dental discovery transcript</strong><p>Audience, bottleneck, objections, offer guardrails, and projected goals.</p></div><div><span>GUIDE 01</span><strong>Record setup guide</strong><p>How the team saves a person’s details, permission, and progress.</p></div><div><span>GUIDE 02</span><strong>Booking calendar guide</strong><p>How the team sets visit length, open times, buffers, and notice.</p></div><div><span>GUIDE 03</span><strong>Page build guide</strong><p>How the page, booking area, phone layout, and test path are built.</p></div><div><span>GUIDE 04</span><strong>Email message guide</strong><p>Seven approved message moments, sender details, and delivery checks.</p></div><div><span>GUIDE 05</span><strong>Text message and permission guide</strong><p>Permission gate, STOP language, sending hours, and provider review.</p></div><div><span>GUIDE 06</span><strong>Automatic helper guide</strong><p>What starts a helper, what it checks, what it does, and when it stops.</p></div><div><span>GUIDE 07</span><strong>Numbers and dashboard guide</strong><p>Counts, weekly review, event definitions, and questions to ask.</p></div></div></details></section>
           <nav class="guided-next" aria-label="Next case study stop" data-reveal><div><span class="section-label">03 / 06 · HOW I BUILT IT</span><strong>Next: What I Made</strong><p>Read the actual workshop outputs behind the decisions and setup.</p></div><a class="button button-coral" href="#evidence" data-view-link="evidence">Continue to What I Made <i data-lucide="arrow-right" aria-hidden="true"></i></a></nav>
         </section>
 
@@ -992,6 +992,40 @@
 <p>{{calendar.link}}</p>
 <p>If you have questions before booking, reply to this email and the team can help.</p>
 <p>Bloom Dental Studio</p>
+<section class="message-template-additions" aria-labelledby="additional-message-templates-title">
+  <h4 id="additional-message-templates-title" class="document-section-title">Additional templates used by the six-workflow model</h4>
+  <p>These six messages complete the links in the workflow diagrams. Three were written for this form-first simulation because the original sequence starts after a booking. The other three are adapted from the original v2.0 message document.</p>
+  <section class="message-template-entry" data-message-template="form-confirmation" aria-labelledby="template-form-confirmation-title">
+    <div class="message-template-heading"><h5 id="template-form-confirmation-title">Form confirmation email</h5><span>NEW SIMULATION COPY</span></div>
+    <dl class="message-template-meta"><div><dt>GHL template name</dt><dd><code>BD Email - Form Confirmation</code></dd></div><div><dt>Send when</dt><dd>Immediately after the inquiry form is submitted, before an appointment exists.</dd></div><div><dt>Purpose</dt><dd>Confirm receipt and make the calendar the clear next step.</dd></div></dl>
+    <div class="message-template-copy"><p><strong>Subject</strong><br>Choose your free Bloom Dental consultation time</p><p><strong>Pre-header</strong><br>Your request came through. Pick a 30-minute time that works for you.</p><p><strong>Email body</strong></p><p>Hi {{contact.first_name}},</p><p>Thanks for telling us what you would like to improve. We have received your request for a free 30-minute smile consultation.</p><p>Your appointment is not booked yet. Choose a time that works for you here:</p><p>{{calendar.link}}</p><p>During the visit, you can talk through your smile goals, ask questions, and understand possible next steps. The consultation is free, and you do not need to choose a treatment during the visit.</p><p>Bloom Dental Studio</p></div>
+  </section>
+  <section class="message-template-entry" data-message-template="booking-link" aria-labelledby="template-booking-link-title">
+    <div class="message-template-heading"><h5 id="template-booking-link-title">Booking-link text message</h5><span>NEW SIMULATION COPY</span></div>
+    <dl class="message-template-meta"><div><dt>GHL snippet name</dt><dd><code>BD SMS - Booking Link</code></dd></div><div><dt>Send when</dt><dd>After the form, only when the contact gave SMS permission.</dd></div><div><dt>Purpose</dt><dd>Give the person a short, direct route to the calendar.</dd></div></dl>
+    <div class="message-template-copy"><p><strong>SMS body</strong></p><p>Bloom Dental: Hi {{contact.first_name}}, thanks for your consultation request. Choose a free 30-minute time: {{calendar.link}}. Reply STOP to opt out.</p><p class="template-caution">Check the final character count after the real link and merge fields are added. Send only when SMS consent is recorded.</p></div>
+  </section>
+  <section class="message-template-entry" data-message-template="booking-reminder" aria-labelledby="template-booking-reminder-title">
+    <div class="message-template-heading"><h5 id="template-booking-reminder-title">Unbooked-request reminder email</h5><span>NEW SIMULATION COPY</span></div>
+    <dl class="message-template-meta"><div><dt>GHL template name</dt><dd><code>BD Email - Booking Reminder</code></dd></div><div><dt>Send when</dt><dd>24 hours after the form, only if no consultation appointment is booked.</dd></div><div><dt>Purpose</dt><dd>Offer one clear next step, then stop if the person books.</dd></div></dl>
+    <div class="message-template-copy"><p><strong>Subject</strong><br>Choose a consultation time that works for you</p><p><strong>Pre-header</strong><br>Your free consultation request is saved. Booking is the next step.</p><p><strong>Email body</strong></p><p>Hi {{contact.first_name}},</p><p>You recently asked Bloom Dental Studio about a free smile consultation. We are following up in case you still want to talk through your options.</p><p>No appointment has been scheduled yet. If you would like to continue, choose a 30-minute time here:</p><p>{{calendar.link}}</p><p>There is no charge for the consultation and no pressure to choose a treatment. If you have already booked, you can ignore this note.</p><p>Bloom Dental Studio</p></div>
+  </section>
+  <section class="message-template-entry" data-message-template="no-show-final" aria-labelledby="template-no-show-final-title">
+    <div class="message-template-heading"><h5 id="template-no-show-final-title">Final missed-visit text message</h5><span>ADAPTED FROM WORKSHOP SOURCE</span></div>
+    <dl class="message-template-meta"><div><dt>GHL snippet name</dt><dd><code>BD SMS - No-Show Final</code></dd></div><div><dt>Send when</dt><dd>At the final recovery step, only if the person has not rebooked and SMS is allowed.</dd></div><div><dt>Source</dt><dd>Email and SMS Sequence v2.0, message C-3. The source uses a calendar-link placeholder.</dd></div></dl>
+    <div class="message-template-copy"><p><strong>SMS body</strong></p><p>Bloom Dental: Hi {{contact.first_name}}, last note from us. Re-book your free consult here: {{calendar.link}}. After this we will free up your spot. Reply STOP to opt out.</p><p class="template-caution">Confirm the calendar link and character count before use. The source message's availability wording must match the clinic's real booking policy.</p></div>
+  </section>
+  <section class="message-template-entry" data-message-template="six-month-recall-email" aria-labelledby="template-recall-email-title">
+    <div class="message-template-heading"><h5 id="template-recall-email-title">Six-month recall email</h5><span>ADAPTED FROM WORKSHOP SOURCE</span></div>
+    <dl class="message-template-meta"><div><dt>GHL template name</dt><dd><code>BD Email - Six Month Recall</code></dd></div><div><dt>Send when</dt><dd>30 days after the consultation, if no recall appointment is booked, as the original source specifies.</dd></div><div><dt>Source</dt><dd>Email and SMS Sequence v2.0, message E-1. Recall price is filled from the fictional discovery scenario.</dd></div></dl>
+    <div class="message-template-copy"><p><strong>Subject</strong><br>Your next visit at Bloom Dental Studio</p><p><strong>Pre-header</strong><br>A quick note to help you plan your next cleaning and check-up.</p><p><strong>Email body</strong></p><p>Hi {{contact.first_name}},</p><p>It has been a while since your visit to Bloom Dental Studio. If it is time for your next cleaning and check-up, our team can help you find a suitable appointment.</p><p>The workshop scenario lists a standard cleaning and check-up at PHP 3,500. Please confirm the current price and the recommended timing with the clinic before using this message.</p><p>Choose a time here:</p><p>{{calendar.link}}</p><p>Bloom Dental Studio</p></div>
+  </section>
+  <section class="message-template-entry" data-message-template="six-month-recall-sms" aria-labelledby="template-recall-sms-title">
+    <div class="message-template-heading"><h5 id="template-recall-sms-title">Six-month recall text message</h5><span>ADAPTED FROM WORKSHOP SOURCE</span></div>
+    <dl class="message-template-meta"><div><dt>GHL snippet name</dt><dd><code>BD SMS - Six Month Recall</code></dd></div><div><dt>Send when</dt><dd>Five months after the consultation if care is not booked and SMS permission is present, as the original source specifies.</dd></div><div><dt>Source</dt><dd>Email and SMS Sequence v2.0, message E-2.</dd></div></dl>
+    <div class="message-template-copy"><p><strong>SMS body</strong></p><p>Bloom Dental: Hi {{contact.first_name}}, your cleaning and check-up may be due. Book a time here: {{calendar.link}}. Reply STOP to opt out.</p><p class="template-caution">The source draft says five months after the consultation. Confirm timing and current clinic policy before connecting this template to a live workflow.</p></div>
+  </section>
+</section>
 </div>
               </div>
             </div>
@@ -1046,10 +1080,10 @@
 <li>Create/update opportunity in Free Consultation Funnel -&gt; New Lead.</li>
 <li>Save service interest custom field.</li>
 <li>If SMS consent checked, add tag <code>bd-sms-opt-in</code>.</li>
-<li>Send booking-link email.</li>
-<li>If SMS consent checked, send booking-link SMS.</li>
+<li>Send <code>BD Email - Form Confirmation</code>.</li>
+<li>If SMS consent checked, send <code>BD SMS - Booking Link</code>.</li>
 <li>Wait 24 hours.</li>
-<li>If Appointment Status is not Booked, send reminder email.</li>
+<li>If Appointment Status is not Booked, send <code>BD Email - Booking Reminder</code>.</li>
 </ol>
 <p>Stop condition:</p>
 <p>Appointment booked.</p>
@@ -1086,7 +1120,7 @@
 <li>Wait 24 hours.</li>
 <li>If no appointment booked, send email: BD Email - No-Show Rebook.</li>
 <li>Wait 72 hours.</li>
-<li>If no appointment booked, send final SMS with booking link.</li>
+<li>If no appointment booked, send <code>BD SMS - No-Show Final</code> with the booking link.</li>
 <li>If still no appointment, move opportunity to Lost.</li>
 </ol>
 <p>Stop condition:</p>
@@ -1129,8 +1163,8 @@
 <ol>
 <li>Wait 6 months.</li>
 <li>Add tag <code>bd-recall-due</code>.</li>
-<li>Send cleaning recall email.</li>
-<li>If SMS consent exists, send cleaning recall SMS.</li>
+<li>Send <code>BD Email - Six Month Recall</code>.</li>
+<li>If SMS consent exists, send <code>BD SMS - Six Month Recall</code>.</li>
 <li>If booked, create or update opportunity.</li>
 </ol>
 <h4 class="document-section-title">9. Workflow QA Rules</h4>
@@ -1386,6 +1420,9 @@
 <li>BD Email - No-Show Rebook</li>
 <li>BD Email - Post Consult Whitening Offer</li>
 <li>BD Email - Whitening Final Follow-Up</li>
+<li>BD Email - Form Confirmation</li>
+<li>BD Email - Booking Reminder</li>
+<li>BD Email - Six Month Recall</li>
 </ul>
 <p>SMS:</p>
 <ul>
@@ -1393,7 +1430,11 @@
 <li>BD SMS - 2hr Reminder</li>
 <li>BD SMS - No-Show Follow-Up</li>
 <li>BD SMS - Whitening Reminder</li>
+<li>BD SMS - Booking Link</li>
+<li>BD SMS - No-Show Final</li>
+<li>BD SMS - Six Month Recall</li>
 </ul>
+<p>The six-workflow template inventory contains eight emails and seven SMS snippets. Sender setup, links, consent, and production review remain launch checks.</p>
 <h4 class="document-section-title">Build 8 - Workflows</h4>
 <p>Create:</p>
 <ul>
@@ -1422,6 +1463,1285 @@
             </div>
           </article>
           </div></div>
+          <section id="workshop-source-library" class="workshop-source-library" aria-labelledby="workshop-source-library-title">
+            <div class="source-library-heading">
+              <span class="section-label">ORIGINAL WORKSHOP SOURCES</span>
+              <h2 id="workshop-source-library-title">The notes and setup guides behind the build.</h2>
+              <p>This library contains the full discovery transcript, all seven GHL setup guides, and the original 23-message sequence. They are separate from the eight project deliverables above.</p>
+              <p class="source-library-boundary">These are fictional workshop materials. Their instructions show what the workshop supplied, not proof that every instruction was configured or launched. Each guide includes a note where the final simulation made a different choice.</p>
+            </div>
+            <div class="workshop-source-list">
+              <details class="workshop-source-item" data-workshop-source="discovery">
+                <summary><span><strong>Bloom Dental discovery call</strong><small>Original input transcript · April 15, 2026 · about 35 minutes</small></span><span class="source-expand-label">Open transcript</span></summary>
+                <div class="source-document-body source-transcript">
+                  <p class="source-document-note">The names, clinic, dialogue, and figures below are fictional training material.</p>
+                  <p><strong>MAS Consultant:</strong> Hi Dr. Chloe, thanks for making time today. Before we dive in, I just want to let you know I'll be taking notes throughout - the goal is to leave this call with enough to build you a proper strategy document. So feel free to just talk naturally. We can clean things up later.</p>
+                  <p><strong>Dr. Chloe:</strong> Perfect, yes. I've been meaning to do this for a while so I'm glad we're finally here.</p>
+                  <p><strong>MAS Consultant:</strong> Great. Let's start at the top. Tell me about Bloom Dental - what do you do and who do you serve?</p>
+                  <p><strong>Dr. Chloe:</strong> Bloom Dental Studio is a dental clinic based in Bonifacio Global City. We do general dentistry, but our focus - where we really want to grow - is cosmetic. Teeth whitening, veneers, Invisalign. We opened about three years ago and we've built a pretty loyal patient base, but new patient acquisition has always been a struggle. BGC is competitive and honestly most of the professionals here just don't prioritize the dentist until something hurts.</p>
+                  <p><strong>MAS Consultant:</strong> And your target patient - paint me a picture of who that is.</p>
+                  <p><strong>Dr. Chloe:</strong> Young professionals, mostly. I'd say 28 to 45. They work in BGC or nearby in Makati - finance, tech, corporate. They earn well, they care about how they look, they invest in their appearance. But they are genuinely time-poor. Booking an appointment requires mental energy they don't have after a full day of meetings. And they've usually had a bad experience somewhere - a dentist who upsold them aggressively or surprised them with a bill they didn't expect. So there's a trust gap we have to cross.</p>
+                  <p><strong>MAS Consultant:</strong> That trust piece is interesting. What does that look like in practice - how does it show up in how they engage with you?</p>
+                  <p><strong>Dr. Chloe:</strong> They scroll a lot before they commit. They want to see before-and-after photos, they read Google reviews carefully, they check if there's a price listed anywhere. If there isn't, some of them don't even bother reaching out. The hidden cost fear is real. And the overselling fear too - people have been burned by dentists who push unnecessary treatments, so they're guarded.</p>
+                  <p><strong>MAS Consultant:</strong> Got it. So how are people currently finding you and reaching out?</p>
+                  <p><strong>Dr. Chloe:</strong> Mostly through our website and some word of mouth. We also get traffic from Instagram and Facebook, and some from Google Search. We have an inquiry form on the site and that's where most of the leads come from. We're generating around 20 leads a month through that form - which honestly isn't bad - but only about 30% of them actually book an appointment. So we're losing 70% of the people who raise their hand.</p>
+                  <p><strong>MAS Consultant:</strong> And do you know where they're dropping off - is it the follow-up, the offer, the friction in booking?</p>
+                  <p><strong>Dr. Chloe:</strong> It's the follow-up, mostly. Our front desk handles everything manually. They call, they message, they follow up. But they're busy with existing patients, so sometimes a lead sits for a day or two before anyone responds. By then the person has moved on. It's not a staffing complaint - they work hard - it's just that the system isn't built for speed.</p>
+                  <p><strong>MAS Consultant:</strong> What about the people who do book? What happens after that?</p>
+                  <p><strong>Dr. Chloe:</strong> That's where it gets painful. Our no-show rate is 35%. So more than a third of the people who actually book just don't show up. And again, it's mostly because there's no automated reminder system. The front desk tries to confirm by phone but it doesn't always happen. And when someone no-shows, there's no recovery sequence - we just lose them.</p>
+                  <p><strong>MAS Consultant:</strong> Okay. And for the patients who do come in - what's the journey after the consultation?</p>
+                  <p><strong>Dr. Chloe:</strong> Nothing formal. The consultation itself is free - it's a 30-minute new patient visit, no charge. The idea is to get them in, build trust, and then introduce a treatment plan. Our main upsell is the Premium In-Chair Whitening, which is PHP 15,000 per session. It's a great product and patients love it, but we have no structured way of presenting it or following up if they say "let me think about it." It's very much dependent on whoever is at the front desk that day.</p>
+                  <p><strong>MAS Consultant:</strong> What's your current attach rate on the whitening - do you track that?</p>
+                  <p><strong>Dr. Chloe:</strong> Not formally. I'd estimate maybe 15 to 20% of consultation completers end up booking whitening, but we don't have clean data on it. It's honestly a guess based on our revenue pattern.</p>
+                  <p><strong>MAS Consultant:</strong> And beyond whitening - are there other recurring revenue streams you're trying to grow?</p>
+                  <p><strong>Dr. Chloe:</strong> Yes - our six-month cleaning and check-up program. That's PHP 3,500 a visit and it's supposed to be the backbone of patient retention. But our recall system is basically a manual call list. We're not great at bringing people back for their six-month appointments. A lot of patients fall off between visits.</p>
+                  <p><strong>MAS Consultant:</strong> What tools are you currently using to manage all of this?</p>
+                  <p><strong>Dr. Chloe:</strong> We have GoHighLevel - our CRM is set up there. But we're barely scratching the surface of what it can do. Right now it's basically just storing contact records. No automations running, no pipelines configured. And our website is a basic site with the inquiry form - it's functional but it's not designed to convert.</p>
+                  <p><strong>MAS Consultant:</strong> No landing pages, no booking widget, no sequences?</p>
+                  <p><strong>Dr. Chloe:</strong> Nothing. Everything is manually handled. Which is exactly why I'm here - I know GHL can do all of this, I just don't know how to set it up properly.</p>
+                  <p><strong>MAS Consultant:</strong> Perfect. So let's talk about where you want to be. If we do this right, what does success look like for you in the next 60 days?</p>
+                  <p><strong>Dr. Chloe:</strong> I want 60 new patient consultations booked in 60 days. That's the number I keep coming back to. Right now we're getting maybe 6 bookings a month - actually, I've already started running some paid ads on Meta so I'm expecting lead volume to go up, I just need the back end to be able to handle it. And I want the no-show rate down to below 15%. If we can automate reminders properly, I don't see why we can't get there. And honestly, if we could get 40% of consultation completers to actually book whitening, that alone would transform our revenue.</p>
+                  <p><strong>MAS Consultant:</strong> Those are clear, measurable targets - I like it. Is there a priority order? If you had to pick one, what matters most right now?</p>
+                  <p><strong>Dr. Chloe:</strong> The consultations. If people aren't coming through the door, nothing else matters. But the no-show rate and the whitening attach rate are close behind - they're all connected.</p>
+                  <p><strong>MAS Consultant:</strong> Makes sense. One last thing before I let you go - how do you want the clinic to come across in its marketing? What's the brand feel?</p>
+                  <p><strong>Dr. Chloe:</strong> Warm, professional, confident. Clean and modern - like the clinic itself. We're not trying to be intimidating or overly clinical. But we're also not cutesy or discount-y. We serve busy professionals who want quality and convenience, so the tone should match that. No fear-mongering - I hate dental ads that show scary drills or gross before-afters. We want people to feel like coming here is a treat, not an ordeal.</p>
+                  <p><strong>MAS Consultant:</strong> That's really clear - I can work with that. Any words or phrases you specifically want to avoid?</p>
+                  <p><strong>Dr. Chloe:</strong> "Painless" - it's overused and nobody believes it. Anything that sounds like we're hiding the price. And nothing that talks down to the patient like they're a child who forgot to brush their teeth.</p>
+                  <p><strong>MAS Consultant:</strong> Perfect. I think I have everything I need to put together the strategy document. I'll run this through the system and have a draft back to you shortly. Anything you want to add before we wrap up?</p>
+                  <p><strong>Dr. Chloe:</strong> Just - I want this to actually work, you know? We've tried things before and they fizzled because nothing was really connected end to end. I want a full funnel, not just a landing page sitting out there with nothing behind it.</p>
+                  <p><strong>MAS Consultant:</strong> That's exactly what we're going to build. Thank you, Dr. Chloe - I'll be in touch.</p>
+                  <p class="source-document-note">End of transcript. All figures and scenario details are fictional and created for training purposes.</p>
+                </div>
+              </details>
+              <details class="workshop-source-item" data-workshop-source="ghl-01">
+                <summary><span><strong>GHL Setup Guide 01: CRM Configuration</strong><small>Pipeline, tags, and custom fields · Build 1 · 20 minutes</small></span><span class="source-expand-label">Open full guide</span></summary>
+                <div class="source-document-body">
+                  <p class="source-file-name">Source file: GHL_01_CRM_Configuration.pdf</p>
+                  <h3>Part A: Pipeline and stages</h3><p>Navigate to Opportunities in the left sidebar. Create one pipeline with six stages that track every Bloom Dental lead from first touch to paid.</p>
+                  <ol><li>In Opportunities, open the pipeline dropdown and choose <strong>Add Pipeline</strong>.</li><li>Name it <strong>Free Consultation Funnel</strong> and save.</li><li>Add these stages in order:</li></ol>
+                  <table class="source-table"><thead><tr><th>Stage</th><th>What it means</th></tr></thead><tbody><tr><td>New Lead</td><td>Contact submitted the landing page form; not yet booked.</td></tr><tr><td>Booked Consultation</td><td>Appointment confirmed on the calendar.</td></tr><tr><td>Consultation Complete</td><td>Attended and completed the 30-minute consultation.</td></tr><tr><td>Whitening Booked</td><td>Committed to Premium Whitening; appointment scheduled.</td></tr><tr><td>Whitening Paid</td><td>Payment received; deal closed.</td></tr><tr><td>Lost</td><td>No-showed, cancelled, or unsubscribed; exits the pipeline.</td></tr></tbody></table>
+                  <h3>Part B: Tags</h3><p>Tags are created automatically when first used, but pre-creating them keeps the workflow builder clean. Navigate to Contacts &gt; Tags, or create tags inline in Workflows.</p>
+                  <table class="source-table"><thead><tr><th>Tag</th><th>When it is applied</th></tr></thead><tbody><tr><td><code>source-fb-ad</code></td><td>Lead comes from a Facebook or Instagram ad.</td></tr><tr><td><code>source-organic</code></td><td>Lead comes from organic social or referral.</td></tr><tr><td><code>sequence-started</code></td><td>Booking reminder sequence fires.</td></tr><tr><td><code>sequence-completed</code></td><td>Full sequence has run; consultation done or lead lost.</td></tr><tr><td><code>no-show</code></td><td>Appointment status is No-Show.</td></tr><tr><td><code>whitening-interest</code></td><td>Contact indicates whitening interest.</td></tr><tr><td><code>do-not-contact</code></td><td>Safety tag that stops outbound messages when present.</td></tr></tbody></table>
+                  <h3>Part C: Custom fields</h3><p>Navigate to Settings &gt; Custom Fields, or Contacts &gt; Custom Fields depending on your GHL version. Create these three fields:</p>
+                  <table class="source-table"><thead><tr><th>Field</th><th>Type</th><th>Use</th></tr></thead><tbody><tr><td>Preferred Consultation Date</td><td>Date</td><td>Booking form and merge fields.</td></tr><tr><td>Referral Source</td><td>Text</td><td>Maps to the “How did you hear about us?” form field.</td></tr><tr><td>Whitening Interest</td><td>Dropdown</td><td>Options: Yes, No, Not Asked Yet.</td></tr></tbody></table>
+                  <p><strong>Source note:</strong> Create custom fields before building the landing page form, or the form will have no custom field to map to.</p>
+                  <aside class="source-adaptation"><strong>How the simulation uses this:</strong> The same contact, opportunity, stage, source, and consent ideas appear in the project data model. Tag prefixes and exact names were normalized in the six-workflow version.</aside>
+                </div>
+              </details>
+              <details class="workshop-source-item" data-workshop-source="ghl-02">
+                <summary><span><strong>GHL Setup Guide 02: Calendar Setup</strong><small>Free consultation booking slot · Build 2 · 20 minutes</small></span><span class="source-expand-label">Open full guide</span></summary>
+                <div class="source-document-body">
+                  <p class="source-file-name">Source file: GHL_02_Calendar_For_Booking.pdf</p>
+                  <h3>Create the consultation calendar</h3>
+                  <ol><li>Navigate to Calendars in the left sidebar.</li><li>Choose <strong>New Calendar</strong>.</li><li>Select <strong>Simple Calendar</strong>, not Round Robin or Class Booking.</li><li>Name it <strong>Bloom Dental - Free Consultation</strong>.</li><li>Use this description: “30-minute complimentary new-patient consultation with Dr. Chloe at Bloom Dental Studio, BGC.”</li><li>Set the appointment duration to 30 minutes.</li><li>Set a 10-minute buffer before and after each appointment.</li></ol>
+                  <h3>Availability settings</h3><table class="source-table"><tbody><tr><th>Available days</th><td>Monday to Saturday</td></tr><tr><th>Available hours</th><td>9:00 AM to 5:00 PM</td></tr><tr><th>Buffer time before</th><td>10 minutes</td></tr><tr><th>Buffer time after</th><td>10 minutes</td></tr><tr><th>Minimum scheduling notice</th><td>2 hours</td></tr><tr><th>Maximum days out</th><td>30 days</td></tr><tr><th>Slot interval</th><td>30 minutes</td></tr><tr><th>Timezone</th><td>Asia/Manila (PHT, UTC+8)</td></tr></tbody></table>
+                  <h3>Booking form fields</h3><p>Under the calendar Form tab, add or confirm these fields:</p><table class="source-table"><thead><tr><th>Field</th><th>Type</th><th>Required?</th><th>Notes</th></tr></thead><tbody><tr><td>First Name</td><td>Text</td><td>Yes</td><td>GHL default.</td></tr><tr><td>Last Name</td><td>Text</td><td>Yes</td><td>GHL default.</td></tr><tr><td>Email</td><td>Email</td><td>Yes</td><td>GHL default.</td></tr><tr><td>Mobile Number</td><td>Phone</td><td>Yes</td><td>GHL default.</td></tr><tr><td>Preferred Date</td><td>Date</td><td>No</td><td>Maps to Preferred Consultation Date.</td></tr><tr><td>How did you hear about us?</td><td>Dropdown</td><td>No</td><td>Facebook/Instagram Ad, Google Search, Referral, Other; maps to Referral Source.</td></tr></tbody></table>
+                  <h3>Confirmation and calendar link</h3><p>Find the Notifications or Confirmation tab. Turn off the default GHL booking confirmation email if the workflow will send the confirmation, or patients may receive two messages.</p><p>After saving, return to the calendar list and use Share or Copy Link. Save the URL for the landing page booking widget.</p>
+                  <aside class="source-adaptation"><strong>How the simulation uses this:</strong> It keeps the 30-minute Simple Calendar, buffers, availability, notice, and Asia/Manila timezone. The portfolio explains the final form-first handoff separately; the original guide's direct calendar-widget instruction is retained here as workshop source, not silently substituted for that choice.</aside>
+                </div>
+              </details>
+              <details class="workshop-source-item" data-workshop-source="ghl-03">
+                <summary><span><strong>GHL Setup Guide 03: Landing Page Build</strong><small>Section-by-section walkthrough · Build 3 · 55 minutes</small></span><span class="source-expand-label">Open full guide</span></summary>
+                <div class="source-document-body">
+                  <p class="source-file-name">Source file: GHL_03_Landing_Page_Build.pdf</p>
+                  <h3>Start the funnel</h3><ol><li>Navigate to Sites &gt; Funnels.</li><li>Choose <strong>New Funnel</strong> and name it <strong>Bloom Dental - Free Consultation</strong>.</li><li>Add a step named <strong>Landing Page</strong> and open the page editor.</li><li>Choose a clean, single-column template and replace its content section by section.</li></ol>
+                  <h3>Build each section using the landing-page copy</h3>
+                  <ul><li><strong>Hero:</strong> Use a Problem-Agitate-Solve headline and a one- or two-line benefit statement. Button: “Book Your Free Consultation.” Link to the calendar. Use a clean white background or dental imagery.</li><li><strong>Benefits:</strong> Three columns, each with an icon, bold heading, and two-line description. The source suggests tooth, calendar, and star icons, or emoji text if GHL icons are limited.</li><li><strong>Social proof:</strong> The source asks for two or three placeholder testimonial cards with a short quote, first name, and suburb. These were placeholders to replace with real reviews later.</li><li><strong>Booking widget:</strong> Add the Calendar Widget and select the Bloom Dental consultation calendar. Test it in preview.</li><li><strong>FAQ:</strong> Add four or five objection-handling questions about cost, duration, and what happens after booking.</li><li><strong>Footer CTA:</strong> Repeat the calendar CTA with this urgency line: “Limited consultation slots available each week.”</li><li><strong>Footer:</strong> Clinic name, BGC / Metro Manila address, phone, and a privacy-policy placeholder.</li></ul>
+                  <h3>Preview on mobile before publishing</h3><ol><li>Select the mobile preview in the page builder.</li><li>Check every section for overflow, full-width buttons, and a visible booking widget.</li><li>Fix layout issues before proceeding.</li><li>Return to desktop preview and confirm it still looks correct.</li></ol>
+                  <h3>Publish and test</h3><ol><li>Save the page and publish it. GHL assigns a hosted URL, for example <code>yoursubdomain.ghl.site/bloom-dental</code>.</li><li>Open the URL in a private browser window.</li><li>Submit test details and complete a booking.</li><li>Check that the contact appears with the right field values.</li><li>Check that an opportunity appears in the Free Consultation Funnel pipeline.</li></ol>
+                  <aside class="source-adaptation"><strong>Important project decision:</strong> The placeholder testimonial instruction was not published as patient proof. The simulation uses no fake reviews. The project also explains a form-first page-to-calendar route rather than claiming this exact calendar-widget setup was the final build.</aside>
+                </div>
+              </details>
+              <details class="workshop-source-item" data-workshop-source="ghl-04">
+                <summary><span><strong>GHL Setup Guide 04: Email Templates</strong><small>Create, name, and wire merge fields · Build 4 · 25 minutes</small></span><span class="source-expand-label">Open full guide</span></summary>
+                <div class="source-document-body">
+                  <p class="source-file-name">Source file: GHL_04_Email_Templates.pdf</p>
+                  <h3>Why templates come before workflows</h3><p>GHL workflow actions reference email templates by name. Create the templates first so the workflow can select the correct asset.</p>
+                  <h3>Create each template</h3><ol><li>Navigate to Email Marketing &gt; Templates.</li><li>Choose <strong>New Template</strong> and use Blank or a simple single-column layout.</li><li>Use the exact name in the inventory below.</li><li>Paste the subject and body from the workshop's EmailSMS copy.</li><li>Replace bracketed placeholders with valid GHL merge fields.</li><li>Save and repeat.</li></ol>
+                  <h3>Source template inventory</h3><table class="source-table"><thead><tr><th>Exact template name</th><th>Copy</th><th>Trigger or use</th></tr></thead><tbody><tr><td>BD - Booking Confirmation</td><td>Email 1</td><td>Immediately after appointment booking.</td></tr><tr><td>BD - 24hr Reminder</td><td>Email 2</td><td>24 hours before appointment.</td></tr><tr><td>BD - Same-Day Reminder</td><td>Email 3</td><td>Morning of appointment.</td></tr><tr><td>BD - Thank You Post-Consult</td><td>Email 4</td><td>After consultation is marked complete.</td></tr><tr><td>BD - Whitening Offer 1</td><td>Email 5</td><td>Whitening follow-up, day 1.</td></tr><tr><td>BD - Whitening Offer 2</td><td>Email 6</td><td>Whitening follow-up, day 4.</td></tr><tr><td>BD - Whitening Offer 3</td><td>Email 7</td><td>Whitening follow-up, day 8.</td></tr></tbody></table>
+                  <h3>Merge fields</h3><table class="source-table"><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody><tr><td><code>{{contact.first_name}}</code></td><td>Patient's first name.</td></tr><tr><td><code>{{contact.full_name}}</code></td><td>Full name for formal confirmation headers.</td></tr><tr><td><code>{{appointment.start_time}}</code></td><td>Formatted date and time; include in reminders.</td></tr><tr><td><code>{{appointment.date}}</code></td><td>Appointment date without the time.</td></tr><tr><td><code>{{calendar.name}}</code></td><td>Calendar name.</td></tr><tr><td><code>{{location.name}}</code></td><td>GHL location or business name.</td></tr><tr><td><code>{{location.phone}}</code></td><td>Clinic phone number for email footers.</td></tr></tbody></table>
+                  <h3>Deliverability hygiene</h3><ol><li>Use one From address for all seven emails. The source warns that switching senders can confuse spam filters.</li><li>For a real client, warm a sending domain before launch. The source says the GHL trial domain is acceptable for the workshop.</li><li>Preview every email and confirm the unsubscribe footer is present; the source calls it legally required.</li></ol>
+                  <aside class="source-adaptation"><strong>How the simulation uses this:</strong> The message library keeps exact workflow-facing names where possible and records the sending-domain dependency. Test templates were not treated as evidence that public email delivery was configured.</aside>
+                </div>
+              </details>
+              <details class="workshop-source-item" data-workshop-source="ghl-05">
+                <summary><span><strong>GHL Setup Guide 05: SMS Templates and Compliance</strong><small>SMS setup and safety checklist · Build 4 · part of 25 minutes</small></span><span class="source-expand-label">Open full guide</span></summary>
+                <div class="source-document-body">
+                  <p class="source-file-name">Source file: GHL_05_SMS_Templates_and_Compliance.pdf</p>
+                  <p class="source-document-note">The source labels this a “TCPA Checklist” and calls its local framing a “Philippines: Data Privacy Act equivalent.” Those are workshop phrases, not legal guidance. Confirm applicable Philippine privacy, marketing, and carrier rules before any real deployment.</p>
+                  <h3>Three SMS messages in the original booking sequence</h3><table class="source-table"><thead><tr><th>Template</th><th>When it fires</th><th>Key content</th></tr></thead><tbody><tr><td>BD SMS - Booking Confirm</td><td>Immediately after appointment booking.</td><td>Confirm time and include “Reply STOP to opt out.”</td></tr><tr><td>BD SMS - 2hr Reminder</td><td>Two hours before appointment.</td><td>Appointment reminder and clinic address.</td></tr><tr><td>BD SMS - No-Show Follow-Up</td><td>One hour after a missed appointment.</td><td>Friendly rebooking prompt with calendar link.</td></tr></tbody></table>
+                  <h3>Create an SMS snippet</h3><ol><li>Navigate to Marketing &gt; SMS, or find Snippets under Marketing.</li><li>Choose <strong>New Snippet</strong> and use the exact template name above.</li><li>Paste the message body from the workshop email/SMS copy.</li><li>Add <code>{{contact.first_name}}</code> to the greeting and <code>{{appointment.start_time}}</code> where useful.</li><li>Keep each SMS under 160 characters after merge fields and links are inserted.</li><li>Save and repeat.</li></ol>
+                  <h3>Workshop safety checklist</h3><ul><li><strong>Permission:</strong> The form needs an explicit SMS consent checkbox. The source example says: “I agree to receive appointment reminders by SMS. Standard message rates may apply.”</li><li><strong>Opt out:</strong> Every SMS must include “Reply STOP to unsubscribe.” The source says GHL handles this automatically for 10DLC numbers; verify actual behavior and local carrier rules.</li><li><strong>Sender:</strong> Identify the sender with “Bloom Dental:” at the start.</li><li><strong>Quiet hours:</strong> Do not schedule SMS outside 8 AM to 9 PM in the recipient's local time.</li><li><strong>Message purpose:</strong> Do not include promotions in reminder-category messages. Keep upsell messages in a separate sequence.</li><li><strong>Suppression:</strong> Contacts who reply STOP should receive a do-not-contact tag and leave active SMS steps.</li></ul>
+                  <p>The source says SMS compliance is covered conceptually in the workshop and that tests should be sent to yourself. Before a real deployment, it calls for a full TCPA / Data Privacy Act review and 10DLC registration before sending at scale. Confirm which registration rules actually apply to the launch country and provider.</p>
+                  <aside class="source-adaptation"><strong>Launch boundary:</strong> Consent checks are shown in the workflow model. Local compliance, sender registration, and message delivery remain production checks; this site does not claim they were completed.</aside>
+                </div>
+              </details>
+              <details class="workshop-source-item" data-workshop-source="ghl-06">
+                <summary><span><strong>GHL Setup Guide 06: Workflow Builder</strong><small>Bloom Dental booking automation · Build 5 · 35 minutes</small></span><span class="source-expand-label">Open full guide</span></summary>
+                <div class="source-document-body">
+                  <p class="source-file-name">Source file: GHL_06_Workflow_Builder_Walkthrough.pdf</p>
+                  <h3>Before building</h3><p>Prepare the email templates, SMS snippets, consultation calendar, and pipeline stages.</p>
+                  <h3>Create the workflow</h3><ol><li>Navigate to Workflows and choose <strong>New Workflow</strong>.</li><li>Select <strong>Start from Scratch</strong>.</li><li>Name it <strong>Bloom Dental - Consultation Booking Flow</strong>.</li><li>Add trigger: Appointment &gt; Status = Booked.</li><li>Filter: Calendar = Bloom Dental - Free Consultation.</li><li>Save the trigger.</li></ol>
+                  <h3>Build the action sequence in order</h3><table class="source-table"><thead><tr><th>Step</th><th>Type</th><th>Configuration</th></tr></thead><tbody><tr><td>1</td><td>Add tag</td><td><code>sequence-started</code></td></tr><tr><td>2</td><td>Move opportunity</td><td>Booked Consultation stage.</td></tr><tr><td>3</td><td>Send email</td><td>BD - Booking Confirmation.</td></tr><tr><td>4</td><td>Send SMS</td><td>BD SMS - Booking Confirm.</td></tr><tr><td>5</td><td>Wait</td><td>Until 24 hours before <code>{{appointment.start_time}}</code>.</td></tr><tr><td>6</td><td>Send email</td><td>BD - 24hr Reminder.</td></tr><tr><td>7</td><td>Wait</td><td>Until 2 hours before <code>{{appointment.start_time}}</code>.</td></tr><tr><td>8</td><td>Send SMS</td><td>BD SMS - 2hr Reminder.</td></tr><tr><td>9</td><td>Wait</td><td>Appointment start time passes, then wait 1 hour.</td></tr><tr><td>10</td><td>If/Else</td><td>Appointment Status = Completed. Yes continues to step 11; no-show goes to step 14.</td></tr><tr><td>11</td><td>Send email</td><td>BD - Thank You Post-Consult (yes path).</td></tr><tr><td>12</td><td>Move opportunity</td><td>Consultation Complete (yes path).</td></tr><tr><td>13</td><td>Send email</td><td>BD - Whitening Offer 1; then wait three days for Offer 2 and four more days for Offer 3.</td></tr><tr><td>14</td><td>Send SMS</td><td>BD SMS - No-Show Follow-Up (no path).</td></tr><tr><td>15</td><td>Add tag</td><td><code>no-show</code> (no path).</td></tr><tr><td>16</td><td>Add tag</td><td><code>sequence-completed</code> on both paths, then end.</td></tr></tbody></table>
+                  <h3>Critical stop conditions</h3><p>Without a stop condition, people may continue receiving reminders after an appointment changes. The guide says to stop the workflow if the appointment is cancelled or completed and to end both the completed and no-show paths.</p>
+                  <h3>Publish and test</h3><ol><li>Save and publish the workflow.</li><li>Open the landing page privately and make a test booking with your own details.</li><li>Check the Contacts tab for the contact, tags, and opportunity.</li><li>Check your email inbox and phone; the guide expects confirmation within one to two minutes.</li><li>If a message is missing, inspect the workflow History for an error.</li></ol>
+                  <aside class="source-adaptation"><strong>How the simulation uses this:</strong> The source gives one booking workflow. The portfolio's six interactive helpers split lead capture, appointment reminders, no-show recovery, treatment follow-up, payment, and recall into separate teaching paths.</aside>
+                </div>
+              </details>
+              <details class="workshop-source-item" data-workshop-source="ghl-07">
+                <summary><span><strong>GHL Setup Guide 07: Analytics Dashboard</strong><small>Wire campaign measures to a dashboard · 15 minutes setup</small></span><span class="source-expand-label">Open full guide</span></summary>
+                <div class="source-document-body">
+                  <p class="source-file-name">Source file: GHL_07_Analytics_Dashboard.pdf</p>
+                  <p class="source-document-note">The source figures below are fictional planning inputs and goals. They are not observed campaign results.</p>
+                  <h3>Three source measures</h3><table class="source-table"><thead><tr><th>Measure</th><th>Definition</th><th>Source target or baseline</th></tr></thead><tbody><tr><td>Cost per booked consultation</td><td>Total ad spend divided by Booked Consultation stage entries.</td><td>Projected target: below PHP 500 per booking at launch.</td></tr><tr><td>No-show rate</td><td>No-show contacts divided by Booked Consultation entries.</td><td>Fictional scenario baseline: 35%. Projected target: below 15% after reminders.</td></tr><tr><td>Whitening attach rate</td><td>Whitening Booked entries divided by Consultation Complete entries.</td><td>Projected target: 40% of completed consultations.</td></tr></tbody></table>
+                  <h3>Set up the GHL dashboard</h3><ol><li>Navigate to Reporting.</li><li>Create a dashboard or use the default.</li><li>Add Opportunities by Stage.</li><li>Add Appointment Summary for booked, completed, and no-show counts.</li><li>Add Email Open Rate for the Bloom Dental templates.</li><li>Add SMS Delivery Rate for sent, delivered, and failed messages.</li><li>Save the dashboard and bookmark it for weekly review.</li></ol>
+                  <h3>Weekly reporting template</h3><table class="source-table"><tbody><tr><th>Date range</th><td>Previous seven days.</td></tr><tr><th>New Leads</th><td>Contacts entering New Lead.</td></tr><tr><th>Booked Consultations</th><td>Contacts reaching Booked Consultation.</td></tr><tr><th>Consultation Completion Rate</th><td>Consultation Complete divided by Booked Consultations, times 100.</td></tr><tr><th>No-Show Rate</th><td>No-show tag count divided by Booked Consultations, times 100.</td></tr><tr><th>Whitening Attach Rate</th><td>Whitening Booked divided by Consultation Complete, times 100.</td></tr><tr><th>Email Open Rate</th><td>From the Reporting email widget.</td></tr><tr><th>SMS Delivery Rate</th><td>From the Reporting SMS widget.</td></tr><tr><th>Action for this week</th><td>Choose one priority optimization based on the weakest useful measure.</td></tr></tbody></table>
+                  <h3>Source diagnostic playbook</h3><table class="source-table"><thead><tr><th>Symptom</th><th>Possible cause</th><th>First check</th></tr></thead><tbody><tr><td>Low booking rate (source threshold: below 20% of landing-page leads)</td><td>Page copy or call to action may not be compelling.</td><td>Test the headline and check the mobile layout.</td></tr><tr><td>High no-show rate (source threshold: above 20%)</td><td>Reminders may not reach contacts.</td><td>Check SMS delivery and confirm the workflow is published.</td></tr><tr><td>Low whitening attach rate (source threshold: below 20%)</td><td>Post-consult emails may not send or copy may be weak.</td><td>Check workflow history and review the offer email open rate.</td></tr><tr><td>Workflow not triggering</td><td>Stop condition may be too broad or trigger filter may be wrong.</td><td>Check trigger filtering and confirm the calendar name.</td></tr><tr><td>Duplicate confirmations</td><td>Default calendar email may still be on.</td><td>Turn off the default notification if the workflow sends its own confirmation.</td></tr></tbody></table>
+                  <aside class="source-adaptation"><strong>How the simulation uses this:</strong> The site separates each journey step, defines its eligible group, and labels every goal as projected. The source's percentage thresholds are diagnostic examples, not actual performance findings.</aside>
+                </div>
+              </details>
+            </div>
+                                    <details class="workshop-source-item workshop-sequence-source" data-workshop-source="email-sms-v2">
+              <summary><span><strong>Original Email and SMS Sequence v2.0</strong><small>Full original sequence · 23 message assets · source cadence, targets, and assumptions</small></span><span class="source-expand-label">Open full sequence</span>
+              </summary>
+              <div class="source-document-body source-sequence-document">
+              <p class="source-file-name">Source file: 4.Email and SMS Sequence_ Bloom Dental Studio v2.0.docx
+              </p>
+              <p class="source-document-note">This is the original workshop source, kept separate from the six-helper teaching model and the shorter project deliverable above. Names and figures are fictional; every target is a plan, and the source's actual-results cells are blank. Copy includes placeholders and claims that require clinic, clinical, sender, privacy, and provider review before any real use. Items marked missing in the source remain missing.
+              </p>
+              <h3>Email and SMS Sequence: Bloom Dental Studio
+              </h3>
+              <h4>1. Sequence Summary and Cadence Map
+              </h4>
+              <p>This sequence writes copy for every email and SMS asset listed in the Bloom Dental Studio Funnel Map v2 (Section 9 Asset Inventory), covering Workflows B, C, D, E, F, G, and the Advocacy Sequence. Workflow A has been removed per the revised architecture — there is no pre-booking nurture drip. The sequence picks up at the moment a booking is confirmed and manages every touchpoint through show-up, upsell, recall, and review request. The highest-leverage asset in this sequence is the Workflow B 2-hour SMS nudge — it catches the patient at peak proximity to the clinic. The highest-revenue asset is the Workflow D same-day whitening offer email — it fires while the consultation experience is still fresh.
+              </p>
+              <h4>2. Workflow B — Appointment Show-Up Sequence
+              </h4>
+              <section class="source-sequence-message" data-source-message="b-1">
+              <h5>B-1: Booking Confirmation SMS
+              </h5>
+              <p><strong>Purpose.</strong> Confirm the appointment immediately and give the patient the clinic address in a single tap-friendly message.
+              </p>
+              <p><strong>Trigger.</strong> Appointment Status = Confirmed.
+              </p>
+              <p><strong>Delay.</strong> Immediate.
+              </p>
+              <p><strong>SMS body.</strong>
+              </p>
+              <p>Bloom Dental: Hi <code>{{contact.first_name}}</code>, you are confirmed for <code>{{contact.appointment_date}}</code> at <code>{{contact.appointment_time}}</code>. Address: [Clinic Address, BGC]. See you then! Reply STOP to opt out.
+              </p>
+              <p><strong>Character count.</strong> ~155 characters with tokens at 10 chars each. Confirm after inserting real address.
+              </p>
+              <p><strong>Compliance footer.</strong> Reply STOP to opt out.
+              </p>
+              <p><strong>Exit condition.</strong> Contact attends (Appointment Status = Showed) or no-shows. Workflow B post-appointment check fires 1 hour after scheduled time.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="b-2">
+              <h5>B-2: Booking Confirmation Email
+              </h5>
+              <p><strong>Purpose.</strong> Reinforce the booking, set visit expectations, deliver a calendar invite link, and begin building show-up confidence.
+              </p>
+              <p><strong>Trigger.</strong> Appointment Status = Confirmed.
+              </p>
+              <p><strong>Delay.</strong> Within 1 minute of Appointment Status = Confirmed.
+              </p>
+              <p><strong>Subject line (recommended).</strong> You are booked, <code>{{contact.first_name}}</code> — Formula: Direct Benefit
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> Your Bloom Dental consult is confirmed — Formula: Direct Benefit
+              </p>
+              <p><strong>Preheader.</strong> Everything you need for your visit is right here.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> Your free 30-minute New Patient Consultation at Bloom Dental Studio is confirmed.
+              </p>
+              <p><strong>Context:</strong> Date: <code>{{contact.appointment_date}}</code> | Time: <code>{{contact.appointment_time}}</code> | Location: [Clinic Address, BGC]. A reminder SMS will reach you 1 hour before your appointment.
+              </p>
+              <p><strong>Value:</strong> What to bring: a valid ID. A recent dental record is helpful but not required. What happens at the visit: your dentist will do a visual assessment, walk you through what they find, and answer your questions. The consult is 30 minutes. Nothing is charged or decided during the visit. If you need to reschedule, use the link below. Please do so at least 4 hours ahead so we can open your slot for another patient.
+              </p>
+              <p><strong>CTA:</strong> Add this appointment to your calendar or reschedule if needed.
+              </p>
+              <p><strong>Primary CTA button text.</strong> Add to My Calendar
+              </p>
+              <p><strong>CTA destination.</strong> GHL calendar invite link + reschedule link
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> Contact attends (Workflow D + Advocacy enroll) or no-shows (Workflow C enrolls).
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="b-3">
+              <h5>B-3: 24-Hour Reminder Email
+              </h5>
+              <p><strong>Purpose.</strong> Remind the patient of tomorrow's appointment with logistics and a low-friction reschedule option.
+              </p>
+              <p><strong>Trigger.</strong> Appointment Status = Confirmed.
+              </p>
+              <p><strong>Delay.</strong> 24 hours before the scheduled appointment time (GHL Wait step: 24 hours before appointment).
+              </p>
+              <p><strong>Subject line (recommended).</strong> Your consult is tomorrow, <code>{{contact.first_name}}</code> — Formula: Direct Benefit
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> See you at Bloom tomorrow — Formula: Direct Benefit
+              </p>
+              <p><strong>Preheader.</strong> Address, what to bring, and a one-tap reschedule if you need it.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> Your free consultation at Bloom Dental Studio is tomorrow at <code>{{contact.appointment_time}}</code>.
+              </p>
+              <p><strong>Context:</strong> Location: [Clinic Address, BGC]. [Parking note — confirm before activating.] [Transit note — confirm nearest landmark before activating.]
+              </p>
+              <p><strong>Value:</strong> You do not need to prepare anything. Come as you are. The visit is 30 minutes: a dental assessment, time for your questions, and a clear summary of your options. If something has come up and you need to reschedule, tap the link below. Doing it today means we can offer your slot to another patient and keep our availability open for you.
+              </p>
+              <p><strong>CTA:</strong> Need to move your appointment? Reschedule here in one click.
+              </p>
+              <p><strong>Primary CTA button text.</strong> Reschedule If Needed
+              </p>
+              <p><strong>CTA destination.</strong> GHL calendar reschedule link
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> Contact attends or no-shows. Workflow B 2-hour day-of email fires next.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="b-4">
+              <h5>B-4: Day-of Reminder Email (2 hours before)
+              </h5>
+              <p><strong>Purpose.</strong> Final pre-appointment touchpoint. Short, logistical, no-obligation framing to reduce walk-in anxiety and last-minute cancellations.
+              </p>
+              <p><strong>Trigger.</strong> Appointment Status = Confirmed.
+              </p>
+              <p><strong>Delay.</strong> 2 hours before the scheduled appointment time.
+              </p>
+              <p><strong>Subject line (recommended).</strong> See you in 2 hours, <code>{{contact.first_name}}</code> — Formula: Direct Benefit
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> Your Bloom consult is this afternoon — Formula: Direct Benefit
+              </p>
+              <p><strong>Preheader.</strong> Quick note before you head over.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> Your free consult at Bloom Dental Studio is in 2 hours.
+              </p>
+              <p><strong>Context:</strong> Location: [Clinic Address, BGC]. If anything has changed and you need to reschedule, tap the link below.
+              </p>
+              <p><strong>Value:</strong> No prep needed. Just walk in, check in at the front desk, and your dentist will be with you shortly. The visit is 30 minutes with zero obligation to proceed with any treatment.
+              </p>
+              <p><strong>CTA:</strong> Running late or need to move it? Tap here.
+              </p>
+              <p><strong>Primary CTA button text.</strong> Reschedule If Needed
+              </p>
+              <p><strong>CTA destination.</strong> GHL calendar reschedule link
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> 1-hour post-appointment system wait fires. If Showed: Workflows D and Advocacy enroll. If No Show: Workflow C enrolls.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="b-5">
+              <h5>B-5: 2-Hour SMS Nudge
+              </h5>
+              <p><strong>Purpose.</strong> Catch the patient at peak proximity with a brief directional SMS and a one-tap reschedule option.
+              </p>
+              <p><strong>Trigger.</strong> Appointment Status = Confirmed.
+              </p>
+              <p><strong>Delay.</strong> 2 hours before the scheduled appointment time.
+              </p>
+              <p><strong>SMS body.</strong>
+              </p>
+              <p>Bloom Dental: Hi <code>{{contact.first_name}}</code>, your consult is in 2 hrs. [Clinic Address, BGC]. Need to reschedule? [GHL reschedule link]. Reply STOP to opt out.
+              </p>
+              <p><strong>Character count.</strong> ~145 characters with tokens. Confirm after inserting real address and link.
+              </p>
+              <p><strong>Compliance footer.</strong> Reply STOP to opt out.
+              </p>
+              <p><strong>Exit condition.</strong> Contact attends or no-shows. Post-appointment decision fires 1 hour after scheduled time.
+              </p>
+              </section>
+              <h4>3. Workflow C — No-Show Recovery Sequence
+              </h4>
+              <section class="source-sequence-message" data-source-message="c-1">
+              <h5>C-1: No-Show Recovery SMS — Touch 1 (1 hour)
+              </h5>
+              <p><strong>Purpose.</strong> Soft re-engagement nudge for contacts who booked but did not attend, offering a one-tap re-book without pressure.
+              </p>
+              <p><strong>Trigger.</strong> Tag: status-no-booking-72hr applied from Workflow B No Show branch.
+              </p>
+              <p><strong>Delay.</strong> 1 hour after Workflow C enrollment. Do not send between 9 PM and 8 AM local time.
+              </p>
+              <p><strong>SMS body.</strong>
+              </p>
+              <p>Bloom Dental: Hi <code>{{contact.first_name}}</code>, we missed you today. No worries - your free consult spot is still available. Re-book here: [calendar link]. Reply STOP to opt out.
+              </p>
+              <p><strong>Character count.</strong> ~155 characters with token and link placeholder. Confirm after inserting real link.
+              </p>
+              <p><strong>Compliance footer.</strong> Reply STOP to opt out.
+              </p>
+              <p><strong>Exit condition.</strong> If behavior-booked-consult applied: Goal met, remove status-no-booking-72hr, end Workflow C. Otherwise proceed to Touch 2 at 24 hours.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="c-2">
+              <h5>C-2: No-Show Recovery Email — Touch 2 (24 hours)
+              </h5>
+              <p><strong>Purpose.</strong> Second recovery touch addressing hesitation without pressure language, with a direct re-book CTA and a genuine reason to return.
+              </p>
+              <p><strong>Trigger.</strong> Tag: status-no-booking-72hr still present. 24 hours after Workflow C enrollment.
+              </p>
+              <p><strong>Delay.</strong> 24 hours after Workflow C enrollment.
+              </p>
+              <p><strong>Subject line (recommended).</strong> Still here when you are ready, <code>{{contact.first_name}}</code> — Formula: Personal Question
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> Your slot at Bloom is still open — Formula: Direct Benefit
+              </p>
+              <p><strong>Preheader.</strong> No pressure - just keeping the door open.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> Life moves fast in BGC, and we completely understand that today did not work out.
+              </p>
+              <p><strong>Context:</strong> Your free consultation spot is still available. We are not going to follow up after this week, but we did want to make sure you had one more chance to grab a time that actually works.
+              </p>
+              <p><strong>Value:</strong> A lot of patients tell us they put off coming in for months longer than they meant to, and when they finally came, they wished they had done it sooner. The visit is 30 minutes, there is no charge, and nothing is decided until you are ready. If availability is the thing in the way, we have [morning and evening slots this week and next — confirm actual availability framing]. Tap below to find a time.
+              </p>
+              <p><strong>CTA:</strong> Ready to reschedule? Pick a time here.
+              </p>
+              <p><strong>Primary CTA button text.</strong> Re-Book My Free Consult
+              </p>
+              <p><strong>CTA destination.</strong> GHL calendar: Bloom Dental - Free 30-Min New Patient Consult
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> If behavior-booked-consult applied: Goal met, end Workflow C. Otherwise proceed to Touch 3 at 72 hours.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="c-3">
+              <h5>C-3: No-Show Recovery SMS — Touch 3 (72 hours)
+              </h5>
+              <p><strong>Purpose.</strong> Final recovery attempt before the contact is moved to Cold. Brief, direct, genuine last-chance framing.
+              </p>
+              <p><strong>Trigger.</strong> Tag: status-no-booking-72hr still present. 72 hours after Workflow C enrollment.
+              </p>
+              <p><strong>Delay.</strong> 72 hours after Workflow C enrollment. Do not send between 9 PM and 8 AM local time.
+              </p>
+              <p><strong>SMS body.</strong>
+              </p>
+              <p>Bloom Dental: Hi <code>{{contact.first_name}}</code>, last note from us. Re-book your free consult here: [calendar link]. After this we will free up your spot. Reply STOP to opt out.
+              </p>
+              <p><strong>Character count.</strong> ~155 characters with token and link. Confirm after inserting real link.
+              </p>
+              <p><strong>Compliance footer.</strong> Reply STOP to opt out.
+              </p>
+              <p><strong>Exit condition.</strong> If behavior-booked-consult applied: Goal met, remove status-no-booking-72hr, end Workflow C. If no re-booking: apply status-cold-lead, remove stage-new-lead, remove status-no-booking-72hr, Pipeline moves to Cold, end Workflow C.
+              </p>
+              </section>
+              <h4>4. Workflow D — Post-Consultation Upsell (Whitening Offer)
+              </h4>
+              <section class="source-sequence-message" data-source-message="d-1">
+              <h5>D-1: Same-Day Whitening Offer Email
+              </h5>
+              <p><strong>Purpose.</strong> Introduce the PHP 15,000 whitening offer while the consultation experience is still fresh, with a before-and-after visual reference and a single booking CTA.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-consult-completed applied (Appointment Status = Showed confirmed). Fires within hours of consultation completion.
+              </p>
+              <p><strong>Delay.</strong> Within hours of tag application. Default send time: 6 PM if consultation occurred during the day, to catch the contact during their evening wind-down.
+              </p>
+              <p><strong>Subject line (recommended).</strong> One more thing from today's visit, <code>{{contact.first_name}}</code> — Formula: Curiosity Gap
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> The whitening option we mentioned — Formula: Direct Benefit
+              </p>
+              <p><strong>Preheader.</strong> PHP 15,000. One session. Here is exactly what is involved.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> Thank you for coming in today. We hope the visit gave you the clarity you were looking for.
+              </p>
+              <p><strong>Context:</strong> If whitening came up during your consult, here is the full detail in writing. If it did not come up, this is simply to make sure you have the option available if it is something you want to explore.
+              </p>
+              <p><strong>Value:</strong> Bloom Dental Studio offers professional teeth whitening at PHP 15,000 for a full session. The process uses a clinical-grade whitening agent applied with custom-fitted trays under controlled conditions. The result is 3 to 8 shades lighter in a single appointment — significantly faster and more even than over-the-counter alternatives. The session runs approximately 60 to 90 minutes. [Insert before-and-after visual here — confirm asset availability before activating.] If you would like to book, tap the button below to see available slots. Pricing does not change after this email.
+              </p>
+              <p><strong>CTA:</strong> Ready to book your whitening session?
+              </p>
+              <p><strong>Primary CTA button text.</strong> Book My Whitening Session
+              </p>
+              <p><strong>CTA destination.</strong> [MISSING: Whitening booking destination not confirmed. Confirm whether CTA routes to a GHL calendar, a payment link, or a manual booking request before activating Workflow D.]
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> If behavior-whitening-booked applied: Pipeline moves to Upsell Booked, apply customer-whitening-purchased, enroll Workflow F, end Workflow D. Otherwise proceed to D-2 at 72 hours.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="d-2">
+              <h5>D-2: Day 3 Whitening Follow-Up SMS
+              </h5>
+              <p><strong>Purpose.</strong> Brief whitening reminder naming the visual result in one line, with a direct booking link.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-consult-completed present AND NOT behavior-whitening-booked. 72 hours after Workflow D enrollment.
+              </p>
+              <p><strong>Delay.</strong> 72 hours after Workflow D enrollment. Do not send between 9 PM and 8 AM local time.
+              </p>
+              <p><strong>SMS body.</strong>
+              </p>
+              <p>Bloom Dental: Hi <code>{{contact.first_name}}</code>, still thinking about whitening? One session, 3-8 shades lighter. Book here: [whitening booking link]. Reply STOP to opt out.
+              </p>
+              <p><strong>Character count.</strong> ~150 characters with token and link. Confirm after inserting real link.
+              </p>
+              <p><strong>Compliance footer.</strong> Reply STOP to opt out.
+              </p>
+              <p><strong>Exit condition.</strong> If behavior-whitening-booked applied: Goal met, end Workflow D. Otherwise proceed to D-3 at 120 hours.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="d-3">
+              <h5>D-3: Day 5 Final Whitening Offer Email
+              </h5>
+              <p><strong>Purpose.</strong> Final upsell attempt with availability or deadline framing and a direct booking link.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-consult-completed present AND NOT behavior-whitening-booked. 120 hours after Workflow D enrollment.
+              </p>
+              <p><strong>Delay.</strong> 120 hours after Workflow D enrollment.
+              </p>
+              <p><strong>Subject line (recommended).</strong> Last note on whitening, <code>{{contact.first_name}}</code> — Formula: Urgency
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> Whitening slots this week — Formula: Direct Benefit
+              </p>
+              <p><strong>Preheader.</strong> This is the last email on this topic.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> This is the last time we will bring up whitening, so we want to make sure you have everything you need to decide.
+              </p>
+              <p><strong>Context:</strong> Professional whitening at Bloom is PHP 15,000 for a full session. One appointment, 60 to 90 minutes, 3 to 8 shades of difference.
+              </p>
+              <p><strong>Value:</strong> If timing or availability has been the thing in the way, we have [slots available this week and next — confirm availability framing before activating]. After this email, we will not follow up on whitening unless you reach out. If you decide to book later, just reply to this email or call us directly and we will sort out a time.
+              </p>
+              <p><strong>CTA:</strong> Book your whitening session before this week fills up.
+              </p>
+              <p><strong>Primary CTA button text.</strong> Book My Whitening Session
+              </p>
+              <p><strong>CTA destination.</strong> [MISSING: Whitening booking destination not confirmed — same as D-1.]
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> If behavior-whitening-booked applied: Goal met, end Workflow D. If no booking after Day 5: contact flows directly into Workflow E (long-term recall).
+              </p>
+              </section>
+              <h4>5. Workflow E — Retention and Recall
+              </h4>
+              <section class="source-sequence-message" data-source-message="e-1">
+              <h5>E-1: Six-Month Recall Email (30 days)
+              </h5>
+              <p><strong>Purpose.</strong> Personalized recall reminder referencing the consultation date and establishing the 6-month cleaning cadence.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-consult-completed applied. Wait step: 30 days.
+              </p>
+              <p><strong>Delay.</strong> 30 days after tag behavior-consult-completed applied.
+              </p>
+              <p><strong>Subject line (recommended).</strong> Time to think about your next visit, <code>{{contact.first_name}}</code> — Formula: Direct Benefit
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> Your 6-month recall is coming up — Formula: Direct Benefit
+              </p>
+              <p><strong>Preheader.</strong> A quick note so it does not sneak up on you.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> It has been about a month since your visit at Bloom Dental Studio, and your 6-month recall is now on the horizon.
+              </p>
+              <p><strong>Context:</strong> Most dentists recommend a professional cleaning and check-up every 6 months. Based on your consultation in <code>{{contact.appointment_date}}</code>, your next recommended visit falls around [auto-calculated 6-month date — configure in GHL].
+              </p>
+              <p><strong>Value:</strong> Booking early means you get your preferred time slot rather than working around what is left. A standard cleaning and check-up at Bloom is [MISSING: Recall pricing not provided. Add before finalizing Workflow E copy.]. The visit usually runs 45 to 60 minutes. If you would like to get it on the calendar now, tap the button below.
+              </p>
+              <p><strong>CTA:</strong> Lock in your recall appointment now.
+              </p>
+              <p><strong>Primary CTA button text.</strong> Book My Recall Visit
+              </p>
+              <p><strong>CTA destination.</strong> GHL calendar (cleaning and check-up appointment type)
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> Recall appointment confirmed: Pipeline moves to Active Patient. Otherwise Workflow E SMS fires at 5 months.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="e-2">
+              <h5>E-2: Recall SMS (5 months)
+              </h5>
+              <p><strong>Purpose.</strong> Brief SMS recall nudge with a booking link, sent when the 6-month recall window is approaching.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-consult-completed present AND recall appointment not yet confirmed. Approximately 5 months after tag application.
+              </p>
+              <p><strong>Delay.</strong> 5 months after tag behavior-consult-completed applied (configure as 150-day Wait step in GHL).
+              </p>
+              <p><strong>SMS body.</strong>
+              </p>
+              <p>Bloom Dental: Hi <code>{{contact.first_name}}</code>, your 6-month recall is coming up. Book your cleaning here: [calendar link]. Reply STOP to opt out.
+              </p>
+              <p><strong>Character count.</strong> ~130 characters with token and link. Well within limit.
+              </p>
+              <p><strong>Compliance footer.</strong> Reply STOP to opt out.
+              </p>
+              <p><strong>Exit condition.</strong> Recall appointment confirmed: Pipeline moves to Active Patient. If no booking: apply status-cold-lead, Pipeline moves to Cold.
+              </p>
+              </section>
+              <h4>6. Workflow F — Upsell Booking Confirmation and Reminder Sequence
+              </h4>
+              <section class="source-sequence-message" data-source-message="f-1">
+              <h5>F-1: Upsell Booking Confirmation SMS
+              </h5>
+              <p><strong>Purpose.</strong> Confirm the whitening appointment immediately with date, time, clinic address, and a preparation note.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-whitening-booked applied (upsell booking confirmed on GHL calendar).
+              </p>
+              <p><strong>Delay.</strong> Immediate.
+              </p>
+              <p><strong>SMS body.</strong>
+              </p>
+              <p>Bloom Dental: Hi <code>{{contact.first_name}}</code>, your whitening session is confirmed for <code>{{contact.appointment_date}}</code> at <code>{{contact.appointment_time}}</code>. Address: [Clinic Address, BGC]. Reply STOP to opt out.
+              </p>
+              <p><strong>Character count.</strong> ~158 characters with tokens. Confirm after inserting real address — shorten if needed.
+              </p>
+              <p><strong>Compliance footer.</strong> Reply STOP to opt out.
+              </p>
+              <p><strong>Exit condition.</strong> Contact attends whitening (Pipeline moves to Active Patient) or no-shows (Workflow G enrolls).
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="f-2">
+              <h5>F-2: Upsell Booking Confirmation Email
+              </h5>
+              <p><strong>Purpose.</strong> Reinforce the whitening service value, state what to expect at the session, and deliver a calendar invite link.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-whitening-booked applied.
+              </p>
+              <p><strong>Delay.</strong> Within 1 minute of tag application.
+              </p>
+              <p><strong>Subject line (recommended).</strong> Your whitening session is confirmed, <code>{{contact.first_name}}</code> — Formula: Direct Benefit
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> Bloom Dental whitening - you are booked — Formula: Direct Benefit
+              </p>
+              <p><strong>Preheader.</strong> What to expect and how to prepare for your session.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> Your professional whitening session at Bloom Dental Studio is confirmed.
+              </p>
+              <p><strong>Context:</strong> Date: <code>{{contact.appointment_date}}</code> | Time: <code>{{contact.appointment_time}}</code> | Location: [Clinic Address, BGC].
+              </p>
+              <p><strong>Value:</strong> What to expect: the session runs approximately 60 to 90 minutes. Your dentist will apply a clinical-grade whitening agent using custom-fitted trays. Results are typically 3 to 8 shades lighter in a single session. Preparation: avoid dark-colored food and drinks (coffee, red wine, soy sauce) for 24 hours before your appointment and for 48 hours after. Do not use whitening toothpaste on the day of the session. If you need to reschedule, use the link below. Please do so at least 4 hours ahead.
+              </p>
+              <p><strong>CTA:</strong> Add this to your calendar or reschedule if needed.
+              </p>
+              <p><strong>Primary CTA button text.</strong> Add to My Calendar
+              </p>
+              <p><strong>CTA destination.</strong> GHL calendar invite link + reschedule link
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> Contact attends (Pipeline moves to Active Patient) or no-shows (Workflow G enrolls).
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="f-3">
+              <h5>F-3: 24-Hour Upsell Reminder Email
+              </h5>
+              <p><strong>Purpose.</strong> Remind the patient of tomorrow's whitening session with address and a reschedule CTA.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-whitening-booked present. 24 hours before the whitening appointment time.
+              </p>
+              <p><strong>Delay.</strong> 24 hours before the scheduled whitening appointment.
+              </p>
+              <p><strong>Subject line (recommended).</strong> Your whitening session is tomorrow, <code>{{contact.first_name}}</code> — Formula: Direct Benefit
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> See you at Bloom tomorrow for whitening — Formula: Direct Benefit
+              </p>
+              <p><strong>Preheader.</strong> Prep reminder and what to avoid before your session.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> Your whitening session at Bloom Dental Studio is tomorrow at <code>{{contact.appointment_time}}</code>.
+              </p>
+              <p><strong>Context:</strong> Location: [Clinic Address, BGC]. [Parking/transit note — confirm before activating.]
+              </p>
+              <p><strong>Value:</strong> Quick prep reminder: skip dark-colored food and drinks today (coffee, tea, red wine, soy sauce). Do not use whitening toothpaste this morning. Arrive a few minutes early so we can get you settled. The session runs 60 to 90 minutes. If you need to reschedule, tap the link below.
+              </p>
+              <p><strong>CTA:</strong> Need to move your appointment? Reschedule here.
+              </p>
+              <p><strong>Primary CTA button text.</strong> Reschedule If Needed
+              </p>
+              <p><strong>CTA destination.</strong> GHL calendar reschedule link
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> Contact attends or no-shows. F-4 day-of email fires on appointment day.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="f-4">
+              <h5>F-4: Day-of Upsell Reminder Email
+              </h5>
+              <p><strong>Purpose.</strong> Final pre-whitening touchpoint. Short, prep-focused, confidence-building.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-whitening-booked present. Sent on the day of the whitening appointment.
+              </p>
+              <p><strong>Delay.</strong> Day of whitening appointment (configure as same-day send in GHL, morning delivery).
+              </p>
+              <p><strong>Subject line (recommended).</strong> Today is your whitening day, <code>{{contact.first_name}}</code> — Formula: Direct Benefit
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> See you later at Bloom — Formula: Direct Benefit
+              </p>
+              <p><strong>Preheader.</strong> One last prep note before you come in.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> Today is your whitening session at Bloom Dental Studio.
+              </p>
+              <p><strong>Context:</strong> Appointment time: <code>{{contact.appointment_time}}</code>. Location: [Clinic Address, BGC].
+              </p>
+              <p><strong>Value:</strong> Last prep note: skip coffee and tea this morning if you can. Brush your teeth gently before you arrive but skip whitening toothpaste. That is it. We will handle everything else. You will leave with noticeably whiter teeth in one visit.
+              </p>
+              <p><strong>CTA:</strong> Running late or need to reschedule? Tap here.
+              </p>
+              <p><strong>Primary CTA button text.</strong> Reschedule If Needed
+              </p>
+              <p><strong>CTA destination.</strong> GHL calendar reschedule link
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> Post-whitening decision: 1 hour after appointment. If Showed: Pipeline moves to Active Patient, end Workflow F. If No Show: apply status-upsell-abandoned, enroll Workflow G.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="f-5">
+              <h5>F-5: 2-Hour Upsell SMS Nudge
+              </h5>
+              <p><strong>Purpose.</strong> Directional SMS nudge 2 hours before the whitening session with clinic name and reschedule option.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-whitening-booked present. 2 hours before the scheduled whitening appointment.
+              </p>
+              <p><strong>Delay.</strong> 2 hours before the scheduled whitening appointment time.
+              </p>
+              <p><strong>SMS body.</strong>
+              </p>
+              <p>Bloom Dental: Hi <code>{{contact.first_name}}</code>, your whitening session is in 2 hrs. [Clinic Address, BGC]. Need to move it? [reschedule link]. Reply STOP to opt out.
+              </p>
+              <p><strong>Character count.</strong> ~145 characters with token and links. Confirm after inserting real address and link.
+              </p>
+              <p><strong>Compliance footer.</strong> Reply STOP to opt out.
+              </p>
+              <p><strong>Exit condition.</strong> Contact attends (Pipeline moves to Active Patient) or no-shows (apply status-upsell-abandoned, enroll Workflow G).
+              </p>
+              </section>
+              <h4>7. Workflow G — Abandoned Upsell Booking Recovery
+              </h4>
+              <section class="source-sequence-message" data-source-message="g-1">
+              <h5>G-1: Upsell Recovery SMS — Touch 1 (1 hour)
+              </h5>
+              <p><strong>Purpose.</strong> Re-engage a whitening no-show with a soft, friendly nudge and a one-tap re-book link.
+              </p>
+              <p><strong>Trigger.</strong> Tag: status-upsell-abandoned applied from Workflow F No Show branch.
+              </p>
+              <p><strong>Delay.</strong> 1 hour after Workflow G enrollment. Do not send between 9 PM and 8 AM local time.
+              </p>
+              <p><strong>SMS body.</strong>
+              </p>
+              <p>Bloom Dental: Hi <code>{{contact.first_name}}</code>, we missed you today for whitening. Still interested? Re-book here: [whitening booking link]. Reply STOP to opt out.
+              </p>
+              <p><strong>Character count.</strong> ~148 characters with token and link. Confirm after inserting real link.
+              </p>
+              <p><strong>Compliance footer.</strong> Reply STOP to opt out.
+              </p>
+              <p><strong>Exit condition.</strong> If behavior-whitening-booked re-applied: Goal met, remove status-upsell-abandoned, end Workflow G. Otherwise proceed to Touch 2 at 24 hours.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="g-2">
+              <h5>G-2: Upsell Recovery Email — Touch 2 (24 hours)
+              </h5>
+              <p><strong>Purpose.</strong> Recovery email addressing hesitation around the whitening commitment, with a direct re-book link.
+              </p>
+              <p><strong>Trigger.</strong> Tag: status-upsell-abandoned present. 24 hours after Workflow G enrollment.
+              </p>
+              <p><strong>Delay.</strong> 24 hours after Workflow G enrollment.
+              </p>
+              <p><strong>Subject line (recommended).</strong> Your whitening slot is still open, <code>{{contact.first_name}}</code> — Formula: Direct Benefit
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> Still thinking about whitening? — Formula: Personal Question
+              </p>
+              <p><strong>Preheader.</strong> No pressure - just keeping your spot available a little longer.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> We noticed you were not able to make your whitening session today, and we wanted to check in before we release the slot.
+              </p>
+              <p><strong>Context:</strong> If something came up, no problem at all. Your whitening offer is still available and the pricing has not changed.
+              </p>
+              <p><strong>Value:</strong> Professional whitening at Bloom is PHP 15,000 for a full session. One appointment, approximately 60 to 90 minutes, with results of 3 to 8 shades lighter. If a different time would work better for your schedule, tap below to pick a new slot. We have availability this week and next.
+              </p>
+              <p><strong>CTA:</strong> Re-book your whitening session here.
+              </p>
+              <p><strong>Primary CTA button text.</strong> Re-Book My Whitening Session
+              </p>
+              <p><strong>CTA destination.</strong> [MISSING: Whitening booking destination — confirm same as Workflow D CTA destination before activating.]
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> If behavior-whitening-booked re-applied: Goal met, end Workflow G. Otherwise proceed to Touch 3 at 72 hours.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="g-3">
+              <h5>G-3: Final Upsell Recovery SMS — Touch 3 (72 hours)
+              </h5>
+              <p><strong>Purpose.</strong> Final re-book attempt before the contact is moved to Cold. Brief, direct, genuine last-chance framing.
+              </p>
+              <p><strong>Trigger.</strong> Tag: status-upsell-abandoned present. 72 hours after Workflow G enrollment.
+              </p>
+              <p><strong>Delay.</strong> 72 hours after Workflow G enrollment. Do not send between 9 PM and 8 AM local time.
+              </p>
+              <p><strong>SMS body.</strong>
+              </p>
+              <p>Bloom Dental: Hi <code>{{contact.first_name}}</code>, last note on whitening. Book here: [whitening booking link]. After this we will release your slot. Reply STOP to opt out.
+              </p>
+              <p><strong>Character count.</strong> ~148 characters with token and link. Confirm after inserting real link.
+              </p>
+              <p><strong>Compliance footer.</strong> Reply STOP to opt out.
+              </p>
+              <p><strong>Exit condition.</strong> If behavior-whitening-booked re-applied: Goal met, remove status-upsell-abandoned, end Workflow G. If no re-booking: apply status-cold-lead, remove status-upsell-abandoned, Pipeline moves to Cold, end Workflow G.
+              </p>
+              </section>
+              <h4>8. Advocacy Sequence — Review and Referral Request
+              </h4>
+              <section class="source-sequence-message" data-source-message="adv-1">
+              <h5>ADV-1: Day 3 Review Request SMS
+              </h5>
+              <p><strong>Purpose.</strong> First review request touchpoint, sent while the consultation experience is still recent. Direct Google review link, no pressure framing.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-consult-completed applied + 3-day wait.
+              </p>
+              <p><strong>Delay.</strong> 3 days after tag behavior-consult-completed applied. Do not send between 9 PM and 8 AM local time.
+              </p>
+              <p><strong>SMS body.</strong>
+              </p>
+              <p>Bloom Dental: Hi <code>{{contact.first_name}}</code>, hope your visit went well! A quick Google review means a lot to us: [Google review link]. Thank you. Reply STOP to opt out.
+              </p>
+              <p><strong>Character count.</strong> ~148 characters with token and link. Confirm after inserting real review URL.
+              </p>
+              <p><strong>Compliance footer.</strong> Reply STOP to opt out.
+              </p>
+              <p><strong>Exit condition.</strong> Review posted: Workflow ends, goal accomplished. If no review after 4-day wait: proceed to ADV-2 at Day 14.
+              </p>
+              </section>
+              <section class="source-sequence-message" data-source-message="adv-2">
+              <h5>ADV-2: Day 14 Review Follow-Up Email
+              </h5>
+              <p><strong>Purpose.</strong> Second and final review request via email, with a thank-you note and the direct Google review link.
+              </p>
+              <p><strong>Trigger.</strong> Tag: behavior-consult-completed present AND review not yet confirmed. 14 days after tag application (4-day wait after ADV-1 with no review posted).
+              </p>
+              <p><strong>Delay.</strong> 14 days after tag behavior-consult-completed applied (or 11 days after ADV-1 if no review was posted after the 3-day SMS).
+              </p>
+              <p><strong>Subject line (recommended).</strong> A small ask, <code>{{contact.first_name}}</code> — Formula: Personal Question
+              </p>
+              <p><strong>Subject line (A/B variant).</strong> If your visit went well, here is one way to help — Formula: Direct Benefit
+              </p>
+              <p><strong>Preheader.</strong> 60 seconds and it makes a real difference for us.
+              </p>
+              <p><strong>Body.</strong>
+              </p>
+              <p><strong>Hook:</strong> We hope your visit at Bloom Dental Studio went well, and we genuinely appreciate you choosing us.
+              </p>
+              <p><strong>Context:</strong> We have one small ask. If you had a positive experience, leaving a Google review takes about 60 seconds and makes a significant difference for patients who are looking for a dental clinic in BGC and trying to decide.
+              </p>
+              <p><strong>Value:</strong> Your honest feedback helps other BGC professionals find a clinic they can trust. We read every review and take the feedback seriously. If anything about your visit fell short of what you expected, please reply to this email and let us know directly — we would rather hear it from you than anywhere else. If your experience was positive, tap the link below.
+              </p>
+              <p><strong>CTA:</strong> Leave a quick Google review here.
+              </p>
+              <p><strong>Primary CTA button text.</strong> Leave a Google Review
+              </p>
+              <p><strong>CTA destination.</strong> [MISSING: Direct Google review URL for Bloom Dental Studio not confirmed. Add the direct review link before activating the Advocacy Sequence.]
+              </p>
+              <p><strong>Sign-off.</strong> The Bloom Dental Studio Team, BGC
+              </p>
+              <p><strong>Exit condition.</strong> Review posted: Workflow ends. If no review after 2-day final check: Workflow concludes without further outreach.
+              </p>
+              </section>
+              <h4>9. Compliance and Deliverability Notes
+              </h4>
+              <p><strong>SMS consent model.</strong> Inferred as explicit checkbox opt-in at the Bloom Dental New Patient Inquiry form. All SMS messages from Workflow B onward are contingent on this consent being in place. Confirm checkbox language explicitly states consent to receive SMS from Bloom Dental Studio before activating any SMS workflow.
+              </p>
+              <p><strong>STOP and HELP handling — Philippines.</strong> All SMS messages include "Reply STOP to opt out." GHL must be configured to process STOP replies immediately and suppress further messages. Confirm with your GHL account provider that STOP processing is active for Philippine carrier delivery before any SMS workflow goes live.
+              </p>
+              <p><strong>Quiet-hours rule.</strong> No marketing SMS between 9 PM and 8 AM Philippine Standard Time (UTC+8). This applies to: Workflow C Touch 1 and Touch 3, Workflow D Day 3 SMS, Workflow G Touch 1 and Touch 3, and Advocacy ADV-1. Transactional SMS (B-1, B-5, F-1, F-5) may send outside quiet hours but applying quiet-hours suppression to all SMS is best practice.
+              </p>
+              <p><strong>From-name, from-email, reply-to.</strong> From-name: "Bloom Dental Studio." From-email: a verified domain address on the GHL sending domain (example: hello@bloomdental.com.ph). Reply-to: a monitored inbox. Do not use a no-reply address — patient replies to confirmation and reminder emails are operationally important.
+              </p>
+              <p><strong>Email deliverability.</strong> If the GHL sending domain is new, run a 2-to-4-week warm-up period before Meta ads go live. Start at 10 to 20 sends per day and increase by approximately 20% every 3 days. Monitor spam folder placement weekly.
+              </p>
+              <p><strong>SMS deliverability — Philippine carriers.</strong> Confirm GHL SMS sender registration and approval for Philippine carrier delivery before any SMS workflow is activated. Keep opt-out rate under 2%. Monitor weekly after launch.
+              </p>
+              <h4>10. Sequence Performance Targets
+              </h4>
+              <h4>11. Assumptions Log
+              </h4>
+              <p><strong>Sender identity.</strong> No named practitioner provided. All emails signed as "The Bloom Dental Studio Team, BGC." Replace with a named dentist (e.g., "Dr. [Name], Lead Dentist") across all emails for higher open and reply rates.
+              </p>
+              <p><strong>SMS consent model.</strong> Inferred as explicit checkbox opt-in at the New Patient Inquiry form. Not explicitly confirmed. Verify before activating any SMS workflow.
+              </p>
+              <p><strong>Jurisdiction.</strong> Philippines (Metro Manila, BGC-Makati). Inferred from funnel map. TCPA-equivalent norms applied.
+              </p>
+              <p><strong>Clinic address and parking/transit notes.</strong> Not provided. Placeholder in B-1, B-2, B-3, B-4, B-5, F-1, F-2, F-3, F-4, F-5. Fill before activating.
+              </p>
+              <p><strong>Whitening booking destination.</strong> Explicitly flagged as missing in the funnel map (Section 12). D-1, D-3, G-2 CTAs cannot be finalized until confirmed.
+              </p>
+              <p><strong>Recall pricing.</strong> Explicitly flagged as missing in the funnel map (Section 12). E-1 value section contains a placeholder.
+              </p>
+              <p><strong>Google review direct URL.</strong> Explicitly flagged as missing in the funnel map (Section 12). ADV-1 and ADV-2 CTAs cannot be finalized until the direct review URL is confirmed.
+              </p>
+              <p><strong>Before-and-after photo assets.</strong> Flagged as unconfirmed in the funnel map. D-1 references a visual insert placeholder. Confirm asset availability before activating Workflow D.
+              </p>
+              <p><strong>Voice of customer phrases.</strong> No verbatim patient quotes provided. All hooks and pain-point framing are inferred from the BGC professional persona in the funnel map. Adding real patient language would strengthen Workflow C Touch 2 and Workflow D email hooks significantly.
+              </p>
+              <p><strong>Preferred send times.</strong> Default applied per funnel map Section 12 recommendation: 8 AM for reminder messages, 6 PM for nurture and upsell emails. Adjust after GHL open-rate data is available from the first two weeks.
+              </p>
+              <table class="source-table source-cadence-table">
+              <thead>
+              <tr>
+              <th>Step
+              </th>
+              <th>Workflow
+              </th>
+              <th>Channel
+              </th>
+              <th>Trigger
+              </th>
+              <th>Delay
+              </th>
+              <th>Purpose
+              </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td>B-1
+              </td>
+              <td>B
+              </td>
+              <td>SMS
+              </td>
+              <td>Appointment Status = Confirmed
+              </td>
+              <td>Immediate
+              </td>
+              <td>Booking confirmation
+              </td>
+              </tr>
+              <tr>
+              <td>B-2
+              </td>
+              <td>B
+              </td>
+              <td>Email
+              </td>
+              <td>Appointment Status = Confirmed
+              </td>
+              <td>Within 1 min
+              </td>
+              <td>Booking confirmation + calendar invite
+              </td>
+              </tr>
+              <tr>
+              <td>B-3
+              </td>
+              <td>B
+              </td>
+              <td>Email
+              </td>
+              <td>Appointment Status = Confirmed
+              </td>
+              <td>24 hrs before appt
+              </td>
+              <td>Reminder + reschedule CTA
+              </td>
+              </tr>
+              <tr>
+              <td>B-4
+              </td>
+              <td>B
+              </td>
+              <td>Email
+              </td>
+              <td>Appointment Status = Confirmed
+              </td>
+              <td>2 hrs before appt
+              </td>
+              <td>Day-of reminder, no-obligation framing
+              </td>
+              </tr>
+              <tr>
+              <td>B-5
+              </td>
+              <td>B
+              </td>
+              <td>SMS
+              </td>
+              <td>Appointment Status = Confirmed
+              </td>
+              <td>2 hrs before appt
+              </td>
+              <td>Directional nudge
+              </td>
+              </tr>
+              <tr>
+              <td>C-1
+              </td>
+              <td>C
+              </td>
+              <td>SMS
+              </td>
+              <td>Tag: status-no-booking-72hr
+              </td>
+              <td>1 hr after enrollment
+              </td>
+              <td>Soft re-engagement
+              </td>
+              </tr>
+              <tr>
+              <td>C-2
+              </td>
+              <td>C
+              </td>
+              <td>Email
+              </td>
+              <td>Tag: status-no-booking-72hr
+              </td>
+              <td>24 hrs after enrollment
+              </td>
+              <td>Recovery + objection handling
+              </td>
+              </tr>
+              <tr>
+              <td>C-3
+              </td>
+              <td>C
+              </td>
+              <td>SMS
+              </td>
+              <td>Tag: status-no-booking-72hr
+              </td>
+              <td>72 hrs after enrollment
+              </td>
+              <td>Final re-book attempt
+              </td>
+              </tr>
+              <tr>
+              <td>D-1
+              </td>
+              <td>D
+              </td>
+              <td>Email
+              </td>
+              <td>Tag: behavior-consult-completed
+              </td>
+              <td>Same day (within hrs)
+              </td>
+              <td>Whitening offer
+              </td>
+              </tr>
+              <tr>
+              <td>D-2
+              </td>
+              <td>D
+              </td>
+              <td>SMS
+              </td>
+              <td>Tag: behavior-consult-completed
+              </td>
+              <td>72 hrs after enrollment
+              </td>
+              <td>Whitening follow-up nudge
+              </td>
+              </tr>
+              <tr>
+              <td>D-3
+              </td>
+              <td>D
+              </td>
+              <td>Email
+              </td>
+              <td>Tag: behavior-consult-completed
+              </td>
+              <td>120 hrs after enrollment
+              </td>
+              <td>Final whitening offer
+              </td>
+              </tr>
+              <tr>
+              <td>E-1
+              </td>
+              <td>E
+              </td>
+              <td>Email
+              </td>
+              <td>Tag: behavior-consult-completed
+              </td>
+              <td>30 days after tag
+              </td>
+              <td>Recall reminder
+              </td>
+              </tr>
+              <tr>
+              <td>E-2
+              </td>
+              <td>E
+              </td>
+              <td>SMS
+              </td>
+              <td>Tag: behavior-consult-completed
+              </td>
+              <td>5 months after tag
+              </td>
+              <td>Recall nudge
+              </td>
+              </tr>
+              <tr>
+              <td>F-1
+              </td>
+              <td>F
+              </td>
+              <td>SMS
+              </td>
+              <td>Tag: behavior-whitening-booked
+              </td>
+              <td>Immediate
+              </td>
+              <td>Upsell booking confirmation
+              </td>
+              </tr>
+              <tr>
+              <td>F-2
+              </td>
+              <td>F
+              </td>
+              <td>Email
+              </td>
+              <td>Tag: behavior-whitening-booked
+              </td>
+              <td>Within 1 min
+              </td>
+              <td>Upsell booking confirmation + invite
+              </td>
+              </tr>
+              <tr>
+              <td>F-3
+              </td>
+              <td>F
+              </td>
+              <td>Email
+              </td>
+              <td>Tag: behavior-whitening-booked
+              </td>
+              <td>24 hrs before appt
+              </td>
+              <td>Upsell 24-hr reminder
+              </td>
+              </tr>
+              <tr>
+              <td>F-4
+              </td>
+              <td>F
+              </td>
+              <td>Email
+              </td>
+              <td>Tag: behavior-whitening-booked
+              </td>
+              <td>Day of appt
+              </td>
+              <td>Day-of upsell reminder
+              </td>
+              </tr>
+              <tr>
+              <td>F-5
+              </td>
+              <td>F
+              </td>
+              <td>SMS
+              </td>
+              <td>Tag: behavior-whitening-booked
+              </td>
+              <td>2 hrs before appt
+              </td>
+              <td>Upsell 2-hr nudge
+              </td>
+              </tr>
+              <tr>
+              <td>G-1
+              </td>
+              <td>G
+              </td>
+              <td>SMS
+              </td>
+              <td>Tag: status-upsell-abandoned
+              </td>
+              <td>1 hr after enrollment
+              </td>
+              <td>Upsell re-engagement
+              </td>
+              </tr>
+              <tr>
+              <td>G-2
+              </td>
+              <td>G
+              </td>
+              <td>Email
+              </td>
+              <td>Tag: status-upsell-abandoned
+              </td>
+              <td>24 hrs after enrollment
+              </td>
+              <td>Upsell recovery email
+              </td>
+              </tr>
+              <tr>
+              <td>G-3
+              </td>
+              <td>G
+              </td>
+              <td>SMS
+              </td>
+              <td>Tag: status-upsell-abandoned
+              </td>
+              <td>72 hrs after enrollment
+              </td>
+              <td>Final upsell re-book
+              </td>
+              </tr>
+              <tr>
+              <td>ADV-1
+              </td>
+              <td>Advocacy
+              </td>
+              <td>SMS
+              </td>
+              <td>Tag: behavior-consult-completed + 3-day wait
+              </td>
+              <td>Day 3 post-consult
+              </td>
+              <td>Review request
+              </td>
+              </tr>
+              <tr>
+              <td>ADV-2
+              </td>
+              <td>Advocacy
+              </td>
+              <td>Email
+              </td>
+              <td>Tag: behavior-consult-completed + 14-day wait
+              </td>
+              <td>Day 14 post-consult
+              </td>
+              <td>Review follow-up
+              </td>
+              </tr>
+              </tbody>
+              </table>
+              <table class="source-table source-cadence-table">
+              <thead>
+              <tr>
+              <th>Metric
+              </th>
+              <th>Target
+              </th>
+              <th>Actual (fill after launch)
+              </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td>Email Open Rate
+              </td>
+              <td>35% or higher
+              </td>
+              <td>
+              </td>
+              </tr>
+              <tr>
+              <td>Email Click Rate
+              </td>
+              <td>5% or higher
+              </td>
+              <td>
+              </td>
+              </tr>
+              <tr>
+              <td>Form-to-Booking Conversion Rate
+              </td>
+              <td>50% or higher (in-session)
+              </td>
+              <td>
+              </td>
+              </tr>
+              <tr>
+              <td>Consultation Show-Up Rate
+              </td>
+              <td>85% or higher
+              </td>
+              <td>
+              </td>
+              </tr>
+              <tr>
+              <td>No-Show Rate
+              </td>
+              <td>Below 15% (from 35% baseline)
+              </td>
+              <td>
+              </td>
+              </tr>
+              <tr>
+              <td>Abandoned Booking Recovery Rate
+              </td>
+              <td>15% or higher (Workflow C)
+              </td>
+              <td>
+              </td>
+              </tr>
+              <tr>
+              <td>Post-Consult Whitening Conversion Rate
+              </td>
+              <td>40% within 5 days
+              </td>
+              <td>
+              </td>
+              </tr>
+              <tr>
+              <td>Whitening Show-Up Rate
+              </td>
+              <td>80% or higher (Workflow F)
+              </td>
+              <td>
+              </td>
+              </tr>
+              <tr>
+              <td>Unsubscribe Rate
+              </td>
+              <td>Below 0.5% per email
+              </td>
+              <td>
+              </td>
+              </tr>
+              <tr>
+              <td>SMS Opt-Out Rate
+              </td>
+              <td>Below 2%
+              </td>
+              <td>
+              </td>
+              </tr>
+              <tr>
+              <td>Google Reviews Generated (30-day window)
+              </td>
+              <td>Track and baseline in first month
+              </td>
+              <td>
+              </td>
+              </tr>
+              </tbody>
+              </table>
+              </div>
+              </details>
+          </section>
           <nav class="guided-next" aria-label="Next case study stop" data-reveal><div><span class="section-label">04 / 06 · WHAT I MADE</span><strong>Next: How We’d Know</strong><p>See the questions and counts the team would use after a real launch.</p></div><a class="button button-coral" href="#measurement" data-view-link="measurement">Continue to How We’d Know <i data-lucide="arrow-right" aria-hidden="true"></i></a></nav>
         </section>
 
@@ -1491,7 +2811,7 @@
     <script src="assets/vendor/lucide-0.468.0.min.js" defer></script>
     <script src="assets/vendor/gsap-3.12.5.min.js" defer></script>
     <script src="assets/vendor/ScrollTrigger-3.12.5.min.js" defer></script>
-    <script src="script.js?v=self-guided-10" defer></script>
+    <script src="script.js?v=complete-sources-11" defer></script>
   </body>
 </html>
 

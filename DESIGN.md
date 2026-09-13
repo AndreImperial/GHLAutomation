@@ -61,7 +61,8 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 - The Automatic Helpers lab is an authored explanation, not a screenshot recreation. Every node exposes what it notices, what it does, why it matters, and its technical GHL location.
 - The ten phases share one teaching structure: what I needed, what I decided, what I produced, which part of Sam’s journey it improves, and the technical setup.
 - Each phase also names the problem addressed and solution delivered.
-- The eight evidence documents remain complete, hardcoded, searchable website content. Their beginner introductions appear first; the full source content is collapsed until requested.
+- The eight project deliverables remain complete, hardcoded website content. Their beginner introductions appear first; full deliverables are collapsed until requested. A separate source library contains the complete discovery transcript, all seven GHL setup guides, and the original 23-message Email/SMS Sequence v2.0, including cadence tables, performance targets, and assumptions. The source library is labeled as workshop input, not proof of implementation or production approval.
+- Six additional message assets fill gaps in the interactive workflow model. New form-first messages are labeled as simulation copy, adapted source copy is identified, and the older 23-message sequence remains separate so its original architecture is not confused with the final six-helper teaching model.
 - Problem selection remains consistent across the diagnostic explorer, solution detail, evidence matrix, and KPI diagnostic.
 
 ## Presentation Rules
@@ -95,6 +96,7 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 - [ ] The five problems and proposed solutions can be understood in roughly 90 seconds.
 - [ ] Presenter notes and interactive pauses support exactly 45 minutes across all 25 slides.
 - [ ] Ten phases, six workflows, and eight full deliverables are present.
+- [ ] The discovery transcript, seven setup guides, and complete original 23-message sequence remain available in the source library.
 - [ ] Hashes, legacy aliases, browser history, keyboard controls, and focus restoration work.
 - [ ] 375px, 768px, 1024px, and 1440px layouts have no page-level overflow or overlap.
 - [ ] Focus, contrast, heading order, touch targets, reduced motion, and library-failure fallbacks pass review.
