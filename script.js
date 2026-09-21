@@ -478,6 +478,18 @@
     }
   };
 
+  const customerJourney = [
+    { id: "ad", label: "Meta ad", short: "A person sees the consultation offer.", plain: "A person sees the consultation offer.", detail: "Campaign source and UTM values identify the visit.", icon: "megaphone" },
+    { id: "page", label: "Landing page", short: "The offer and next step become clear.", plain: "The page explains the offer and next step.", detail: "A successful landing-page view starts the measurable onsite path.", icon: "layout-template" },
+    { id: "form", label: "Inquiry form", short: "Useful context and permission are captured.", plain: "The person shares useful context and consent.", detail: "The form creates or updates the contact and starts lead capture.", icon: "file-input" },
+    { id: "calendar", label: "Booking calendar", short: "An available consultation time is chosen.", plain: "The person chooses an available time.", detail: "The appointment updates the opportunity and booking workflow.", icon: "calendar-check-2" },
+    { id: "reminders", label: "Confirmation and reminders", short: "The appointment stays easy to remember.", plain: "Useful messages protect the appointment.", detail: "Timed email and SMS actions honor consent and stop rules.", icon: "message-circle-more" },
+    { id: "consultation", label: "Consultation outcome", short: "The clinic records what happened.", plain: "The clinic records what happened.", detail: "Appointment status and pipeline stage route the next workflow.", icon: "clipboard-check" },
+    { id: "whitening", label: "Whitening follow-up", short: "The next message matches the outcome.", plain: "The next message matches the consultation outcome.", detail: "A modular workflow handles offer, booking, and payment state.", icon: "sparkles" },
+    { id: "recall", label: "Six-month recall", short: "Future care is remembered at the right time.", plain: "Future-care reminders happen at the planned time.", detail: "Long waits and eligibility checks protect relevance and consent.", icon: "history" },
+    { id: "kpi", label: "KPI review", short: "The team finds where people stopped.", plain: "The team checks where people moved forward or stopped.", detail: "Events, formulas, and windows support one diagnostic next test.", icon: "chart-no-axes-combined" }
+  ];
+
   const presentationNotes = [
     {
       title: "Set the contract for the presentation",
@@ -900,6 +912,7 @@
   const workflowDefinitions = {
     "new-lead-booking": {
       number: "01",
+      journeyStep: "form",
       name: "New Lead to Booking",
       summary: "Turn an inquiry form submission into a structured lead and a clear invitation to book.",
       trigger: "Form submitted: Bloom Dental - New Patient Inquiry",
@@ -922,6 +935,7 @@
     },
     "consultation-booking": {
       number: "02",
+      journeyStep: "calendar",
       name: "Consultation Booking",
       summary: "Confirm the booked appointment, protect show-up time, and route the appointment outcome.",
       trigger: "Appointment status = Booked",
@@ -947,6 +961,7 @@
     },
     "no-show-recovery": {
       number: "03",
+      journeyStep: "reminders",
       name: "No-Show Recovery",
       summary: "Give a missed consultation a clear, time-boxed path back to booking.",
       trigger: "Appointment status = No-Show",
@@ -968,6 +983,7 @@
     },
     "post-consult-whitening": {
       number: "04",
+      journeyStep: "whitening",
       name: "Post-Consult Whitening",
       summary: "Follow up on whitening interest after a completed consultation without claiming a sale.",
       trigger: "Appointment status = Completed",
@@ -991,6 +1007,7 @@
     },
     "whitening-payment": {
       number: "05",
+      journeyStep: "whitening",
       name: "Whitening Payment Update",
       summary: "Translate a confirmed whitening payment into a clean stage and retention handoff.",
       trigger: "Manual stage update or payment received",
@@ -1005,6 +1022,7 @@
     },
     "six-month-recall": {
       number: "06",
+      journeyStep: "recall",
       name: "Six-Month Recall",
       summary: "Start recall early, then send one optional text as the six-month visit approaches.",
       trigger: "Consultation completed, whitening paid, or cleaning completed",
@@ -1143,6 +1161,7 @@
 
   function renderNode(nodeId) {
     const detail = nodeDetails[nodeId] || nodeDetails.ad;
+    const journeyItem = customerJourney.find((item) => item.id === nodeId) || customerJourney[0];
     const title = document.getElementById("node-detail-title");
     const copy = document.getElementById("node-detail-copy");
     const technical = document.getElementById("node-detail-technical");
@@ -1152,25 +1171,52 @@
     if (!title || !copy || !technical || !label || !node) return;
     const index = node.querySelector(".node-index")?.textContent || "01";
     title.textContent = detail.title;
-    copy.textContent = explanationMode === "plain" ? detail.plain : detail.detail;
+    copy.textContent = explanationMode === "plain" ? journeyItem.plain : journeyItem.detail;
     technical.textContent = detail.technical;
     label.textContent = explanationMode === "plain" ? "Simple explanation" : "GHL setup shown";
     if (counter) counter.textContent = `${index.padStart(2, "0")} / ${String(document.querySelectorAll(".journey-node").length).padStart(2, "0")}`;
     const journeySignal = document.getElementById("journey-signal");
     if (journeySignal && !systemTrigger) {
-      const progress = Math.max(0, Math.min(1, (Number.parseInt(index, 10) - 1) / 9));
+      const progress = Math.max(0, Math.min(1, (Number.parseInt(index, 10) - 1) / (customerJourney.length - 1)));
       journeySignal.setAttribute("cx", String(55 + (850 * progress)));
       journeySignal.style.opacity = "0.9";
     }
     document.querySelectorAll(".journey-node").forEach((button) => {
-      button.classList.toggle("is-selected", button === node);
-      button.setAttribute("aria-pressed", String(button === node));
+      const selected = button === node;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
     });
+    const detailPanel = document.getElementById("journey-node-detail");
+    if (detailPanel) detailPanel.setAttribute("aria-labelledby", node.id);
   }
 
   function initJourney() {
-    document.querySelectorAll(".journey-node").forEach((node) => {
+    const journey = document.querySelector("[data-customer-journey]");
+    if (journey) {
+      journey.insertAdjacentHTML("beforeend", customerJourney.map((item, index) => `
+        <button id="journey-step-${item.id}" class="journey-node${index === 0 ? " is-selected" : ""}" type="button" role="tab" aria-selected="${index === 0}" aria-controls="journey-node-detail" tabindex="${index === 0 ? "0" : "-1"}" data-node="${item.id}" data-customer-journey-step>
+          <span class="node-index">${String(index + 1).padStart(2, "0")}</span>
+          <i data-lucide="${item.icon}" aria-hidden="true"></i>
+          <strong>${item.label}</strong>
+          <small>${item.short}</small>
+        </button>
+      `).join(""));
+    }
+    const nodes = Array.from(document.querySelectorAll(".journey-node"));
+    nodes.forEach((node, index) => {
       node.addEventListener("click", () => renderNode(node.dataset.node));
+      node.addEventListener("keydown", (event) => {
+        if (!["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        let next = index;
+        if (["ArrowRight", "ArrowDown"].includes(event.key)) next = (index + 1) % nodes.length;
+        if (["ArrowLeft", "ArrowUp"].includes(event.key)) next = (index - 1 + nodes.length) % nodes.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = nodes.length - 1;
+        nodes[next].focus();
+        renderNode(nodes[next].dataset.node);
+      });
     });
     document.querySelectorAll(".segment").forEach((segment) => {
       segment.addEventListener("click", () => {
@@ -1186,6 +1232,7 @@
       });
     });
     renderNode("ad");
+    refreshIcons();
   }
 
   function problemStory(id) {
@@ -1616,6 +1663,7 @@
       const element = document.getElementById(id);
       if (element) element.textContent = value;
     });
+    if (workflow.journeyStep) renderNode(workflow.journeyStep);
 
     canvas.textContent = "";
     workflow.nodes.forEach((node, nodeIndex) => {
@@ -1668,11 +1716,11 @@
     tabs.forEach((tab, index) => {
       tab.addEventListener("click", () => renderWorkflow(tab.dataset.workflow));
       tab.addEventListener("keydown", (event) => {
-        if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+        if (!["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp", "Home", "End"].includes(event.key)) return;
         event.preventDefault();
         let next = index;
-        if (event.key === "ArrowDown") next = (index + 1) % tabs.length;
-        if (event.key === "ArrowUp") next = (index - 1 + tabs.length) % tabs.length;
+        if (["ArrowRight", "ArrowDown"].includes(event.key)) next = (index + 1) % tabs.length;
+        if (["ArrowLeft", "ArrowUp"].includes(event.key)) next = (index - 1 + tabs.length) % tabs.length;
         if (event.key === "Home") next = 0;
         if (event.key === "End") next = tabs.length - 1;
         tabs[next].focus();

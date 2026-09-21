@@ -316,18 +316,11 @@
           </div>
           <div class="journey-layout">
             <div class="journey-map-stage" data-story-section>
-              <div class="journey-map-head"><span>SAM’S JOURNEY / 7 STEPS</span><span id="journey-counter">01 / 07</span></div>
-              <div class="journey-map" role="group" aria-label="Interactive customer path">
+              <div class="journey-map-head"><span>CUSTOMER JOURNEY / 9 CONNECTED STEPS</span><span id="journey-counter">01 / 09</span></div>
+              <div id="customer-journey" class="journey-map" role="tablist" aria-label="Interactive customer path" data-customer-journey>
                 <svg class="journey-svg" viewBox="0 0 960 170" aria-hidden="true"><path class="journey-svg-back" d="M55 85 H905"></path><path id="journey-draw-path" class="journey-svg-front" d="M55 85 H905" pathLength="1"></path><circle id="journey-signal" class="journey-signal" cx="55" cy="85" r="5"></circle></svg>
-                <button class="journey-node is-selected" type="button" data-node="ad"><span class="node-index">01</span><i data-lucide="megaphone" aria-hidden="true"></i><strong>Sees a Meta ad</strong><small>Sam notices the offer</small></button>
-                <button class="journey-node" type="button" data-node="page"><span class="node-index">02</span><i data-lucide="layout-template" aria-hidden="true"></i><strong>Opens the consultation page</strong><small>Sam sees what happens</small></button>
-                <button class="journey-node" type="button" data-node="form"><span class="node-index">03</span><i data-lucide="file-input" aria-hidden="true"></i><strong>Explains what is needed</strong><small>Sam asks for help</small></button>
-                <button class="journey-node" type="button" data-node="calendar"><span class="node-index">04</span><i data-lucide="calendar-check-2" aria-hidden="true"></i><strong>Chooses a consultation time</strong><small>Sam picks a visit</small></button>
-                <button class="journey-node" type="button" data-node="reminders"><span class="node-index">05</span><i data-lucide="message-circle-more" aria-hidden="true"></i><strong>Gets confirmation and reminders</strong><small>Sam knows what to do</small></button>
-                <button class="journey-node" type="button" data-node="pipeline"><span class="node-index">06</span><i data-lucide="clipboard-check" aria-hidden="true"></i><strong>Team records the visit</strong><small>The next step is saved</small></button>
-                <button class="journey-node" type="button" data-node="kpi"><span class="node-index">07</span><i data-lucide="chart-no-axes-combined" aria-hidden="true"></i><strong>Team reviews what worked</strong><small>The next check becomes clear</small></button>
               </div>
-              <div class="node-detail" aria-live="polite"><span class="detail-label" id="node-detail-label">Simple explanation</span><h3 id="node-detail-title">Sam sees the offer.</h3><p id="node-detail-copy">The page begins with a clear consultation message.</p><details class="inline-technical"><summary>Show the GHL setup</summary><code id="node-detail-technical">Source: Meta ad / UTM campaign parameters</code></details></div>
+              <div id="journey-node-detail" class="node-detail" role="tabpanel" aria-live="polite"><span class="detail-label" id="node-detail-label">Simple explanation</span><h3 id="node-detail-title">Sam sees the offer.</h3><p id="node-detail-copy">The page begins with a clear consultation message.</p><details class="inline-technical"><summary>Show the GHL setup</summary><code id="node-detail-technical">Source: Meta ad / UTM campaign parameters</code></details></div>
             </div>
           </div>
 
