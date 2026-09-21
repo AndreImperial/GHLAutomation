@@ -1,6 +1,6 @@
 # Bloom Dental Portfolio Design System
 
-**Purpose:** A public, beginner-first systems case study for marketing and data hiring managers. The site teaches the project through one fictional visitor, Sam, before exposing implementation vocabulary.
+**Purpose:** A recruiter-first martech portfolio case study for marketing and data hiring managers, with beginner explanations and complete technical evidence available on demand.
 
 **Design dials:** Variance 8/10 | Motion 8/10 | Density 4/10
 
@@ -8,24 +8,24 @@
 
 ## Experience Hierarchy
 
-The opening has one default path and one optional presentation path:
+The opening has one primary portfolio path and one optional presentation path:
 
-1. **Self-guided story:** start with the customer problem and follow the Continue links through the fix, build, outputs, measurement, and conclusion. Setup details and full documents stay optional.
-2. **45-minute team presentation:** a 25-slide, six-chapter lesson that bridges B2B analytics into DTC martech through problem, diagnosis, solution, implementation, evidence, and measurement.
+1. **Portfolio case study:** establish the project, Andre's role, scope, and simulation boundary; then let reviewers inspect the System, Build Process, Deliverables, Measurement, and Conclusion at their preferred depth.
+2. **45-minute presentation:** a 25-slide, six-chapter knowledge share that independently explains the customer problem, GHL solution, build decisions, automation, and measurement plan.
 
-The six persistent views use the audience labels The Problem, The Fix, How I Built It, What I Made, How We’d Know, and Conclusion. They map to `#problem`, `#solution`, `#build`, `#evidence`, `#measurement`, and `#conclusion`. They use one canonical five-problem story so terminology and relationships remain consistent across the website, presentation, and final learnings.
+The six persistent views are Overview, System, Build Process, Deliverables, Measurement, and Conclusion. Their canonical hashes are `#overview`, `#system`, `#build`, `#deliverables`, `#measurement`, and `#conclusion`. The `#automation` shortcut opens System at the six interactive workflow reconstructions. Previous public hashes remain aliases so older links continue to work.
 
-The page carries one visible reading path: start with the problem, follow the fix, inspect the build, open the outputs, review measurement, and finish with the conclusion. Every view has one accurate next-stop marker, while the header remains available for non-linear browsing. The contribution summary follows the first problem, so readers understand the situation before reviewing the work.
+Overview carries the recruiter scan: challenge, contribution, scope, system preview, and truth boundary. System and Build Process demonstrate reasoning and implementation. Deliverables provides complete proof. Measurement shows analytical rigor. Conclusion makes the judgment, learning, and next experiment explicit.
 
-## Beginner-First Content
+## Progressive Disclosure
 
 - The first sentence answers the human question before naming a platform object.
-- The teaching example is always Sam, a fictional visitor. Sam sees an offer, asks for help, chooses a time, gets reminders, attends, receives follow-up, and helps the team learn.
+- Sam remains a fictional visitor used when a concrete customer example makes the system easier to understand.
 - The public layer uses concrete verbs: saw, asked, booked, attended, followed up, and checked.
 - GHL is explained once in plain language: “GoHighLevel, or GHL, is a tool that keeps customer information, bookings, follow-up messages, and progress in one place.”
 - Technical vocabulary appears inside `details` disclosures, the analyst layer, the glossary, or presenter notes.
 - Each phase, document, workflow node, and measurement step uses the same order: what happened, why it matters, what I made, then technical detail.
-- The 25-slide presentation is self-contained. Audience slides teach one idea at a time; notes carry the deeper walkthrough.
+- The 25-slide presentation is optional and self-contained. Audience slides teach one idea at a time; notes carry the deeper walkthrough.
 
 ## Visual Tokens
 
@@ -61,9 +61,9 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 - The Automatic Helpers lab is an authored explanation, not a screenshot recreation. Every node exposes what it notices, what it does, why it matters, and its technical GHL location.
 - The ten phases share one teaching structure: what I needed, what I decided, what I produced, which part of Sam’s journey it improves, and the technical setup.
 - Each phase also names the problem addressed and solution delivered.
-- The eight project deliverables remain complete, hardcoded website content. Their beginner introductions appear first; full deliverables are collapsed until requested. A separate source library contains the complete discovery transcript, all seven GHL setup guides, and the original 23-message Email/SMS Sequence v2.0, including cadence tables, performance targets, and assumptions. The source library is labeled as workshop input, not proof of implementation or production approval.
+- The eight project deliverables and two filled workshop templates remain complete, hardcoded website content. The filled Business Case Intake Worksheet and KPI Scorecard are distinct from the eight final deliverables and open directly to their native website layouts. A separate source library contains the complete discovery transcript, all seven GHL setup guides, and the original 23-message Email/SMS Sequence v2.0, including cadence tables, performance targets, and assumptions. The source library is labeled as workshop input, not proof of implementation or production approval.
 - Six additional message assets fill gaps in the interactive workflow model. New form-first messages are labeled as simulation copy, adapted source copy is identified, and the older 23-message sequence remains separate so its original architecture is not confused with the final six-helper teaching model.
-- Problem selection remains consistent across the diagnostic explorer, solution detail, evidence matrix, and KPI diagnostic.
+- Journey selection remains consistent across the system map, workflow detail, deliverable relationships, and KPI diagnostic.
 
 ## Presentation Rules
 
@@ -93,9 +93,9 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 
 ## Release Checklist
 
-- [ ] The five problems and proposed solutions can be understood in roughly 90 seconds.
+- [ ] The project challenge, contribution, scope, and simulation boundary can be understood in roughly 90 seconds.
 - [ ] Presenter notes and interactive pauses support exactly 45 minutes across all 25 slides.
-- [ ] Ten phases, six workflows, and eight full deliverables are present.
+- [ ] Ten phases, six workflows, eight full deliverables, and two filled templates are present.
 - [ ] The discovery transcript, seven setup guides, and complete original 23-message sequence remain available in the source library.
 - [ ] Hashes, legacy aliases, browser history, keyboard controls, and focus restoration work.
 - [ ] 375px, 768px, 1024px, and 1440px layouts have no page-level overflow or overlap.
