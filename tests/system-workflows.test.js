@@ -10,8 +10,9 @@ test("system connects the customer journey to all six workflows", { timeout: 200
   try {
     await page.goto(`${baseUrl}/#system`, { waitUntil: "networkidle" });
     assert.equal(await page.locator("[data-customer-journey-step]").count(), 9);
-    await assert.doesNotReject(() => page.getByText("Meta ad", { exact: true }).waitFor());
-    await assert.doesNotReject(() => page.getByText("KPI review", { exact: true }).waitFor());
+    const journey = page.locator("#view-solution [data-customer-journey]");
+    await assert.doesNotReject(() => journey.getByText("Meta ad", { exact: true }).waitFor());
+    await assert.doesNotReject(() => journey.getByText("KPI review", { exact: true }).waitFor());
 
     const workflows = page.locator('#automation-workflows [role="tab"][data-workflow]');
     assert.equal(await workflows.count(), 6);
