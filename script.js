@@ -2,26 +2,37 @@
   "use strict";
 
   const views = ["problem", "solution", "build", "evidence", "measurement", "conclusion"];
-  const aliases = {
-    "": "problem",
-    problem: "problem",
-    tour: "problem",
-    "quick-tour": "problem",
-    "beginner-path": "problem",
-    solution: "solution",
-    system: "solution",
-    board: "solution",
+  const routeDefinitions = {
+    "": { view: "problem" },
+    overview: { view: "problem" },
+    system: { view: "solution" },
+    build: { view: "build" },
+    deliverables: { view: "evidence" },
+    measurement: { view: "measurement" },
+    conclusion: { view: "conclusion" },
+    automation: { view: "solution", anchor: "automation-workflows" },
+    problem: { view: "problem" },
+    tour: { view: "problem" },
+    "quick-tour": { view: "problem" },
+    "beginner-path": { view: "problem" },
+    solution: { view: "solution" },
+    board: { view: "solution" },
+    implementation: { view: "build" },
+    process: { view: "build" },
+    evidence: { view: "evidence" },
+    documents: { view: "evidence" },
+    results: { view: "measurement" },
+    learnings: { view: "conclusion" },
+    takeaways: { view: "conclusion" }
+  };
+
+  const canonicalRoutes = {
+    problem: "overview",
+    solution: "system",
     build: "build",
-    implementation: "build",
-    process: "build",
-    evidence: "evidence",
-    deliverables: "evidence",
-    documents: "evidence",
+    evidence: "deliverables",
     measurement: "measurement",
-    results: "measurement",
-    conclusion: "conclusion",
-    learnings: "conclusion",
-    takeaways: "conclusion"
+    conclusion: "conclusion"
   };
 
   const presentationChapters = [
@@ -81,7 +92,7 @@
         events: "ad_click → landing_page_view → form_submit",
         formula: "form_submit / landing_page_view",
         phases: ["01", "02", "04"],
-        evidence: ["strategy-doc", "campaign-doc", "copy-doc"],
+        evidence: ["business-case-intake", "strategy-doc", "campaign-doc", "copy-doc"],
         diagnosticKey: "capture"
       }
     },
@@ -173,7 +184,7 @@
         events: "ad_click → landing_page_view → form_submit → booking_created → show_completed",
         formula: "first material drop → evidence check → one next test",
         phases: ["09", "10"],
-        evidence: ["kpi-doc", "checklist-doc"],
+        evidence: ["kpi-scorecard", "kpi-doc", "checklist-doc"],
         diagnosticKey: "arrival"
       }
     }
@@ -215,7 +226,9 @@
     "messages-doc": "Email + SMS Sequence",
     "workflow-doc": "GHL Workflow Specification",
     "kpi-doc": "Analytics + KPI Plan",
-    "checklist-doc": "Implementation Checklist"
+    "checklist-doc": "Implementation Checklist",
+    "business-case-intake": "Filled Business Case Intake Worksheet",
+    "kpi-scorecard": "Filled KPI Scorecard"
   };
 
   const beginnerDocumentCopy = {
@@ -226,11 +239,13 @@
     "messages-doc": { label: "Follow-up messages", question: "What should Sam receive after each important moment?", why: "Useful messages help people remember, prepare, rebook, or continue.", learn: "How timing, permission, tone, and stop rules shape the messages.", journey: "Sam gets reminders and follow-up" },
     "workflow-doc": { label: "Automatic rules", question: "Which repeat tasks should happen without manual chasing?", why: "Writing each rule down makes the system easier to build and check.", learn: "How the six helpers notice events, wait, branch, act, and stop.", journey: "Sam is reminded and followed up" },
     "kpi-doc": { label: "Numbers to check", question: "How will the team know where people stop?", why: "A number is useful only when it answers a clear question.", learn: "How events, formulas, time windows, and tests turn activity into learning.", journey: "The team learns what worked" },
-    "checklist-doc": { label: "Build checklist", question: "What must be built and tested before launch?", why: "A checklist turns the plan into a repeatable review.", learn: "How to check the records, page, calendar, messages, helpers, and measurement plan.", journey: "The whole Sam journey" }
+    "checklist-doc": { label: "Build checklist", question: "What must be built and tested before launch?", why: "A checklist turns the plan into a repeatable review.", learn: "How to check the records, page, calendar, messages, helpers, and measurement plan.", journey: "The whole Sam journey" },
+    "business-case-intake": { label: "Business case intake", question: "What did we know before making the strategy?", why: "The workshop needed one reliable place for the business, offer, audience, bottleneck, goal, and voice.", learn: "How raw discovery notes become clear inputs for campaign decisions.", journey: "Before Sam sees the offer" },
+    "kpi-scorecard": { label: "KPI scorecard", question: "Where would the team enter results and compare them with the plan?", why: "A measurement plan needs a repeatable place for weekly actuals, formulas, and status checks.", learn: "How the campaign setup, eight-week tracker, and progress formulas work together.", journey: "After launch, when the team reviews what happened" }
   };
 
   function prepareDocuments() {
-    document.querySelectorAll(".native-deliverable").forEach((panel) => {
+    document.querySelectorAll(".native-deliverable, .native-filled-template").forEach((panel) => {
       if (panel.dataset.beginnerReady === "true") return;
       const documentId = panel.id.replace(/^docs-panel-/, "");
       const copy = beginnerDocumentCopy[documentId];
@@ -253,8 +268,11 @@
 
       const complete = document.createElement("details");
       complete.className = "full-document";
+      complete.open = panel.dataset.completeOpen === "true";
       const summary = document.createElement("summary");
-      summary.textContent = "Read the complete workshop document";
+      summary.textContent = panel.classList.contains("native-filled-template")
+        ? "Explore the complete filled template"
+        : "Read the complete workshop document";
       const completeBody = document.createElement("div");
       completeBody.className = "full-document-body";
       originalContent.forEach((child) => completeBody.appendChild(child));
@@ -470,7 +488,7 @@
       bullets: [
         "Ten phases describe how the system was made from discovery through simulation QA.",
         "Six reconstructed workflows expose the automation logic one node at a time.",
-        "Eight complete deliverables preserve the actual workshop content inside the website.",
+        "Eight complete deliverables and two filled templates preserve the actual workshop content inside the website.",
         "Every numeric campaign target remains labeled as projected until real traffic exists."
       ],
       transition: "With that boundary established, the next slide explains the business value of the system in one view."
@@ -563,7 +581,7 @@
       title: "Explain what the deliverables prove",
       paragraphs: [
         "The eight deliverables are not decorative attachments. Each one resolves a different implementation question. The marketing strategy explains the problem, audience, offer, positioning, and projected goals. The integrated campaign plan assigns channel roles and required assets. The funnel blueprint describes the system handoffs before configuration begins.",
-        "The landing-page copy and email plus SMS sequence define what the prospective patient sees. The workflow specification defines the triggers, conditions, waits, actions, branches, and stop logic. The analytics plan defines events, formulas, dashboard questions, and review cadence. Finally, the implementation checklist turns the design into a repeatable build and QA path. The website preserves their full content so a reviewer can inspect the decisions without downloading Markdown or relying on screenshots."
+        "The landing-page copy and email plus SMS sequence define what the prospective patient sees. The workflow specification defines the automation logic. The analytics plan and implementation checklist define measurement and QA. Two additional filled templates preserve the planning inputs before the strategy and the exact scorecard structure prepared for weekly actuals after launch."
       ],
       bullets: [
         "Strategy answers why the campaign should exist.",
@@ -1017,7 +1035,7 @@
   let activeWorkflow = "new-lead-booking";
   let activeWorkflowNode = 0;
   let presentationIndex = 0;
-  let presentationReturnHash = "#problem";
+  let presentationReturnHash = "#overview";
   let presentationPreviousFocus = null;
   let presentationNotesOpen = false;
   let presentationOutlineOpen = false;
@@ -1034,13 +1052,16 @@
       const slide = Number.isFinite(requested) ? Math.max(1, Math.min(slideCount, requested)) : 1;
       return { view: "problem", documentId: null, presentation: true, presentationIndex: slide - 1 };
     }
-    const view = aliases[parts[0]] || "problem";
+    const route = routeDefinitions[parts[0]] || routeDefinitions.overview;
+    const view = route.view;
     const documentId = parts[1] || null;
-    return { view, documentId, presentation: false, presentationIndex: 0 };
+    const anchor = route.anchor || null;
+    return { view, documentId, anchor, presentation: false, presentationIndex: 0 };
   }
 
   function writeHash(view, documentId, replace) {
-    const next = documentId ? `#${view}/${documentId}` : `#${view}`;
+    const route = canonicalRoutes[view] || canonicalRoutes.problem;
+    const next = documentId ? `#${route}/${documentId}` : `#${route}`;
     if (replace) {
       window.history.replaceState(null, "", next);
     } else if (window.location.hash !== next) {
@@ -1291,7 +1312,7 @@
         <span>${story.number} / ${story.shortLabel.toUpperCase()}</span>
         <h3>${story.simpleProblem}</h3>
         <p>${story.simpleFix}</p>
-        <div>${story.technical.evidence.map((doc) => `<a href="#evidence/${doc}">${beginnerDocumentCopy[doc]?.label || documentTitles[doc]}</a>`).join("")}</div>
+        <div>${story.technical.evidence.map((doc) => `<a href="#deliverables/${doc}">${beginnerDocumentCopy[doc]?.label || documentTitles[doc]}</a>`).join("")}</div>
       </article>`).join("")}`;
 
     const inverse = {};
@@ -1747,12 +1768,26 @@
       systemTrigger.kill();
       systemTrigger = null;
     }
-    if (options.updateUrl !== false) writeHash(nextView, nextView === "evidence" ? activeDocument : null, options.replace === true);
+    if (options.updateUrl !== false) {
+      if (options.anchor === "automation-workflows") {
+        if (options.replace === true) window.history.replaceState(null, "", "#automation");
+        else if (window.location.hash !== "#automation") window.history.pushState(null, "", "#automation");
+      } else {
+        writeHash(nextView, nextView === "evidence" ? activeDocument : null, options.replace === true);
+      }
+    }
     initMotion(nextView);
     if (options.scroll !== false) {
       window.requestAnimationFrame(() => {
         const behavior = options.replace ? "auto" : (reduceMotion() ? "auto" : "smooth");
-        if (nextView === "problem") {
+        if (options.anchor) {
+          const target = document.getElementById(options.anchor);
+          if (!target) return;
+          const scrollMargin = Number.parseFloat(window.getComputedStyle(target).scrollMarginTop) || 0;
+          const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - scrollMargin);
+          window.scrollTo({ top, behavior });
+          if (options.focus) target.focus({ preventScroll: true });
+        } else if (nextView === "problem") {
           window.scrollTo({ top: 0, behavior });
         } else {
           const target = document.getElementById(`view-${nextView}`);
@@ -2056,7 +2091,7 @@
     const alreadyOpen = document.body.classList.contains("is-presentation-open");
     if (!alreadyOpen) {
       presentationPreviousFocus = document.activeElement;
-      if (!window.location.hash.startsWith("#present")) presentationReturnHash = window.location.hash || "#problem";
+      if (!window.location.hash.startsWith("#present")) presentationReturnHash = window.location.hash || "#overview";
       overlay.hidden = false;
       overlay.setAttribute("aria-hidden", "false");
       document.body.classList.add("is-presentation-open");
@@ -2081,11 +2116,11 @@
     setPresentationOutline(false);
     setPresentationGlossary(false);
 
-    const returnHash = options.returnHash || presentationReturnHash || "#problem";
+    const returnHash = options.returnHash || presentationReturnHash || "#overview";
     if (options.updateUrl !== false && window.location.hash !== returnHash) window.history.replaceState(null, "", returnHash);
     const state = getHashState();
     if (state.documentId) activeDocument = state.documentId;
-    setView(state.view, { updateUrl: false, scroll: options.scroll !== false });
+    setView(state.view, { updateUrl: false, scroll: options.scroll !== false, anchor: state.anchor });
     if (options.restoreFocus !== false) presentationPreviousFocus?.focus?.({ preventScroll: true });
     presentationPreviousFocus = null;
   }
@@ -2101,11 +2136,11 @@
       return;
     }
     if (document.body.classList.contains("is-presentation-open")) {
-      closePresentation({ updateUrl: false, returnHash: window.location.hash || "#problem" });
+      closePresentation({ updateUrl: false, returnHash: window.location.hash || "#overview" });
       return;
     }
     if (state.documentId) activeDocument = state.documentId;
-    setView(state.view, { updateUrl: false });
+    setView(state.view, { updateUrl: false, anchor: state.anchor });
   }
 
   function initPresentation() {
@@ -2171,7 +2206,7 @@
     document.querySelector("[data-presentation-next]")?.addEventListener("click", () => {
       const last = document.querySelectorAll("[data-presentation-slide]").length - 1;
       if (presentationIndex >= last) {
-        closePresentation({ returnHash: "#solution" });
+        closePresentation({ returnHash: "#system" });
       } else {
         updatePresentation(presentationIndex + 1);
       }
@@ -2355,7 +2390,7 @@
       openPresentation(state.presentationIndex, { updateUrl: false, focus: false });
     } else {
       if (state.documentId) activeDocument = state.documentId;
-      setView(state.view, { replace: true, scroll: state.view !== "problem" });
+      setView(state.view, { replace: true, scroll: state.view !== "problem", anchor: state.anchor });
     }
     refreshIcons();
     window.setTimeout(refreshIcons, 80);
