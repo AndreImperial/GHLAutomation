@@ -263,8 +263,9 @@
       const originalContent = Array.from(content.children);
       content.textContent = "";
       const beginner = document.createElement("div");
-      beginner.className = "document-beginner-intro";
-      beginner.innerHTML = `<span class="section-label">START HERE</span><h3>${copy.label}</h3><p class="document-official-title">Official workshop document: ${officialTitle}</p><div class="document-learning-grid"><div><span>QUESTION THIS ANSWERS</span><p>${copy.question}</p></div><div><span>WHY IT WAS NEEDED</span><p>${copy.why}</p></div><div><span>WHAT YOU CAN LEARN HERE</span><p>${copy.learn}</p></div><div><span>PART OF SAM’S JOURNEY</span><p>${copy.journey}</p></div></div>`;
+      beginner.className = "document-beginner-intro artifact-introduction";
+      beginner.dataset.artifactIntroduction = "";
+      beginner.innerHTML = `<span class="section-label">PORTFOLIO EVIDENCE</span><h3>${copy.label}</h3><p class="document-official-title">Official workshop title: ${officialTitle}</p><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>${copy.question}</p></div><div><span>WHY IT WAS NEEDED</span><p>${copy.why}</p></div><div><span>WHAT TO LOOK FOR</span><p>${copy.learn}</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>${copy.journey}</p></div></div>`;
 
       const complete = document.createElement("details");
       complete.className = "full-document";
@@ -1375,12 +1376,23 @@
   function buildEvidenceMatrix() {
     const matrix = document.querySelector("[data-problem-evidence-matrix]");
     if (!matrix) return;
-    matrix.innerHTML = `<div class="evidence-matrix-heading"><span>WHICH ITEM HELPED WITH EACH STEP?</span><h3>Every part of Sam’s journey has a document behind it.</h3><p>Use this map to see why each item exists. Open a document below for the beginner guide and the full workshop content.</p></div>${problemStories.map((story) => `
-      <article data-evidence-problem="${story.id}">
-        <span>${story.number} / ${story.shortLabel.toUpperCase()}</span>
-        <h3>${story.simpleProblem}</h3>
-        <p>${story.simpleFix}</p>
-        <div>${story.technical.evidence.map((doc) => `<a href="#deliverables/${doc}">${beginnerDocumentCopy[doc]?.label || documentTitles[doc]}</a>`).join("")}</div>
+    const journeyEvidence = {
+      ad: ["business-case-intake", "strategy-doc", "campaign-doc"],
+      page: ["copy-doc", "campaign-doc"],
+      form: ["funnel-doc", "copy-doc", "workflow-doc"],
+      calendar: ["funnel-doc", "workflow-doc"],
+      reminders: ["messages-doc", "workflow-doc"],
+      consultation: ["workflow-doc", "checklist-doc"],
+      whitening: ["messages-doc", "workflow-doc"],
+      recall: ["messages-doc", "workflow-doc"],
+      kpi: ["kpi-doc", "kpi-scorecard", "checklist-doc"]
+    };
+    matrix.innerHTML = `<div class="evidence-matrix-heading"><span>PROJECT ASSET MAP</span><h3>How the project assets support the system.</h3><p>Each customer step links to the completed outputs that define its message, logic, or measurement.</p></div>${customerJourney.map((step, index) => `
+      <article data-evidence-step="${step.id}">
+        <span>${String(index + 1).padStart(2, "0")} / ${step.label.toUpperCase()}</span>
+        <h3>${step.label}</h3>
+        <p>${step.plain}</p>
+        <div>${journeyEvidence[step.id].map((doc) => `<a href="#deliverables/${doc}">${beginnerDocumentCopy[doc]?.label || documentTitles[doc]}</a>`).join("")}</div>
       </article>`).join("")}`;
 
     const inverse = {};

@@ -24,4 +24,25 @@ test("all ten phases expose portfolio summaries and technical setup", { timeout:
   }
 });
 
+test("deliverables remain complete and gain portfolio introductions", { timeout: 15000 }, async () => {
+  assert.equal((html.match(/class="document-panel native-deliverable"/g) || []).length, 8);
+  assert.equal((html.match(/class="document-panel native-filled-template"/g) || []).length, 2);
+  assert.ok(html.includes('data-workshop-source="discovery"'));
+  for (let guide = 1; guide <= 7; guide += 1) assert.ok(html.includes(`data-workshop-source="ghl-0${guide}"`));
+  assert.equal((html.match(/data-source-message=/g) || []).length, 23);
+
+  const browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  try {
+    await page.goto(`${baseUrl}/#deliverables`, { waitUntil: "networkidle" });
+    assert.equal(await page.locator("[data-artifact-introduction]").count(), 10);
+    const firstIntroduction = page.locator("[data-artifact-introduction]").first();
+    for (const label of ["WHAT THIS IS", "WHY IT WAS NEEDED", "WHAT TO LOOK FOR", "SYSTEM AREA SUPPORTED"]) {
+      await assert.doesNotReject(() => firstIntroduction.getByText(label, { exact: true }).waitFor());
+    }
+  } finally {
+    await browser.close();
+  }
+});
+
 module.exports = { html };

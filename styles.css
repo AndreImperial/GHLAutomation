@@ -2738,6 +2738,16 @@ h1 em {
   font-size: 13px;
 }
 
+.document-panel img,
+.document-panel video,
+.document-panel iframe {
+  max-width: 100%;
+}
+
+.artifact-introduction {
+  border-bottom: 1px solid var(--line-strong);
+}
+
 .document-panel .document-content {
   padding: 28px 0 0;
 }
@@ -7495,6 +7505,25 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
 
   .document-panel .table-scroll .scorecard-table {
     min-width: 780px;
+  }
+}
+
+@media (max-width: 700px) {
+  .deliverables-index {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-color: var(--line-strong) var(--surface-soft);
+  }
+
+  .deliverables-index .index-label {
+    display: none;
+  }
+
+  .doc-tab {
+    flex: 0 0 190px;
+    scroll-snap-align: start;
   }
 }
 
