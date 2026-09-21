@@ -364,6 +364,27 @@
     { name: "Test the complete journey", summary: "Walk through the whole practice build.", problems: ["attendance", "learning"], solution: "Walk through the happy path and the paths where Sam needs help.", needed: "Check the normal path and the moments where Sam needs another option.", decided: "Call the simulation complete only after routes, rules, consent, and mobile behavior are checked.", made: "The QA checklist, documented test paths, and launch dependency list.", journey: "The whole Sam journey", source: "Implementation Checklist and all seven setup guides" }
   ];
 
+  const phaseRelationships = [
+    { problem: "The campaign needed a clear diagnosis before any page or automation was built.", journeyStep: "ad", deliverables: ["business-case-intake", "strategy-doc"] },
+    { problem: "Different campaign assets could make different promises to the same person.", journeyStep: "ad", deliverables: ["strategy-doc", "campaign-doc"] },
+    { problem: "The page, form, calendar, and follow-up could become disconnected tools.", journeyStep: "page", deliverables: ["funnel-doc", "workflow-doc"] },
+    { problem: "Unclear wording could increase uncertainty at every customer step.", journeyStep: "page", deliverables: ["landing-doc", "messages-doc"] },
+    { problem: "Follow-up and reporting would fail without a shared customer record.", journeyStep: "consultation", deliverables: ["workflow-doc"] },
+    { problem: "Anonymous interest needed to become useful, consented customer context.", journeyStep: "form", deliverables: ["funnel-doc", "landing-doc"] },
+    { problem: "A completed inquiry could still end without a scheduled consultation.", journeyStep: "calendar", deliverables: ["funnel-doc", "workflow-doc"] },
+    { problem: "Manual reminders and follow-up could be late, inconsistent, or irrelevant.", journeyStep: "reminders", deliverables: ["workflow-doc", "messages-doc"] },
+    { problem: "Activity counts alone could not show where the customer journey was failing.", journeyStep: "kpi", deliverables: ["kpi-doc", "kpi-scorecard"] },
+    { problem: "A plausible design still needed repeatable checks before a real launch.", journeyStep: "kpi", deliverables: ["checklist-doc", "kpi-scorecard"] }
+  ];
+
+  phaseAnnotations.forEach((phase, index) => {
+    const relationship = phaseRelationships[index];
+    phase.problem = relationship.problem;
+    phase.journeyStep = relationship.journeyStep;
+    phase.sources = [phase.source];
+    phase.deliverables = relationship.deliverables;
+  });
+
   const kpiDiagnostics = {
     arrival: {
       label: "ARRIVAL RATE",
@@ -1391,15 +1412,26 @@
       const technicalGrid = row.querySelector(".phase-grid");
       if (!technicalGrid) return;
 
-      const beginnerGrid = document.createElement("div");
-      beginnerGrid.className = "phase-beginner-grid";
-      beginnerGrid.innerHTML = `<div><span>WHAT I NEEDED</span><p>${copy.needed}</p></div><div><span>WHAT I DECIDED</span><p>${copy.decided}</p></div><div><span>WHAT I PRODUCED</span><p>${copy.made}</p></div><div><span>PART OF SAM’S JOURNEY</span><p>${copy.journey}</p></div>`;
+      const technicalFields = Object.fromEntries(Array.from(technicalGrid.children).map((field) => [
+        field.querySelector("span")?.textContent.trim().toUpperCase(),
+        field.querySelector("p")?.textContent.trim()
+      ]));
 
-      const summary = document.createElement("div");
-      summary.className = "phase-problem-summary";
-      const problems = annotation.problems.map((id) => problemStory(id));
-      summary.innerHTML = `<div><span>WHAT THIS IMPROVES</span><p>${problems.map((story) => story.simpleFix).join(" ")}</p></div>`;
-      beginnerGrid.appendChild(summary);
+      const beginnerGrid = document.createElement("div");
+      beginnerGrid.className = "phase-beginner-grid phase-portfolio-summary";
+      beginnerGrid.innerHTML = `
+        <div data-phase-problem><span>PROBLEM ADDRESSED</span><p>${copy.problem}</p></div>
+        <div><span>INPUT USED</span><p>${technicalFields.INPUT || copy.needed}</p></div>
+        <div><span>DECISION MADE</span><p>${technicalFields.DECISION || copy.decided}</p></div>
+        <div><span>ACTIONS COMPLETED</span><p>${technicalFields["ACTIONS TAKEN"] || copy.solution}</p></div>
+        <div data-phase-output><span>OUTPUT PRODUCED</span><p>${technicalFields.OUTPUT || copy.made}</p></div>
+        <div><span>BUSINESS PURPOSE</span><p>${technicalFields["BUSINESS PURPOSE"] || copy.solution}</p></div>
+        <div data-phase-journey><span>CUSTOMER JOURNEY</span><p>${copy.journey}</p></div>`;
+
+      const relationships = document.createElement("div");
+      relationships.className = "phase-relationship-links";
+      relationships.innerHTML = `<span>SOURCE: ${copy.sources.join(" · ")}</span><span>OUTPUTS: ${copy.deliverables.map((id) => `<a href="#deliverables/${id}">${beginnerDocumentCopy[id]?.label || documentTitles[id]}</a>`).join(" · ")}</span>`;
+      beginnerGrid.appendChild(relationships);
 
       const technical = document.createElement("details");
       technical.className = "inline-technical phase-technical-setup";
@@ -1411,7 +1443,7 @@
       technical.appendChild(technicalGrid);
       const source = document.createElement("p");
       source.className = "phase-source-note";
-      source.textContent = `Source guide: ${copy.source}`;
+      source.textContent = `Source guide: ${copy.sources.join("; ")}`;
       technical.appendChild(source);
       row.append(beginnerGrid, technical);
     });
