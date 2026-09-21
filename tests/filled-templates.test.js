@@ -41,8 +41,8 @@ test("the two completed workshop templates are native, complete website sections
     await assert.doesNotReject(() => page.locator("#view-measurement").getByRole("link", { name: "Open the KPI scorecard", exact: false }).waitFor({ state: "visible" }));
 
     await page.goto(`${baseUrl}/#conclusion`, { waitUntil: "networkidle" });
-    await assert.doesNotReject(() => page.locator("#view-conclusion").getByRole("link", { name: "Open the business case intake", exact: true }).waitFor({ state: "visible" }));
-    await assert.doesNotReject(() => page.locator("#view-conclusion").getByRole("link", { name: "Open the KPI scorecard", exact: false }).waitFor({ state: "visible" }));
+    await assert.doesNotReject(() => page.locator(".conclusion-proof-nav").getByRole("link", { name: "Business case intake", exact: true }).waitFor({ state: "visible" }));
+    await assert.doesNotReject(() => page.locator(".conclusion-proof-nav").getByRole("link", { name: "KPI scorecard", exact: true }).waitFor({ state: "visible" }));
   } finally {
     await browser.close();
   }
