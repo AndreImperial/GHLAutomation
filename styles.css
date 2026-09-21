@@ -348,14 +348,14 @@ button {
   grid-template-columns: minmax(0, 0.86fr) minmax(440px, 1.14fr);
   align-items: center;
   gap: 64px;
-  min-height: min(760px, 78dvh);
+  min-height: min(760px, 82dvh);
   padding: 64px max(40px, calc((100vw - 1240px) / 2));
   border-bottom: 1px solid var(--line);
   background: var(--bg);
 }
 
 .hero-copy {
-  max-width: 580px;
+  max-width: 720px;
 }
 
 .hero-status {
@@ -404,7 +404,7 @@ h1 {
   max-width: 640px;
   margin-bottom: 22px;
   color: var(--ivory);
-  font-size: 64px;
+  font-size: 58px;
   line-height: 0.98;
 }
 
@@ -414,11 +414,34 @@ h1 em {
 }
 
 .hero-lede {
-  max-width: 480px;
-  margin-bottom: 28px;
+  max-width: 620px;
+  margin-bottom: 20px;
   color: var(--ivory-soft);
   font-size: 17px;
   line-height: 1.65;
+}
+
+.hero-role {
+  display: grid;
+  gap: 6px;
+  max-width: 620px;
+  margin-bottom: 24px;
+  padding: 13px 0 13px 16px;
+  border-left: 2px solid var(--mint);
+}
+
+.hero-role span {
+  color: var(--mint);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.hero-role strong {
+  color: var(--ivory-soft);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 .hero-actions {
@@ -611,7 +634,7 @@ h1 em {
 
 .orientation-strip {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   border-bottom: 1px solid var(--line);
 }
 
@@ -624,7 +647,7 @@ h1 em {
   border-right: 1px solid var(--line);
 }
 
-.orientation-strip > div:nth-child(3n) {
+.orientation-strip > div:last-child {
   border-right: 0;
 }
 
@@ -634,6 +657,38 @@ h1 em {
   font-weight: 700;
 }
 
+.orientation-workflow a {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--ivory);
+  text-decoration: none;
+}
+
+.orientation-workflow a strong {
+  transition: color 180ms ease;
+}
+
+.orientation-workflow a svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  color: var(--mint);
+  transition: transform 180ms ease;
+}
+
+.orientation-workflow a:hover strong,
+.orientation-workflow a:focus-visible strong {
+  color: var(--mint);
+}
+
+.orientation-workflow a:hover svg,
+.orientation-workflow a:focus-visible svg {
+  transform: translateX(4px);
+}
+
 .contribution-section {
   display: grid;
   grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
@@ -641,6 +696,15 @@ h1 em {
   padding: 74px max(40px, calc((100vw - 1240px) / 2));
   border-bottom: 1px solid var(--line);
   background: var(--bg-deep);
+}
+
+.contribution-section-primary {
+  padding-top: 66px;
+  padding-bottom: 66px;
+}
+
+.contribution-section-primary .contribution-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .view-panel .contribution-section {
@@ -1073,6 +1137,64 @@ h1 em {
   text-align: right;
 }
 
+.template-crosslinks {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 34px;
+  align-items: center;
+  margin: 54px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.template-crosslinks > div:first-child span {
+  color: var(--amber);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+}
+
+.template-crosslinks > div:first-child strong {
+  display: block;
+  max-width: 62ch;
+  margin-top: 7px;
+  color: var(--ivory);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.template-crosslinks > div:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px 22px;
+}
+
+.template-crosslinks a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  color: var(--mint);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(169, 215, 183, 0.4);
+  text-underline-offset: 4px;
+}
+
+.template-crosslinks a:hover,
+.template-crosslinks a:focus-visible {
+  color: var(--ivory);
+  text-decoration-color: var(--coral);
+}
+
+.template-crosslinks a svg {
+  width: 16px;
+  height: 16px;
+}
+
 .guided-next {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -1340,6 +1462,12 @@ h1 em {
 
 .workflow-lab-rebuilt {
   border-top: 1px solid var(--line-strong);
+  scroll-margin-top: 7rem;
+}
+
+#automation-workflows:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 8px;
 }
 
 .workflow-lab-intro {
@@ -2481,6 +2609,13 @@ h1 em {
   color: var(--muted-dark);
 }
 
+.index-label-secondary {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--amber);
+}
+
 .doc-tab {
   display: grid;
   grid-template-columns: 32px minmax(0, 1fr);
@@ -2513,6 +2648,10 @@ h1 em {
 
 .doc-tab.is-active span {
   color: var(--coral);
+}
+
+.doc-tab-template span {
+  color: var(--amber);
 }
 
 .deliverable-outlet {
@@ -2767,6 +2906,164 @@ h1 em {
 .document-panel td {
   color: var(--muted);
   font-size: 12px;
+}
+
+.filled-template-content {
+  counter-reset: filled-template-section;
+}
+
+.template-instruction {
+  max-width: 72ch;
+  margin: 14px 0 34px;
+  color: var(--ivory-soft) !important;
+}
+
+.worksheet-section,
+.scorecard-sheet {
+  padding: 30px 0;
+  border-top: 1px solid var(--line-strong);
+}
+
+.worksheet-section > header,
+.scorecard-sheet-heading {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 22px;
+}
+
+.worksheet-section > header > span,
+.scorecard-sheet-heading > span {
+  color: var(--coral);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.worksheet-section > header h4,
+.scorecard-sheet-heading h4 {
+  margin: 0 0 4px;
+  color: var(--ivory);
+  font-family: var(--body);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.worksheet-section > header p,
+.scorecard-sheet-heading p {
+  margin: 0;
+}
+
+.worksheet-compare {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(240px, 0.75fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.worksheet-compare > div {
+  min-width: 0;
+  padding: 20px 22px 22px 0;
+}
+
+.worksheet-compare > div + div {
+  padding-right: 0;
+  padding-left: 22px;
+  border-left: 1px solid var(--line);
+}
+
+.worksheet-compare > div > span,
+.projected-label {
+  color: var(--amber);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.worksheet-compare dl,
+.scorecard-meta {
+  margin: 12px 0 0;
+}
+
+.worksheet-compare dl > div,
+.scorecard-meta > div {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.7fr) minmax(0, 1.3fr);
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.worksheet-compare dt,
+.scorecard-meta dt {
+  color: var(--muted-dark);
+  font-family: var(--mono);
+  font-size: 9px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.worksheet-compare dd,
+.scorecard-meta dd {
+  margin: 0;
+  color: var(--ivory-soft);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.template-boundary {
+  margin: 20px 0 0 !important;
+  padding: 16px 18px;
+  border: 1px solid rgba(232, 189, 112, 0.42);
+  color: var(--amber) !important;
+}
+
+.scorecard-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 28px;
+  margin-bottom: 24px;
+}
+
+.scorecard-meta > div {
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-color: var(--line-strong) var(--bg-deep);
+}
+
+.table-scroll:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 4px;
+}
+
+.document-panel .table-scroll .scorecard-table {
+  display: table;
+  min-width: 860px;
+  margin: 0;
+}
+
+.scorecard-table code {
+  color: var(--mint);
+  white-space: nowrap;
+}
+
+.scorecard-table tfoot th,
+.scorecard-table tfoot td {
+  border-top-color: var(--mint);
+  background: rgba(169, 215, 183, 0.05);
+}
+
+.projected-label {
+  display: block;
+  margin-bottom: 4px;
 }
 
 .document-panel blockquote,
@@ -3759,7 +4056,7 @@ body.motion-enhanced [data-reveal].is-inview {
   }
 
   h1 {
-    font-size: 62px;
+    font-size: 52px;
   }
 
   .view-panel {
@@ -7131,6 +7428,48 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
   .message-template-meta {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+}
+
+@media (max-width: 720px) {
+  .template-crosslinks {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .template-crosslinks > div:last-child {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .worksheet-section > header,
+  .scorecard-sheet-heading {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .worksheet-compare,
+  .scorecard-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .worksheet-compare > div {
+    padding: 18px 0;
+  }
+
+  .worksheet-compare > div + div {
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .worksheet-compare dl > div {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .document-panel .table-scroll .scorecard-table {
+    min-width: 780px;
   }
 }
 
