@@ -2615,7 +2615,63 @@ h1 em {
   font-size: 11px;
 }
 
+.filled-template-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 42px;
+}
+
+.filled-template-links a {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-height: 168px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  color: var(--ivory);
+  text-decoration: none;
+}
+
+.filled-template-links a:hover,
+.filled-template-links a:focus-visible {
+  border-color: var(--mint);
+  background: var(--surface-soft);
+}
+
+.filled-template-links span {
+  color: var(--amber);
+  font: 10px var(--mono);
+}
+
+.filled-template-links strong {
+  font-size: 17px;
+}
+
+.filled-template-links small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.filled-template-links em {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  color: var(--mint);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.filled-template-links svg {
+  width: 15px;
+  height: 15px;
+}
+
 .deliverables-layout {
+  scroll-margin-top: calc(var(--header-height) + 24px);
   display: grid;
   grid-template-columns: 270px minmax(0, 1fr);
   align-items: start;
@@ -2687,6 +2743,7 @@ h1 em {
   display: block;
   min-width: 0;
   padding: 34px;
+  scroll-margin-top: calc(var(--header-height) + 24px);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface-soft);
@@ -4504,6 +4561,11 @@ body.motion-enhanced [data-reveal].is-inview {
   .deliverables-layout {
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+
+  .filled-template-links {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .deliverables-index {

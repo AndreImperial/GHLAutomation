@@ -21,7 +21,7 @@
     <link rel="canonical" href="https://ghlautomation.onrender.com/">
     <title>Bloom Dental Studio | Martech Portfolio Case Study</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=20260923-showcase">
+    <link rel="stylesheet" href="styles.css?v=20260923-templates">
   </head>
   <body>
     <a class="skip-link" href="#case-study">Skip to case study</a>
@@ -406,8 +406,11 @@
 
         <section id="view-evidence" class="view-panel" role="tabpanel" aria-labelledby="tab-evidence" data-view-panel="evidence" hidden>
           <div class="view-heading" data-reveal><div><span class="section-label">WHAT I MADE</span><h2>Open every deliverable and filled template.</h2></div><p>The site contains eight completed project documents and two filled workshop templates. Everything is rebuilt as readable website content, not a file preview.</p></div>
-          <section class="evidence-matrix" aria-label="Which item helped with each step" data-problem-evidence-matrix data-reveal></section>
-          <div class="deliverables-layout">
+          <nav class="filled-template-links" aria-label="Open filled workshop templates">
+            <a href="#deliverables/business-case-intake"><span>T1 / FILLED WORKSHOP TEMPLATE</span><strong>Business Case Intake Worksheet</strong><small>The completed brief and discovery inputs behind the strategy.</small><em>Open filled business case intake <i data-lucide="arrow-up-right" aria-hidden="true"></i></em></a>
+            <a href="#deliverables/kpi-scorecard"><span>T2 / FILLED WORKSHOP TEMPLATE</span><strong>KPI Scorecard</strong><small>The completed campaign setup, weekly tracker, and dashboard formulas.</small><em>Open filled KPI scorecard <i data-lucide="arrow-up-right" aria-hidden="true"></i></em></a>
+          </nav>
+          <div id="deliverables-layout" class="deliverables-layout">
             <aside class="deliverables-index" role="tablist" aria-orientation="vertical" aria-label="Workshop deliverables and filled templates">
               <span class="index-label" role="presentation">8 COMPLETE DELIVERABLES</span>
               <button id="new-doc-tab-strategy-doc" class="doc-tab is-active" type="button" role="tab" aria-controls="docs-panel-strategy-doc" data-doc="strategy-doc" aria-selected="true" tabindex="0"><span>01</span>Campaign reasoning</button>
@@ -1629,6 +1632,7 @@
             </div>
           </article>
           </div></div>
+          <section class="evidence-matrix" aria-label="Which item helped with each step" data-problem-evidence-matrix data-reveal></section>
           <section id="workshop-source-library" class="workshop-source-library" aria-labelledby="workshop-source-library-title">
             <div class="source-library-heading">
               <span class="section-label">WORKSHOP SOURCE MATERIAL</span>
@@ -2962,7 +2966,7 @@
     <script src="assets/vendor/lucide-0.468.0.min.js" defer></script>
     <script src="assets/vendor/gsap-3.12.5.min.js" defer></script>
     <script src="assets/vendor/ScrollTrigger-3.12.5.min.js" defer></script>
-    <script src="script.js?v=20260923-showcase" defer></script>
+    <script src="script.js?v=20260923-templates" defer></script>
   </body>
 </html>
 

@@ -2241,7 +2241,8 @@
       return;
     }
     if (state.documentId) activeDocument = state.documentId;
-    setView(state.view, { updateUrl: false, anchor: state.anchor });
+    const documentAnchor = state.view === "evidence" && state.documentId ? `docs-panel-${state.documentId}` : null;
+    setView(state.view, { updateUrl: false, anchor: state.anchor || documentAnchor });
   }
 
   function initPresentation() {
@@ -2402,7 +2403,7 @@
     documentTabs.forEach((button, index) => {
       button.addEventListener("click", () => {
         activateDocument(button.dataset.doc, true);
-        setView("evidence", { updateUrl: false, scroll: true });
+        setView("evidence", { updateUrl: false, anchor: `docs-panel-${button.dataset.doc}` });
       });
       button.addEventListener("keydown", (event) => {
         if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
@@ -2414,7 +2415,7 @@
         if (event.key === "End") next = documentTabs.length - 1;
         documentTabs[next].focus();
         activateDocument(documentTabs[next].dataset.doc, true);
-        setView("evidence", { updateUrl: false, scroll: true });
+        setView("evidence", { updateUrl: false, anchor: "deliverables-layout" });
       });
     });
 

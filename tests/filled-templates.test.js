@@ -4,6 +4,27 @@ const { chromium } = require("playwright");
 
 const baseUrl = process.env.BASE_URL || "http://127.0.0.1:4173";
 
+test("filled templates are immediately discoverable in Deliverables", { timeout: 20000 }, async () => {
+  const browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  try {
+    await page.goto(`${baseUrl}/#deliverables`, { waitUntil: "networkidle" });
+    const entry = page.getByRole("link", { name: /open filled business case intake/i });
+    const scorecard = page.getByRole("link", { name: /open filled kpi scorecard/i });
+    await assert.doesNotReject(() => entry.waitFor({ state: "visible" }));
+    await assert.doesNotReject(() => scorecard.waitFor({ state: "visible" }));
+    assert.ok((await entry.boundingBox()).y < 900);
+    assert.ok((await scorecard.boundingBox()).y < 900);
+    await entry.click();
+    await assert.doesNotReject(() => page.locator("#docs-panel-business-case-intake").waitFor({ state: "visible" }));
+    assert.equal(await page.locator("#docs-panel-business-case-intake .full-document").getAttribute("open"), "");
+    await page.waitForTimeout(700);
+    assert.ok((await page.locator("#docs-panel-business-case-intake").boundingBox()).y < 900);
+  } finally {
+    await browser.close();
+  }
+});
+
 test("the two completed workshop templates are native, complete website sections", { timeout: 20000 }, async () => {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
