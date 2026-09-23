@@ -2,7 +2,7 @@
 
 A dark, static portfolio case study showing how a consultation funnel, GoHighLevel automation system, and measurement plan were designed for the Fast Track Workshop simulation.
 
-The public site leads with Andre's contribution and the complete customer system. Beginner explanations make the work easy to follow, while technical reviewers can inspect all workflows, phases, deliverables, filled templates, source guides, formulas, and QA decisions.
+The public site leads with the actual five-phase workshop process, Andre's contribution, the nine GHL build areas, and what testing revealed. A fictional customer example is available as optional context. Reviewers can inspect the complete workflows, deliverables, filled templates, source guides, formulas, and QA decisions.
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https%3A%2F%2Fgithub.com%2FAndreImperial%2FGHLAutomation)
 
@@ -12,10 +12,10 @@ The public site leads with Andre's contribution and the complete customer system
 
 ## Portfolio Flow
 
-- `#overview`: project challenge, role, contribution, scope, and simulation boundary.
+- `#overview`: the five workshop phases, nine hands-on GHL build areas, contribution, test findings, and simulation boundary.
 - `#system`: nine-step customer journey and six interactive workflow reconstructions.
 - `#automation`: direct shortcut to the workflow lab inside System.
-- `#build`: ten chronological phases with decisions, actions, outputs, purpose, and technical setup.
+- `#build`: ten detailed steps expanding the original five workshop phases, with decisions, actions, outputs, purpose, and technical setup.
 - `#deliverables`: eight complete deliverables, two filled templates, and the full workshop source library.
 - `#deliverables/business-case-intake`: completed Business Case Intake Worksheet.
 - `#deliverables/kpi-scorecard`: completed KPI Scorecard and dashboard structure.
@@ -27,7 +27,8 @@ Legacy links remain supported, including `#problem`, `#tour`, `#solution`, `#boa
 
 ## Complete Content Inventory
 
-- 10 start-to-finish build phases.
+- 5 original workshop phases, expanded into 10 detailed build steps for the website.
+- 9 GHL build areas from the completed workshop checklist.
 - 6 interactive automation workflows with inspectable nodes.
 - 8 complete final deliverables rendered as native website content.
 - 2 completed workshop templates rendered as native website content.
@@ -76,4 +77,4 @@ The suite checks content completeness, canonical and legacy routes, workflow int
 
 ## Truth Boundary
 
-This is a completed workshop simulation, not a live client campaign. `10/10` means the documented simulation build is complete. The campaign was not launched, so `60 bookings in 60 days`, `below 15% no-show rate`, and `40% whitening attach rate` are projected goals. Sender-domain setup, live ads, production compliance review, clinic process validation, and real campaign data remain launch dependencies.
+This is a completed workshop simulation, not a live client campaign. `10/10` refers to the documented ten-step website walkthrough, not ten original workshop phases or production readiness. Form and calendar behavior were exercised, and workflow execution logs were inspected. The confirmation email action queued, but delivery failed in the workshop account; sender setup and a fresh delivery test remain open. The campaign was not launched, so `60 bookings in 60 days`, `below 15% no-show rate`, and `40% whitening attach rate` are projected goals. Live ads, production compliance review, clinic process validation, and real campaign data also remain launch dependencies.

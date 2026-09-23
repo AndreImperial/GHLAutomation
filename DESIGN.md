@@ -15,12 +15,12 @@ The opening has one primary portfolio path and one optional presentation path:
 
 The six persistent views are Overview, System, Build Process, Deliverables, Measurement, and Conclusion. Their canonical hashes are `#overview`, `#system`, `#build`, `#deliverables`, `#measurement`, and `#conclusion`. The `#automation` shortcut opens System at the six interactive workflow reconstructions. Previous public hashes remain aliases so older links continue to work.
 
-Overview carries the recruiter scan: challenge, contribution, scope, system preview, and truth boundary. System and Build Process demonstrate reasoning and implementation. Deliverables provides complete proof. Measurement shows analytical rigor. Conclusion makes the judgment, learning, and next experiment explicit.
+Overview carries the recruiter scan: the actual five-phase workshop process, nine GHL build areas, contribution, test findings, and truth boundary. System and Build Process demonstrate reasoning and implementation. The ten website build steps expand the original five phases; they are not a replacement for the workshop structure. Deliverables provides complete proof. Measurement shows analytical rigor. Conclusion makes the judgment, learning, and next experiment explicit.
 
 ## Progressive Disclosure
 
 - The first sentence answers the human question before naming a platform object.
-- Sam remains a fictional visitor used when a concrete customer example makes the system easier to understand.
+- Sam remains a fictional visitor in an optional teaching layer, not the lead story of the project showcase.
 - The public layer uses concrete verbs: saw, asked, booked, attended, followed up, and checked.
 - GHL is explained once in plain language: “GoHighLevel, or GHL, is a tool that keeps customer information, bookings, follow-up messages, and progress in one place.”
 - Technical vocabulary appears inside `details` disclosures, the analyst layer, the glossary, or presenter notes.
@@ -59,7 +59,7 @@ Dark mode is the only theme. Avoid purple, cyan-neon styling, gradients, decorat
 - Use 6px radii, thin borders, visible focus, and minimum 44px interactive targets.
 - Top-level navigation and nested document/KPI controls use ARIA tabs and keyboard arrows.
 - The Automatic Helpers lab is an authored explanation, not a screenshot recreation. Every node exposes what it notices, what it does, why it matters, and its technical GHL location.
-- The ten phases share one teaching structure: what I needed, what I decided, what I produced, which part of Sam’s journey it improves, and the technical setup.
+- The five workshop phases are the primary process narrative. The ten detailed build steps retain their teaching structure: what I needed, what I decided, what I produced, which part of the customer journey it improves, and the technical setup.
 - Each phase also names the problem addressed and solution delivered.
 - The eight project deliverables and two filled workshop templates remain complete, hardcoded website content. The filled Business Case Intake Worksheet and KPI Scorecard are distinct from the eight final deliverables and open directly to their native website layouts. A separate source library contains the complete discovery transcript, all seven GHL setup guides, and the original 23-message Email/SMS Sequence v2.0, including cadence tables, performance targets, and assumptions. The source library is labeled as workshop input, not proof of implementation or production approval.
 - Six additional message assets fill gaps in the interactive workflow model. New form-first messages are labeled as simulation copy, adapted source copy is identified, and the older 23-message sequence remains separate so its original architecture is not confused with the final six-helper teaching model.

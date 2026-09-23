@@ -2393,7 +2393,7 @@
         event.preventDefault();
         setView("problem", { scroll: false });
         window.requestAnimationFrame(() => {
-          document.getElementById("view-problem")?.scrollIntoView({ block: "start", behavior: reduceMotion() ? "auto" : "smooth" });
+          document.getElementById("project-work")?.scrollIntoView({ block: "start", behavior: reduceMotion() ? "auto" : "smooth" });
         });
       });
     });

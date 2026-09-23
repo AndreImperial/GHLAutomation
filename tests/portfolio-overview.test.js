@@ -11,13 +11,17 @@ test("overview presents the project and Andre's contribution before deep detail"
     await page.goto(`${baseUrl}/#overview`, { waitUntil: "networkidle" });
     await assert.doesNotReject(() => page.getByRole("heading", { name: /consultation funnel.*automation system/i }).waitFor());
     await assert.doesNotReject(() => page.locator(".hero-status").getByText(/workshop simulation/i).waitFor());
-    await assert.doesNotReject(() => page.getByText(/10 phases/i).first().waitFor());
+    await assert.doesNotReject(() => page.getByText(/5 phases/i).first().waitFor());
     await assert.doesNotReject(() => page.getByText(/6 workflows/i).first().waitFor());
+    assert.equal(await page.locator("#project-work .project-phase-list > li").count(), 5);
+    assert.equal(await page.locator(".ghl-build-list > div").count(), 9);
+    await assert.doesNotReject(() => page.getByText(/email actions queued, but delivery failed/i).waitFor());
+    assert.equal(await page.locator(".teaching-layer").getAttribute("open"), null);
     await assert.doesNotReject(() => page.getByRole("heading", { name: "My Contribution" }).waitFor());
     for (const phrase of ["Discovery synthesis", "Workflow architecture", "Measurement design", "Simulation QA"]) {
       await assert.doesNotReject(() => page.locator(".contribution-section-primary").getByText(phrase, { exact: false }).waitFor());
     }
-    await assert.doesNotReject(() => page.getByRole("link", { name: /explore the system/i }).waitFor());
+    await assert.doesNotReject(() => page.getByRole("link", { name: /see the project work/i }).waitFor());
     await assert.doesNotReject(() => page.getByRole("button", { name: /present/i }).first().waitFor());
   } finally {
     await browser.close();

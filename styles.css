@@ -7722,6 +7722,232 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
   }
 }
 
+.project-work,
+.ghl-build-record,
+.project-test-record {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-work {
+  padding-top: 10px;
+  scroll-margin-top: calc(var(--header-height) + 24px);
+}
+
+.project-work-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.75fr);
+  column-gap: 36px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.project-work-intro .section-label {
+  grid-column: 1 / -1;
+}
+
+.project-work-intro h2,
+.project-test-record h2 {
+  max-width: 700px;
+  margin: 10px 0 0;
+  color: var(--ivory);
+  font-family: var(--display);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.project-work-intro p {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.project-phase-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.project-phase-list > li {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 22px;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-phase-number,
+.ghl-build-list > div > span {
+  color: var(--mint);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+.project-phase-list h3 {
+  margin-bottom: 8px;
+  color: var(--ivory);
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.project-phase-list p {
+  max-width: 75ch;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.project-phase-links,
+.ghl-build-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 22px;
+}
+
+.project-phase-links a,
+.ghl-build-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--mint);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.project-phase-links a:hover,
+.project-phase-links a:focus-visible,
+.ghl-build-links a:hover,
+.ghl-build-links a:focus-visible {
+  color: var(--ivory);
+}
+
+.ghl-build-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.ghl-build-list > div {
+  min-width: 0;
+  padding: 22px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.ghl-build-list strong {
+  display: block;
+  margin: 10px 0 7px;
+  color: var(--ivory);
+  font-size: 15px;
+}
+
+.ghl-build-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.ghl-build-list code {
+  color: var(--mint);
+  font-family: var(--mono);
+}
+
+.ghl-build-links {
+  margin-top: 16px;
+}
+
+.project-test-record {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 10px 42px;
+}
+
+.project-test-record .section-label {
+  grid-column: 1 / -1;
+}
+
+.project-test-record h2 {
+  margin: 0;
+}
+
+.project-test-record p {
+  padding: 0 0 14px;
+  margin: 0 0 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.project-test-record strong {
+  color: var(--ivory);
+}
+
+.teaching-layer {
+  margin-top: 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+.teaching-layer > summary {
+  display: flex;
+  align-items: center;
+  min-height: 54px;
+  color: var(--mint);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.teaching-layer > summary:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+}
+
+@media (max-width: 800px) {
+  .project-work-intro,
+  .project-test-record {
+    grid-template-columns: 1fr;
+  }
+
+  .project-work-intro p {
+    margin-top: 14px;
+  }
+
+  .ghl-build-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 540px) {
+  .project-work,
+  .ghl-build-record,
+  .project-test-record {
+    padding: 38px 0;
+  }
+
+  .project-work-intro h2,
+  .project-test-record h2 {
+    font-size: 34px;
+  }
+
+  .project-phase-list > li {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .ghl-build-list {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media print {
   .redesign-header,
   .hero-actions,
