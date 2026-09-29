@@ -1,8 +1,10 @@
 # Bloom Dental Studio: Consultation Funnel & GHL Automation
 
-**Case study by Andre Imperial** · [View the live site](https://ghlautomation.onrender.com/) · [Browse the deliverables](deliverables/)
+**Case study by Andre Imperial** · [View the live site](https://ghlautomation.onrender.com/) · [Browse the deliverables](deliverables/) · [Email me](mailto:imperial.andrejoseece@gmail.com)
 
-I took a dental clinic brief from discovery to a tested GoHighLevel (GHL) build: strategy, campaign assets, a CRM pipeline, six automation workflows, and a measurement plan. This was a workshop simulation from the Libre Academy Fast Track Workshop. Bloom Dental Studio is a fictional clinic, and the campaign was never launched, so every performance figure here is a projected goal.
+[![The Bloom Dental consultation system: one customer path from Meta ad to consultation, with whitening, recall, and no-show branches and six workflows](assets/og-bloom-dental.png)](https://ghlautomation.onrender.com/)
+
+I took a dental clinic brief from discovery to a partly tested GoHighLevel (GHL) build: strategy, campaign assets, a CRM pipeline, six specified automation workflows, and a measurement plan. This was a workshop simulation from the Libre Academy Fast Track Workshop. Bloom Dental Studio is a fictional clinic, and the campaign was never launched, so every performance figure here is a projected goal.
 
 ## The problem
 
@@ -46,6 +48,10 @@ All eight deliverables and both filled templates are in [`deliverables/`](delive
 ## Credits
 
 Built from the Libre Academy Fast Track Workshop brief and materials. The academy's guides are republished on the site with permission.
+
+## Contact
+
+Andre Imperial · [imperial.andrejoseece@gmail.com](mailto:imperial.andrejoseece@gmail.com)
 
 ---
 

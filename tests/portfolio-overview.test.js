@@ -18,10 +18,13 @@ test("overview presents the project and Andre's contribution before deep detail"
     await assert.doesNotReject(() => page.getByText(/email actions queued, but delivery failed/i).waitFor());
     assert.equal(await page.locator(".at-a-glance article").count(), 3);
     assert.equal(await page.locator("#view-problem [data-problem-explorer]").count(), 0);
-    await assert.doesNotReject(() => page.getByRole("heading", { name: "My Contribution" }).waitFor());
+    await assert.doesNotReject(() => page.getByRole("heading", { name: /my work, phase by phase/i }).waitFor());
     for (const phrase of ["Discovery synthesis", "Workflow architecture", "Measurement design", "Simulation QA"]) {
-      await assert.doesNotReject(() => page.locator(".contribution-section-primary").getByText(phrase, { exact: false }).waitFor());
+      await assert.doesNotReject(() => page.locator("#project-work .project-phase-role").getByText(phrase, { exact: false }).first().waitFor());
     }
+    const ledgerTop = await page.locator(".project-verification").evaluate((element) => element.getBoundingClientRect().top + window.scrollY);
+    const phasesTop = await page.locator("#project-work").evaluate((element) => element.getBoundingClientRect().top + window.scrollY);
+    assert.ok(ledgerTop < phasesTop, "The verification ledger should come before the phase detail");
     await assert.doesNotReject(() => page.getByRole("link", { name: /see the project work/i }).waitFor());
     await assert.doesNotReject(() => page.getByRole("button", { name: /present/i }).first().waitFor());
   } finally {

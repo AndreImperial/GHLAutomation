@@ -1980,8 +1980,18 @@
     }
   }
 
+  const viewTitles = {
+    problem: "Andre Imperial | GHL Consultation Funnel & Automation Case Study",
+    solution: "System · Andre Imperial, GHL automation case study",
+    build: "Build process · Andre Imperial, GHL automation case study",
+    measurement: "Measurement · Andre Imperial, GHL automation case study",
+    conclusion: "Conclusion · Andre Imperial, GHL automation case study",
+    evidence: "Deliverables · Andre Imperial, GHL automation case study"
+  };
+
   function applyView(nextView, options = {}) {
     activeView = nextView;
+    document.title = viewTitles[nextView] || viewTitles.problem;
     document.querySelectorAll("[data-view-panel]").forEach((panel) => {
       panel.hidden = panel.dataset.viewPanel !== nextView;
       panel.classList.toggle("is-active", panel.dataset.viewPanel === nextView);
@@ -2539,7 +2549,7 @@
         event.preventDefault();
         setView("problem", { scroll: false });
         window.requestAnimationFrame(() => {
-          document.getElementById("project-work")?.scrollIntoView({ block: "start", behavior: reduceMotion() ? "auto" : "smooth" });
+          document.getElementById("at-a-glance")?.scrollIntoView({ block: "start", behavior: reduceMotion() ? "auto" : "smooth" });
         });
       });
     });
