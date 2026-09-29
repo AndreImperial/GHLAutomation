@@ -1,0 +1,12 @@
+{
+  "name": "ghl-automation-portfolio",
+  "private": true,
+  "description": "Andre Imperial's Bloom Dental consultation funnel and GoHighLevel automation case study (static site).",
+  "scripts": {
+    "serve": "python -m http.server 4173 --bind 127.0.0.1",
+    "test": "node --check script.js && node --test --test-concurrency=1 tests/*.test.js"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

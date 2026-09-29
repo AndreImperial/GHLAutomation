@@ -2,3 +2,6 @@
 Thumbs.db
 desktop.ini
 .codex/
+.impeccable/
+.superpowers/
+node_modules/

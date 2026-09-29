@@ -83,14 +83,16 @@ Legacy links (`#problem`, `#tour`, `#solution`, `#board`, `#implementation`, `#p
 
 ### Tests
 
-The browser tests use Playwright and Node's test runner, against a local server on port 4173:
+The browser tests use Playwright and Node's test runner against a local server on port 4173. Playwright is only needed for testing; the site itself has no dependencies.
 
 ```powershell
-node --check script.js
-node --test --test-concurrency=1 tests/*.test.js
+npm install
+npx playwright install chromium
+npm run serve    # in a second terminal
+npm test
 ```
 
-They cover content completeness, routes, workflow interactions, responsive overflow, ARIA relationships, reduced motion, presentation timing, and keyboard focus.
+They cover content completeness, routes, workflow interactions, responsive overflow, ARIA relationships, reduced motion, presentation timing, and keyboard focus. Integrity tests also fail on links to missing deliverables, rendered "undefined", projected figures without a projected/goal label, undefined CSS custom properties, new dated CSS patch sections, headings rewritten by JavaScript, and slides without their own presenter notes.
 
 ### Editing notes
 
