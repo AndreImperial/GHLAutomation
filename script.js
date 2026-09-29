@@ -1858,8 +1858,9 @@
     if (!window.gsap || reduceMotion()) return;
     window.gsap.from(".hero-copy > *", { y: 18, opacity: 0, duration: 0.55, stagger: 0.07, ease: "power2.out" });
     window.gsap.from(".hero-scene", { y: 20, opacity: 0, duration: 0.7, delay: 0.16, ease: "power2.out" });
-    window.gsap.fromTo(".scene-path-front", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.6, delay: 0.25, ease: "power2.out" });
-    window.gsap.from(".scene-node", { scale: 0.76, transformOrigin: "center", opacity: 0, duration: 0.45, stagger: 0.12, delay: 0.3, ease: "back.out(1.4)" });
+    window.gsap.fromTo(".scene-segment:not([data-wf=\"no-show-recovery\"])", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, stagger: 0.12, delay: 0.3, ease: "power1.inOut" });
+    window.gsap.from(".scene-node", { scale: 0.6, transformOrigin: "center", opacity: 0, duration: 0.4, stagger: 0.1, delay: 0.3, ease: "back.out(1.6)" });
+    window.gsap.from(".scene-badge", { opacity: 0, y: 6, duration: 0.35, stagger: 0.08, delay: 1.3, ease: "power2.out" });
   }
 
   function initMotion(view) {
@@ -2405,6 +2406,25 @@
         if (!views.includes(view)) return;
         event.preventDefault();
         setView(view);
+      });
+    });
+
+    const heroScene = document.querySelector(".hero-scene");
+    document.querySelectorAll("[data-workflow-link]").forEach((link) => {
+      const workflowId = link.dataset.workflowLink;
+      const highlight = (on) => {
+        heroScene?.classList.toggle("is-highlighting", on);
+        heroScene?.querySelectorAll(`[data-wf="${workflowId}"]`).forEach((part) => part.classList.toggle("is-highlighted", on));
+      };
+      link.addEventListener("mouseenter", () => highlight(true));
+      link.addEventListener("mouseleave", () => highlight(false));
+      link.addEventListener("focus", () => highlight(true));
+      link.addEventListener("blur", () => highlight(false));
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        highlight(false);
+        renderWorkflow(workflowId);
+        setView("solution", { anchor: "automation-workflows" });
       });
     });
 
