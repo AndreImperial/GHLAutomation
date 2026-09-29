@@ -16,7 +16,8 @@ test("overview presents the project and Andre's contribution before deep detail"
     assert.equal(await page.locator("#project-work .project-phase-list > li").count(), 5);
     assert.equal(await page.locator(".ghl-build-list > div").count(), 9);
     await assert.doesNotReject(() => page.getByText(/email actions queued, but delivery failed/i).waitFor());
-    assert.equal(await page.locator(".teaching-layer").getAttribute("open"), null);
+    assert.equal(await page.locator(".at-a-glance article").count(), 3);
+    assert.equal(await page.locator("#view-problem [data-problem-explorer]").count(), 0);
     await assert.doesNotReject(() => page.getByRole("heading", { name: "My Contribution" }).waitFor());
     for (const phrase of ["Discovery synthesis", "Workflow architecture", "Measurement design", "Simulation QA"]) {
       await assert.doesNotReject(() => page.locator(".contribution-section-primary").getByText(phrase, { exact: false }).waitFor());

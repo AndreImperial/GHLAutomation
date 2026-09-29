@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const views = ["problem", "solution", "build", "evidence", "measurement", "conclusion"];
+  const views = ["problem", "solution", "build", "measurement", "conclusion", "evidence"];
   const routeDefinitions = {
     "": { view: "problem" },
     overview: { view: "problem" },

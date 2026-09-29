@@ -30,13 +30,15 @@ test("portfolio routes and legacy aliases resolve without losing deep links", { 
       ["#overview", "Overview"],
       ["#system", "System"],
       ["#build", "Build Process"],
-      ["#deliverables", "Deliverables"],
       ["#measurement", "Measurement"],
-      ["#conclusion", "Conclusion"]
+      ["#conclusion", "Conclusion"],
+      ["#deliverables", "Deliverables"]
     ]) {
       await page.goto(`${baseUrl}/${hash}`, { waitUntil: "networkidle" });
       assert.equal((await page.locator(".primary-tab.is-active").textContent()).trim(), label);
     }
+    const tabOrder = await page.locator(".primary-tab").allTextContents();
+    assert.deepEqual(tabOrder.map((label) => label.trim()), ["Overview", "System", "Build Process", "Measurement", "Conclusion", "Deliverables"]);
   } finally {
     await browser.close();
   }

@@ -638,7 +638,7 @@ h1 em {
   border-bottom: 1px solid var(--line);
 }
 
-.orientation-strip > div {
+.orientation-strip > a {
   display: grid;
   gap: 6px;
   min-height: 78px;
@@ -647,7 +647,7 @@ h1 em {
   border-right: 1px solid var(--line);
 }
 
-.orientation-strip > div:last-child {
+.orientation-strip > a:last-child {
   border-right: 0;
 }
 
@@ -657,36 +657,24 @@ h1 em {
   font-weight: 700;
 }
 
-.orientation-workflow a {
-  display: flex;
-  min-height: 44px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--ivory);
+.orientation-strip > a {
+  color: inherit;
   text-decoration: none;
+  transition: background-color 180ms ease;
 }
 
-.orientation-workflow a strong {
+.orientation-strip > a strong {
   transition: color 180ms ease;
 }
 
-.orientation-workflow a svg {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 auto;
-  color: var(--mint);
-  transition: transform 180ms ease;
+.orientation-strip > a:hover,
+.orientation-strip > a:focus-visible {
+  background: var(--surface-soft);
 }
 
-.orientation-workflow a:hover strong,
-.orientation-workflow a:focus-visible strong {
+.orientation-strip > a:hover strong,
+.orientation-strip > a:focus-visible strong {
   color: var(--mint);
-}
-
-.orientation-workflow a:hover svg,
-.orientation-workflow a:focus-visible svg {
-  transform: translateX(4px);
 }
 
 .contribution-section {
@@ -4411,7 +4399,7 @@ body.motion-enhanced [data-reveal].is-inview {
     height: 170px;
   }
 
-  .orientation-strip > div {
+  .orientation-strip > a {
     padding-right: 20px;
     padding-left: 20px;
   }
@@ -4742,17 +4730,23 @@ body.motion-enhanced [data-reveal].is-inview {
   }
 
   .orientation-strip {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .orientation-strip > div,
-  .orientation-strip > div:nth-child(3n) {
-    min-height: 68px;
-    border-right: 0;
+  .orientation-strip > a,
+  .orientation-strip > a:nth-child(3n) {
+    min-height: 64px;
+    border-right: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
 
-  .orientation-strip > div:last-child {
+  .orientation-strip > a:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .orientation-strip > a:last-child {
+    grid-column: 1 / -1;
+    border-right: 0;
     border-bottom: 0;
   }
 
@@ -4879,7 +4873,7 @@ body.motion-enhanced [data-reveal].is-inview {
     font-size: 9px;
   }
 
-  .orientation-strip > div {
+  .orientation-strip > a {
     min-height: 84px;
     padding: 14px 16px;
   }
@@ -6779,7 +6773,7 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
 .presentation-slide.is-active .presentation-talk li:nth-child(2) { animation-delay: 400ms; }
 .presentation-slide.is-active .presentation-talk li:nth-child(3) { animation-delay: 460ms; }
 
-.orientation-strip.is-inview > div,
+.orientation-strip.is-inview > a,
 .decoder-section.is-inview .decoder-row,
 .decision-log.is-inview .decision-grid > div,
 .source-trail.is-inview .source-list > div,
@@ -7788,7 +7782,7 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
   .presentation-slide.is-active .presentation-visual > :not(.present-signal),
   .presentation-slide.is-active .presentation-message > *,
   .presentation-slide.is-active .presentation-talk li,
-  .orientation-strip.is-inview > div,
+  .orientation-strip.is-inview > a,
   .decoder-section.is-inview .decoder-row,
   .decision-log.is-inview .decision-grid > div,
   .source-trail.is-inview .source-list > div,
@@ -8076,6 +8070,8 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
 
 /* 2026-09-29: overview-only hero, nav scroll cue, verification ledger */
 body[data-view]:not([data-view="problem"]) .dark-hero,
+body[data-view]:not([data-view="problem"]) .orientation-strip,
+body[data-view]:not([data-view="problem"]) .at-a-glance,
 body[data-view]:not([data-view="problem"]) .contribution-section-primary {
   display: none;
 }
@@ -8170,4 +8166,141 @@ body[data-view]:not([data-view="problem"]) .contribution-section-primary {
 
 @media (max-width: 540px) {
   .project-verification { padding: 38px 0; }
+}
+
+
+/* 2026-09-30: story restructure — at a glance, compact phases, library tab */
+.at-a-glance {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  padding: 0 max(40px, calc((100vw - 1240px) / 2));
+  border-bottom: 1px solid var(--line);
+}
+
+.at-a-glance article {
+  padding: 40px 32px 44px 0;
+}
+
+.at-a-glance article + article {
+  padding-left: 32px;
+  border-left: 1px solid var(--line);
+}
+
+.at-a-glance h3 {
+  margin: 12px 0 10px;
+  color: var(--ivory);
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.at-a-glance p {
+  max-width: 44ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.at-a-glance article:last-child .section-label {
+  color: var(--coral);
+}
+
+.project-work-intro p .text-link {
+  display: inline-flex;
+  margin-top: 10px;
+}
+
+@media (min-width: 1025px) {
+  .project-phase-list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    border-left: 1px solid var(--line);
+  }
+
+  .project-phase-list > li {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    align-content: start;
+    padding: 22px 20px;
+    border-right: 1px solid var(--line);
+  }
+
+  .project-phase-list h3 {
+    font-size: 16px;
+  }
+
+  .project-phase-list p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .project-phase-links {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.primary-tab-library {
+  margin-left: 14px;
+  position: relative;
+}
+
+.primary-tab-library::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 1px;
+  height: 18px;
+  background: var(--line-strong);
+  transform: translateY(-50%);
+}
+
+@media (max-width: 900px) {
+  .at-a-glance {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+  }
+
+  .at-a-glance article,
+  .at-a-glance article + article {
+    padding: 28px 0;
+    border-left: 0;
+  }
+
+  .at-a-glance article + article {
+    border-top: 1px solid var(--line);
+  }
+
+  .at-a-glance h3 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 620px) {
+  .at-a-glance {
+    padding: 0 20px;
+  }
+}
+
+.decoder-ghl {
+  align-self: center;
+  justify-self: end;
+  padding: 4px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--mint);
+  font-family: var(--mono);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+@media (max-width: 620px) {
+  .decoder-ghl {
+    justify-self: start;
+    grid-column: 2;
+  }
 }
