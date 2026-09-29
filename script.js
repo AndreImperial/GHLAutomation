@@ -11,6 +11,7 @@
     measurement: { view: "measurement" },
     conclusion: { view: "conclusion" },
     automation: { view: "solution", anchor: "automation-workflows" },
+    contact: { view: "conclusion", anchor: "contact" },
     problem: { view: "problem" },
     tour: { view: "problem" },
     "quick-tour": { view: "problem" },
@@ -2524,6 +2525,14 @@
       });
     });
 
+    document.querySelectorAll('a[href="#contact"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (window.location.hash !== "#contact") window.history.pushState(null, "", "#contact");
+        setView("conclusion", { updateUrl: false, anchor: "contact", focus: true });
+      });
+    });
+
     document.querySelectorAll("[data-tour-start]").forEach((link) => {
       link.addEventListener("click", (event) => {
         event.preventDefault();
@@ -2612,6 +2621,18 @@
     document.querySelectorAll("animateMotion").forEach((element) => element.remove());
   }
 
+  function watchNavOverflow() {
+    const nav = document.querySelector(".primary-nav");
+    if (!nav) return;
+    const update = () => {
+      const overflow = nav.scrollWidth - nav.clientWidth;
+      nav.classList.toggle("is-overflowing", overflow > 1 && nav.scrollLeft < overflow - 1);
+    };
+    nav.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+
   function start() {
     prepareDocuments();
     prepareMeasurementView();
@@ -2621,6 +2642,7 @@
     initWorkflowLab();
     initPresentation();
     initNavigation();
+    watchNavOverflow();
     initKpiDiagnostics();
     disableSignalForReducedMotion();
     const state = getHashState();

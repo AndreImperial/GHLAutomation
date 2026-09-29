@@ -63,12 +63,14 @@ Then open `http://127.0.0.1:4173/#overview`.
 
 ### Routes
 
-- `#overview`: workshop phases, contribution, GHL build areas, test findings, verification ledger.
+The story runs Overview → System → Build → Measurement → Conclusion, with Deliverables at the end of the nav as the project library.
+
+- `#overview`: animated system diagram, at-a-glance summary, contribution, workshop phases, GHL build areas, verification ledger.
 - `#system` (and `#automation`): customer journey and the six interactive workflow maps.
 - `#build`: ten detailed build steps with technical setup.
-- `#deliverables`: the eight deliverables, two filled templates, and the workshop source library. Deep links such as `#deliverables/kpi-scorecard` open one document.
-- `#measurement`: formulas, reporting windows, and diagnostic lab.
-- `#conclusion`: decisions, lessons, and launch dependencies.
+- `#measurement`: baseline-vs-projected funnel chart, formulas, reporting windows, and diagnostic lab.
+- `#conclusion` (and `#contact`): decisions, lessons, launch dependencies, and the contact block.
+- `#deliverables`: the eight deliverables, two filled templates, GHL terms, and the workshop source library. Deep links such as `#deliverables/kpi-scorecard` open one document.
 - `#present/1`: optional 25-slide presentation with presenter notes.
 
 Legacy links (`#problem`, `#tour`, `#solution`, `#board`, `#implementation`, `#process`, `#evidence`, `#documents`, `#results`) still resolve.

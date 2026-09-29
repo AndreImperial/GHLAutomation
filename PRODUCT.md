@@ -26,4 +26,4 @@ This is not a live campaign performance report. The figures 60 bookings in 60 da
 
 ## Interaction requirements
 
-The public experience has five hash-linked views: Quick Tour, System, 10-Phase Build, Deliverables, and Measurement. It supports keyboard tab navigation, browser history, legacy hash aliases, a Plain English/GHL Detail switch, workflow exploration, and reduced-motion behavior.
+The public experience tells the story in five hash-linked views, in order: Overview, System, Build Process, Measurement, and Conclusion. Deliverables sits at the end of the navigation as the project library. It supports keyboard tab navigation, browser history, legacy hash aliases, a `#contact` link to the closing contact block, a Plain English/GHL Detail switch, workflow exploration, view transitions, and reduced-motion behavior.
