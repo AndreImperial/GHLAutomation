@@ -1964,7 +1964,7 @@ h1 em {
   list-style: none;
 }
 
-.phase-row summary::after {
+.phase-row > summary::after {
   display: inline-block;
   width: 18px;
   color: var(--muted);
@@ -1974,7 +1974,7 @@ h1 em {
   text-align: right;
 }
 
-.phase-row[open] summary::after {
+.phase-row[open] > summary::after {
   color: var(--coral);
   content: "-";
 }
@@ -2004,6 +2004,11 @@ h1 em {
   font-size: 9px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.phase-status.is-partial {
+  border-color: var(--amber);
+  color: var(--amber);
 }
 
 .phase-grid {
@@ -5051,7 +5056,7 @@ body.motion-enhanced [data-reveal].is-inview {
     justify-self: start;
   }
 
-  .phase-row summary::after {
+  .phase-row > summary::after {
     grid-column: 3;
     grid-row: 1 / span 2;
   }
@@ -5464,7 +5469,10 @@ body.motion-enhanced [data-reveal].is-inview {
   background: var(--surface);
 }
 
-.presentation-progress::-webkit-progress-value,
+.presentation-progress::-webkit-progress-value {
+  background: var(--coral);
+}
+
 .presentation-progress::-moz-progress-bar {
   background: var(--coral);
 }
@@ -6111,7 +6119,7 @@ body.motion-enhanced [data-reveal].is-inview {
 
 .presentation-journey-grid button:hover,
 .presentation-journey-grid button.is-active {
-  background: var(--mint-soft);
+  background: var(--mint);
   border-color: var(--mint);
   color: var(--ink);
 }
@@ -7708,8 +7716,11 @@ body.motion-enhanced [data-reveal].is-inview {
   .header-present,
   .presentation-tool,
   .presentation-nav,
-  .presentation-progress::-webkit-progress-value,
   [data-reveal] {
+    transition: none;
+  }
+
+  .presentation-progress::-webkit-progress-value {
     transition: none;
   }
 

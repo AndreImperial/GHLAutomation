@@ -15,10 +15,10 @@ The workshop scenario gave Bloom Dental about 20 leads a month, only six booking
 | 1. Discovery | Turned the intake and discovery call into one problem statement: conversion and follow-up, not awareness. |
 | 2. Strategy | Led with a free 30-minute consultation. Whitening became a follow-up after the visit, not the first ask. |
 | 3. Assets | Wrote the landing-page copy, inquiry form, FAQs, and a 23-message email and SMS sequence with timing and stop rules. |
-| 4. GHL build | Configured a 6-stage pipeline, 10 tags, 8 custom fields, the inquiry form, a 30-minute calendar, the landing page, and six workflows. |
+| 4. GHL build | Configured a 6-stage pipeline, 10 tags, 8 custom fields, the inquiry form, a 30-minute calendar, and the landing page, and specified six workflows. |
 | 5. Test & measure | Tested the form and calendar path, inspected workflow execution logs, and built a KPI scorecard with formulas and reporting windows. |
 
-The six workflows cover new-lead booking, confirmation and reminders, no-show recovery, post-consultation whitening follow-up, payment update, and six-month recall. Each has a trigger, waits, SMS-consent branches, handoffs, and a stop rule.
+The six workflows cover new-lead booking, confirmation and reminders, no-show recovery, post-consultation whitening follow-up, payment update, and six-month recall. Each is specified with a trigger, waits, SMS-consent branches, handoffs, and a stop rule; not all six were run end to end.
 
 ## What testing showed
 
