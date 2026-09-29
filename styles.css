@@ -8497,3 +8497,31 @@ body[data-view]:not([data-view="problem"]) .contribution-section-primary {
     color: var(--amber);
   }
 }
+
+/* 2026-09-30: view transitions between case-study views */
+.redesign-header {
+  view-transition-name: site-header;
+}
+
+::view-transition-old(root) {
+  animation: view-fade-out 160ms ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: view-fade-in 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes view-fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes view-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

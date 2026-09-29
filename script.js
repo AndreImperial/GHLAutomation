@@ -1802,6 +1802,44 @@
     renderWorkflow(activeWorkflow);
   }
 
+  const countedElements = new WeakSet();
+  let countObserver = null;
+
+  function runCountUp(element) {
+    if (countedElements.has(element)) return;
+    countedElements.add(element);
+    const match = element.textContent.match(/^(\D*)(\d+)(.*)$/s);
+    if (!match || reduceMotion()) return;
+    const [, prefix, digits, suffix] = match;
+    const target = Number(digits);
+    const duration = Math.min(1100, 500 + target * 12);
+    const start = performance.now();
+    const step = (now) => {
+      const progress = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      element.textContent = `${prefix}${Math.round(target * eased)}${suffix}`;
+      if (progress < 1) window.requestAnimationFrame(step);
+    };
+    element.textContent = `${prefix}0${suffix}`;
+    window.requestAnimationFrame(step);
+  }
+
+  function setupCountUps() {
+    if (reduceMotion() || !("IntersectionObserver" in window)) return;
+    if (!countObserver) {
+      countObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          countObserver.unobserve(entry.target);
+          runCountUp(entry.target);
+        });
+      }, { threshold: 0.6 });
+    }
+    document.querySelectorAll(".orientation-strip strong, .target-card > strong").forEach((element) => {
+      if (!countedElements.has(element) && element.offsetParent !== null) countObserver.observe(element);
+    });
+  }
+
   function setupReveals() {
     if (!window.IntersectionObserver) return;
     if (revealObserver) revealObserver.disconnect();
@@ -1877,6 +1915,31 @@
 
   function setView(view, options = {}) {
     const nextView = views.includes(view) ? view : "problem";
+    const canTransition = typeof document.startViewTransition === "function"
+      && !reduceMotion()
+      && options.replace !== true
+      && options.transition !== false
+      && nextView !== activeView;
+    if (canTransition) {
+      if (options.updateUrl !== false) {
+        writeViewUrl(nextView, options);
+      }
+      document.startViewTransition(() => applyView(nextView, { ...options, updateUrl: false }));
+      return;
+    }
+    applyView(nextView, options);
+  }
+
+  function writeViewUrl(nextView, options) {
+    if (options.anchor === "automation-workflows") {
+      if (options.replace === true) window.history.replaceState(null, "", "#automation");
+      else if (window.location.hash !== "#automation") window.history.pushState(null, "", "#automation");
+    } else {
+      writeHash(nextView, nextView === "evidence" ? activeDocument : null, options.replace === true);
+    }
+  }
+
+  function applyView(nextView, options = {}) {
     activeView = nextView;
     document.querySelectorAll("[data-view-panel]").forEach((panel) => {
       panel.hidden = panel.dataset.viewPanel !== nextView;
@@ -1889,15 +1952,9 @@
       systemTrigger.kill();
       systemTrigger = null;
     }
-    if (options.updateUrl !== false) {
-      if (options.anchor === "automation-workflows") {
-        if (options.replace === true) window.history.replaceState(null, "", "#automation");
-        else if (window.location.hash !== "#automation") window.history.pushState(null, "", "#automation");
-      } else {
-        writeHash(nextView, nextView === "evidence" ? activeDocument : null, options.replace === true);
-      }
-    }
+    if (options.updateUrl !== false) writeViewUrl(nextView, options);
     initMotion(nextView);
+    setupCountUps();
     if (options.scroll !== false) {
       window.requestAnimationFrame(() => {
         const behavior = options.replace ? "auto" : (reduceMotion() ? "auto" : "smooth");
