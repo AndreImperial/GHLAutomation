@@ -35,6 +35,8 @@ test("portfolio routes and legacy aliases resolve without losing deep links", { 
       ["#deliverables", "Deliverables"]
     ]) {
       await page.goto(`${baseUrl}/${hash}`, { waitUntil: "networkidle" });
+      // Same-document hash changes are handled on hashchange, after goto resolves.
+      await page.waitForFunction((expected) => document.querySelector(".primary-tab.is-active")?.textContent.trim() === expected, label, { timeout: 3000 }).catch(() => {});
       assert.equal((await page.locator(".primary-tab.is-active").textContent()).trim(), label);
     }
     const tabOrder = await page.locator(".primary-tab").allTextContents();

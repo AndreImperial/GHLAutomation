@@ -14,8 +14,8 @@ test("measurement and conclusion close the case study honestly", { timeout: 2000
     for (const phrase of ["PROJECTED: 60 BOOKINGS IN 60 DAYS", "PROJECTED: BELOW 15% NO-SHOW RATE", "PROJECTED: 40% WHITENING ATTACH RATE"]) {
       await assert.doesNotReject(() => projectedTargets.getByText(phrase, { exact: false }).waitFor());
     }
-    await assert.doesNotReject(() => page.getByText(/60-day acquisition window/i).waitFor());
-    await assert.doesNotReject(() => page.getByText(/six-month recall window/i).waitFor());
+    await assert.doesNotReject(() => page.locator("#view-measurement").getByText(/60-day acquisition window/i).waitFor());
+    await assert.doesNotReject(() => page.locator("#view-measurement").getByText(/six-month recall window/i).waitFor());
 
     await page.goto(`${baseUrl}/#conclusion`, { waitUntil: "networkidle" });
     for (const heading of ["What I built", "Strongest decisions", "What I learned", "First live experiment", "Before production launch"]) {
