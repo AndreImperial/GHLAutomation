@@ -1,10 +1,12 @@
 # Bloom Dental Studio Portfolio Case Study
 
-A dark, static portfolio case study showing how a consultation funnel, GoHighLevel automation system, and measurement plan were designed for the Fast Track Workshop simulation.
+By **Andre Imperial**. A dark, static portfolio case study showing how a consultation funnel, GoHighLevel automation system, and measurement plan were designed for the Fast Track Workshop simulation.
 
 The public site leads with the actual five-phase workshop process, Andre's contribution, the nine GHL build areas, and what testing revealed. A fictional customer example is available as optional context. Reviewers can inspect the complete workflows, deliverables, filled templates, source guides, formulas, and QA decisions.
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https%3A%2F%2Fgithub.com%2FAndreImperial%2FGHLAutomation)
+
+Built from the Libre Academy Fast Track Workshop brief and materials, which are republished on the site with permission. Bloom Dental Studio is a fictional clinic.
 
 ## Live Site
 
@@ -77,4 +79,4 @@ The suite checks content completeness, canonical and legacy routes, workflow int
 
 ## Truth Boundary
 
-This is a completed workshop simulation, not a live client campaign. `10/10` refers to the documented ten-step website walkthrough, not ten original workshop phases or production readiness. Form and calendar behavior were exercised, and workflow execution logs were inspected. The confirmation email action queued, but delivery failed in the workshop account; sender setup and a fresh delivery test remain open. The campaign was not launched, so `60 bookings in 60 days`, `below 15% no-show rate`, and `40% whitening attach rate` are projected goals. Live ads, production compliance review, clinic process validation, and real campaign data also remain launch dependencies.
+This is a completed workshop simulation, not a live client campaign. `10/10` refers to the documented ten-step website walkthrough, not ten original workshop phases or production readiness. Form and calendar behavior were exercised, and workflow execution logs were inspected. The confirmation email action queued, but delivery failed in the workshop account; testing caught this before launch, and a verified sender plus a passing delivery test are now launch requirements. The Overview verification ledger separates what was specified, configured, tested, and projected. The campaign was not launched, so `60 bookings in 60 days`, `below 15% no-show rate`, and `40% whitening attach rate` are projected goals. Live ads, production compliance review, clinic process validation, and real campaign data also remain launch dependencies.

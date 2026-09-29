@@ -1055,7 +1055,7 @@
       number: "06",
       journeyStep: "recall",
       name: "Six-Month Recall",
-      summary: "Start recall early, then send one optional text as the six-month visit approaches.",
+      summary: "Start recall early, then send one optional text as the six-month visit approaches. Timing note: this map follows the v2.0 message sequence (30 days, then 120 days). The workflow specification uses a single six-month wait.",
       trigger: "Consultation completed, whitening paid, or cleaning completed",
       location: "Automation > Workflows",
       stop: "Appointment booked, contact opts out, or both reminders are complete",

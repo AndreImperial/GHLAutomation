@@ -8032,3 +8032,102 @@ g.scene-node:nth-of-type(4) circle { animation-delay: 3.3s; }
     background: #fff;
   }
 }
+
+
+/* 2026-09-29: overview-only hero, nav scroll cue, verification ledger */
+body[data-view]:not([data-view="problem"]) .dark-hero,
+body[data-view]:not([data-view="problem"]) .contribution-section-primary {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .primary-nav {
+    -webkit-mask-image: linear-gradient(to right, #000 82%, transparent);
+    mask-image: linear-gradient(to right, #000 82%, transparent);
+    padding-right: 28px;
+  }
+}
+
+.project-verification {
+  padding: 56px 0;
+  border-top: 1px solid var(--line);
+}
+
+.project-verification h2 {
+  max-width: 760px;
+  margin: 10px 0 12px;
+}
+
+.project-verification-intro {
+  max-width: 760px;
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.verification-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.verification-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.verification-table th,
+.verification-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.verification-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.verification-table thead th {
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-deep);
+}
+
+.verification-table tbody th {
+  width: 28%;
+  color: var(--ivory);
+  font-weight: 700;
+}
+
+.verification-table td {
+  color: var(--muted);
+}
+
+.verify-pill {
+  display: inline-block;
+  padding: 3px 9px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.verify-pill.is-tested { color: var(--mint); }
+.verify-pill.is-built { color: var(--ivory); }
+.verify-pill.is-spec { color: var(--muted); }
+.verify-pill.is-open { color: var(--coral); }
+.verify-pill.is-projected { color: var(--amber); }
+
+@media (max-width: 540px) {
+  .project-verification { padding: 38px 0; }
+}
