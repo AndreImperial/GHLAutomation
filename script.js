@@ -1840,6 +1840,45 @@
     });
   }
 
+  function setupFunnelChart() {
+    const chart = document.querySelector(".funnel-chart");
+    const plot = chart?.querySelector(".funnel-plot");
+    const tooltip = plot?.querySelector(".funnel-tooltip");
+    if (!plot || !tooltip) return;
+    const show = (bar) => {
+      const series = bar.dataset.series === "projected" ? "PROJECTED GOAL" : "WORKSHOP BASELINE";
+      tooltip.textContent = "";
+      const title = document.createElement("strong");
+      title.textContent = `${series} · ${bar.querySelector(".funnel-value")?.textContent || ""}`;
+      const note = document.createElement("span");
+      note.textContent = bar.dataset.tip || "";
+      tooltip.append(title, note);
+      tooltip.hidden = false;
+      const plotBox = plot.getBoundingClientRect();
+      const barBox = bar.querySelector("i").getBoundingClientRect();
+      const left = Math.min(Math.max(0, barBox.right - plotBox.left + 12), plotBox.width - tooltip.offsetWidth);
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${barBox.top - plotBox.top - tooltip.offsetHeight - 8}px`;
+    };
+    const hide = () => { tooltip.hidden = true; };
+    plot.querySelectorAll(".funnel-bar[data-tip]").forEach((bar) => {
+      bar.addEventListener("mouseenter", () => show(bar));
+      bar.addEventListener("focus", () => show(bar));
+      bar.addEventListener("mouseleave", hide);
+      bar.addEventListener("blur", hide);
+    });
+    if (reduceMotion() || !("IntersectionObserver" in window)) {
+      chart.classList.add("is-drawn");
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      chart.classList.add("is-drawn");
+      observer.disconnect();
+    }, { threshold: 0.35 });
+    observer.observe(chart);
+  }
+
   function setupReveals() {
     if (!window.IntersectionObserver) return;
     if (revealObserver) revealObserver.disconnect();
@@ -2576,6 +2615,7 @@
   function start() {
     prepareDocuments();
     prepareMeasurementView();
+    setupFunnelChart();
     initProblemStory();
     initJourney();
     initWorkflowLab();
