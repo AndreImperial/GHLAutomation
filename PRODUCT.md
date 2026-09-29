@@ -14,12 +14,12 @@ The site teaches the project as a system: paid or organic interest becomes an in
 
 ## Truth boundaries
 
-This is not a live campaign performance report. The figures 60 bookings in 60 days, under 15% no-show rate, and 40% whitening attach rate are projected campaign goals. A complete 10/10 status means the workshop simulation is complete. Sender-domain setup, live ads, production compliance review, and real campaign data remain launch dependencies.
+This is not a live campaign performance report. The figures 60 bookings in 60 days, under 15% no-show rate, and 40% whitening attach rate are projected campaign goals. Build step statuses follow the verification ledger: form and calendar tested, one workflow execution observed, confirmation email failed, SMS consent configured, and six workflows specified. Sender-domain setup, live ads, production compliance review, and real campaign data remain launch dependencies.
 
 ## Content requirements
 
 - Explain GHL concepts in plain English before showing technical detail.
-- Present ten completed build phases with input, decision, actions, GHL location, output, purpose, and status.
+- Present ten build phases with input, decision, actions, GHL location, output, purpose, and an honest per-phase status (Complete, Specified, or Partly tested).
 - Preserve eight full workshop deliverables in native website layouts.
 - Show six modular workflows and the customer path from ad to KPI review.
 - Avoid fake results, testimonials, endorsements, and personal account information.

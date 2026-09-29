@@ -9,14 +9,13 @@ const html = fs.readFileSync(path.resolve(__dirname, "..", "index.html"), "utf8"
 
 // Interactive widgets legitimately render text from data when the visitor makes a choice.
 const dynamicRegions = [
-  "[aria-live]",
   "[data-problem-panel]",
   "[data-problem-selector]",
-  "#automation-workflows",
+  ".workflow-overview",
+  ".workflow-node-detail",
   "#journey-node-detail",
-  ".kpi-diagnostic",
-  ".evidence-matrix",
-  ".phase-relationship-links"
+  "#kpi-diagnostic-panel",
+  ".evidence-matrix"
 ].join(", ");
 
 test("authored headings and labels are not rewritten by JavaScript", { timeout: 60000 }, async () => {

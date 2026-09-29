@@ -240,15 +240,6 @@
     }
   };
 
-  const measurementSteps = [
-    { stage: "OPENED", people: "People who opened the page", question: "Did people reach a usable page after the ad click?", included: "Recorded ad clicks with a matching successful landing-page view.", formula: "landing_page_view / ad_click", weak: "The link, redirect, or mobile page may be losing visitors before the offer appears.", evidence: "Meta clicks, UTM values, funnel views, device, and page-load behavior.", test: "Validate routing and mobile load before changing the offer." },
-    { stage: "ASKED", people: "People who completed the form", question: "Did the page make the next step clear enough to ask for help?", included: "Unique landing-page visitors eligible to submit the inquiry form.", formula: "form_submit / landing_page_view", weak: "The promise, page order, or form may feel unclear or too demanding.", evidence: "Funnel views, form submissions, field completion, and mobile abandonment.", test: "Clarify the consultation promise or remove one nonessential field." },
-    { stage: "CHOSE", people: "People who chose a time", question: "Did submitted inquiries become scheduled consultations?", included: "Valid form submissions observed through the booking follow-up window.", formula: "booking_created / form_submit", weak: "The calendar handoff, available times, or booking invitation may lose momentum.", evidence: "Form contacts, appointments, opportunity stages, and booking-link activity.", test: "Test one clearer confirmation or booking invitation." },
-    { stage: "ATTENDED", people: "People who attended", question: "Did mature bookings become completed consultations?", included: "Appointments whose scheduled date passed, excluding cancelled or future bookings.", formula: "show_completed / mature_booking", weak: "Reminder timing, expectations, or rescheduling support may be insufficient.", evidence: "Appointment outcomes, reminder delivery, consent, and reschedule activity.", test: "Change one reminder timing or clarity variable." },
-    { stage: "CONTINUED", people: "People who booked whitening", question: "Did completed consultations produce the appropriate next step?", included: "Completed consultations eligible for a whitening recommendation.", formula: "whitening_booked / show_completed", weak: "The recorded outcome, fit, price clarity, or follow-up may not match the consultation.", evidence: "Completed appointments, interest fields, follow-up delivery, and stage changes.", test: "Improve one fit or price explanation without increasing pressure." },
-    { stage: "RETURNED", people: "People who returned for future care", question: "Did contacts due for recall schedule another visit?", included: "Contacts who reached the defined six-month recall due date.", formula: "recall_booked / contact_due", weak: "The recall timing, message, eligibility rule, or booking path may need attention.", evidence: "Recall tags, due dates, delivery, opt-outs, and appointment creation.", test: "Test one recall message or scheduling path within the eligible group." }
-  ];
-
   const nodeDetails = {
     ad: {
       title: "Sam sees the offer.",
@@ -493,6 +484,7 @@
   let presentationIndex = 0;
   let presentationReturnHash = "#overview";
   let presentationPreviousFocus = null;
+  let presentationReturnScroll = null;
   let presentationNotesOpen = false;
   let presentationOutlineOpen = false;
   let presentationGlossaryOpen = false;
@@ -1236,10 +1228,13 @@
     applyView(nextView, options);
   }
 
+  const anchorHashes = { "automation-workflows": "#automation", contact: "#contact" };
+
   function writeViewUrl(nextView, options) {
-    if (options.anchor === "automation-workflows") {
-      if (options.replace === true) window.history.replaceState(null, "", "#automation");
-      else if (window.location.hash !== "#automation") window.history.pushState(null, "", "#automation");
+    const anchorHash = anchorHashes[options.anchor];
+    if (anchorHash) {
+      if (options.replace === true) window.history.replaceState(null, "", anchorHash);
+      else if (window.location.hash !== anchorHash) window.history.pushState(null, "", anchorHash);
     } else {
       writeHash(nextView, nextView === "evidence" ? activeDocument : null, options.replace === true);
     }
@@ -1500,6 +1495,13 @@
       button.setAttribute("aria-selected", String(selected));
       button.tabIndex = selected ? 0 : -1;
       button.classList.toggle("is-active", selected);
+      const strip = button.parentElement;
+      if (selected && strip && strip.scrollWidth > strip.clientWidth) {
+        const left = button.offsetLeft - strip.offsetLeft;
+        if (left < strip.scrollLeft || left + button.offsetWidth > strip.scrollLeft + strip.clientWidth) {
+          strip.scrollTo({ left: Math.max(0, left - 16), behavior: reduceMotion() ? "auto" : "smooth" });
+        }
+      }
     });
     document.querySelectorAll("[data-presentation-outline-slide]").forEach((button) => {
       const selected = Number(button.dataset.presentationOutlineSlide) === presentationIndex;
@@ -1528,6 +1530,7 @@
     const alreadyOpen = document.body.classList.contains("is-presentation-open");
     if (!alreadyOpen) {
       presentationPreviousFocus = document.activeElement;
+      presentationReturnScroll = window.location.hash.startsWith("#present") ? null : window.scrollY;
       if (!window.location.hash.startsWith("#present")) presentationReturnHash = window.location.hash || "#overview";
       overlay.hidden = false;
       overlay.setAttribute("aria-hidden", "false");
@@ -1557,9 +1560,12 @@
     if (options.updateUrl !== false && window.location.hash !== returnHash) window.history.replaceState(null, "", returnHash);
     const state = getHashState();
     if (state.documentId) activeDocument = state.documentId;
-    setView(state.view, { updateUrl: false, scroll: options.scroll !== false, anchor: state.anchor });
+    const returnToScroll = presentationReturnScroll !== null && state.view === activeView;
+    setView(state.view, { updateUrl: false, scroll: options.scroll !== false && !returnToScroll, anchor: returnToScroll ? null : state.anchor });
+    if (returnToScroll) window.scrollTo(0, presentationReturnScroll);
     if (options.restoreFocus !== false) presentationPreviousFocus?.focus?.({ preventScroll: true });
     presentationPreviousFocus = null;
+    presentationReturnScroll = null;
   }
 
   function syncUrlState() {

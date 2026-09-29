@@ -11,6 +11,7 @@ const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const script = fs.readFileSync(path.join(root, "script.js"), "utf8");
 
 const views = ["overview", "system", "build", "measurement", "conclusion", "deliverables"];
+const panelIds = { overview: "view-problem", system: "view-solution", build: "view-build", measurement: "view-measurement", conclusion: "view-conclusion", deliverables: "view-evidence" };
 const projectedFigure = /60 bookings|below 15%|<\s?15%|40% whitening/gi;
 const qualifier = /projected|goal|target|guardrail|not (a|the) result|not results/i;
 
@@ -48,15 +49,19 @@ test("rendered views have no broken deliverable links, stray 'undefined', or unq
   try {
     for (const view of views) {
       await page.goto(`${baseUrl}/#${view}`, { waitUntil: "networkidle" });
-      const result = await page.evaluate(() => {
-        const panel = document.querySelector(".view-panel:not([hidden])");
-        const scope = document.getElementById("new-case-study");
-        const links = [...scope.querySelectorAll('a[href^="#deliverables/"]')]
-          .filter((link) => link.offsetParent !== null || panel.contains(link))
+      await page.waitForFunction((id) => document.getElementById(id) && !document.getElementById(id).hidden, panelIds[view]);
+      const result = await page.evaluate((id) => {
+        const panel = document.getElementById(id);
+        // Open every disclosure so collapsed copy is checked too.
+        document.querySelectorAll("#new-case-study details").forEach((details) => { details.open = true; });
+        // The academy's source material is quoted as supplied, so it is not checked as Andre's claims.
+        document.querySelectorAll("[data-workshop-source]").forEach((source) => { source.style.display = "none"; });
+        const links = [...document.querySelectorAll('#new-case-study a[href^="#deliverables/"]')]
           .map((link) => link.getAttribute("href").split("/")[1]);
-        const missing = [...new Set(links)].filter((id) => !document.getElementById(`docs-panel-${id}`));
-        return { missing, text: scope.innerText };
-      });
+        const missing = [...new Set(links)].filter((docId) => !document.getElementById(`docs-panel-${docId}`));
+        const shared = [...document.querySelectorAll("#new-case-study > :not(.view-panel)")].filter((element) => element.offsetParent !== null);
+        return { missing, text: [panel.innerText, ...shared.map((element) => element.innerText)].join("\n") };
+      }, panelIds[view]);
       if (result.missing.length) problems.push(`${view}: links to missing documents ${result.missing.join(", ")}`);
       for (const word of ["undefined", "NaN", "[object Object]"]) {
         if (new RegExp(`\\b${word.replace(/[[\]]/g, "\\$&")}\\b`).test(result.text)) problems.push(`${view}: rendered text contains "${word}"`);

@@ -8197,6 +8197,12 @@ body[data-view]:not([data-view="problem"]) .at-a-glance {
   }
 }
 
+@media (max-width: 360px) {
+  .header-contact span {
+    display: none;
+  }
+}
+
 .decoder-ghl {
   align-self: center;
   justify-self: end;
@@ -8428,6 +8434,11 @@ body[data-view]:not([data-view="problem"]) .at-a-glance {
 /* 2026-09-30: view transitions between case-study views */
 .redesign-header {
   view-transition-name: site-header;
+}
+
+/* Let clicks reach the page while a view transition is animating. */
+::view-transition {
+  pointer-events: none;
 }
 
 ::view-transition-old(root) {

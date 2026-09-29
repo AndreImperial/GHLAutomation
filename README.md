@@ -16,9 +16,9 @@ The workshop scenario gave Bloom Dental about 20 leads a month, only six booking
 |---|---|
 | 1. Discovery | Turned the intake and discovery call into one problem statement: conversion and follow-up, not awareness. |
 | 2. Strategy | Led with a free 30-minute consultation. Whitening became a follow-up after the visit, not the first ask. |
-| 3. Assets | Wrote the landing-page copy, inquiry form, FAQs, and a 23-message email and SMS sequence with timing and stop rules. |
+| 3. Assets | Wrote the landing-page copy, inquiry form, FAQs, and a 9-message email and SMS sequence (5 emails, 4 SMS) with timing and stop rules, working from the workshop’s original 23-message sample. |
 | 4. GHL build | Configured a 6-stage pipeline, 10 tags, 8 custom fields, the inquiry form, a 30-minute calendar, and the landing page, and specified six workflows. |
-| 5. Test & measure | Tested the form and calendar path, inspected workflow execution logs, and built a KPI scorecard with formulas and reporting windows. |
+| 5. Test & measure | Tested the form and calendar path, checked one workflow’s execution log, and built a KPI scorecard with formulas and reporting windows. |
 
 The six workflows cover new-lead booking, confirmation and reminders, no-show recovery, post-consultation whitening follow-up, payment update, and six-month recall. Each is specified with a trigger, waits, SMS-consent branches, handoffs, and a stop rule; not all six were run end to end.
 
@@ -94,8 +94,8 @@ They cover content completeness, routes, workflow interactions, responsive overf
 
 ### Editing notes
 
-- Public copy and native deliverable content live in `index.html`.
-- Routes, workflows, document labels and download links, measurement, and presentation behavior live in `script.js`.
+- All visible copy lives in `index.html`: document intros and download links, measurement copy, build steps, slides, and presenter notes. `script.js` renders only interactive widgets; a test fails if it rewrites authored headings.
+- Routes, workflow data, the journey and KPI widgets, and presentation behavior live in `script.js`.
 - The visual system, responsive layouts, focus states, and motion live in `styles.css`.
 - Fonts, Lucide, GSAP, and ScrollTrigger are self-hosted in `assets/`.
 - Keep projected figures labeled as projected until real campaign data exists. Don't add account screenshots, testimonials, or achieved-result claims.
