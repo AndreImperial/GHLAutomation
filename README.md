@@ -1,51 +1,59 @@
-# Bloom Dental Studio Portfolio Case Study
+# Bloom Dental Studio: Consultation Funnel & GHL Automation
 
-By **Andre Imperial**. A dark, static portfolio case study showing how a consultation funnel, GoHighLevel automation system, and measurement plan were designed for the Fast Track Workshop simulation.
+**Case study by Andre Imperial** · [View the live site](https://ghlautomation.onrender.com/) · [Browse the deliverables](deliverables/)
 
-The public site leads with the actual five-phase workshop process, Andre's contribution, the nine GHL build areas, and what testing revealed. A fictional customer example is available as optional context. Reviewers can inspect the complete workflows, deliverables, filled templates, source guides, formulas, and QA decisions.
+I took a dental clinic brief from discovery to a tested GoHighLevel (GHL) build: strategy, campaign assets, a CRM pipeline, six automation workflows, and a measurement plan. This was a workshop simulation from the Libre Academy Fast Track Workshop. Bloom Dental Studio is a fictional clinic, and the campaign was never launched, so every performance figure here is a projected goal.
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https%3A%2F%2Fgithub.com%2FAndreImperial%2FGHLAutomation)
+## The problem
 
-Built from the Libre Academy Fast Track Workshop brief and materials, which are republished on the site with permission. Bloom Dental Studio is a fictional clinic.
+The workshop scenario gave Bloom Dental about 20 leads a month, only six bookings, and a 35% no-show rate. Awareness wasn't the issue. People were getting lost between seeing the offer, booking, and showing up.
 
-## Live Site
+## What I did
 
-[ghlautomation.onrender.com](https://ghlautomation.onrender.com/)
+| Phase | Decision or output |
+|---|---|
+| 1. Discovery | Turned the intake and discovery call into one problem statement: conversion and follow-up, not awareness. |
+| 2. Strategy | Led with a free 30-minute consultation. Whitening became a follow-up after the visit, not the first ask. |
+| 3. Assets | Wrote the landing-page copy, inquiry form, FAQs, and a 23-message email and SMS sequence with timing and stop rules. |
+| 4. GHL build | Configured a 6-stage pipeline, 10 tags, 8 custom fields, the inquiry form, a 30-minute calendar, the landing page, and six workflows. |
+| 5. Test & measure | Tested the form and calendar path, inspected workflow execution logs, and built a KPI scorecard with formulas and reporting windows. |
 
-## Portfolio Flow
+The six workflows cover new-lead booking, confirmation and reminders, no-show recovery, post-consultation whitening follow-up, payment update, and six-month recall. Each has a trigger, waits, SMS-consent branches, handoffs, and a stop rule.
 
-- `#overview`: the five workshop phases, nine hands-on GHL build areas, contribution, test findings, and simulation boundary.
-- `#system`: nine-step customer journey and six interactive workflow reconstructions.
-- `#automation`: direct shortcut to the workflow lab inside System.
-- `#build`: ten detailed steps expanding the original five workshop phases, with decisions, actions, outputs, purpose, and technical setup.
-- `#deliverables`: eight complete deliverables, two filled templates, and the full workshop source library.
-- `#deliverables/business-case-intake`: completed Business Case Intake Worksheet.
-- `#deliverables/kpi-scorecard`: completed KPI Scorecard and dashboard structure.
-- `#measurement`: measurement path, formulas, projected goals, reporting windows, and diagnostic lab.
-- `#conclusion`: strongest decisions, lessons, first live experiment, and production launch dependencies.
-- `#present/1`: optional 25-slide, 45-minute presentation with chapters, glossary, outline, and presenter notes.
+## What testing showed
 
-Legacy links remain supported, including `#problem`, `#tour`, `#solution`, `#board`, `#implementation`, `#process`, `#evidence`, `#documents`, and `#results`.
+- **Worked:** a test inquiry went through the form and booked a consultation. The execution log showed the contact entering the workflow with its tag and opportunity actions.
+- **Caught before launch:** GHL queued the confirmation email, but delivery failed. A verified sender and a passing delivery test are now launch requirements.
+- **Not measured:** no ads ran. The targets (60 bookings in 60 days, no-show below 15%, 40% whitening attach rate) are projected.
 
-## Complete Content Inventory
+## Deliverables
 
-- 5 original workshop phases, expanded into 10 detailed build steps for the website.
-- 9 GHL build areas from the completed workshop checklist.
-- 6 interactive automation workflows with inspectable nodes.
-- 8 complete final deliverables rendered as native website content.
-- 2 completed workshop templates rendered as native website content.
-- 7 complete GHL setup guides.
-- 1 complete discovery transcript.
-- 1 original 23-message email and SMS sequence.
-- 6 workflow-linked message assets for the final simulation model.
-- 1 measurement framework with formulas, reporting windows, dashboard plan, and diagnostic logic.
-- 25 presentation slides totaling 45 minutes.
+All eight deliverables and both filled templates are in [`deliverables/`](deliverables/). Each is readable in full on the site, with a PDF download.
 
-The site does not load Markdown files, document screenshots, or spreadsheet embeds. The full material is hardcoded into accessible HTML so it can be read, searched, linked, and reviewed directly.
+| # | Document | Files |
+|---|---|---|
+| 01 | Marketing Strategy Document | [Markdown](deliverables/01_Marketing_Strategy_Document.md) · [PDF](deliverables/pdf/01_Marketing_Strategy_Document.pdf) |
+| 02 | Integrated Campaign Plan | [Markdown](deliverables/02_Integrated_Campaign_Plan.md) · [PDF](deliverables/pdf/02_Integrated_Campaign_Plan.pdf) |
+| 03 | Funnel Map and GHL Blueprint | [Markdown](deliverables/03_Funnel_Map_and_GHL_Blueprint.md) · [PDF](deliverables/pdf/03_Funnel_Map_and_GHL_Blueprint.pdf) |
+| 04 | Landing Page Copy Deck | [Markdown](deliverables/04_Landing_Page_Copy_Deck.md) · [PDF](deliverables/pdf/04_Landing_Page_Copy_Deck.pdf) |
+| 05 | Email and SMS Sequence | [Markdown](deliverables/05_Email_SMS_Sequence.md) · [PDF](deliverables/pdf/05_Email_SMS_Sequence.pdf) |
+| 06 | GHL Workflow Specification | [Markdown](deliverables/06_GHL_Workflow_Specification.md) · [PDF](deliverables/pdf/06_GHL_Workflow_Specification.pdf) |
+| 07 | Analytics and KPI Plan | [Markdown](deliverables/07_Analytics_KPI_Plan.md) · [PDF](deliverables/pdf/07_Analytics_KPI_Plan.pdf) |
+| 08 | GHL Build Checklist | [Markdown](deliverables/08_GHL_Build_Checklist_Paste_Ready.md) · [PDF](deliverables/pdf/08_GHL_Build_Checklist_Paste_Ready.pdf) |
+| T1 | Business Case Intake Worksheet (filled) | [PDF](deliverables/templates/WS_00_Business_Case_Intake_Worksheet_FILLED_Bloom_Dental.pdf) |
+| T2 | KPI Scorecard (filled) | [Workbook](deliverables/templates/WS_08_KPI_Scorecard_FILLED_Bloom_Dental.xlsx) |
 
-## Open Locally
+## Credits
 
-Serve this folder with any static server. For example:
+Built from the Libre Academy Fast Track Workshop brief and materials. The academy's guides are republished on the site with permission.
+
+---
+
+## For developers
+
+The site is static HTML, CSS, and JavaScript with no build step. Render serves the repository root using `render.yaml`.
+
+### Run locally
 
 ```powershell
 py -3 -m http.server 4173 --bind 127.0.0.1
@@ -53,30 +61,34 @@ py -3 -m http.server 4173 --bind 127.0.0.1
 
 Then open `http://127.0.0.1:4173/#overview`.
 
-There is no build step or runtime package installation. Render serves the repository root using `render.yaml`.
+### Routes
 
-## Verification
+- `#overview`: workshop phases, contribution, GHL build areas, test findings, verification ledger.
+- `#system` (and `#automation`): customer journey and the six interactive workflow maps.
+- `#build`: ten detailed build steps with technical setup.
+- `#deliverables`: the eight deliverables, two filled templates, and the workshop source library. Deep links such as `#deliverables/kpi-scorecard` open one document.
+- `#measurement`: formulas, reporting windows, and diagnostic lab.
+- `#conclusion`: decisions, lessons, and launch dependencies.
+- `#present/1`: optional 25-slide presentation with presenter notes.
 
-The browser tests use Playwright and Node's test runner:
+Legacy links (`#problem`, `#tour`, `#solution`, `#board`, `#implementation`, `#process`, `#evidence`, `#documents`, `#results`) still resolve.
+
+### Tests
+
+The browser tests use Playwright and Node's test runner, against a local server on port 4173:
 
 ```powershell
 node --check script.js
-node --test tests/*.test.js
+node --test --test-concurrency=1 tests/*.test.js
 ```
 
-The suite checks content completeness, canonical and legacy routes, workflow interactions, responsive overflow, ARIA relationships, reduced motion, missing animation libraries, presentation timing, keyboard focus, and focus restoration.
+They cover content completeness, routes, workflow interactions, responsive overflow, ARIA relationships, reduced motion, presentation timing, and keyboard focus.
 
-## Editing Notes
+### Editing notes
 
-- Edit public copy and native deliverable content in `index.html`.
-- Edit route, workflow, phase, measurement, and presentation behavior in `script.js`.
-- Edit the dark visual system, responsive layouts, focus states, and motion alternatives in `styles.css`.
-- Keep fonts and Lucide, GSAP, and ScrollTrigger self-hosted in `assets/`.
-- Update the title, description, canonical URL, and social preview URLs if the site moves.
-- Replace `assets/og-bloom-dental.png` only with a publication-safe `1200x630` image.
-- Keep projected figures labeled as projected until verified campaign data exists.
-- Do not add personal account screenshots, fake testimonials, client endorsements, or achieved-result claims.
-
-## Truth Boundary
-
-This is a completed workshop simulation, not a live client campaign. `10/10` refers to the documented ten-step website walkthrough, not ten original workshop phases or production readiness. Form and calendar behavior were exercised, and workflow execution logs were inspected. The confirmation email action queued, but delivery failed in the workshop account; testing caught this before launch, and a verified sender plus a passing delivery test are now launch requirements. The Overview verification ledger separates what was specified, configured, tested, and projected. The campaign was not launched, so `60 bookings in 60 days`, `below 15% no-show rate`, and `40% whitening attach rate` are projected goals. Live ads, production compliance review, clinic process validation, and real campaign data also remain launch dependencies.
+- Public copy and native deliverable content live in `index.html`.
+- Routes, workflows, document labels and download links, measurement, and presentation behavior live in `script.js`.
+- The visual system, responsive layouts, focus states, and motion live in `styles.css`.
+- Fonts, Lucide, GSAP, and ScrollTrigger are self-hosted in `assets/`.
+- Keep projected figures labeled as projected until real campaign data exists. Don't add account screenshots, testimonials, or achieved-result claims.
+- If a deliverable changes, update the Markdown and PDF in `deliverables/` along with the site content.

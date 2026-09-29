@@ -2825,11 +2825,51 @@ h1 em {
 
 .document-official-title {
   margin: 0;
+  overflow-wrap: anywhere;
   color: var(--muted-dark);
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.03em;
   line-height: 1.5;
+}
+
+.document-file-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.document-file-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--mint);
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.document-file-links a:hover {
+  border-color: var(--mint);
+  background: var(--surface-raised);
+}
+
+.document-file-links a:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 2px;
+}
+
+.document-file-links small {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
 }
 
 .document-learning-grid {

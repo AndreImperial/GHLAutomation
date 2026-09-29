@@ -214,35 +214,60 @@
     { id: "presentation-slide-16", topic: "5 / LEARN WHAT WORKED", title: "The team needs more than activity counts.", body: "It needs to know where people stopped and what to try next. The next test should follow the first weak step.", minutes: 1, note: "Main idea: A dashboard should help someone make a decision. Explain: ‘We had clicks’ does not tell us why bookings were low. Example: The page may load well, but the form may be confusing. Ask: What is the first weak step you would inspect? Technical backup: A measurement model needs events, sources, timing rules, and ownership.", transition: "The cause is mixing different events and time windows.", problem: "learning" },
     { id: "presentation-slide-10", topic: "5 / WHY IT HAPPENS", title: "Different steps need different questions and different clocks.", body: "A page view, a form answer, a booking, and a six-month recall are not the same event.", minutes: 2, note: "Main idea: Do not place every number in one bucket. Explain: We measure the launch path over 60 days, appointment outcomes after their dates pass, and recall much later. Example: A future recall appointment cannot explain this week’s ad. Ask: Which time window belongs to this question? Technical backup: Separate acquisition, appointment maturity, and retention cohorts.", transition: "The fix is a simple event path with a question at every step." },
     { id: "presentation-slide-8", topic: "5 / THE FIX", title: "Count each step, then choose one next test.", body: "The plan connects page views, forms, bookings, visits, follow-up, and future care. That turns a report into a decision.", minutes: 2, note: "Main idea: Measurement should lead to action. Explain: The team finds the first meaningful drop, checks the related evidence, and changes one thing. Example: If form completion is weak, test the page promise before changing the ads. Ask: What single test would you run first? Technical backup: Events, formulas, UTM values, dashboard widgets, and review cadence make the learning loop usable.", transition: "Before live traffic, the model must be checked from end to end." },
-    { id: "presentation-slide-17", topic: "READY FOR A REAL TEST", title: "The practice build is complete. A real launch still has gates.", body: "The system is documented and ready for the next checks, but it has no live results yet.", minutes: 2, note: "Main idea: Complete design is not the same as live performance. Explain: The workshop build can be reviewed, but sender setup, compliance, tracking, traffic, and real data are still needed. Example: 10/10 means the simulation path is complete. Ask: Which launch gate would you check first? Technical backup: QA covers routes, branches, consent, stages, formulas, stop conditions, and mobile behavior.", transition: "Close by returning to Sam and the work I contributed." },
+    { id: "presentation-slide-17", topic: "READY FOR A REAL TEST", title: "The practice build is complete. A real launch still has gates.", body: "The system is documented and ready for the next checks, but it has no live results yet.", minutes: 2, note: "Main idea: Complete design is not the same as live performance. Explain: The workshop build can be reviewed, but sender setup, compliance, tracking, traffic, and real data are still needed. Example: ten documented steps means the simulation path is complete. Ask: Which launch gate would you check first? Technical backup: QA covers routes, branches, consent, stages, formulas, stop conditions, and mobile behavior.", transition: "Close by returning to Sam and the work I contributed." },
     { id: "presentation-slide-18", topic: "CLOSE / WHAT I CONTRIBUTED", title: "I turned five customer problems into one clear system.", body: "I connected the message, page, form, calendar, follow-up, records, and measurement plan. I would launch with a small test and learn from it.", minutes: 3, note: "Main idea: My contribution was the reasoning chain, not just a set of screens. Explain: I translated the situation into a customer path, built the GHL logic, wrote the communication layer, defined what to count, and documented QA. Example: Sam can now be followed from first interest to the next responsible action. Ask: Which part would you like to inspect? Technical backup: The portfolio contains the strategy, funnel, copy, messages, workflows, analytics plan, and implementation checklist. Transition: The first live experiment should find the earliest meaningful drop after the page loads.", transition: "Invite questions about the decisions, evidence, tradeoffs, or first live experiment." }
   ];
 
   const documentTitles = {
-    "strategy-doc": "Marketing Strategy",
+    "strategy-doc": "Marketing Strategy Document",
     "campaign-doc": "Integrated Campaign Plan",
-    "funnel-doc": "Funnel Map + GHL Blueprint",
+    "funnel-doc": "Funnel Map and GHL Blueprint",
     "copy-doc": "Landing Page Copy Deck",
-    "messages-doc": "Email + SMS Sequence",
+    "messages-doc": "Email and SMS Sequence",
     "workflow-doc": "GHL Workflow Specification",
-    "kpi-doc": "Analytics + KPI Plan",
-    "checklist-doc": "Implementation Checklist",
-    "business-case-intake": "Filled Business Case Intake Worksheet",
-    "kpi-scorecard": "Filled KPI Scorecard"
+    "kpi-doc": "Analytics and KPI Plan",
+    "checklist-doc": "GHL Build Checklist",
+    "business-case-intake": "Business Case Intake Worksheet",
+    "kpi-scorecard": "KPI Scorecard"
+  };
+
+  const documentFiles = {
+    "strategy-doc": { name: "01_Marketing_Strategy_Document", links: [{ label: "Download PDF", href: "deliverables/pdf/01_Marketing_Strategy_Document.pdf", size: "104 KB" }, { label: "View source on GitHub", href: "https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/01_Marketing_Strategy_Document.md" }] },
+    "campaign-doc": { name: "02_Integrated_Campaign_Plan", links: [{ label: "Download PDF", href: "deliverables/pdf/02_Integrated_Campaign_Plan.pdf", size: "84 KB" }, { label: "View source on GitHub", href: "https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/02_Integrated_Campaign_Plan.md" }] },
+    "funnel-doc": { name: "03_Funnel_Map_and_GHL_Blueprint", links: [{ label: "Download PDF", href: "deliverables/pdf/03_Funnel_Map_and_GHL_Blueprint.pdf", size: "108 KB" }, { label: "View source on GitHub", href: "https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/03_Funnel_Map_and_GHL_Blueprint.md" }] },
+    "copy-doc": { name: "04_Landing_Page_Copy_Deck", links: [{ label: "Download PDF", href: "deliverables/pdf/04_Landing_Page_Copy_Deck.pdf", size: "69 KB" }, { label: "View source on GitHub", href: "https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/04_Landing_Page_Copy_Deck.md" }] },
+    "messages-doc": { name: "05_Email_SMS_Sequence", links: [{ label: "Download PDF", href: "deliverables/pdf/05_Email_SMS_Sequence.pdf", size: "78 KB" }, { label: "View source on GitHub", href: "https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/05_Email_SMS_Sequence.md" }] },
+    "workflow-doc": { name: "06_GHL_Workflow_Specification", links: [{ label: "Download PDF", href: "deliverables/pdf/06_GHL_Workflow_Specification.pdf", size: "96 KB" }, { label: "View source on GitHub", href: "https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/06_GHL_Workflow_Specification.md" }] },
+    "kpi-doc": { name: "07_Analytics_KPI_Plan", links: [{ label: "Download PDF", href: "deliverables/pdf/07_Analytics_KPI_Plan.pdf", size: "97 KB" }, { label: "View source on GitHub", href: "https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/07_Analytics_KPI_Plan.md" }] },
+    "checklist-doc": { name: "08_GHL_Build_Checklist_Paste_Ready", links: [{ label: "Download PDF", href: "deliverables/pdf/08_GHL_Build_Checklist_Paste_Ready.pdf", size: "105 KB" }, { label: "View source on GitHub", href: "https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/08_GHL_Build_Checklist_Paste_Ready.md" }] },
+    "business-case-intake": { name: "WS_00_Business_Case_Intake_Worksheet_FILLED_Bloom_Dental", links: [{ label: "Download PDF", href: "deliverables/templates/WS_00_Business_Case_Intake_Worksheet_FILLED_Bloom_Dental.pdf", size: "110 KB" }] },
+    "kpi-scorecard": { name: "WS_08_KPI_Scorecard_FILLED_Bloom_Dental", links: [{ label: "Download workbook (.xlsx)", href: "deliverables/templates/WS_08_KPI_Scorecard_FILLED_Bloom_Dental.xlsx", size: "9 KB" }] }
   };
 
   const beginnerDocumentCopy = {
-    "strategy-doc": { label: "Campaign reasoning", question: "What problem should the campaign solve?", why: "The team needs a clear reason for the offer before building pages or messages.", learn: "How the audience, offer, concerns, and projected goals shaped the build.", journey: "Before Sam sees the offer" },
-    "campaign-doc": { label: "Promotion plan", question: "How will people first hear about Bloom Dental?", why: "The same helpful promise should appear in the promotion and on the page.", learn: "How the audience, channel, message, and first action fit together.", journey: "Sam sees the offer" },
-    "funnel-doc": { label: "Customer path", question: "What should happen from the first click to follow-up?", why: "A drawn path makes missing steps visible before anything is built.", learn: "How the page, questions, calendar, progress record, and helpers connect.", journey: "Sam moves through the full path" },
-    "copy-doc": { label: "Page wording", question: "What should Sam read before asking for help?", why: "Clear words lower worry and make the next action easier to understand.", learn: "How the page, form, FAQs, and calls to action guide the first step.", journey: "Sam understands the offer and asks for help" },
-    "messages-doc": { label: "Follow-up messages", question: "What should Sam receive after each important moment?", why: "Useful messages help people remember, prepare, rebook, or continue.", learn: "How timing, permission, tone, and stop rules shape the messages.", journey: "Sam gets reminders and follow-up" },
-    "workflow-doc": { label: "Automatic rules", question: "Which repeat tasks should happen without manual chasing?", why: "Writing each rule down makes the system easier to build and check.", learn: "How the six helpers notice events, wait, branch, act, and stop.", journey: "Sam is reminded and followed up" },
-    "kpi-doc": { label: "Numbers to check", question: "How will the team know where people stop?", why: "A number is useful only when it answers a clear question.", learn: "How events, formulas, time windows, and tests turn activity into learning.", journey: "The team learns what worked" },
-    "checklist-doc": { label: "Build checklist", question: "What must be built and tested before launch?", why: "A checklist turns the plan into a repeatable review.", learn: "How to check the records, page, calendar, messages, helpers, and measurement plan.", journey: "The whole Sam journey" },
-    "business-case-intake": { label: "Business case intake", question: "What did we know before making the strategy?", why: "The workshop needed one reliable place for the business, offer, audience, bottleneck, goal, and voice.", learn: "How raw discovery notes become clear inputs for campaign decisions.", journey: "Before Sam sees the offer" },
-    "kpi-scorecard": { label: "KPI scorecard", question: "Where would the team enter results and compare them with the plan?", why: "A measurement plan needs a repeatable place for weekly actuals, formulas, and status checks.", learn: "How the campaign setup, eight-week tracker, and progress formulas work together.", journey: "After launch, when the team reviews what happened" }
+    "strategy-doc": { label: "Marketing Strategy Document", question: "What problem should the campaign solve?", why: "The team needs a clear reason for the offer before building pages or messages.", learn: "How the audience, offer, concerns, and projected goals shaped the build.", journey: "Before Sam sees the offer" },
+    "campaign-doc": { label: "Integrated Campaign Plan", question: "How will people first hear about Bloom Dental?", why: "The same helpful promise should appear in the promotion and on the page.", learn: "How the audience, channel, message, and first action fit together.", journey: "Sam sees the offer" },
+    "funnel-doc": { label: "Funnel Map and GHL Blueprint", question: "What should happen from the first click to follow-up?", why: "A drawn path makes missing steps visible before anything is built.", learn: "How the page, questions, calendar, progress record, and helpers connect.", journey: "Sam moves through the full path" },
+    "copy-doc": { label: "Landing Page Copy Deck", question: "What should Sam read before asking for help?", why: "Clear words lower worry and make the next action easier to understand.", learn: "How the page, form, FAQs, and calls to action guide the first step.", journey: "Sam understands the offer and asks for help" },
+    "messages-doc": { label: "Email and SMS Sequence", question: "What should Sam receive after each important moment?", why: "Useful messages help people remember, prepare, rebook, or continue.", learn: "How timing, permission, tone, and stop rules shape the messages.", journey: "Sam gets reminders and follow-up" },
+    "workflow-doc": { label: "GHL Workflow Specification", question: "Which repeat tasks should happen without manual chasing?", why: "Writing each rule down makes the system easier to build and check.", learn: "How the six helpers notice events, wait, branch, act, and stop.", journey: "Sam is reminded and followed up" },
+    "kpi-doc": { label: "Analytics and KPI Plan", question: "How will the team know where people stop?", why: "A number is useful only when it answers a clear question.", learn: "How events, formulas, time windows, and tests turn activity into learning.", journey: "The team learns what worked" },
+    "checklist-doc": { label: "GHL Build Checklist", question: "What must be built and tested before launch?", why: "A checklist turns the plan into a repeatable review.", learn: "How to check the records, page, calendar, messages, helpers, and measurement plan.", journey: "The whole Sam journey" },
+    "business-case-intake": { label: "Business Case Intake Worksheet", question: "What did we know before making the strategy?", why: "The workshop needed one reliable place for the business, offer, audience, bottleneck, goal, and voice.", learn: "How raw discovery notes become clear inputs for campaign decisions.", journey: "Before Sam sees the offer" },
+    "kpi-scorecard": { label: "KPI Scorecard", question: "Where would the team enter results and compare them with the plan?", why: "A measurement plan needs a repeatable place for weekly actuals, formulas, and status checks.", learn: "How the campaign setup, eight-week tracker, and progress formulas work together.", journey: "After launch, when the team reviews what happened" }
   };
+
+  function renderDocumentFiles(documentId) {
+    const files = documentFiles[documentId];
+    if (!files) return "";
+    const links = files.links.map((link) => {
+      const external = link.href.startsWith("http");
+      const attrs = external ? ' target="_blank" rel="noopener"' : " download";
+      const size = link.size ? ` <small>${link.size}</small>` : "";
+      return `<a href="${link.href}"${attrs}>${link.label}${size}</a>`;
+    }).join("");
+    return `<div class="document-files"><p class="document-official-title">File: ${files.name}</p><div class="document-file-links">${links}</div></div>`;
+  }
 
   function prepareDocuments() {
     document.querySelectorAll(".native-deliverable, .native-filled-template").forEach((panel) => {
@@ -255,7 +280,6 @@
       if (!copy || !layout || !aside || !content) return;
       panel.dataset.beginnerReady = "true";
 
-      const officialTitle = documentTitles[documentId] || aside.querySelector("h3")?.textContent?.trim() || "Workshop document";
       const title = aside.querySelector("h3");
       const description = aside.querySelector("p:last-child");
       if (title) title.textContent = copy.label;
@@ -265,7 +289,7 @@
       const beginner = document.createElement("div");
       beginner.className = "document-beginner-intro artifact-introduction";
       beginner.dataset.artifactIntroduction = "";
-      beginner.innerHTML = `<span class="section-label">PORTFOLIO EVIDENCE</span><h3>${copy.label}</h3><p class="document-official-title">Official workshop title: ${officialTitle}</p><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>${copy.question}</p></div><div><span>WHY IT WAS NEEDED</span><p>${copy.why}</p></div><div><span>WHAT TO LOOK FOR</span><p>${copy.learn}</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>${copy.journey}</p></div></div>`;
+      beginner.innerHTML = `<span class="section-label">PORTFOLIO EVIDENCE</span><h3>${copy.label}</h3>${renderDocumentFiles(documentId)}<div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>${copy.question}</p></div><div><span>WHY IT WAS NEEDED</span><p>${copy.why}</p></div><div><span>WHAT TO LOOK FOR</span><p>${copy.learn}</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>${copy.journey}</p></div></div>`;
 
       const complete = document.createElement("details");
       complete.className = "full-document";
@@ -1573,16 +1597,7 @@
   };
 
   function beginnerNodeTitle(node) {
-    if (node.beginnerTitle) return node.beginnerTitle;
-    if (node.type === "trigger") return "Something happens";
-    if (node.type === "condition") return "Check what is true";
-    if (node.type === "wait") return "Give the person time";
-    if (node.type === "handoff") return "Pass to the next helper";
-    if (node.type === "stop") return "Finish this path";
-    if (/send/i.test(node.title)) return "Send a helpful message";
-    if (/tag/i.test(node.title)) return "Save a label";
-    if (/move|create|update|save|add/i.test(node.title)) return "Update the record";
-    return "Take the next action";
+    return node.beginnerTitle || node.title;
   }
 
   function beginnerNodeWhy(node) {
@@ -1596,14 +1611,18 @@
   }
 
   function beginnerNodeNotice(node) {
-    if (node.type === "trigger") return "Sam reaches this moment in the journey.";
-    if (node.type === "condition") return "The system checks whether the next step is still needed.";
-    if (node.type === "wait") return "The system waits until the useful time.";
-    if (node.type === "handoff") return "The current helper finishes and passes the person onward.";
-    if (node.type === "stop") return "The journey reaches an ending point.";
-    if (/send/i.test(node.title)) return "A message is ready for the person.";
-    if (/tag/i.test(node.title)) return "A small label needs to be saved.";
-    return "The team record needs an update.";
+    const title = node.title;
+    const tag = title.match(/tag:\s*(\S+)/i);
+    if (node.type === "trigger") return `This workflow starts when: ${title.toLowerCase()}.`;
+    if (node.type === "condition") return "Splits into yes and no paths so each contact gets only the step that applies.";
+    if (node.type === "wait") return `Pauses the contact (${title.toLowerCase()}) before the next check.`;
+    if (node.type === "handoff") return `Hands the contact to the ${title.replace(/^Start\s+/i, "")} workflow.`;
+    if (node.type === "stop") return "Ends this workflow so no further messages go out.";
+    if (tag) return `Tags the contact ${tag[1]} so later rules and reports can filter on it.`;
+    if (/sms/i.test(title) && /send/i.test(title)) return "Sends a text, only to contacts with SMS consent.";
+    if (/email/i.test(title) && /send/i.test(title)) return "Sends an email from the approved message set.";
+    if (/opportunity/i.test(title)) return "Updates the consultation pipeline so the team sees the current stage.";
+    return "Updates the contact record so the next rule has what it needs.";
   }
 
   function beginnerNodeAction(node) {
