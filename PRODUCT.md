@@ -19,7 +19,7 @@ This is not a live campaign performance report. The figures 60 bookings in 60 da
 ## Content requirements
 
 - Explain GHL concepts in plain English before showing technical detail.
-- Present ten build phases with input, decision, actions, GHL location, output, purpose, and an honest per-phase status (Complete, Specified, or Partly tested).
+- Present the five original workshop phases, expanded into ten detailed build steps with input, decision, actions, GHL location, output, purpose, and an honest per-step status (Complete, Specified, or Partly tested).
 - Preserve eight full workshop deliverables in native website layouts.
 - Show six modular workflows and the customer path from ad to KPI review.
 - Avoid fake results, testimonials, endorsements, and personal account information.

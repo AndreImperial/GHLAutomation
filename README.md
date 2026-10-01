@@ -47,7 +47,7 @@ All eight deliverables and both filled templates are in [`deliverables/`](delive
 
 ## Credits
 
-Built from the Libre Academy Fast Track Workshop brief and materials. The academy's guides are republished on the site with permission.
+Built from the Libre Academy Fast Track Workshop brief and materials. The workshop source library credits the academy's discovery transcript, setup guides, and sample message sequence.
 
 ## Contact
 
