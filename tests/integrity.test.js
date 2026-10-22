@@ -62,6 +62,8 @@ test("rendered views have no broken deliverable links, stray 'undefined', or unq
         const shared = [...document.querySelectorAll("#new-case-study > :not(.view-panel)")].filter((element) => element.offsetParent !== null);
         return { missing, text: [panel.innerText, ...shared.map((element) => element.innerText)].join("\n") };
       }, panelIds[view]);
+      const missingIcons = await page.evaluate(() => [...new Set([...document.querySelectorAll("i[data-lucide]")].map((icon) => icon.dataset.lucide))]);
+      if (missingIcons.length) problems.push(`${view}: icons missing from the subset (run npm run build:icons): ${missingIcons.join(", ")}`);
       if (result.missing.length) problems.push(`${view}: links to missing documents ${result.missing.join(", ")}`);
       for (const word of ["undefined", "NaN", "[object Object]"]) {
         if (new RegExp(`\\b${word.replace(/[[\]]/g, "\\$&")}\\b`).test(result.text)) problems.push(`${view}: rendered text contains "${word}"`);

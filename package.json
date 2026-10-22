@@ -4,9 +4,11 @@
   "description": "Andre Imperial's Bloom Dental consultation funnel and GoHighLevel automation case study (static site).",
   "scripts": {
     "serve": "python -m http.server 4173 --bind 127.0.0.1",
+    "build:icons": "node tools/build-icons.js",
     "test": "node --check script.js && node --test --test-concurrency=1 tests/*.test.js"
   },
   "devDependencies": {
+    "lucide": "0.468.0",
     "playwright": "1.63.0"
   }
 }

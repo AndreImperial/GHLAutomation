@@ -99,6 +99,6 @@ They cover content completeness, routes, workflow interactions, responsive overf
 - All visible copy lives in `index.html`: document intros and download links, measurement copy, build steps, slides, and presenter notes. `script.js` renders only interactive widgets; a test fails if it rewrites authored headings.
 - Routes, workflow data, the journey and KPI widgets, and presentation behavior live in `script.js`.
 - The visual system, responsive layouts, focus states, and motion live in `styles.css`.
-- Fonts, Lucide, GSAP, and ScrollTrigger are self-hosted in `assets/`.
+- Fonts, GSAP, ScrollTrigger, and a Lucide icon subset are self-hosted in `assets/`. After adding a new `data-lucide` icon, run `npm run build:icons`.
 - Keep projected figures labeled as projected until real campaign data exists. Don't add account screenshots, testimonials, or achieved-result claims.
 - If a deliverable changes, update the Markdown and PDF in `deliverables/` along with the site content.
