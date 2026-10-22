@@ -215,7 +215,7 @@ button {
 .build-status .status-score {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   line-height: 1.4;
   text-transform: uppercase;
@@ -223,7 +223,7 @@ button {
 
 .brand-copy small {
   color: var(--muted-dark);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.04em;
   text-transform: none;
 }
@@ -286,7 +286,7 @@ button {
   padding: 8px;
   color: var(--ivory-soft);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -311,7 +311,7 @@ button {
   color: var(--coral);
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -432,7 +432,7 @@ h1 em {
 .hero-role span {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.08em;
 }
 
@@ -553,7 +553,7 @@ h1 em {
 .scene-heading strong {
   color: var(--ivory-soft);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.02em;
 }
@@ -642,7 +642,7 @@ h1 em {
 .kpi-diagnostic-head > span {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.07em;
   line-height: 1.4;
   text-transform: uppercase;
@@ -739,7 +739,7 @@ h1 em {
 .reading-path-steps a > span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.08em;
 }
 
@@ -751,7 +751,7 @@ h1 em {
 
 .reading-path-steps small {
   color: var(--muted-dark);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.35;
 }
 
@@ -823,7 +823,7 @@ h1 em {
   margin: -38px 0 34px;
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.04em;
 }
 
@@ -968,7 +968,7 @@ h1 em {
   color: var(--mint);
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.04em;
   list-style: none;
   text-transform: uppercase;
@@ -1029,7 +1029,7 @@ h1 em {
 .template-crosslinks > div:first-child span {
   color: var(--amber);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.05em;
 }
 
@@ -1170,7 +1170,7 @@ h1 em {
   padding: 9px 14px;
   background: transparent;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -1202,7 +1202,7 @@ h1 em {
 .journey-map-head span:last-child {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1295,13 +1295,13 @@ h1 em {
 
 .journey-node small {
   color: var(--muted-dark);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.25;
 }
 
 .node-index {
   color: var(--coral);
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .node-detail {
@@ -1402,7 +1402,7 @@ h1 em {
 .workflow-source-note > span {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   line-height: 1.4;
   text-transform: uppercase;
@@ -1451,7 +1451,7 @@ h1 em {
   grid-row: span 2;
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.4;
 }
 
@@ -1464,7 +1464,7 @@ h1 em {
 .workflow-picker-tab small {
   margin-top: 4px;
   color: var(--muted-dark);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.35;
 }
 
@@ -1515,7 +1515,7 @@ h1 em {
   border: 1px solid var(--line-strong);
   color: var(--amber);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
 }
 
@@ -1531,7 +1531,7 @@ h1 em {
 .workflow-meta-grid p {
   margin: 8px 0 0;
   color: var(--ivory-soft);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -1622,13 +1622,13 @@ h1 em {
 .workflow-node-index {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .workflow-node-kind {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.08em;
 }
 
@@ -1643,7 +1643,7 @@ h1 em {
   margin: 0;
   overflow: hidden;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
@@ -1723,7 +1723,7 @@ h1 em {
 .workflow-node-spec code {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   overflow-wrap: anywhere;
 }
 
@@ -1738,7 +1738,7 @@ h1 em {
 .workflow-node-technical > div > span {
   color: var(--muted-dark);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.06em;
 }
 
@@ -1771,14 +1771,14 @@ h1 em {
 .workflow-node-outcome span {
   color: var(--amber);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.06em;
 }
 
 .workflow-node-outcome p {
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -1790,7 +1790,7 @@ h1 em {
   padding-top: 18px;
   border-top: 1px solid var(--line);
   color: var(--muted-dark);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.6;
 }
 
@@ -1807,7 +1807,7 @@ h1 em {
   min-height: 44px;
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   text-decoration: none;
 }
 
@@ -1932,7 +1932,7 @@ h1 em {
   border-radius: 3px;
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -1956,7 +1956,7 @@ h1 em {
 
 .phase-grid span {
   color: var(--coral);
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .phase-grid p {
@@ -1982,7 +1982,7 @@ h1 em {
 .phase-beginner-grid > div > span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -2006,7 +2006,7 @@ h1 em {
   min-height: auto !important;
   color: var(--muted-dark);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.6;
 }
 
@@ -2036,7 +2036,7 @@ h1 em {
 .phase-source-note {
   margin: 0;
   color: var(--muted-dark);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.55;
 }
 
@@ -2131,7 +2131,7 @@ h1 em {
   margin-bottom: 7px;
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.06em;
 }
 
@@ -2146,7 +2146,7 @@ h1 em {
 .source-list p {
   margin: 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.55;
 }
 
@@ -2225,7 +2225,7 @@ h1 em {
 .workshop-source-item > summary small {
   margin-top: 4px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.45;
 }
 
@@ -2233,7 +2233,7 @@ h1 em {
   flex: 0 0 auto;
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -2330,7 +2330,7 @@ h1 em {
 .source-document-note {
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.6;
 }
 
@@ -2363,7 +2363,7 @@ h1 em {
 .source-table th {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -2373,7 +2373,7 @@ h1 em {
   overflow-wrap: anywhere;
   color: var(--ivory);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .source-adaptation {
@@ -2445,7 +2445,7 @@ h1 em {
   flex: 0 0 auto;
   color: var(--amber);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.4;
   text-align: right;
 }
@@ -2465,7 +2465,7 @@ h1 em {
 .message-template-copy strong {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -2474,7 +2474,7 @@ h1 em {
 .message-template-meta dd {
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.55;
   overflow-wrap: anywhere;
 }
@@ -2495,7 +2495,7 @@ h1 em {
 
 .message-template-copy .template-caution {
   color: var(--amber);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .filled-template-links {
@@ -2524,7 +2524,7 @@ h1 em {
 
 .filled-template-links span {
   color: var(--amber);
-  font: 10px var(--mono);
+  font: 11px var(--mono);
 }
 
 .filled-template-links strong {
@@ -2599,7 +2599,7 @@ h1 em {
 .doc-tab span {
   color: var(--muted-dark);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .doc-tab:hover,
@@ -2713,7 +2713,7 @@ h1 em {
   overflow-wrap: anywhere;
   color: var(--muted-dark);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.03em;
   line-height: 1.5;
 }
@@ -2773,7 +2773,7 @@ h1 em {
 .document-learning-grid span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -2796,7 +2796,7 @@ h1 em {
   color: var(--mint);
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.05em;
   list-style: none;
   text-transform: uppercase;
@@ -2914,7 +2914,7 @@ h1 em {
 .document-panel th {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -2995,7 +2995,7 @@ h1 em {
 .projected-label {
   color: var(--amber);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -3018,7 +3018,7 @@ h1 em {
 .scorecard-meta dt {
   color: var(--muted-dark);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.5;
   text-transform: uppercase;
 }
@@ -3125,7 +3125,7 @@ h1 em {
   display: block;
   min-height: 30px;
   color: var(--amber);
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .target-card strong {
@@ -3213,7 +3213,7 @@ h1 em {
 .measurement-path-grid article > span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.06em;
 }
 
@@ -3249,14 +3249,14 @@ h1 em {
 .measurement-path-grid dt {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.06em;
 }
 
 .measurement-path-grid dd {
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -3278,7 +3278,7 @@ h1 em {
   color: var(--mint);
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   list-style: none;
   text-transform: uppercase;
@@ -3338,7 +3338,7 @@ h1 em {
 
 .measurement-block th {
   color: var(--muted-dark);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -3366,7 +3366,7 @@ h1 em {
 .kpi-tree span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.05em;
 }
 
@@ -3382,7 +3382,7 @@ h1 em {
 
 .kpi-tree small {
   color: var(--muted-dark);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .dashboard-plan,
@@ -3457,7 +3457,7 @@ h1 em {
   color: var(--muted);
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   text-align: left;
   transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
@@ -3613,7 +3613,7 @@ h1 em {
 .conclusion-status-grid > div > span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.07em;
   line-height: 1.4;
   text-transform: uppercase;
@@ -3788,7 +3788,7 @@ h1 em {
 .portfolio-conclusion-grid article > span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.07em;
 }
 
@@ -3871,7 +3871,7 @@ h1 em {
 
 .redesign-footer p {
   margin: 0;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.6;
 }
 
@@ -3943,11 +3943,11 @@ body.motion-enhanced [data-reveal].is-inview {
 .problem-selector button span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .problem-selector button strong {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.3;
 }
 
@@ -3989,7 +3989,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .measurement-problem-panel > div span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -4054,7 +4054,7 @@ body.motion-enhanced [data-reveal].is-inview {
 
 .solution-chain > div:last-child { border-color: var(--mint-strong); }
 .solution-chain > i { align-self: center; width: 18px; color: var(--coral); }
-.solution-chain code { display: block; margin-top: 12px; color: var(--amber); font-size: 10px; white-space: normal; }
+.solution-chain code { display: block; margin-top: 12px; color: var(--amber); font-size: 12px; white-space: normal; }
 
 .problem-meta {
   display: flex;
@@ -4093,7 +4093,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .evidence-matrix-heading > span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -4132,7 +4132,7 @@ body.motion-enhanced [data-reveal].is-inview {
 
 .evidence-matrix p { margin: 0; }
 .evidence-matrix article > div { display: flex; flex-wrap: wrap; gap: 7px; }
-.evidence-matrix a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 10px; border: 1px solid var(--line); color: var(--mint); font-size: 10px; line-height: 1.3; }
+.evidence-matrix a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 10px; border: 1px solid var(--line); color: var(--mint); font-size: 12px; line-height: 1.3; }
 .evidence-matrix a:hover,
 .evidence-matrix a:focus-visible { border-color: var(--coral); color: var(--ivory); }
 .evidence-matrix article.is-active { background: rgba(169, 215, 183, 0.035); }
@@ -4141,7 +4141,7 @@ body.motion-enhanced [data-reveal].is-inview {
   grid-column: 2;
   color: var(--muted-dark);
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 500;
   line-height: 1.35;
   text-transform: uppercase;
@@ -4232,7 +4232,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-problem-map span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .presentation-problem-map strong {
@@ -4247,7 +4247,7 @@ body.motion-enhanced [data-reveal].is-inview {
   margin-top: 18px;
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 11px;
   text-transform: uppercase;
 }
 
@@ -4575,7 +4575,7 @@ body.motion-enhanced [data-reveal].is-inview {
   }
 
   .brand-copy small {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .header-contact {
@@ -4597,7 +4597,7 @@ body.motion-enhanced [data-reveal].is-inview {
   .primary-tab {
     padding-right: 10px;
     padding-left: 10px;
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .journey-map-stage {
@@ -4651,7 +4651,7 @@ body.motion-enhanced [data-reveal].is-inview {
   .hero-status {
     max-width: 300px;
     margin-bottom: 14px;
-    font-size: 9px;
+    font-size: 12px;
   }
 
   h1 {
@@ -4695,7 +4695,7 @@ body.motion-enhanced [data-reveal].is-inview {
   }
 
   .scene-node .scene-label {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .orientation-strip > a {
@@ -4704,7 +4704,7 @@ body.motion-enhanced [data-reveal].is-inview {
   }
 
   .orientation-strip strong {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .view-panel {
@@ -4775,11 +4775,11 @@ body.motion-enhanced [data-reveal].is-inview {
   }
 
   .reading-path-steps strong {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .reading-path-steps small {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .guided-next {
@@ -5254,7 +5254,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-visual-finish li {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   line-height: 1.45;
   text-transform: uppercase;
@@ -5262,7 +5262,7 @@ body.motion-enhanced [data-reveal].is-inview {
 
 .presentation-brand small {
   color: var(--muted-dark);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.03em;
   text-transform: none;
 }
@@ -5280,7 +5280,7 @@ body.motion-enhanced [data-reveal].is-inview {
 
 .presentation-progress-copy small {
   color: var(--muted-dark);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.05em;
 }
@@ -5305,7 +5305,7 @@ body.motion-enhanced [data-reveal].is-inview {
   color: var(--ivory-soft);
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
@@ -5345,7 +5345,7 @@ body.motion-enhanced [data-reveal].is-inview {
   color: var(--ivory-soft);
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -5401,7 +5401,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-outline > div:first-child > span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.08em;
 }
 
@@ -5448,7 +5448,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-outline-list span {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.05em;
 }
 
@@ -5611,7 +5611,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-operations-grid b {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   line-height: 1.4;
   text-transform: uppercase;
@@ -5640,7 +5640,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-data-model small {
   margin-top: 8px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.45;
 }
 
@@ -5666,7 +5666,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-capture-flow span,
 .presentation-operations-grid span {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.4;
 }
 
@@ -5715,7 +5715,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-capture-flow b {
   color: var(--amber);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.08em;
 }
 
@@ -5738,13 +5738,13 @@ body.motion-enhanced [data-reveal].is-inview {
   border: 1px solid var(--line-strong);
   background: var(--surface);
   color: var(--ivory-soft);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .presentation-document-grid b {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 500;
 }
 
@@ -5768,7 +5768,7 @@ body.motion-enhanced [data-reveal].is-inview {
   background: var(--surface);
   color: var(--ivory-soft);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.3;
   text-align: center;
   cursor: pointer;
@@ -5794,7 +5794,7 @@ body.motion-enhanced [data-reveal].is-inview {
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
 }
 
@@ -5851,7 +5851,7 @@ body.motion-enhanced [data-reveal].is-inview {
   border-top: 1px solid var(--line);
   color: var(--amber);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   line-height: 1.5;
   text-transform: uppercase;
@@ -5904,7 +5904,7 @@ body.motion-enhanced [data-reveal].is-inview {
   background: var(--surface);
   color: var(--ivory);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   text-align: center;
 }
 
@@ -5977,7 +5977,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-leak strong {
   color: var(--ivory-soft);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   line-height: 1.35;
   text-transform: uppercase;
@@ -6047,13 +6047,13 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-teaching-detail span,
 .presentation-teaching-detail code {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .presentation-teaching-detail span { color: var(--mint); }
 .presentation-teaching-detail code { color: var(--amber); }
 .presentation-teaching-detail strong { color: var(--ivory); font-size: 13px; }
-.presentation-teaching-detail p { margin: 0; color: var(--ivory-soft); font-size: 11px; line-height: 1.5; }
+.presentation-teaching-detail p { margin: 0; color: var(--ivory-soft); font-size: 12px; line-height: 1.5; }
 
 .presentation-journey-line {
   position: absolute;
@@ -6083,7 +6083,7 @@ body.motion-enhanced [data-reveal].is-inview {
   border-bottom: 1px solid var(--line);
   color: var(--ivory-soft);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.35;
 }
 
@@ -6128,7 +6128,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-workflow-list b {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
 }
 
@@ -6136,7 +6136,7 @@ body.motion-enhanced [data-reveal].is-inview {
   gap: 8px;
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
 }
 
@@ -6181,7 +6181,7 @@ body.motion-enhanced [data-reveal].is-inview {
 
 .presentation-visual-targets small {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.4;
 }
 
@@ -6193,7 +6193,7 @@ body.motion-enhanced [data-reveal].is-inview {
   border-top: 1px solid var(--line);
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -6223,7 +6223,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .finish-score span {
   color: var(--ivory-soft);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.5;
   text-transform: uppercase;
 }
@@ -6331,7 +6331,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-talk code {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .presentation-transition {
@@ -6340,7 +6340,7 @@ body.motion-enhanced [data-reveal].is-inview {
   border-top: 1px solid var(--line);
   color: var(--amber) !important;
   font-family: var(--mono);
-  font-size: 10px !important;
+  font-size: 11px !important;
   letter-spacing: 0.02em;
 }
 
@@ -6348,7 +6348,7 @@ body.motion-enhanced [data-reveal].is-inview {
   border-left: 2px solid var(--mint);
   color: var(--mint) !important;
   font-family: var(--mono);
-  font-size: 10px !important;
+  font-size: 11px !important;
   margin-top: 4px;
   padding-left: 12px;
 }
@@ -6422,7 +6422,7 @@ body.motion-enhanced [data-reveal].is-inview {
   color: var(--ivory-soft);
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -6503,11 +6503,11 @@ body.motion-enhanced [data-reveal].is-inview {
 
 .presentation-chapters span {
   color: var(--coral);
-  font-size: 8px;
+  font-size: 12px;
 }
 
 .presentation-chapters strong {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -6725,7 +6725,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-glossary-head > span {
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.08em;
 }
 
@@ -6759,7 +6759,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .presentation-glossary dt {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -6805,7 +6805,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .teaching-funnel-detail span {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -6821,7 +6821,7 @@ body.motion-enhanced [data-reveal].is-inview {
 
 .teaching-comparison-grid span {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.45;
 }
 
@@ -6868,7 +6868,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .teaching-analyst > div > span {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.06em;
 }
 
@@ -6887,7 +6887,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .teaching-realities span,
 .teaching-analyst small {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -6914,7 +6914,7 @@ body.motion-enhanced [data-reveal].is-inview {
   border-top: 1px solid var(--line);
   color: var(--amber);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.5;
 }
 
@@ -6980,7 +6980,7 @@ body.motion-enhanced [data-reveal].is-inview {
 
 .teaching-funnel-flow span {
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -7009,7 +7009,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .teaching-funnel-detail code {
   color: var(--amber);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .teaching-realities {
@@ -7180,7 +7180,7 @@ body.motion-enhanced [data-reveal].is-inview {
 
   .presentation-label {
     margin-bottom: 14px;
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .presentation-copy h1,
@@ -7203,7 +7203,7 @@ body.motion-enhanced [data-reveal].is-inview {
     min-width: auto;
     padding-top: 10px;
     padding-right: 10px;
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .presentation-proof-line span + span {
@@ -7333,7 +7333,7 @@ body.motion-enhanced [data-reveal].is-inview {
   .present-route span {
     width: 57px;
     height: 57px;
-    font-size: 8px;
+    font-size: 12px;
   }
 
   .present-route svg {
@@ -7360,7 +7360,7 @@ body.motion-enhanced [data-reveal].is-inview {
   }
 
   .presentation-baseline small {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .presentation-leak {
@@ -7386,7 +7386,7 @@ body.motion-enhanced [data-reveal].is-inview {
   .presentation-journey-grid button {
     min-height: 48px;
     padding: 7px;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .presentation-teaching-detail {
@@ -7424,7 +7424,7 @@ body.motion-enhanced [data-reveal].is-inview {
   }
 
   .presentation-visual-targets > div > span {
-    font-size: 8px;
+    font-size: 12px;
   }
 
   .presentation-visual-targets strong {
@@ -7433,12 +7433,12 @@ body.motion-enhanced [data-reveal].is-inview {
   }
 
   .presentation-visual-targets small {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .presentation-kpi-link {
     justify-content: flex-start;
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .presentation-visual-finish {
@@ -7747,7 +7747,7 @@ body.motion-enhanced [data-reveal].is-inview {
 .ghl-build-list > div > span {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .project-phase-role {
@@ -7755,7 +7755,7 @@ body.motion-enhanced [data-reveal].is-inview {
   margin-bottom: 6px;
   color: var(--coral);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -8037,7 +8037,7 @@ body[data-view]:not([data-view="problem"]) .at-a-glance {
   border: 1px solid currentColor;
   border-radius: 999px;
   font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
+  font-size: 12px;
   white-space: nowrap;
 }
 
@@ -8768,7 +8768,7 @@ body[data-view]:not([data-view="problem"]) .at-a-glance {
 .present-cards b {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.08em;
 }
 
@@ -8852,7 +8852,7 @@ body[data-view]:not([data-view="problem"]) .at-a-glance {
   gap: 7px;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -8870,7 +8870,7 @@ body[data-view]:not([data-view="problem"]) .at-a-glance {
 .present-bars-note {
   margin: 14px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .present-ledger ul {
@@ -8902,7 +8902,7 @@ body[data-view]:not([data-view="problem"]) .at-a-glance {
 .present-ledger b {
   color: var(--mint);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.08em;
 }
 
