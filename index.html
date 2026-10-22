@@ -285,17 +285,17 @@
 
         <section id="view-solution" class="view-panel" role="tabpanel" aria-labelledby="tab-solution" data-view-panel="solution" hidden>
           <div class="view-heading" data-reveal>
-            <div><span class="section-label">GHL BUILD / AUTOMATION</span><h2>Six workflows around one consultation pipeline.</h2></div>
+            <div><span class="section-label">GHL BUILD / AUTOMATION</span><h1>Six workflows around one consultation pipeline.</h1></div>
             <div class="segmented-control" role="group" aria-label="Choose explanation level"><button type="button" class="segment is-active" data-mode="plain" aria-pressed="true">Simple explanation</button><button type="button" class="segment" data-mode="detail" aria-pressed="false">Show the GHL setup</button></div>
           </div>
           <p class="view-context-note">The workshop build connects the New Patient Inquiry form, a 30-minute consultation calendar, six pipeline stages, and six specified follow-up workflows. <a href="#automation">Inspect the workflow maps</a>. Sam is a fictional example used below to explain the customer path.</p>
           <div class="problem-explorer problem-explorer-solution" data-problem-explorer="solution" data-reveal>
             <div class="problem-selector" role="tablist" aria-label="Choose a step in Sam’s journey" data-problem-selector></div>
-            <article class="problem-panel problem-solution-panel" role="tabpanel" aria-live="polite" data-problem-panel>
-              <div class="problem-panel-heading"><span data-problem-field="number">01 / ASK FOR HELP</span><h3 data-problem-field="problem">People could see the offer without understanding the next step.</h3></div>
+            <div class="problem-panel problem-solution-panel" role="tabpanel" aria-live="polite" data-problem-panel>
+              <div class="problem-panel-heading"><span data-problem-field="number">01 / ASK FOR HELP</span><h2 data-problem-field="problem">People could see the offer without understanding the next step.</h2></div>
               <div class="solution-chain"><div><span>HOW THE PROJECT HELPS</span><p data-problem-field="solution"></p></div><i data-lucide="arrow-right" aria-hidden="true"></i><div><span>WHAT THE SYSTEM DOES</span><p data-problem-field="implementation"></p></div><i data-lucide="arrow-right" aria-hidden="true"></i><div><span>WHAT WE CHECK</span><p data-problem-field="kpi"></p><details class="inline-technical"><summary>What supports this</summary><p data-problem-field="proof"></p></details></div></div>
               <div class="problem-meta"><span data-problem-field="phases"></span><span data-problem-field="evidence"></span></div>
-            </article>
+            </div>
           </div>
           <div class="journey-layout">
             <div class="journey-map-stage" data-story-section>
@@ -324,7 +324,7 @@
               <div id="workflow-workspace" class="workflow-workspace" role="tabpanel" aria-labelledby="workflow-tab-new-lead-booking">
                 <div class="workflow-overview"><div class="workflow-overview-title"><div><span id="workflow-number" class="workflow-number">01</span><span class="section-label">ONE AUTOMATIC HELPER</span><h3 id="workflow-title">Help a new person choose a time</h3><p id="workflow-summary">After Sam asks for help, save the answers and make choosing a time easy.</p></div><span id="workflow-count" class="workflow-count">12 steps</span></div><div class="workflow-meta-grid"><div><span>STARTS WHEN</span><p id="workflow-trigger">Sam sends the inquiry form</p></div><div><span>WHAT IT USES</span><p id="workflow-location">The shared customer record</p><details class="inline-technical"><summary>Show the GHL location</summary><code id="workflow-technical-location">Automation &gt; Workflows</code></details></div><div><span>STOPS WHEN</span><p id="workflow-stop">A time is booked</p></div></div></div>
                 <div class="workflow-canvas-head"><span id="workflow-canvas-label">12 STEP PATH</span><span>SELECT A STEP TO LEARN MORE</span></div>
-                <div id="workflow-canvas" class="workflow-canvas" role="group" aria-label="Workflow nodes"><p class="workflow-canvas-fallback">The interactive node map is reconstructed from the full GHL Workflow Specification. Open Deliverable 06 for the source sequence.</p></div>
+                <div id="workflow-canvas" class="workflow-canvas" role="list" aria-label="Workflow nodes"><p class="workflow-canvas-fallback">The interactive node map is reconstructed from the full GHL Workflow Specification. Open Deliverable 06 for the source sequence.</p></div>
                 <div class="workflow-node-detail" aria-live="polite"><div class="workflow-node-detail-head"><span id="workflow-node-type">START</span><span id="workflow-node-position">01 / 12</span></div><h3 id="workflow-node-title">Something happens</h3><div class="workflow-node-spec"><div><span>WHAT IT NOTICES</span><p id="workflow-node-description">Sam sends the Bloom Dental inquiry form.</p></div><div><span>WHAT IT DOES</span><p id="workflow-node-function">Starts the right helper for Sam’s next step.</p></div><div><span>WHY IT MATTERS</span><p id="workflow-node-why">It starts the right part of Sam’s journey.</p></div></div><details class="inline-technical workflow-node-technical"><summary>Technical setup</summary><div><span>GHL NODE</span><p id="workflow-node-technical-title">Form Submitted</p></div><div><span>WHERE IT LIVES IN GHL</span><code id="workflow-node-ghl">Automation &gt; Workflows &gt; Trigger: Form Submitted</code></div></details><div id="workflow-node-branch" class="workflow-node-branch" hidden><span>OUTCOMES</span><div id="workflow-node-outcomes"></div></div></div>
               </div>
             </div>
@@ -336,7 +336,7 @@
         </section>
 
         <section id="view-build" class="view-panel" role="tabpanel" aria-labelledby="tab-build" data-view-panel="build" hidden>
-          <div class="view-heading" data-reveal><div><span class="section-label">HOW I BUILT IT</span><h2>Ten detailed steps inside the five workshop phases.</h2></div><p>These ten steps expand the workshop process. Open Technical setup for the GHL locations, rules, fields, and guide references.</p></div>
+          <div class="view-heading" data-reveal><div><span class="section-label">HOW I BUILT IT</span><h1>Ten detailed steps inside the five workshop phases.</h1></div><p>These ten steps expand the workshop process. Open Technical setup for the GHL locations, rules, fields, and guide references.</p></div>
           <div class="build-status"><span class="status-dot" aria-hidden="true"></span><div><strong>Practice build documented</strong><p>All 10 workshop steps are documented: 8 complete, 1 specified, and 1 partly tested. Real launch checks still remain.</p></div><span class="status-score">8 of 10 complete</span></div>
           <div class="phase-timeline">
             <details class="phase-row" open="" data-reveal=""><summary><span class="phase-number">01</span><span><strong>Understand the situation</strong><small>Find out where people could get lost.</small></span><span class="phase-status">Complete</span></summary><div class="phase-beginner-grid phase-portfolio-summary">
@@ -427,13 +427,13 @@
         </section>
 
         <section id="view-evidence" class="view-panel" role="tabpanel" aria-labelledby="tab-evidence" data-view-panel="evidence" hidden>
-          <div class="view-heading" data-reveal><div><span class="section-label">WHAT I MADE</span><h2>Open every deliverable and filled template.</h2></div><p>The site contains eight completed project documents and two filled workshop templates. Each one is readable here in full, with the original PDF or workbook available to download.</p></div>
+          <div class="view-heading" data-reveal><div><span class="section-label">WHAT I MADE</span><h1>Open every deliverable and filled template.</h1></div><p>The site contains eight completed project documents and two filled workshop templates. Each one is readable here in full, with the original PDF or workbook available to download.</p></div>
           <nav class="filled-template-links" aria-label="Open filled workshop templates">
             <a href="#deliverables/business-case-intake"><span>T1 / FILLED WORKSHOP TEMPLATE</span><strong>Business Case Intake Worksheet</strong><small>The completed brief and discovery inputs behind the strategy.</small><em>Open filled business case intake <i data-lucide="arrow-up-right" aria-hidden="true"></i></em></a>
             <a href="#deliverables/kpi-scorecard"><span>T2 / FILLED WORKSHOP TEMPLATE</span><strong>KPI Scorecard</strong><small>The completed campaign setup, weekly tracker, and dashboard formulas.</small><em>Open filled KPI scorecard <i data-lucide="arrow-up-right" aria-hidden="true"></i></em></a>
           </nav>
           <div id="deliverables-layout" class="deliverables-layout">
-            <aside class="deliverables-index" role="tablist" aria-orientation="vertical" aria-label="Workshop deliverables and filled templates">
+            <div class="deliverables-index" role="tablist" aria-orientation="vertical" aria-label="Workshop deliverables and filled templates">
               <span class="index-label" role="presentation">8 COMPLETE DELIVERABLES</span>
               <button id="new-doc-tab-strategy-doc" class="doc-tab is-active" type="button" role="tab" aria-controls="docs-panel-strategy-doc" data-doc="strategy-doc" aria-selected="true" tabindex="0"><span>01</span>Marketing Strategy Document</button>
               <button id="new-doc-tab-campaign-doc" class="doc-tab" type="button" role="tab" aria-controls="docs-panel-campaign-doc" data-doc="campaign-doc" aria-selected="false" tabindex="-1"><span>02</span>Integrated Campaign Plan</button>
@@ -446,16 +446,16 @@
               <span class="index-label index-label-secondary" role="presentation">2 FILLED WORKSHOP TEMPLATES</span>
               <button id="new-doc-tab-business-case-intake" class="doc-tab doc-tab-template" type="button" role="tab" aria-controls="docs-panel-business-case-intake" data-doc="business-case-intake" aria-selected="false" tabindex="-1"><span>T1</span>Business Case Intake Worksheet</button>
               <button id="new-doc-tab-kpi-scorecard" class="doc-tab doc-tab-template" type="button" role="tab" aria-controls="docs-panel-kpi-scorecard" data-doc="kpi-scorecard" aria-selected="false" tabindex="-1"><span>T2</span>KPI Scorecard</button>
-            </aside>
+            </div>
             <div id="deliverable-outlet" class="deliverable-outlet" aria-live="polite">
-<article id="docs-panel-strategy-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-strategy-doc" tabindex="0">
+<div id="docs-panel-strategy-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-strategy-doc" tabindex="0">
             <div class="document-layout">
               <aside aria-label="Marketing Strategy document overview">
                 <p class="eyebrow">Document 01</p>
                 <h3>Marketing Strategy Document</h3>
                 <p>What problem should the campaign solve?</p>
               </aside>
-              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h3>Marketing Strategy Document</h3><div class="document-files"><p class="document-official-title">File: 01_Marketing_Strategy_Document</p><div class="document-file-links"><a href="deliverables/pdf/01_Marketing_Strategy_Document.pdf" download="">Download PDF <small>104 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/01_Marketing_Strategy_Document.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What problem should the campaign solve?</p></div><div><span>WHY IT WAS NEEDED</span><p>The team needs a clear reason for the offer before building pages or messages.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the audience, offer, concerns, and projected goals shaped the build.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Before Sam sees the offer</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
+              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h2>Marketing Strategy Document</h2><div class="document-files"><p class="document-official-title">File: 01_Marketing_Strategy_Document</p><div class="document-file-links"><a href="deliverables/pdf/01_Marketing_Strategy_Document.pdf" download="">Download PDF <small>104 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/01_Marketing_Strategy_Document.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What problem should the campaign solve?</p></div><div><span>WHY IT WAS NEEDED</span><p>The team needs a clear reason for the offer before building pages or messages.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the audience, offer, concerns, and projected goals shaped the build.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Before Sam sees the offer</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
                   <span>Key decision</span>
                   <p>Frame the problem as conversion and follow-up, not awareness. That decision shaped the whole project.</p>
                 </div><div class="source-note">Deliverable page: complete workshop content</div><div class="doc-source document-markdown">
@@ -586,15 +586,15 @@
 </ul>
 </div></div></details></div>
             </div>
-          </article>
-<article id="docs-panel-campaign-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-campaign-doc" tabindex="0" hidden="">
+          </div>
+<div id="docs-panel-campaign-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-campaign-doc" tabindex="0" hidden="">
             <div class="document-layout">
               <aside aria-label="Integrated Campaign Plan overview">
                 <p class="eyebrow">Document 02</p>
                 <h3>Integrated Campaign Plan</h3>
                 <p>How will people first hear about Bloom Dental?</p>
               </aside>
-              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h3>Integrated Campaign Plan</h3><div class="document-files"><p class="document-official-title">File: 02_Integrated_Campaign_Plan</p><div class="document-file-links"><a href="deliverables/pdf/02_Integrated_Campaign_Plan.pdf" download="">Download PDF <small>84 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/02_Integrated_Campaign_Plan.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>How will people first hear about Bloom Dental?</p></div><div><span>WHY IT WAS NEEDED</span><p>The same helpful promise should appear in the promotion and on the page.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the audience, channel, message, and first action fit together.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Sam sees the offer</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
+              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h2>Integrated Campaign Plan</h2><div class="document-files"><p class="document-official-title">File: 02_Integrated_Campaign_Plan</p><div class="document-file-links"><a href="deliverables/pdf/02_Integrated_Campaign_Plan.pdf" download="">Download PDF <small>84 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/02_Integrated_Campaign_Plan.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>How will people first hear about Bloom Dental?</p></div><div><span>WHY IT WAS NEEDED</span><p>The same helpful promise should appear in the promotion and on the page.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the audience, channel, message, and first action fit together.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Sam sees the offer</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
                   <span>Key decision</span>
                   <p>Use the free consultation as the low-friction front-end offer before introducing whitening.</p>
                 </div><div class="source-note">Deliverable page: complete workshop content</div><div class="doc-source document-markdown">
@@ -686,15 +686,15 @@
 <p>Send same-day whitening follow-up with clear price and booking link.</p>
 </div></div></details></div>
             </div>
-          </article>
-<article id="docs-panel-funnel-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-funnel-doc" tabindex="0" hidden="">
+          </div>
+<div id="docs-panel-funnel-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-funnel-doc" tabindex="0" hidden="">
             <div class="document-layout">
               <aside aria-label="Funnel Map and GHL Blueprint overview">
                 <p class="eyebrow">Document 03</p>
                 <h3>Funnel Map and GHL Blueprint</h3>
                 <p>What should happen from the first click to follow-up?</p>
               </aside>
-              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h3>Funnel Map and GHL Blueprint</h3><div class="document-files"><p class="document-official-title">File: 03_Funnel_Map_and_GHL_Blueprint</p><div class="document-file-links"><a href="deliverables/pdf/03_Funnel_Map_and_GHL_Blueprint.pdf" download="">Download PDF <small>108 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/03_Funnel_Map_and_GHL_Blueprint.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What should happen from the first click to follow-up?</p></div><div><span>WHY IT WAS NEEDED</span><p>A drawn path makes missing steps visible before anything is built.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the page, questions, calendar, progress record, and helpers connect.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Sam moves through the full path</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
+              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h2>Funnel Map and GHL Blueprint</h2><div class="document-files"><p class="document-official-title">File: 03_Funnel_Map_and_GHL_Blueprint</p><div class="document-file-links"><a href="deliverables/pdf/03_Funnel_Map_and_GHL_Blueprint.pdf" download="">Download PDF <small>108 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/03_Funnel_Map_and_GHL_Blueprint.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What should happen from the first click to follow-up?</p></div><div><span>WHY IT WAS NEEDED</span><p>A drawn path makes missing steps visible before anything is built.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the page, questions, calendar, progress record, and helpers connect.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Sam moves through the full path</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
                   <span>Key decision</span>
                   <p>Map every step from Meta ad to recall so no lead is left without a next action.</p>
                 </div><div class="source-note">Deliverable page: complete workshop content</div><div class="doc-source document-markdown">
@@ -856,15 +856,15 @@
 </ol>
 </div></div></details></div>
             </div>
-          </article>
-<article id="docs-panel-copy-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-copy-doc" tabindex="0" hidden="">
+          </div>
+<div id="docs-panel-copy-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-copy-doc" tabindex="0" hidden="">
             <div class="document-layout">
               <aside aria-label="Landing Page Copy Deck overview">
                 <p class="eyebrow">Document 04</p>
                 <h3>Landing Page Copy Deck</h3>
                 <p>What should Sam read before asking for help?</p>
               </aside>
-              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h3>Landing Page Copy Deck</h3><div class="document-files"><p class="document-official-title">File: 04_Landing_Page_Copy_Deck</p><div class="document-file-links"><a href="deliverables/pdf/04_Landing_Page_Copy_Deck.pdf" download="">Download PDF <small>69 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/04_Landing_Page_Copy_Deck.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What should Sam read before asking for help?</p></div><div><span>WHY IT WAS NEEDED</span><p>Clear words lower worry and make the next action easier to understand.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the page, form, FAQs, and calls to action guide the first step.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Sam understands the offer and asks for help</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
+              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h2>Landing Page Copy Deck</h2><div class="document-files"><p class="document-official-title">File: 04_Landing_Page_Copy_Deck</p><div class="document-file-links"><a href="deliverables/pdf/04_Landing_Page_Copy_Deck.pdf" download="">Download PDF <small>69 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/04_Landing_Page_Copy_Deck.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What should Sam read before asking for help?</p></div><div><span>WHY IT WAS NEEDED</span><p>Clear words lower worry and make the next action easier to understand.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the page, form, FAQs, and calls to action guide the first step.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Sam understands the offer and asks for help</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
                   <span>Key decision</span>
                   <p>Write around trust, time, price clarity, and pressure-free guidance before asking for a booking.</p>
                 </div><div class="source-note">Deliverable page: complete workshop content</div><div class="doc-source document-markdown">
@@ -924,15 +924,15 @@
 <p>Book Your Free Consultation</p>
 </div></div></details></div>
             </div>
-          </article>
-<article id="docs-panel-messages-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-messages-doc" tabindex="0" hidden="">
+          </div>
+<div id="docs-panel-messages-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-messages-doc" tabindex="0" hidden="">
             <div class="document-layout">
               <aside aria-label="Email and SMS Sequence overview">
                 <p class="eyebrow">Document 05</p>
                 <h3>Email and SMS Sequence</h3>
                 <p>What should Sam receive after each important moment?</p>
               </aside>
-              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h3>Email and SMS Sequence</h3><div class="document-files"><p class="document-official-title">File: 05_Email_SMS_Sequence</p><div class="document-file-links"><a href="deliverables/pdf/05_Email_SMS_Sequence.pdf" download="">Download PDF <small>78 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/05_Email_SMS_Sequence.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What should Sam receive after each important moment?</p></div><div><span>WHY IT WAS NEEDED</span><p>Useful messages help people remember, prepare, rebook, or continue.</p></div><div><span>WHAT TO LOOK FOR</span><p>How timing, permission, tone, and stop rules shape the messages.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Sam gets reminders and follow-up</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
+              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h2>Email and SMS Sequence</h2><div class="document-files"><p class="document-official-title">File: 05_Email_SMS_Sequence</p><div class="document-file-links"><a href="deliverables/pdf/05_Email_SMS_Sequence.pdf" download="">Download PDF <small>78 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/05_Email_SMS_Sequence.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What should Sam receive after each important moment?</p></div><div><span>WHY IT WAS NEEDED</span><p>Useful messages help people remember, prepare, rebook, or continue.</p></div><div><span>WHAT TO LOOK FOR</span><p>How timing, permission, tone, and stop rules shape the messages.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Sam gets reminders and follow-up</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
                   <span>Key decision</span>
                   <p>Use short email/SMS moments to support appointment attendance, rebooking, and whitening follow-up.</p>
                 </div><div class="source-note">Deliverable page: complete workshop content</div><div class="doc-source document-markdown">
@@ -1063,15 +1063,15 @@
 </section>
 </div></div></details></div>
             </div>
-          </article>
-<article id="docs-panel-workflow-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-workflow-doc" tabindex="0" hidden="">
+          </div>
+<div id="docs-panel-workflow-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-workflow-doc" tabindex="0" hidden="">
             <div class="document-layout">
               <aside aria-label="GHL Workflow Specification overview">
                 <p class="eyebrow">Document 06</p>
                 <h3>GHL Workflow Specification</h3>
                 <p>Which repeat tasks should happen without manual chasing?</p>
               </aside>
-              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h3>GHL Workflow Specification</h3><div class="document-files"><p class="document-official-title">File: 06_GHL_Workflow_Specification</p><div class="document-file-links"><a href="deliverables/pdf/06_GHL_Workflow_Specification.pdf" download="">Download PDF <small>96 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/06_GHL_Workflow_Specification.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>Which repeat tasks should happen without manual chasing?</p></div><div><span>WHY IT WAS NEEDED</span><p>Writing each rule down makes the system easier to build and check.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the six helpers notice events, wait, branch, act, and stop.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Sam is reminded and followed up</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
+              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h2>GHL Workflow Specification</h2><div class="document-files"><p class="document-official-title">File: 06_GHL_Workflow_Specification</p><div class="document-file-links"><a href="deliverables/pdf/06_GHL_Workflow_Specification.pdf" download="">Download PDF <small>96 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/06_GHL_Workflow_Specification.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>Which repeat tasks should happen without manual chasing?</p></div><div><span>WHY IT WAS NEEDED</span><p>Writing each rule down makes the system easier to build and check.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the six helpers notice events, wait, branch, act, and stop.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Sam is reminded and followed up</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
                   <span>Key decision</span>
                   <p>Specify triggers, waits, branches, stop conditions, and consent rules before building in GHL.</p>
                 </div><div class="source-note">Deliverable page: complete workshop content</div><div class="doc-source document-markdown">
@@ -1211,15 +1211,15 @@
 </ul>
 </div></div></details></div>
             </div>
-          </article>
-<article id="docs-panel-kpi-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-kpi-doc" tabindex="0" hidden="">
+          </div>
+<div id="docs-panel-kpi-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-kpi-doc" tabindex="0" hidden="">
             <div class="document-layout">
               <aside aria-label="Analytics and KPI Plan overview">
                 <p class="eyebrow">Document 07</p>
                 <h3>Analytics and KPI Plan</h3>
                 <p>How will the team know where people stop?</p>
               </aside>
-              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h3>Analytics and KPI Plan</h3><div class="document-files"><p class="document-official-title">File: 07_Analytics_KPI_Plan</p><div class="document-file-links"><a href="deliverables/pdf/07_Analytics_KPI_Plan.pdf" download="">Download PDF <small>97 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/07_Analytics_KPI_Plan.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>How will the team know where people stop?</p></div><div><span>WHY IT WAS NEEDED</span><p>A number is useful only when it answers a clear question.</p></div><div><span>WHAT TO LOOK FOR</span><p>How events, formulas, time windows, and tests turn activity into learning.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>The team learns what worked</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
+              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h2>Analytics and KPI Plan</h2><div class="document-files"><p class="document-official-title">File: 07_Analytics_KPI_Plan</p><div class="document-file-links"><a href="deliverables/pdf/07_Analytics_KPI_Plan.pdf" download="">Download PDF <small>97 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/07_Analytics_KPI_Plan.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>How will the team know where people stop?</p></div><div><span>WHY IT WAS NEEDED</span><p>A number is useful only when it answers a clear question.</p></div><div><span>WHAT TO LOOK FOR</span><p>How events, formulas, time windows, and tests turn activity into learning.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>The team learns what worked</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
                   <span>Key decision</span>
                   <p>Measure the system by drop-off points, not just total leads, so each weak metric has a next action.</p>
                 </div><div class="source-note">Deliverable page: complete workshop content</div><div class="doc-source document-markdown">
@@ -1340,15 +1340,15 @@
 </ul>
 </div></div></details></div>
             </div>
-          </article>
-<article id="docs-panel-checklist-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-checklist-doc" tabindex="0" hidden="">
+          </div>
+<div id="docs-panel-checklist-doc" class="document-panel native-deliverable" role="tabpanel" aria-labelledby="new-doc-tab-checklist-doc" tabindex="0" hidden="">
             <div class="document-layout">
               <aside aria-label="GHL Build Checklist overview">
                 <p class="eyebrow">Document 08</p>
                 <h3>GHL Build Checklist</h3>
                 <p>What must be built and tested before launch?</p>
               </aside>
-              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h3>GHL Build Checklist</h3><div class="document-files"><p class="document-official-title">File: 08_GHL_Build_Checklist_Paste_Ready</p><div class="document-file-links"><a href="deliverables/pdf/08_GHL_Build_Checklist_Paste_Ready.pdf" download="">Download PDF <small>105 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/08_GHL_Build_Checklist_Paste_Ready.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What must be built and tested before launch?</p></div><div><span>WHY IT WAS NEEDED</span><p>A checklist turns the plan into a repeatable review.</p></div><div><span>WHAT TO LOOK FOR</span><p>How to check the records, page, calendar, messages, helpers, and measurement plan.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>The whole Sam journey</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
+              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h2>GHL Build Checklist</h2><div class="document-files"><p class="document-official-title">File: 08_GHL_Build_Checklist_Paste_Ready</p><div class="document-file-links"><a href="deliverables/pdf/08_GHL_Build_Checklist_Paste_Ready.pdf" download="">Download PDF <small>105 KB</small></a><a href="https://github.com/AndreImperial/GHLAutomation/blob/main/deliverables/08_GHL_Build_Checklist_Paste_Ready.md" target="_blank" rel="noopener">View source on GitHub</a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What must be built and tested before launch?</p></div><div><span>WHY IT WAS NEEDED</span><p>A checklist turns the plan into a repeatable review.</p></div><div><span>WHAT TO LOOK FOR</span><p>How to check the records, page, calendar, messages, helpers, and measurement plan.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>The whole Sam journey</p></div></div></div><details class="full-document"><summary>Read the complete workshop document</summary><div class="full-document-body"><div class="doc-callout">
                   <span>Key decision</span>
                   <p>Turn the strategy into a paste-ready build list so implementation has fewer judgment gaps.</p>
                 </div><div class="source-note">Deliverable page: complete workshop content</div><div class="doc-source document-markdown">
@@ -1483,15 +1483,15 @@
 </ul>
 </div></div></details></div>
             </div>
-          </article>
-          <article id="docs-panel-business-case-intake" class="document-panel native-filled-template" role="tabpanel" aria-labelledby="new-doc-tab-business-case-intake" tabindex="0" data-complete-open="true" hidden="">
+          </div>
+          <div id="docs-panel-business-case-intake" class="document-panel native-filled-template" role="tabpanel" aria-labelledby="new-doc-tab-business-case-intake" tabindex="0" data-complete-open="true" hidden="">
             <div class="document-layout">
               <aside aria-label="Filled Business Case Intake Worksheet overview">
                 <p class="eyebrow">Filled template T1</p>
                 <h3>Business Case Intake Worksheet</h3>
                 <p>What did we know before making the strategy?</p>
               </aside>
-              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h3>Business Case Intake Worksheet</h3><div class="document-files"><p class="document-official-title">File: WS_00_Business_Case_Intake_Worksheet_FILLED_Bloom_Dental</p><div class="document-file-links"><a href="deliverables/templates/WS_00_Business_Case_Intake_Worksheet_FILLED_Bloom_Dental.pdf" download="">Download PDF <small>110 KB</small></a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What did we know before making the strategy?</p></div><div><span>WHY IT WAS NEEDED</span><p>The workshop needed one reliable place for the business, offer, audience, bottleneck, goal, and voice.</p></div><div><span>WHAT TO LOOK FOR</span><p>How raw discovery notes become clear inputs for campaign decisions.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Before Sam sees the offer</p></div></div></div><details class="full-document" open=""><summary>Explore the complete filled template</summary><div class="full-document-body"><div class="doc-callout">
+              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h2>Business Case Intake Worksheet</h2><div class="document-files"><p class="document-official-title">File: WS_00_Business_Case_Intake_Worksheet_FILLED_Bloom_Dental</p><div class="document-file-links"><a href="deliverables/templates/WS_00_Business_Case_Intake_Worksheet_FILLED_Bloom_Dental.pdf" download="">Download PDF <small>110 KB</small></a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>What did we know before making the strategy?</p></div><div><span>WHY IT WAS NEEDED</span><p>The workshop needed one reliable place for the business, offer, audience, bottleneck, goal, and voice.</p></div><div><span>WHAT TO LOOK FOR</span><p>How raw discovery notes become clear inputs for campaign decisions.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>Before Sam sees the offer</p></div></div></div><details class="full-document" open=""><summary>Explore the complete filled template</summary><div class="full-document-body"><div class="doc-callout">
                   <span>Why this matters</span>
                   <p>This is the filled thinking sheet behind the strategy. It preserves the business, offer, audience, bottleneck, goal, and voice before those inputs became campaign documents.</p>
                 </div><div class="source-note">Filled workshop template: complete website transcription</div><div class="doc-source document-markdown filled-template-content">
@@ -1548,16 +1548,16 @@
                   </section>
                 </div></div></details></div>
             </div>
-          </article>
+          </div>
 
-          <article id="docs-panel-kpi-scorecard" class="document-panel native-filled-template" role="tabpanel" aria-labelledby="new-doc-tab-kpi-scorecard" tabindex="0" data-complete-open="true" hidden="">
+          <div id="docs-panel-kpi-scorecard" class="document-panel native-filled-template" role="tabpanel" aria-labelledby="new-doc-tab-kpi-scorecard" tabindex="0" data-complete-open="true" hidden="">
             <div class="document-layout">
               <aside aria-label="Filled KPI Scorecard overview">
                 <p class="eyebrow">Filled template T2</p>
                 <h3>KPI Scorecard</h3>
                 <p>Where would the team enter results and compare them with the plan?</p>
               </aside>
-              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h3>KPI Scorecard</h3><div class="document-files"><p class="document-official-title">File: WS_08_KPI_Scorecard_FILLED_Bloom_Dental</p><div class="document-file-links"><a href="deliverables/templates/WS_08_KPI_Scorecard_FILLED_Bloom_Dental.xlsx" download="">Download workbook (.xlsx) <small>9 KB</small></a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>Where would the team enter results and compare them with the plan?</p></div><div><span>WHY IT WAS NEEDED</span><p>A measurement plan needs a repeatable place for weekly actuals, formulas, and status checks.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the campaign setup, eight-week tracker, and progress formulas work together.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>After launch, when the team reviews what happened</p></div></div></div><details class="full-document" open=""><summary>Explore the complete filled template</summary><div class="full-document-body"><div class="doc-callout">
+              <div class="document-content"><div class="document-beginner-intro artifact-introduction" data-artifact-introduction=""><span class="section-label">PORTFOLIO EVIDENCE</span><h2>KPI Scorecard</h2><div class="document-files"><p class="document-official-title">File: WS_08_KPI_Scorecard_FILLED_Bloom_Dental</p><div class="document-file-links"><a href="deliverables/templates/WS_08_KPI_Scorecard_FILLED_Bloom_Dental.xlsx" download="">Download workbook (.xlsx) <small>9 KB</small></a></div></div><div class="document-learning-grid"><div><span>WHAT THIS IS</span><p>Where would the team enter results and compare them with the plan?</p></div><div><span>WHY IT WAS NEEDED</span><p>A measurement plan needs a repeatable place for weekly actuals, formulas, and status checks.</p></div><div><span>WHAT TO LOOK FOR</span><p>How the campaign setup, eight-week tracker, and progress formulas work together.</p></div><div><span>SYSTEM AREA SUPPORTED</span><p>After launch, when the team reviews what happened</p></div></div></div><details class="full-document" open=""><summary>Explore the complete filled template</summary><div class="full-document-body"><div class="doc-callout">
                   <span>What this preserves</span>
                   <p>The scorecard is shown as a working measurement design. Blank weekly actuals remain blank because the simulation never produced live campaign data.</p>
                 </div><div class="source-note">Filled workshop spreadsheet: complete website transcription</div><div class="doc-source document-markdown filled-template-content scorecard-content">
@@ -1612,7 +1612,7 @@
                   </section>
                 </div></div></details></div>
             </div>
-          </article>
+          </div>
           </div></div>
           <section class="evidence-matrix" aria-label="Which item helped with each step" data-problem-evidence-matrix data-reveal></section>
           <section id="workshop-source-library" class="workshop-source-library" aria-labelledby="workshop-source-library-title">
@@ -2910,7 +2910,7 @@
         </section>
 
         <section id="view-measurement" class="view-panel" role="tabpanel" aria-labelledby="tab-measurement" data-view-panel="measurement" hidden="">
-          <div class="view-heading" data-reveal=""><div><span class="section-label">HOW WE’D KNOW</span><h2>We count each step so the team knows where to help.</h2></div><p>Because this is a simulation, there are no campaign results. This section explains what the team would count after launch.</p></div>
+          <div class="view-heading" data-reveal=""><div><span class="section-label">HOW WE’D KNOW</span><h1>We count each step so the team knows where to help.</h1></div><p>Because this is a simulation, there are no campaign results. This section explains what the team would count after launch.</p></div>
           <section class="funnel-chart" aria-labelledby="funnel-chart-title" data-reveal="">
             <div class="section-intro"><span class="section-label">WHAT THE SYSTEM IS FOR</span><h2 id="funnel-chart-title">From the workshop baseline to the projected goal.</h2><p>People at each stage over 60 days. The baseline comes from the discovery brief and the projected goal from the documented campaign targets. Neither is a campaign result.</p></div>
             <div class="funnel-legend" aria-hidden="true"><span data-series="baseline">Workshop baseline</span><span data-series="projected">Projected goal</span></div>
@@ -2929,7 +2929,7 @@
         </section>
 
         <section id="view-conclusion" class="view-panel" role="tabpanel" aria-labelledby="tab-conclusion" data-view-panel="conclusion" hidden>
-          <div class="view-heading" data-reveal><div><span class="section-label">05 / 05 · CONCLUSION</span><h2>What the project demonstrates.</h2></div><p>A concise close: the system I built, the judgment behind it, the skills that transfer, and the work still required before launch.</p></div>
+          <div class="view-heading" data-reveal><div><span class="section-label">05 / 05 · CONCLUSION</span><h1>What the project demonstrates.</h1></div><p>A concise close: the system I built, the judgment behind it, the skills that transfer, and the work still required before launch.</p></div>
 
           <section class="conclusion-lead" aria-labelledby="conclusion-lead-title" data-reveal>
             <h2 id="conclusion-lead-title">A martech system is only useful when the customer path and the evidence agree.</h2>

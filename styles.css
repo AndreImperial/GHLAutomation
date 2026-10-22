@@ -41,7 +41,7 @@
   --ivory: #f2ead9;
   --ivory-soft: #d7d5c8;
   --muted: #a7b7ad;
-  --muted-dark: #778a81;
+  --muted-dark: #90a198;
   --mint: #a9d7b7;
   --mint-strong: #6eaa88;
   --coral: #ef8b6c;
@@ -794,6 +794,8 @@ h1 em {
   display: inline-block;
   margin-bottom: 16px;
 }
+
+.view-heading h1,
 
 .view-heading h2,
 .section-intro h2,
@@ -2695,6 +2697,8 @@ h1 em {
   border-bottom: 1px solid var(--line-strong);
 }
 
+.document-beginner-intro h2,
+
 .document-beginner-intro h3 {
   margin: 0 0 8px;
   color: var(--ivory);
@@ -3990,6 +3994,8 @@ body.motion-enhanced [data-reveal].is-inview {
   text-transform: uppercase;
 }
 
+.problem-panel h2,
+
 .problem-panel h3 {
   max-width: 860px;
   margin: 0;
@@ -4356,6 +4362,8 @@ body.motion-enhanced [data-reveal].is-inview {
     margin-bottom: 44px;
   }
 
+  .view-heading h1,
+
   .view-heading h2,
   .section-intro h2 {
     font-size: 46px;
@@ -4705,6 +4713,8 @@ body.motion-enhanced [data-reveal].is-inview {
     padding-bottom: 72px;
   }
 
+  .view-heading h1,
+
   .view-heading h2,
   .section-intro h2 {
     font-size: 39px;
@@ -4988,6 +4998,8 @@ body.motion-enhanced [data-reveal].is-inview {
     padding: 22px 18px;
   }
 
+  .document-beginner-intro h2,
+
   .document-beginner-intro h3 {
     font-size: 32px;
   }
@@ -5128,6 +5140,7 @@ body.motion-enhanced [data-reveal].is-inview {
   }
 
   .problem-panel { padding: 24px 18px 28px; }
+  .problem-panel h2,
   .problem-panel h3 { font-size: 29px; }
   .problem-panel-grid { grid-template-columns: 1fr; }
   .problem-panel-grid > div,
