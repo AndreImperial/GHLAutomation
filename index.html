@@ -241,7 +241,18 @@
         </section>
 
         <section id="view-problem" class="view-panel is-active" role="tabpanel" aria-labelledby="tab-problem" data-view-panel="problem">
-          <section class="project-verification" aria-labelledby="project-verification-title"><span class="section-label">VERIFICATION LEDGER</span><h2 id="project-verification-title">What was tested, what testing caught, and what is still open.</h2><p class="project-verification-intro">The workshop GHL account is no longer available, so these statuses reflect what was recorded at the time. Workflow maps on this site are reconstructions of the specification, not screenshots.</p><div class="verification-table-wrap"><table class="verification-table"><thead><tr><th scope="col">Item</th><th scope="col">Status</th><th scope="col">Evidence</th></tr></thead><tbody>
+          <section class="project-verification" aria-labelledby="project-verification-title"><div class="verification-lead"><div class="verification-lead__copy"><span class="section-label">VERIFICATION LEDGER</span><h2 id="project-verification-title">What was tested, what testing caught, and what is still open.</h2><p class="project-verification-intro">The workshop GHL account is no longer available, so these statuses reflect what was recorded at the time. Workflow maps on this site are reconstructions of the specification, not screenshots.</p></div>
+            <figure class="booking-demo" data-booking-demo>
+              <div class="booking-demo__media">
+                <video class="booking-demo__video" muted loop playsinline preload="none" poster="assets/demo/booking-poster.jpg" data-poster-compact="assets/demo/booking-poster-compact.jpg" aria-label="Illustration: a test patient books a 10:30 consultation on a phone. In the CRM pipeline the contact moves from New Lead to Booked Consultation and its tag changes to bd-consult-booked. The booking confirmation email shows Queued, then Delivery failed, caught in testing before launch.">
+                  <source media="(max-width: 600px)" src="assets/demo/booking-compact.webm" type="video/webm">
+                  <source src="assets/demo/booking-wide.webm" type="video/webm">
+                </video>
+                <button class="booking-demo__toggle" type="button" data-booking-toggle aria-pressed="false" hidden>Pause animation</button>
+              </div>
+              <figcaption>Illustration of the tested booking path, rebuilt from the workshop test record. Not a screenshot of the GHL account.</figcaption>
+            </figure>
+          </div><div class="verification-table-wrap"><table class="verification-table"><thead><tr><th scope="col">Item</th><th scope="col">Status</th><th scope="col">Evidence</th></tr></thead><tbody>
 <tr><th scope="row">Inquiry form and calendar booking</th><td><span class="verify-pill is-tested">Tested</span></td><td>A test submission went through the form and a consultation time was booked.</td></tr>
 <tr><th scope="row">Workflow execution</th><td><span class="verify-pill is-tested">Tested</span></td><td>A test contact entered a workflow; the execution log showed opportunity and tag actions.</td></tr>
 <tr><th scope="row">Confirmation email</th><td><span class="verify-pill is-open">Issue found</span></td><td>GHL queued the email, but email statistics showed delivery failed. Caught before launch: a verified sender and a passing delivery test are now launch requirements.</td></tr>

@@ -1842,6 +1842,38 @@
     document.querySelectorAll("animateMotion").forEach((element) => element.remove());
   }
 
+  // The booking-path illustration plays only while on screen, never under
+  // reduced motion, and can always be paused.
+  function setupBookingDemo() {
+    const figure = document.querySelector("[data-booking-demo]");
+    const video = figure?.querySelector("video");
+    const toggle = figure?.querySelector("[data-booking-toggle]");
+    if (!video || !toggle) return;
+    if (window.matchMedia("(max-width: 600px)").matches && video.dataset.posterCompact) video.poster = video.dataset.posterCompact;
+    let paused = reduceMotion();
+    let visible = false;
+    const sync = () => {
+      toggle.textContent = paused ? "Play animation" : "Pause animation";
+      toggle.setAttribute("aria-pressed", String(paused));
+      if (!paused && visible) video.play().catch(() => {});
+      else video.pause();
+    };
+    toggle.hidden = false;
+    toggle.addEventListener("click", () => {
+      paused = !paused;
+      sync();
+    });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => {
+        visible = entries.some((entry) => entry.isIntersecting);
+        sync();
+      }, { threshold: 0.35 }).observe(video);
+    } else {
+      visible = true;
+    }
+    sync();
+  }
+
   function watchNavOverflow() {
     const nav = document.querySelector(".primary-nav");
     if (!nav) return;
@@ -1862,6 +1894,7 @@
     initPresentation();
     initNavigation();
     watchNavOverflow();
+    setupBookingDemo();
     initKpiDiagnostics();
     disableSignalForReducedMotion();
     const state = getHashState();

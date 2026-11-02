@@ -2,7 +2,9 @@
 
 **Case study by Andre Imperial** · [View the live site](https://ghlautomation.onrender.com/) · [Browse the deliverables](deliverables/) · [Email me](mailto:imperial.andrejoseece@gmail.com)
 
-[![The Bloom Dental consultation system: one customer path from Meta ad to consultation, with whitening, recall, and no-show branches and six workflows](assets/og-bloom-dental.png)](https://ghlautomation.onrender.com/)
+[![Illustration of the tested booking path: a test patient books a consultation, the contact moves to Booked Consultation in the CRM, and the confirmation email shows Delivery failed, caught in testing before launch](assets/demo/booking-poster.jpg)](https://ghlautomation.onrender.com/)
+
+*Illustration of the tested booking path, rebuilt from the workshop test record. The live site plays it as a short animation.*
 
 I took a dental clinic brief from discovery to a partly tested GoHighLevel (GHL) build: strategy, campaign assets, a CRM pipeline, six specified automation workflows, and a measurement plan. This was a workshop simulation from the Libre Academy Fast Track Workshop. Bloom Dental Studio is a fictional clinic, and the campaign was never launched, so every performance figure here is a projected goal.
 
@@ -71,7 +73,7 @@ Then open `http://127.0.0.1:4173/#overview`.
 
 The story runs Overview → System → Build → Measurement → Conclusion, with Deliverables at the end of the nav as the project library.
 
-- `#overview`: animated system diagram, at-a-glance summary, contribution, workshop phases, GHL build areas, verification ledger.
+- `#overview`: animated system diagram, at-a-glance summary, verification ledger with the booking-path demo video, workshop phases, GHL build areas.
 - `#system` (and `#automation`): customer journey and the six interactive workflow maps.
 - `#build`: ten detailed build steps with technical setup.
 - `#measurement`: baseline-vs-projected funnel chart, formulas, reporting windows, and diagnostic lab.

@@ -7977,6 +7977,74 @@ body[data-view]:not([data-view="problem"]) .at-a-glance {
   margin: 10px 0 12px;
 }
 
+.verification-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 720px);
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 28px;
+}
+
+.booking-demo {
+  margin: 0;
+}
+
+.booking-demo__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.booking-demo__video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 720 / 420;
+}
+
+.booking-demo__toggle {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  min-height: 32px;
+  padding: 4px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(19, 32, 29, 0.86);
+  color: var(--ivory-soft);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.booking-demo__toggle:hover,
+.booking-demo__toggle:focus-visible {
+  border-color: var(--mint);
+  color: var(--mint);
+}
+
+.booking-demo figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  .verification-lead {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .booking-demo__video {
+    aspect-ratio: 358 / 476;
+  }
+}
+
 .project-verification-intro {
   max-width: 760px;
   margin: 0 0 24px;
